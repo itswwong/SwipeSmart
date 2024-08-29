@@ -11,7 +11,6 @@ struct RebatesView: View {
     @Binding var category: Category
     
     var body: some View {
-        let categoryNameLower = category.name.lowercased()
         
         NavigationStack {
             List {
@@ -38,7 +37,7 @@ struct RebatesView: View {
                     }
                 }
             }
-            .navigationTitle("Best cards for \(categoryNameLower):")
+            .navigationTitle("Best Cards for \(category.name):")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
