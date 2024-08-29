@@ -1,8 +1,7 @@
 //
 //  ErrorWrapper.swift
-//  cardappIOS
 //
-//  Created by William Wong on 9/17/23.
+//  Template for error handling.
 //
 
 import Foundation

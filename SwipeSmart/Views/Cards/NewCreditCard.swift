@@ -1,8 +1,7 @@
 //
 //  NewCreditCard.swift
-//  cardappIOS
 //
-//  Created by William Wong on 9/11/23.
+//  Adds new credit card.
 //
 
 import SwiftUI

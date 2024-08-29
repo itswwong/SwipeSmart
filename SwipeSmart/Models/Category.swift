@@ -1,20 +1,11 @@
 //
 //  Category.swift
-//  Category Dictionary (Key for each category)
+//
+//  Data template for each Category object.
 //  Categories: [Travel, Dining, Groceries, Gas, Entertainment, Shopping]
 //
 
 import Foundation
-
-//var globalCategoryList: [Category] =
-//[
-//    Category(name: "Travel", cardRebates: []),
-//    Category(name: "Dining", cardRebates: []),
-//    Category(name: "Groceries", cardRebates: []),
-//    Category(name: "Gas", cardRebates: []),
-//    Category(name: "Digital Wallets", cardRebates: []),
-//    Category(name: "Online Shopping", cardRebates: [])
-//]
 
 struct Category: Identifiable, Codable {
     let id: UUID
@@ -34,16 +25,6 @@ struct Category: Identifiable, Codable {
 }
     
 extension Category {
-//    struct cardID_rebate: Codable {
-//        var cardID: UUID
-//        var rebate: Int
-//
-//        init(cardID: UUID, rebate: Int) {
-//            self.cardID = cardID
-//            self.rebate = rebate
-//        }
-//    }
-    
     static var emptyCategory: Category {
         Category(name: "", cardRebates: [])
     }

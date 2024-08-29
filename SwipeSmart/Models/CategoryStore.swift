@@ -1,23 +1,14 @@
 //
 //  CategoryStore.swift
-//  cardappIOS
 //
-//  Created by William Wong on 9/13/23.
+//  Manages the loading, saving, and real-time updating of Category objects.
 //
 
 import SwiftUI
 
 @MainActor
 class CategoryStore: ObservableObject {
-    @Published var categories: [Category] =
-    [
-//        Category(name: "Travel", cardRebates: []),
-//        Category(name: "Dining", cardRebates: []),
-//        Category(name: "Groceries", cardRebates: []),
-//        Category(name: "Gas", cardRebates: []),
-//        Category(name: "Digital Wallets", cardRebates: []),
-//        Category(name: "Online Shopping", cardRebates: [])
-    ]
+    @Published var categories: [Category] = []
     
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,

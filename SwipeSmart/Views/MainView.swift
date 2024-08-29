@@ -1,8 +1,7 @@
 //
 //  MainView.swift
-//  cardappIOS
 //
-//  Created by William Wong on 9/16/23.
+//  Defines CreditCard and Category view interface.
 //
 
 import SwiftUI

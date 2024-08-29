@@ -1,7 +1,7 @@
 //
 //  CreditCard.swift
 //
-//  Template for each credit card.
+//  Data template for each CreditCard object.
 //
 
 import Foundation
@@ -12,13 +12,6 @@ struct CreditCard: Identifiable, Codable {
     var cardName: String
     var notes: String
     var categories: [cardID_rebates]
-    
-//    init(id: UUID = UUID(), bankName: String, cardName: String, notes: String) {
-//        self.id = id
-//        self.bankName = bankName
-//        self.cardName = cardName
-//        self.notes = notes
-//    }
     
     init(id: UUID = UUID(), bankName: String, cardName: String, notes: String, categories: [cardID_rebates]) {
         self.id = id

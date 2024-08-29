@@ -1,8 +1,7 @@
 //
 //  CardView.swift
-//  cardapp
 //
-//  Created by William Wong on 9/3/23.
+//  Display individual credit card.
 //
 
 import SwiftUI
@@ -30,11 +29,6 @@ struct CardView: View {
                     Spacer()
                 }
             }
-//            HStack() {
-//                Spacer()
-//                Text(card.cardName)
-//                    .font(titleFont)
-//            }
             Spacer()
             RoundedRectangle(cornerRadius: 7)
                 .fill(.white)
