@@ -1,3 +1,9 @@
+//
+//  DetailEditView.swift
+//
+//  Edit credit card info.
+//
+
 import SwiftUI
 
 struct DetailEditView: View {
@@ -8,9 +14,10 @@ struct DetailEditView: View {
     @State private var newUserRebate = ""
     @State private var newRebate: Int = 0
 
-    @State private var editingIndex: Int? // State to track the index of the rebate being edited
+    @State private var editingIndex: Int? // state to track index of rebate being edited
     @State private var editingCategoryName = ""
     @State private var editingRebate = ""
+    @FocusState private var isEditingFieldFocused: Bool // track focus state of text field
 
     var body: some View {
         Form {
@@ -24,9 +31,11 @@ struct DetailEditView: View {
                     HStack {
                         if editingIndex == index {
                             TextField("Category Name", text: $editingCategoryName)
+                                .focused($isEditingFieldFocused)
                             Spacer()
                             TextField("Rebate", text: $editingRebate)
                                 .keyboardType(.numberPad)
+                                .focused($isEditingFieldFocused)
                             Button(action: {
                                 if let rebateValue = Int(editingRebate), rebateValue > 0 {
                                     saveEditedRebate(at: index, newCategoryName: editingCategoryName, newRebate: rebateValue)
@@ -67,6 +76,7 @@ struct DetailEditView: View {
         editingIndex = index
         editingCategoryName = card.categories[index].categoryName
         editingRebate = "\(card.categories[index].rebate)"
+        isEditingFieldFocused = true // automatically focus field after tapping
     }
 
     private func saveEditedRebate(at index: Int, newCategoryName: String, newRebate: Int) {
@@ -78,10 +88,11 @@ struct DetailEditView: View {
             categories[categoryIndex].cardRebates[rebateIndex].categoryName = newCategoryName
             categories[categoryIndex].cardRebates[rebateIndex].rebate = newRebate
             
+            // sort the rebates in the category
             categories[categoryIndex].cardRebates.sort(by: sorterforCategory)
         }
 
-        // Reset editing state
+        // reset editing state
         editingIndex = nil
         editingCategoryName = ""
         editingRebate = ""

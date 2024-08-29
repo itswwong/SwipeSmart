@@ -1,7 +1,7 @@
 //
 //  WalletView.swift
 //
-//  Displays list of all user cards
+//  Displays list of all user credit cards.
 //
 
 import SwiftUI

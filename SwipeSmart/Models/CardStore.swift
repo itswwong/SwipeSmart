@@ -1,6 +1,7 @@
 //
 //  CardStore.swift
-//  cardappIOS
+//
+//  Manages the loading, saving, and real-time updating of CreditCard objects.
 //
 
 import SwiftUI

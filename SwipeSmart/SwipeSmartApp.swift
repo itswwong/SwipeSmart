@@ -1,8 +1,8 @@
 //
-//  SwipeSmartApp.swift
 //  SwipeSmart
 //
-//  Created by William Wong on 8/28/24.
+//  An IOS app that manages credit card rewards and helps users select
+//  the best credit card to use for different kinds of purchases.
 //
 
 import SwiftUI

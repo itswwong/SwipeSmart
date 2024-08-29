@@ -1,8 +1,7 @@
 //
 //  ErrorView.swift
-//  cardappIOS
 //
-//  Created by William Wong on 9/17/23.
+//  Error handling.
 //
 
 import SwiftUI

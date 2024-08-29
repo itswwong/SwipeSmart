@@ -1,8 +1,7 @@
 //
 //  CategoryView.swift
-//  cardappIOS
 //
-//  Created by William Wong on 9/13/23.
+//  Displays individual category within CategorySelectorView.
 //
 
 import SwiftUI

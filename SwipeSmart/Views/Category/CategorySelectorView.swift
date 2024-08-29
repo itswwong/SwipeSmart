@@ -1,8 +1,7 @@
 //
 //  CategorySelectorView.swift
-//  cardappIOS
 //
-//  Created by William Wong on 9/13/23.
+//  Displays all available categories.
 //
 
 import SwiftUI
@@ -36,13 +35,6 @@ struct CategorySelectorView: View {
             }
             .navigationTitle("What are you buying?")
             .navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                ToolbarItem (placement: .bottom) {
-//                    Button(action: {}) {
-//                        Image(systemName: "plus")
-//                    }
-//                }
-//            }
         }
     }
     

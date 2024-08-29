@@ -2,7 +2,7 @@
 //  DetailView.swift
 //  cardapp
 //
-//  Displays card info
+//  Displays individual credit card info.
 //
 
 import SwiftUI
@@ -19,24 +19,19 @@ struct DetailView: View {
             Section(header: Text("Card Info")) {
                 HStack {
                     Label("Bank Name", systemImage: "building.columns.fill")
-                        .font(bodyFont)
                     Spacer()
                     Text(card.bankName)
-//                        .font(bodyFont)
                 }
                 HStack {
                     Label("Card Name", systemImage: "creditcard.fill")
-                        .font(bodyFont)
                     Spacer()
                     Text(card.cardName)
-//                        .font(bodyFont)
                 }
             }
             Section(header: Text("Rebates")) {
                 ForEach(card.categories) { category in
                     HStack {
                         Label(category.categoryName, systemImage: "person")
-                            .font(bodyFont)
                         Spacer()
                         Text("\(category.rebate) %")
                     }
