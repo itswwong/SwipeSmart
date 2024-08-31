@@ -7,7 +7,7 @@
 
 import Foundation
 
-let categoryList = ["Travel", "Dining", "Groceries", "Gas", "Entertainment", "Shopping"]
+let categoryList = ["Travel", "Dining", "Groceries", "Gas", "Entertainment", "Shopping", "Other"]
 
 struct Category: Identifiable, Codable {
     let id: UUID

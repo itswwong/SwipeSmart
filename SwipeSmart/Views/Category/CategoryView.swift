@@ -11,17 +11,40 @@ struct CategoryView: View {
     @Binding var category: Category
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack() {
+        HStack() {
+            Spacer()
+            VStack {
                 Spacer()
-                VStack {
-                    Spacer()
-                    Text(category.name)
-                        .font(bodyFont)
-                    Spacer()
+                Text(category.name)
+                    .padding(.bottom)
+                HStack() {
+                    if category.cardRebates.isEmpty {
+                        Text("No rewards in this category.")
+                        Spacer()
+                    }
+                    else if let index = findCreditCardFromID(cardID: category.cardRebates[0].cardID, cards: cards) {
+                        HStack() {
+                            VStack(alignment: .leading) {
+                                Text(cards[index].bankName)
+                                    .font(.headline)
+                                Text(cards[index].cardName).font(.subheadline)
+                            }
+                            Spacer()
+                            Circle()
+                                .fill(Color.blue)
+                                .frame(width: 40, height: 40)
+                                .overlay(
+                                    Text("\(category.cardRebates[0].rebate)%")
+                                        .foregroundColor(.white)
+                                        .font(.subheadline)
+                                )
+                        }
+                        Spacer()
+                    }
                 }
                 Spacer()
             }
+            Spacer()
         }
         .padding()
         .foregroundColor(.white)

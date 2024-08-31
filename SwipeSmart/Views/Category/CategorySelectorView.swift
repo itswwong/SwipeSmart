@@ -33,15 +33,14 @@ struct CategorySelectorView: View {
                 )
                 .listRowSeparator(.hidden)
             }
-            .navigationTitle("What are you buying?")
+            .navigationTitle("Which card should you use?")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-    
-    struct CategorySelectorView_Previews: PreviewProvider {
-        static var previews: some View {
-            CategorySelectorView(cards: .constant(CreditCard.testCards), categories: .constant(Category.sampleCategories))
-        }
+}
+
+struct CategorySelectorView_Previews: PreviewProvider {
+    static var previews: some View {
+        CategorySelectorView(cards: .constant(CreditCard.testCards), categories: .constant(Category.sampleCategories))
     }
-    
 }
