@@ -5,5 +5,5 @@ An IOS app that manages credit card rewards and helps users select the best cred
 ### Manage credit card rewards
 Users can add and edit their credit card rebates in various purchase categories such as groceries, gas, dining, and travel.
 
-### Assists when Shopping
+### Assists when shopping
 While shopping, users can select what they are purchasing and SwipeSmart will return the credit card that offers the optimal rebate for that purchase.
