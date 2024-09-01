@@ -12,8 +12,9 @@ struct CategorySelectorView: View {
     
     var body: some View {
         NavigationStack {
-            List($categories) { $category in
-                NavigationLink(destination: RebatesView(cards: $cards, category: $category)) {
+            // don't display categories with no rewards
+            List($categories.filter{ !$0.cardRewards.isEmpty }) { $category in
+                NavigationLink(destination: RewardsView(cards: $cards, category: $category)) {
                     CategoryView(cards: $cards, category: $category)
                 }
                 .foregroundColor(.white)

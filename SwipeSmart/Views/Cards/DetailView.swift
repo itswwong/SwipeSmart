@@ -28,12 +28,12 @@ struct DetailView: View {
                     Text(card.cardName)
                 }
             }
-            Section(header: Text("Rebates")) {
+            Section(header: Text("Rewards")) {
                 ForEach(card.categories) { category in
                     HStack {
                         Label(category.categoryName, systemImage: "person")
                         Spacer()
-                        Text("\(category.rebate) %")
+                        Text("\(category.reward) %")
                     }
                 }
             }

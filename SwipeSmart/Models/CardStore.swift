@@ -21,10 +21,11 @@ class CardStore: ObservableObject {
     func load() async throws {
         let task = Task<[CreditCard], Error> {
             let fileURL = try Self.fileURL()
-            guard let data = try? Data(contentsOf: fileURL) else {
+            guard FileManager.default.fileExists(atPath: fileURL.path) else {
                 return []
             }
             
+            let data = try Data(contentsOf: fileURL)
             let creditCards = try JSONDecoder().decode([CreditCard].self, from: data)
             return creditCards
         }

@@ -18,11 +18,11 @@ struct CategoryView: View {
                 Text(category.name)
                     .padding(.bottom)
                 HStack() {
-                    if category.cardRebates.isEmpty {
+                    if category.cardRewards.isEmpty {
                         Text("No rewards in this category.")
                         Spacer()
                     }
-                    else if let index = findCreditCardFromID(cardID: category.cardRebates[0].cardID, cards: cards) {
+                    else if let index = findCreditCardFromID(cardID: category.cardRewards[0].cardID, cards: cards) {
                         HStack() {
                             VStack(alignment: .leading) {
                                 Text(cards[index].bankName)
@@ -34,7 +34,7 @@ struct CategoryView: View {
                                 .fill(Color.blue)
                                 .frame(width: 40, height: 40)
                                 .overlay(
-                                    Text("\(category.cardRebates[0].rebate)%")
+                                    Text("\(category.cardRewards[0].reward)%")
                                         .foregroundColor(.white)
                                         .font(.subheadline)
                                 )
