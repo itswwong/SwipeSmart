@@ -18,14 +18,12 @@ struct MainView: View {
     var body: some View {
         TabView {
             CategorySelectorView(cards: $cards, categories: $categories)
-                .padding()
                 .tabItem {
                     Label("Shopping", systemImage: "cart.fill")
                 }
                 .tag(1)
 
             WalletView(cards: $cards, categories: $categories, saveAction: saveAction)
-                .padding()
                 .tabItem {
                     Label("Wallet", systemImage: "wallet.pass.fill")
                 }
