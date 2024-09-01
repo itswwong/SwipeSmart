@@ -2,33 +2,31 @@
 //  Category.swift
 //
 //  Data template for each Category object.
-//  Categories: [Travel, Dining, Groceries, Gas, Entertainment, Shopping]
+//  Categories: [Travel, Dining, Groceries, Gas, Entertainment, Shopping, Other]
 //
 
 import Foundation
 
-let categoryList = ["Travel", "Dining", "Groceries", "Gas", "Entertainment", "Shopping", "Other"]
-
 struct Category: Identifiable, Codable {
     let id: UUID
     var name: String
-    var cardRebates = [CreditCard.cardID_rebates]()
+    var cardRewards = [CreditCard.cardID_rewards]()
     
     init(id: UUID = UUID(), name: String) {
         self.id = id
         self.name = name
     }
     
-    init(id: UUID = UUID(), name: String, cardRebates: [CreditCard.cardID_rebates]) {
+    init(id: UUID = UUID(), name: String, cardRewards: [CreditCard.cardID_rewards]) {
         self.id = id
         self.name = name
-        self.cardRebates = cardRebates
+        self.cardRewards = cardRewards
     }
 }
     
 extension Category {
     static var emptyCategory: Category {
-        Category(name: "", cardRebates: [])
+        Category(name: "", cardRewards: [])
     }
 }
 
@@ -36,23 +34,25 @@ func searchCategoryListNames(name: String, categoryList: [Category]) -> Int? {
   return categoryList.firstIndex { $0.name == name }
 }
 
-func searchCategoryListRebateIDs(rebateID: UUID, categoryList: [Category]) -> Int? {
-    return categoryList.firstIndex { category in category.cardRebates.contains { $0.id == rebateID } }
+func searchCategoryListRewardIDs(rewardID: UUID, categoryList: [Category]) -> Int? {
+    return categoryList.firstIndex { category in category.cardRewards.contains { $0.id == rewardID } }
 }
 
-func searchCardID_Rebates(cardID: UUID, cardIDRebates: [CreditCard.cardID_rebates]) -> Int? {
-    return cardIDRebates.firstIndex { $0.cardID == cardID }
+func searchCardID_Rewards(cardID: UUID, cardIDRewards: [CreditCard.cardID_rewards]) -> Int? {
+    return cardIDRewards.firstIndex { $0.cardID == cardID }
 }
 
-func sorterforCategory(this: CreditCard.cardID_rebates, that: CreditCard.cardID_rebates) -> Bool {
-    return this.rebate > that.rebate
+func sorterforCategory(this: CreditCard.cardID_rewards, that: CreditCard.cardID_rewards) -> Bool {
+    return this.reward > that.reward
 }
 
 extension Category {
     static let sampleCategories: [Category] =
     [
-        Category(name: "Groceries", cardRebates: CreditCard.sampleCardRebatesGroceries),
-        Category(name: "Dining", cardRebates: CreditCard.sampleCardRebatesDining),
-        Category(name: "Gas", cardRebates: CreditCard.sampleCardRebatesGas)
+        Category(name: "Groceries", cardRewards: CreditCard.sampleCardRewardsGroceries),
+        Category(name: "Travel", cardRewards: []),
+        Category(name: "Dining", cardRewards: CreditCard.sampleCardRewardsDining),
+        Category(name: "Gas", cardRewards: CreditCard.sampleCardRewardsGas)
+        
     ]
 }

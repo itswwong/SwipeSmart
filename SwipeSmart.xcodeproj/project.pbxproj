@@ -17,8 +17,8 @@
 		0AEBE5912C7FFBBF0051DE14 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE58B2C7FFBBF0051DE14 /* CreditCard.swift */; };
 		0AEBE5AA2C7FFBD10051DE14 /* CategorySelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5942C7FFBD00051DE14 /* CategorySelectorView.swift */; };
 		0AEBE5AB2C7FFBD10051DE14 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5952C7FFBD00051DE14 /* CategoryView.swift */; };
-		0AEBE5AC2C7FFBD10051DE14 /* RebatesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5962C7FFBD00051DE14 /* RebatesCardView.swift */; };
-		0AEBE5AD2C7FFBD10051DE14 /* RebatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5972C7FFBD00051DE14 /* RebatesView.swift */; };
+		0AEBE5AC2C7FFBD10051DE14 /* RewardsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5962C7FFBD00051DE14 /* RewardsCardView.swift */; };
+		0AEBE5AD2C7FFBD10051DE14 /* RewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5972C7FFBD00051DE14 /* RewardsView.swift */; };
 		0AEBE5AE2C7FFBD10051DE14 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5992C7FFBD00051DE14 /* MainView.swift */; };
 		0AEBE5B02C7FFBD10051DE14 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE59B2C7FFBD10051DE14 /* ErrorView.swift */; };
 		0AEBE5B72C7FFBD10051DE14 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A22C7FFBD10051DE14 /* CardView.swift */; };
@@ -40,8 +40,8 @@
 		0AEBE58B2C7FFBBF0051DE14 /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		0AEBE5942C7FFBD00051DE14 /* CategorySelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectorView.swift; sourceTree = "<group>"; };
 		0AEBE5952C7FFBD00051DE14 /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
-		0AEBE5962C7FFBD00051DE14 /* RebatesCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RebatesCardView.swift; sourceTree = "<group>"; };
-		0AEBE5972C7FFBD00051DE14 /* RebatesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RebatesView.swift; sourceTree = "<group>"; };
+		0AEBE5962C7FFBD00051DE14 /* RewardsCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsCardView.swift; sourceTree = "<group>"; };
+		0AEBE5972C7FFBD00051DE14 /* RewardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsView.swift; sourceTree = "<group>"; };
 		0AEBE5992C7FFBD00051DE14 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0AEBE59B2C7FFBD10051DE14 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		0AEBE5A22C7FFBD10051DE14 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -101,10 +101,10 @@
 		0AEBE5852C7FFB740051DE14 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0AEBE5882C7FFBBF0051DE14 /* CardStore.swift */,
-				0AEBE58A2C7FFBBF0051DE14 /* Category.swift */,
-				0AEBE5892C7FFBBF0051DE14 /* CategoryStore.swift */,
 				0AEBE58B2C7FFBBF0051DE14 /* CreditCard.swift */,
+				0AEBE58A2C7FFBBF0051DE14 /* Category.swift */,
+				0AEBE5882C7FFBBF0051DE14 /* CardStore.swift */,
+				0AEBE5892C7FFBBF0051DE14 /* CategoryStore.swift */,
 				0AEBE5872C7FFBBF0051DE14 /* ErrorWrapper.swift */,
 			);
 			path = Models;
@@ -126,8 +126,8 @@
 			children = (
 				0AEBE5942C7FFBD00051DE14 /* CategorySelectorView.swift */,
 				0AEBE5952C7FFBD00051DE14 /* CategoryView.swift */,
-				0AEBE5972C7FFBD00051DE14 /* RebatesView.swift */,
-				0AEBE5962C7FFBD00051DE14 /* RebatesCardView.swift */,
+				0AEBE5972C7FFBD00051DE14 /* RewardsView.swift */,
+				0AEBE5962C7FFBD00051DE14 /* RewardsCardView.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -219,12 +219,12 @@
 				0AEBE5B92C7FFBD10051DE14 /* DetailView.swift in Sources */,
 				0AEBE5AE2C7FFBD10051DE14 /* MainView.swift in Sources */,
 				0AEBE5BA2C7FFBD10051DE14 /* NewCreditCard.swift in Sources */,
-				0AEBE5AD2C7FFBD10051DE14 /* RebatesView.swift in Sources */,
+				0AEBE5AD2C7FFBD10051DE14 /* RewardsView.swift in Sources */,
 				0AEBE5912C7FFBBF0051DE14 /* CreditCard.swift in Sources */,
 				0AEBE58E2C7FFBBF0051DE14 /* CardStore.swift in Sources */,
 				0AEBE5902C7FFBBF0051DE14 /* Category.swift in Sources */,
 				0AEBE5AB2C7FFBD10051DE14 /* CategoryView.swift in Sources */,
-				0AEBE5AC2C7FFBD10051DE14 /* RebatesCardView.swift in Sources */,
+				0AEBE5AC2C7FFBD10051DE14 /* RewardsCardView.swift in Sources */,
 				0AEBE5B02C7FFBD10051DE14 /* ErrorView.swift in Sources */,
 				0AEBE58F2C7FFBBF0051DE14 /* CategoryStore.swift in Sources */,
 				0AEBE5B82C7FFBD10051DE14 /* DetailEditView.swift in Sources */,

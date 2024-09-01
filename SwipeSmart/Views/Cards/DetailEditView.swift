@@ -11,8 +11,8 @@ struct DetailEditView: View {
     @Binding var categories: [Category]
     @State private var category = Category.emptyCategory
     @State private var selectedCategoryName = ""
-    @State private var newUserRebate = ""
-    @State private var newRebate: Int = 0
+    @State private var newUserReward = ""
+    @State private var newReward: Int = 0
 
     var body: some View {
         Form {
@@ -21,7 +21,7 @@ struct DetailEditView: View {
                 TextField("Card Name", text: $card.cardName)
             }
             
-            Section(header: Text("Rebates")) {
+            Section(header: Text("Rewards")) {
                 ForEach(card.categories.indices, id: \.self) { index in
                     HStack {
                         TextField("Category Name", text: $card.categories[index].categoryName)
@@ -29,13 +29,13 @@ struct DetailEditView: View {
                         
                         Spacer()
                         
-                        TextField("Rebate", text: Binding(
+                        TextField("Rewards", text: Binding(
                             get: {
-                                String(card.categories[index].rebate)
+                                String(card.categories[index].reward)
                             },
                             set: { newValue in
-                                if let newRebateValue = Int(newValue) {
-                                    updateRebateValue(for: index, with: newRebateValue)
+                                if let newRewardValue = Int(newValue) {
+                                    updateRewardValue(for: index, with: newRewardValue)
                                 }
                             }
                         ))
@@ -43,13 +43,13 @@ struct DetailEditView: View {
                         .textFieldStyle(PlainTextFieldStyle())
                     }
                 }
-                .onDelete(perform: removeRebate)
+                .onDelete(perform: removeReward)
                 
                 HStack {
                     Menu {
                         Picker("Categories", selection: $selectedCategoryName) {
-                            ForEach(categoryList, id: \.self) { category in
-                                Text(category).tag(category)
+                            ForEach(categories) { category in
+                                Text(category.name).tag(category.name)
                             }
                         }
                     } label: {
@@ -62,69 +62,69 @@ struct DetailEditView: View {
                         }
                     }
                     
-                    TextField("Add Rebate", text: $newUserRebate)
+                    TextField("Add Reward", text: $newUserReward)
                         .keyboardType(.numberPad)
                         .padding(.leading)
                     
-                    Button(action: addRebate) {
+                    Button(action: addReward) {
                         Image(systemName: "plus.circle.fill")
                     }
-                    .disabled(selectedCategoryName.isEmpty || newUserRebate.isEmpty)
+                    .disabled(selectedCategoryName.isEmpty || newUserReward.isEmpty)
                 }
             }
         }
     }
 
-    private func updateRebateValue(for index: Int, with newRebateValue: Int) {
-        card.categories[index].rebate = newRebateValue
+    private func updateRewardValue(for index: Int, with newRewardValue: Int) {
+        card.categories[index].reward = newRewardValue
 
         // Update the corresponding entry in the categories array
         if let categoryIndex = searchCategoryListNames(name: card.categories[index].categoryName, categoryList: categories),
-           let rebateIndex = searchCardID_Rebates(cardID: card.id, cardIDRebates: categories[categoryIndex].cardRebates) {
-            categories[categoryIndex].cardRebates[rebateIndex].rebate = newRebateValue
-            categories[categoryIndex].cardRebates.sort(by: sorterforCategory)
+           let rewardIndex = searchCardID_Rewards(cardID: card.id, cardIDRewards: categories[categoryIndex].cardRewards) {
+            categories[categoryIndex].cardRewards[rewardIndex].reward = newRewardValue
+            categories[categoryIndex].cardRewards.sort(by: sorterforCategory)
         }
     }
 
-    private func addRebate() {
+    private func addReward() {
         withAnimation {
-            newRebate = Int(newUserRebate) ?? 0
+            newReward = Int(newUserReward) ?? 0
             if (searchCategoryListNames(name: selectedCategoryName, categoryList: categories) == nil) {
-                let newCategoryRebate = CreditCard.cardID_rebates(cardID: card.id, categoryName: selectedCategoryName, rebate: newRebate)
-                card.categories.append(newCategoryRebate)
-                category.cardRebates.append(newCategoryRebate)
+                let newCategoryReward = CreditCard.cardID_rewards(cardID: card.id, categoryName: selectedCategoryName, reward: newReward)
+                card.categories.append(newCategoryReward)
+                category.cardRewards.append(newCategoryReward)
                 category.name = selectedCategoryName
                 categories.append(category)
                 category = Category.emptyCategory
             } else if (searchCreditCardCategoryNames(categoryName: selectedCategoryName, categories: card.categories) == nil) {
-                let newCategoryRebate = CreditCard.cardID_rebates(cardID: card.id, categoryName: selectedCategoryName, rebate: newRebate)
-                card.categories.append(newCategoryRebate)
+                let newCategoryReward = CreditCard.cardID_rewards(cardID: card.id, categoryName: selectedCategoryName, reward: newReward)
+                card.categories.append(newCategoryReward)
                 let indexCategory = searchCategoryListNames(name: selectedCategoryName, categoryList: categories) ?? 0
-                categories[indexCategory].cardRebates.append(newCategoryRebate)
-                categories[indexCategory].cardRebates.sort(by: sorterforCategory)
+                categories[indexCategory].cardRewards.append(newCategoryReward)
+                categories[indexCategory].cardRewards.sort(by: sorterforCategory)
             } else {
                 let indexCard = searchCreditCardCategoryNames(categoryName: selectedCategoryName, categories: card.categories) ?? 0
-                card.categories[indexCard].rebate = newRebate
+                card.categories[indexCard].reward = newReward
                 let indexCategory = searchCategoryListNames(name: selectedCategoryName, categoryList: categories) ?? 0
-                let indexCardID_Rebate = searchCardID_Rebates(cardID: card.id, cardIDRebates: categories[indexCategory].cardRebates) ?? 0
-                categories[indexCategory].cardRebates[indexCardID_Rebate].rebate = newRebate
-                categories[indexCategory].cardRebates.sort(by: sorterforCategory)
+                let indexCardID_Reward = searchCardID_Rewards(cardID: card.id, cardIDRewards: categories[indexCategory].cardRewards) ?? 0
+                categories[indexCategory].cardRewards[indexCardID_Reward].reward = newReward
+                categories[indexCategory].cardRewards.sort(by: sorterforCategory)
             }
             selectedCategoryName = ""
-            newUserRebate = ""
-            newRebate = 0
+            newUserReward = ""
+            newReward = 0
         }
     }
 
-    func removeRebate(at indices: IndexSet) {
+    func removeReward(at indices: IndexSet) {
         guard !indices.isEmpty else { return }
         
         for index in indices {
             let categoryAtIndex = card.categories[index]
             
-            if let categoryIndex = searchCategoryListRebateIDs(rebateID: categoryAtIndex.id, categoryList: categories) {
+            if let categoryIndex = searchCategoryListRewardIDs(rewardID: categoryAtIndex.id, categoryList: categories) {
                 if categoryIndex < categories.count {
-                    categories[categoryIndex].cardRebates.removeAll { $0.id == categoryAtIndex.id }
+                    categories[categoryIndex].cardRewards.removeAll { $0.id == categoryAtIndex.id }
                 }
             }
         }

@@ -11,9 +11,9 @@ struct CreditCard: Identifiable, Codable {
     var bankName: String
     var cardName: String
     var notes: String
-    var categories: [cardID_rebates]
+    var categories: [cardID_rewards]
     
-    init(id: UUID = UUID(), bankName: String, cardName: String, notes: String, categories: [cardID_rebates]) {
+    init(id: UUID = UUID(), bankName: String, cardName: String, notes: String, categories: [cardID_rewards]) {
         self.id = id
         self.bankName = bankName
         self.cardName = cardName
@@ -23,17 +23,17 @@ struct CreditCard: Identifiable, Codable {
 }
 
 extension CreditCard {
-    struct cardID_rebates: Identifiable, Codable {
+    struct cardID_rewards: Identifiable, Codable {
         let id: UUID
         let cardID: UUID
         var categoryName: String
-        var rebate: Int
+        var reward: Int
         
-        init(id: UUID = UUID(), cardID: UUID, categoryName: String, rebate: Int) {
+        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Int) {
             self.id = id
             self.cardID = cardID
             self.categoryName = categoryName
-            self.rebate = rebate
+            self.reward = reward
         }
     }
     
@@ -42,7 +42,7 @@ extension CreditCard {
     }
 }
 
-func searchCreditCardCategoryNames(categoryName: String, categories: [CreditCard.cardID_rebates]) -> Int? {
+func searchCreditCardCategoryNames(categoryName: String, categories: [CreditCard.cardID_rewards]) -> Int? {
   return categories.firstIndex { $0.categoryName == categoryName }
 }
 
@@ -61,49 +61,49 @@ extension CreditCard {
     
     static let testCards: [CreditCard] =
     [
-        CreditCard(id: CreditCard.sampleCards[0].id, bankName: "American Express", cardName: "Blue", notes: "use this one for Geico", categories: sampleCategoryRebates0),
-        CreditCard(id: CreditCard.sampleCards[1].id, bankName: "Discover", cardName: "", notes: "use this one for online shopping", categories: sampleCategoryRebates1),
-        CreditCard(id: CreditCard.sampleCards[2].id, bankName: "Bank of America", cardName: "Visa Signature", notes: "use this one for gas", categories: sampleCategoryRebates2)
+        CreditCard(id: CreditCard.sampleCards[0].id, bankName: "American Express", cardName: "Blue", notes: "use this one for Geico", categories: sampleCategoryRewards0),
+        CreditCard(id: CreditCard.sampleCards[1].id, bankName: "Discover", cardName: "", notes: "use this one for online shopping", categories: sampleCategoryRewards1),
+        CreditCard(id: CreditCard.sampleCards[2].id, bankName: "Bank of America", cardName: "Visa Signature", notes: "use this one for gas", categories: sampleCategoryRewards2)
     ]
     
-    static let sampleCategoryRebates0: [cardID_rebates] =
+    static let sampleCategoryRewards0: [cardID_rewards] =
     [
-        cardID_rebates(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", rebate: 3),
-        cardID_rebates(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", rebate: 3),
-        cardID_rebates(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", rebate: 1),
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3),
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", reward: 3),
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", reward: 1),
     ]
     
-    static let sampleCategoryRebates1: [cardID_rebates] =
+    static let sampleCategoryRewards1: [cardID_rewards] =
     [
-        cardID_rebates(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", rebate: 2),
-        cardID_rebates(cardID: CreditCard.sampleCards[1].id, categoryName: "Dining", rebate: 1),
-        cardID_rebates(cardID: CreditCard.sampleCards[1].id, categoryName: "Gas", rebate: 2),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", reward: 2),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Dining", reward: 1),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Gas", reward: 2),
     ]
     
-    static let sampleCategoryRebates2: [cardID_rebates] =
+    static let sampleCategoryRewards2: [cardID_rewards] =
     [
-        cardID_rebates(cardID: CreditCard.sampleCards[2].id, categoryName: "Groceries", rebate: 1),
-        cardID_rebates(cardID: CreditCard.sampleCards[2].id, categoryName: "Gas", rebate: 3)
+        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Groceries", reward: 1),
+        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Gas", reward: 3)
     ]
     
     // in category
-    static let sampleCardRebatesGroceries: [cardID_rebates] =
+    static let sampleCardRewardsGroceries: [cardID_rewards] =
     [
-        cardID_rebates(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", rebate: 3),
-        cardID_rebates(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", rebate: 2),
-        cardID_rebates(cardID: CreditCard.sampleCards[2].id, categoryName: "Groceries", rebate: 1)
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", reward: 2),
+        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Groceries", reward: 1)
     ]
     
-    static let sampleCardRebatesDining: [cardID_rebates] =
+    static let sampleCardRewardsDining: [cardID_rewards] =
     [
-        cardID_rebates(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", rebate: 3),
-        cardID_rebates(cardID: CreditCard.sampleCards[1].id, categoryName: "Dining", rebate: 1)
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", reward: 3),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Dining", reward: 1)
     ]
     
-    static let sampleCardRebatesGas: [cardID_rebates] =
+    static let sampleCardRewardsGas: [cardID_rewards] =
     [
-        cardID_rebates(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", rebate: 1),
-        cardID_rebates(cardID: CreditCard.sampleCards[1].id, categoryName: "Gas", rebate: 2),
-        cardID_rebates(cardID: CreditCard.sampleCards[2].id, categoryName: "Gas", rebate: 3)
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", reward: 1),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Gas", reward: 2),
+        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Gas", reward: 3)
     ]
 }

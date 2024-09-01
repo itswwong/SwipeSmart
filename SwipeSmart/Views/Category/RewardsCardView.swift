@@ -1,14 +1,14 @@
 //
-//  RebatesCardView.swift
+//  RewardsCardView.swift
 //
-//  Displays specific credit card rebate information within RebatesView.
+//  Displays specific credit card reward information within RewardsView.
 //
 
 import SwiftUI
 
-struct RebatesCardView: View {
+struct RewardsCardView: View {
     let card: CreditCard
-    let rebate: Int
+    let reward: Int
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -17,7 +17,7 @@ struct RebatesCardView: View {
                     .fill(Color.blue)
                     .frame(width: 45, height: 45)
                     .overlay(
-                        Text("\(rebate)%")
+                        Text("\(reward)%")
                             .foregroundColor(.white)
                             .font(.headline)
                     )
@@ -33,9 +33,9 @@ struct RebatesCardView: View {
     }
 }
 
-struct RebatesCardView_Previews: PreviewProvider {
+struct RewardsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RebatesCardView(card: CreditCard.sampleCards[0], rebate: 15)
+        RewardsCardView(card: CreditCard.sampleCards[0], reward: 15)
             .previewLayout(.sizeThatFits)
     }
 }
