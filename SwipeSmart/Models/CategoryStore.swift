@@ -12,6 +12,7 @@ class CategoryStore: ObservableObject {
     @Published var categories = [
         Category(name: "Travel", cardRewards: []),
         Category(name: "Dining", cardRewards: []),
+        Category(name: "Groceries", cardRewards: []),
         Category(name: "Gas", cardRewards: []),
         Category(name: "Entertainment", cardRewards: []),
         Category(name: "Shopping", cardRewards: []),

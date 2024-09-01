@@ -102,8 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				0AEBE58B2C7FFBBF0051DE14 /* CreditCard.swift */,
-				0AEBE58A2C7FFBBF0051DE14 /* Category.swift */,
 				0AEBE5882C7FFBBF0051DE14 /* CardStore.swift */,
+				0AEBE58A2C7FFBBF0051DE14 /* Category.swift */,
 				0AEBE5892C7FFBBF0051DE14 /* CategoryStore.swift */,
 				0AEBE5872C7FFBBF0051DE14 /* ErrorWrapper.swift */,
 			);
