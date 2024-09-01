@@ -47,7 +47,7 @@ struct DetailEditView: View {
                 
                 HStack {
                     Menu {
-                        Picker("Categories", selection: $selectedCategoryName) {
+                        Picker(selection: $selectedCategoryName, label: Text("")) {
                             ForEach(categories) { category in
                                 Text(category.name).tag(category.name)
                             }

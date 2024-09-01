@@ -54,7 +54,5 @@ struct CategoryView: View {
 struct CategoryView_Previews: PreviewProvider {
     static var previews: some View {
         CategoryView(cards: .constant(CreditCard.testCards), category: .constant(Category.sampleCategories[0]))
-            .background(.gray)
-            .previewLayout(.fixed(width: 250, height: 150))
     }
 }

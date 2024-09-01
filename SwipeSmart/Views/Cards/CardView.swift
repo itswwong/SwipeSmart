@@ -50,7 +50,5 @@ struct CardView_Previews: PreviewProvider {
     static var card = CreditCard.sampleCards[0]
     static var previews: some View {
         CardView(card: card)
-            .background(.gray)
-            .previewLayout(.fixed(width: 250, height: 150))
     }
 }
