@@ -30,18 +30,18 @@ extension Category {
     }
 }
 
-func searchCategoryListNames(name: String, categoryList: [Category]) -> Int? {
-  return categoryList.firstIndex { $0.name == name }
-}
-
-func searchCategoryListRewardIDs(rewardID: UUID, categoryList: [Category]) -> Int? {
-    return categoryList.firstIndex { category in category.cardRewards.contains { $0.id == rewardID } }
-}
-
-func searchCardID_Rewards(cardID: UUID, cardIDRewards: [CreditCard.cardID_rewards]) -> Int? {
-    return cardIDRewards.firstIndex { $0.cardID == cardID }
-}
-
+//func searchCategoryListNames(name: String, categoryList: [Category]) -> Int? {
+//  return categoryList.firstIndex { $0.name == name }
+//}
+//
+//func searchCategoryListRewardIDs(rewardID: UUID, categoryList: [Category]) -> Int? {
+//    return categoryList.firstIndex { category in category.cardRewards.contains { $0.id == rewardID } }
+//}
+//
+//func searchCardID_Rewards(cardID: UUID, cardIDRewards: [CreditCard.cardID_rewards]) -> Int? {
+//    return cardIDRewards.firstIndex { $0.cardID == cardID }
+//}
+//
 func sorterforCategory(this: CreditCard.cardID_rewards, that: CreditCard.cardID_rewards) -> Bool {
     return this.reward > that.reward
 }

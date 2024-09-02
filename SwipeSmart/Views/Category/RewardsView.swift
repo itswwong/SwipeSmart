@@ -15,7 +15,7 @@ struct RewardsView: View {
         NavigationStack {
             List {
                 ForEach(category.cardRewards) { cardID_reward in
-                    if let index = findCreditCardFromID(cardID: cardID_reward.cardID, cards: cards) {
+                    if let index = cards.firstIndex(where: { $0.id == cardID_reward.cardID }) {
                         let reward = cardID_reward.reward  // Get the reward for this card
                         RewardsCardView(card: cards[index], reward: reward)
                             .foregroundColor(.white)

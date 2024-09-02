@@ -11,19 +11,19 @@ struct CategoryView: View {
     @Binding var category: Category
     
     var body: some View {
-        HStack() {
+        HStack {
             Spacer()
             VStack {
                 Spacer()
                 Text(category.name)
                     .padding(.bottom)
-                HStack() {
+                HStack {
                     if category.cardRewards.isEmpty {
                         Text("No rewards in this category.")
                         Spacer()
                     }
-                    else if let index = findCreditCardFromID(cardID: category.cardRewards[0].cardID, cards: cards) {
-                        HStack() {
+                    else if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
+                        HStack {
                             VStack(alignment: .leading) {
                                 Text(cards[index].bankName)
                                     .font(.headline)

@@ -10,14 +10,12 @@ struct CreditCard: Identifiable, Codable {
     let id: UUID
     var bankName: String
     var cardName: String
-    var notes: String
     var categories: [cardID_rewards]
     
-    init(id: UUID = UUID(), bankName: String, cardName: String, notes: String, categories: [cardID_rewards]) {
+    init(id: UUID = UUID(), bankName: String, cardName: String, categories: [cardID_rewards]) {
         self.id = id
         self.bankName = bankName
         self.cardName = cardName
-        self.notes = notes
         self.categories = categories
     }
 }
@@ -28,6 +26,15 @@ extension CreditCard {
         let cardID: UUID
         var categoryName: String
         var reward: Int
+        var expirationDate: Date?
+        
+        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Int, expirationDate: Date?) {
+            self.id = id
+            self.cardID = cardID
+            self.categoryName = categoryName
+            self.reward = reward
+            self.expirationDate = expirationDate
+        }
         
         init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Int) {
             self.id = id
@@ -38,39 +45,39 @@ extension CreditCard {
     }
     
     static var emptyCard: CreditCard {
-        CreditCard(bankName: "", cardName: "", notes: "", categories: [])
+        CreditCard(bankName: "", cardName: "", categories: [])
     }
 }
 
-func searchCreditCardCategoryNames(categoryName: String, categories: [CreditCard.cardID_rewards]) -> Int? {
-  return categories.firstIndex { $0.categoryName == categoryName }
-}
-
-func findCreditCardFromID(cardID: UUID, cards: [CreditCard]) -> Int? {
-    return cards.firstIndex { $0.id == cardID }
-}
+//func searchCreditCardCategoryNames(categoryName: String, categories: [CreditCard.cardID_rewards]) -> Int? {
+//  return categories.firstIndex { $0.categoryName == categoryName }
+//}
+//
+//func findCreditCardFromID(cardID: UUID, cards: [CreditCard]) -> Int? {
+//    return cards.firstIndex { $0.id == cardID }
+//}
 
 extension CreditCard {
     // in credit card
     static let sampleCards: [CreditCard] =
     [
-        CreditCard(bankName: "American Express", cardName: "Blue", notes: "use this one for Geico", categories: []),
-        CreditCard(bankName: "Discover", cardName: "", notes: "use this one for online shopping", categories: []),
-        CreditCard(bankName: "Bank of America", cardName: "Visa Signature", notes: "use this one for gas", categories: [])
+        CreditCard(bankName: "American Express", cardName: "Blue", categories: []),
+        CreditCard(bankName: "Discover", cardName: "", categories: []),
+        CreditCard(bankName: "Bank of America", cardName: "Visa Signature", categories: [])
     ]
     
     static let testCards: [CreditCard] =
     [
-        CreditCard(id: CreditCard.sampleCards[0].id, bankName: "American Express", cardName: "Blue", notes: "use this one for Geico", categories: sampleCategoryRewards0),
-        CreditCard(id: CreditCard.sampleCards[1].id, bankName: "Discover", cardName: "", notes: "use this one for online shopping", categories: sampleCategoryRewards1),
-        CreditCard(id: CreditCard.sampleCards[2].id, bankName: "Bank of America", cardName: "Visa Signature", notes: "use this one for gas", categories: sampleCategoryRewards2)
+        CreditCard(id: CreditCard.sampleCards[0].id, bankName: "American Express", cardName: "Blue", categories: sampleCategoryRewards0),
+        CreditCard(id: CreditCard.sampleCards[1].id, bankName: "Discover", cardName: "", categories: sampleCategoryRewards1),
+        CreditCard(id: CreditCard.sampleCards[2].id, bankName: "Bank of America", cardName: "Visa Signature", categories: sampleCategoryRewards2)
     ]
     
     static let sampleCategoryRewards0: [cardID_rewards] =
     [
-        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3),
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3, expirationDate: Date.now),
         cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", reward: 3),
-        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", reward: 1),
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", reward: 1, expirationDate: Date.now),
     ]
     
     static let sampleCategoryRewards1: [cardID_rewards] =

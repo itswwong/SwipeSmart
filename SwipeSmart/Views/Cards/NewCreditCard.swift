@@ -8,14 +8,18 @@ import SwiftUI
 
 struct NewCreditCard: View {
     @State private var newCard = CreditCard.emptyCard
+    @State private var editingCategories = [Category]()
     @Binding var cards: [CreditCard]
     @Binding var categories: [Category]
     @Binding var isPresentingNewCardView: Bool
     
     var body: some View {
         NavigationStack {
-            DetailEditView(card: $newCard, categories: $categories)
+            DetailEditView(card: $newCard, categories: $editingCategories)
                 .navigationTitle("Add New Card")
+                .onAppear {
+                    editingCategories = categories
+                }
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Cancel") {
@@ -24,7 +28,11 @@ struct NewCreditCard: View {
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Add") {
+                            if newCard.bankName.isEmpty || newCard.cardName.isEmpty {
+                                return
+                            }
                             cards.append(newCard)
+                            categories = editingCategories
                             isPresentingNewCardView = false
                         }
                     }
