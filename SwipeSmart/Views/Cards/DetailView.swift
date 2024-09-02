@@ -12,6 +12,7 @@ struct DetailView: View {
     @Binding var categories: [Category]
     
     @State private var editingCard = CreditCard.emptyCard
+    @State private var editingCategories = [Category]()
     @State private var isPresentingEditView = false
     
     var body: some View {
@@ -30,11 +31,21 @@ struct DetailView: View {
             }
             Section(header: Text("Rewards")) {
                 ForEach(card.categories) { category in
-                    HStack {
-                        Label(category.categoryName, systemImage: "person")
-                        Spacer()
-                        Text("\(category.reward) %")
+                    VStack {
+                        HStack {
+                            Label(category.categoryName, systemImage: "person")
+                            Spacer()
+                            Text("\(category.reward) %")
+                        }
+                        
+                        if let date = category.expirationDate {
+                            Text(date, format: .dateTime.day().month().year())
+                        } else {
+                            Text("None")
+                                .foregroundColor(.gray)
+                        }
                     }
+                    .padding([.top, .bottom])
                 }
             }
         }
@@ -42,11 +53,12 @@ struct DetailView: View {
             Button("Edit") {
                 isPresentingEditView = true
                 editingCard = card
+                editingCategories = categories
             }
         }
         .sheet(isPresented: $isPresentingEditView) {
             NavigationStack {
-                DetailEditView(card: $editingCard, categories: $categories)
+                DetailEditView(card: $editingCard, categories: $editingCategories)
                     .toolbar {
                         ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
                             Button("Cancel") {
@@ -56,8 +68,12 @@ struct DetailView: View {
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
+                                if  card.bankName.isEmpty || card.cardName.isEmpty {
+                                    return
+                                }
                                 isPresentingEditView = false
                                 card = editingCard
+                                categories = editingCategories
                             }
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                         }

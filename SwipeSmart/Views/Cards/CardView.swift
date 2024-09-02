@@ -11,7 +11,7 @@ struct CardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack() {
+            HStack {
                 VStack {
                     Text("Credit Card")
                         .font(titleFont)
