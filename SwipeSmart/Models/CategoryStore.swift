@@ -36,7 +36,7 @@ class CategoryStore: ObservableObject {
                         
             let data = try Data(contentsOf: fileURL)
             let categories = try JSONDecoder().decode([Category].self, from: data)
-            return categories.isEmpty ? self.categories : categories // return default categories unless there is user data
+            return categories.isEmpty ? self.categories : categories // Return default categories unless there is user data
         }
         
         let categories = try await task.value

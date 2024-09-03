@@ -56,9 +56,11 @@ struct RewardRowView: View {
                 ))
                 .keyboardType(.numberPad)
                 .padding(.leading)
+                .textFieldStyle(.roundedBorder)
+                Text("%")
             }
             
-            DatePickerField(date: $category.expirationDate, dateSet: $dateSet)
+            DatePickerField(startDate: $category.startDate, expirationDate: $category.expirationDate, dateSet: $dateSet)
                 .padding(.top)
         }
     }
