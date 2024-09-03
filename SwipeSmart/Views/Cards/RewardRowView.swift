@@ -1,6 +1,8 @@
 //
 //  RewardRowView.swift
 //
+//  Displays existing rewards in DetailEditView
+//
 
 import SwiftUI
 

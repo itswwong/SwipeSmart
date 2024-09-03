@@ -1,6 +1,8 @@
 //
 //  NewRewardView.swift
 //
+//  Displays new reward input fields in DetailEditView
+//
 
 import SwiftUI
 
