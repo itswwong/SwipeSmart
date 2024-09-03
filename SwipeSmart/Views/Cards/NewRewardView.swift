@@ -10,6 +10,7 @@ struct NewRewardView: View {
     @State private var selectedCategoryName = ""
     @State private var newUserReward = ""
     @State private var newReward: Int = 0
+    @State private var startDate: Date? = nil
     @State private var expirationDate: Date? = nil
     @State private var addNewReward = false
     @State private var dateSet: Bool = false
@@ -38,9 +39,12 @@ struct NewRewardView: View {
                         TextField("Add Reward", text: $newUserReward)
                             .keyboardType(.numberPad)
                             .padding(.leading)
+                            .padding(.leading)
+                            .textFieldStyle(.roundedBorder)
+                        Text("%")
                     }
                     
-                    DatePickerField(date: $expirationDate, dateSet: $dateSet)
+                    DatePickerField(startDate: $startDate ,expirationDate: $expirationDate, dateSet: $dateSet)
                         .padding(.top)
                 }
                 .padding(.trailing)
@@ -67,7 +71,7 @@ struct NewRewardView: View {
             let newCategoryReward: CreditCard.cardID_rewards
 
             if dateSet {
-                newCategoryReward = CreditCard.cardID_rewards(cardID: card.id, categoryName: selectedCategoryName, reward: newReward, expirationDate: expirationDate)
+                newCategoryReward = CreditCard.cardID_rewards(cardID: card.id, categoryName: selectedCategoryName, reward: newReward, startDate: startDate, expirationDate: expirationDate)
             } else {
                 newCategoryReward = CreditCard.cardID_rewards(cardID: card.id, categoryName: selectedCategoryName, reward: newReward)
             }
@@ -77,10 +81,12 @@ struct NewRewardView: View {
                     // Update the existing reward
                     card.categories[existingRewardIndex].reward = newReward
                     card.categories[existingRewardIndex].expirationDate = dateSet ? expirationDate : nil
+                    card.categories[existingRewardIndex].startDate = dateSet ? startDate : nil
                     
                     if let rewardInCategoryIndex = categories[categoryIndex].cardRewards.firstIndex(where: { $0.id == card.categories[existingRewardIndex].id }) {
                         categories[categoryIndex].cardRewards[rewardInCategoryIndex].reward = newReward
                         categories[categoryIndex].cardRewards[rewardInCategoryIndex].expirationDate = dateSet ? expirationDate : nil
+                        categories[categoryIndex].cardRewards[rewardInCategoryIndex].startDate = dateSet ? startDate : nil
                     }
                 } else {
                     // Category exists, but not in credit card
@@ -100,6 +106,7 @@ struct NewRewardView: View {
             newUserReward = ""
             newReward = 0
             expirationDate = nil
+            startDate = nil
             dateSet = false
             addNewReward = false
         }

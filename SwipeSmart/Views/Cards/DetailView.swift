@@ -37,12 +37,28 @@ struct DetailView: View {
                             Spacer()
                             Text("\(category.reward) %")
                         }
-                        
-                        if let date = category.expirationDate {
-                            Text(date, format: .dateTime.day().month().year())
+                        if let startDate = category.startDate {
+                            HStack {
+                                Text("Start Date:")
+                                Spacer()
+                                Text(startDate, format: .dateTime.day().month().year())
+                            }
+                            .padding(.top)
+                        }
+                        if let expirationDate = category.expirationDate {
+                            HStack {
+                                Text("Expiration Date:")
+                                Spacer()
+                                Text(expirationDate, format: .dateTime.day().month().year())
+                            }
+                            .padding(.top)
                         } else {
-                            Text("None")
-                                .foregroundColor(.gray)
+                            HStack {
+                                Text("Expiration Date:")
+                                Spacer()
+                                Text("None")
+                            }
+                            .padding(.top)
                         }
                     }
                     .padding([.top, .bottom])
