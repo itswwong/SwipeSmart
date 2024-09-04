@@ -104,8 +104,7 @@ struct NewRewardView: View {
                     card.categories.append(newCategoryReward)
                     categories[categoryIndex].cardRewards.append(newCategoryReward)
                 }
-                categories[categoryIndex].cardRewards.sort(by: sorterforCategory)
-                categories[categoryIndex].cardRewards.sort(by: sorterbyExpiration)
+                categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
             } else {
                 // New category
                 card.categories.append(newCategoryReward)

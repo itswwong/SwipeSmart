@@ -31,10 +31,6 @@ extension Category {
     }
 }
 
-func sorterforCategory(this: CreditCard.cardID_rewards, that: CreditCard.cardID_rewards) -> Bool {
-    return this.reward > that.reward
-}
-
 extension Category {
     static let sampleCategories: [Category] =
     [

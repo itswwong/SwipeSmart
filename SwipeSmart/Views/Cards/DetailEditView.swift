@@ -40,6 +40,7 @@ struct DetailEditView: View {
                 .transition(.move(edge: .top))
             }
         }
+        .scrollDismissesKeyboard(.immediately)
     }
 
     func removeReward(at indices: IndexSet) {

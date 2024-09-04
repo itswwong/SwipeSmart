@@ -19,9 +19,9 @@ struct CategorySelectorView: View {
                 }
                 .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
                 .listRowBackground(
-                    RoundedRectangle(cornerRadius: 7)
+                    RoundedRectangle(cornerRadius: 20)
                         .background(.clear)
-                        .foregroundColor(pastelGreen)
+                        .foregroundColor( category.cardRewards[0].expired ? darkGray : pastelGreen)
                         .padding(
                             EdgeInsets(
                                 top: 5,

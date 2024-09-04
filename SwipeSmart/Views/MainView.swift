@@ -22,7 +22,7 @@ struct MainView: View {
         TabView {
             CategorySelectorView(cards: $cards, categories: $categories)
                 .tabItem {
-                    Label("Shopping", systemImage: "cart.fill")
+                    Label("Rewards", systemImage: "cart.fill")
                 }
                 .tag(1)
 

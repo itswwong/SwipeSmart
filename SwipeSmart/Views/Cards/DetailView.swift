@@ -86,7 +86,6 @@ struct DetailView: View {
                             Button("Cancel") {
                                 isPresentingEditView = false
                             }
-                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
@@ -97,7 +96,6 @@ struct DetailView: View {
                                 card = editingCard
                                 categories = editingCategories
                             }
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                         }
                     }
             }
