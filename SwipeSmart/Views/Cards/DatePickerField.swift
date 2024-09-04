@@ -41,6 +41,10 @@ struct DatePickerField: View {
                     DatePicker("Expiration Date:", selection: Binding(
                         get: { expirationDate ?? Date() },
                         set: { newValue in
+                            let date = Date()
+                            if newValue < date {
+                                
+                            }
                             expirationDate = newValue
                         }
                     ), in: (Calendar.current.date(byAdding: .day, value: 1, to: startDate ?? Date()) ?? Date())..., displayedComponents: .date)

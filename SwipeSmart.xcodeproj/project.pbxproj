@@ -141,11 +141,11 @@
 		0AEBE5A72C7FFBD10051DE14 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				0AEBE5A62C7FFBD10051DE14 /* WalletView.swift */,
 				0AEBE5A22C7FFBD10051DE14 /* CardView.swift */,
 				0AEBE5A32C7FFBD10051DE14 /* DetailEditView.swift */,
 				0AEBE5A42C7FFBD10051DE14 /* DetailView.swift */,
 				0AEBE5A52C7FFBD10051DE14 /* NewCreditCard.swift */,
-				0AEBE5A62C7FFBD10051DE14 /* WalletView.swift */,
 				0A1427122C8516A300D48E47 /* DatePickerField.swift */,
 				0A1427142C85779500D48E47 /* NewRewardView.swift */,
 				0A1427162C8634C700D48E47 /* RewardRowView.swift */,

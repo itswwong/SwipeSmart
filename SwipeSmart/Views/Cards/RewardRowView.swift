@@ -10,6 +10,7 @@ struct RewardRowView: View {
     @Binding var category: CreditCard.cardID_rewards
     @Binding var categories: [Category]
     @State private var newCategoryName: String
+    @State private var startDate: Date?
     @State private var expirationDate: Date?
     @State private var dateSet: Bool
     
@@ -17,8 +18,9 @@ struct RewardRowView: View {
         self._category = category
         self._categories = categories
         self._newCategoryName = State(initialValue: category.wrappedValue.categoryName)
+        self._startDate = State(initialValue: category.wrappedValue.startDate)
         self._expirationDate = State(initialValue: category.wrappedValue.expirationDate)
-        self._dateSet = State(initialValue: category.wrappedValue.expirationDate != nil)
+        self._dateSet = State(initialValue: category.wrappedValue.startDate != nil)
     }
     
     var body: some View {
@@ -62,10 +64,16 @@ struct RewardRowView: View {
                 Text("%")
             }
             
-            DatePickerField(startDate: $category.startDate, expirationDate: $category.expirationDate, dateSet: $dateSet)
+            DatePickerField(startDate: $startDate, expirationDate: $expirationDate, dateSet: $dateSet)
                 .padding(.top)
+                }
+                .onChange(of: startDate) {
+                    category.updateDate(startDate: startDate, expirationDate: expirationDate, categories: &categories)
+                }
+                .onChange(of: expirationDate) {
+                    category.updateDate(startDate: startDate, expirationDate: expirationDate, categories: &categories)
+                }
         }
-    }
     
     private func updateRewardValue(for category: CreditCard.cardID_rewards, with newRewardValue: Int) {
         // Update the reward value in the card's categories
@@ -100,7 +108,7 @@ struct RewardRowView: View {
                     id: category.id,
                     cardID: category.cardID,
                     categoryName: newCategoryName,
-                    reward: category.reward
+                    reward: category.reward, expired: category.expired
                 )
                 categories[categoryIndex].cardRewards.append(newReward)
             }

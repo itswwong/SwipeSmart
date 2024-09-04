@@ -14,6 +14,7 @@ struct NewRewardView: View {
     @State private var newReward: Int = 0
     @State private var startDate: Date? = nil
     @State private var expirationDate: Date? = nil
+    @State private var ifExpired: Bool = false
     @State private var addNewReward = false
     @State private var dateSet: Bool = false
     
@@ -57,7 +58,6 @@ struct NewRewardView: View {
                 Spacer()
                 Button(action: addReward) {
                     Text("Done")
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                 }
                 .disabled(selectedCategoryName.isEmpty || newUserReward.isEmpty)
                 .buttonStyle(.borderless)
@@ -73,9 +73,16 @@ struct NewRewardView: View {
             let newCategoryReward: CreditCard.cardID_rewards
 
             if dateSet {
-                newCategoryReward = CreditCard.cardID_rewards(cardID: card.id, categoryName: selectedCategoryName, reward: newReward, startDate: startDate, expirationDate: expirationDate)
+                let currentDate = Date()
+                if let date = expirationDate {
+                    ifExpired = date < currentDate
+                } else {
+                    ifExpired = false
+                }
+                
+                newCategoryReward = CreditCard.cardID_rewards(cardID: card.id, categoryName: selectedCategoryName, reward: newReward, startDate: startDate, expirationDate: expirationDate, expired: ifExpired)
             } else {
-                newCategoryReward = CreditCard.cardID_rewards(cardID: card.id, categoryName: selectedCategoryName, reward: newReward)
+                newCategoryReward = CreditCard.cardID_rewards(cardID: card.id, categoryName: selectedCategoryName, reward: newReward, expired: false)
             }
             
             if let categoryIndex = categories.firstIndex(where: { $0.name == selectedCategoryName }) {
@@ -84,11 +91,13 @@ struct NewRewardView: View {
                     card.categories[existingRewardIndex].reward = newReward
                     card.categories[existingRewardIndex].expirationDate = dateSet ? expirationDate : nil
                     card.categories[existingRewardIndex].startDate = dateSet ? startDate : nil
+                    card.categories[existingRewardIndex].expired = ifExpired
                     
                     if let rewardInCategoryIndex = categories[categoryIndex].cardRewards.firstIndex(where: { $0.id == card.categories[existingRewardIndex].id }) {
                         categories[categoryIndex].cardRewards[rewardInCategoryIndex].reward = newReward
                         categories[categoryIndex].cardRewards[rewardInCategoryIndex].expirationDate = dateSet ? expirationDate : nil
                         categories[categoryIndex].cardRewards[rewardInCategoryIndex].startDate = dateSet ? startDate : nil
+                        categories[categoryIndex].cardRewards[rewardInCategoryIndex].expired = ifExpired
                     }
                 } else {
                     // Category exists, but not in credit card
@@ -96,6 +105,7 @@ struct NewRewardView: View {
                     categories[categoryIndex].cardRewards.append(newCategoryReward)
                 }
                 categories[categoryIndex].cardRewards.sort(by: sorterforCategory)
+                categories[categoryIndex].cardRewards.sort(by: sorterbyExpiration)
             } else {
                 // New category
                 card.categories.append(newCategoryReward)
@@ -111,6 +121,7 @@ struct NewRewardView: View {
             startDate = nil
             dateSet = false
             addNewReward = false
+            ifExpired = false
         }
     }
 }
