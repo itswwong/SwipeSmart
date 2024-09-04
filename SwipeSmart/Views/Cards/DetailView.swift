@@ -41,7 +41,10 @@ struct DetailView: View {
                             HStack {
                                 Text("Start Date:")
                                 Spacer()
-                                Text(startDate, format: .dateTime.day().month().year())
+                                Text(startDate, format: Date.FormatStyle()
+                                    .month(.twoDigits)
+                                    .day(.twoDigits)
+                                    .year(.defaultDigits))
                             }
                             .padding(.top)
                         }
@@ -49,7 +52,10 @@ struct DetailView: View {
                             HStack {
                                 Text("Expiration Date:")
                                 Spacer()
-                                Text(expirationDate, format: .dateTime.day().month().year())
+                                Text(expirationDate, format: Date.FormatStyle()
+                                    .month(.twoDigits)
+                                    .day(.twoDigits)
+                                    .year(.defaultDigits))
                             }
                             .padding(.top)
                         } else {

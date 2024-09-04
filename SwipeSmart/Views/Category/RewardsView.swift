@@ -11,19 +11,16 @@ struct RewardsView: View {
     @Binding var category: Category
     
     var body: some View {
-        
         NavigationStack {
             List {
                 ForEach(category.cardRewards) { cardID_reward in
                     if let index = cards.firstIndex(where: { $0.id == cardID_reward.cardID }) {
-                        let reward = cardID_reward.reward  // Get the reward for this card
-                        RewardsCardView(card: cards[index], reward: reward)
-                            .foregroundColor(.white)
+                            RewardsCardView(card: cards[index], reward: cardID_reward.reward, expirationDate: cardID_reward.expirationDate, expired: cardID_reward.expired)
                             .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
                             .listRowBackground(
                                 RoundedRectangle(cornerRadius: 7)
                                     .background(.clear)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(cardID_reward.expired ? darkGray : pastelGreen)
                                     .padding(
                                         EdgeInsets(
                                             top: 5,

@@ -24,7 +24,7 @@ struct WalletView: View {
                 .listRowBackground(
                     RoundedRectangle(cornerRadius: 7)
                         .background(.clear)
-                        .foregroundColor(.gray)
+                        .foregroundColor(pastelGreen)
                         .padding(
                             EdgeInsets(
                                 top: 5,
@@ -43,7 +43,6 @@ struct WalletView: View {
                     isPresentingNewCardView = true
                 }) {
                     Image(systemName: "plus")
-                        .foregroundColor(Color.gray)
                         .padding(
                             EdgeInsets(
                                 top: 0,

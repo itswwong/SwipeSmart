@@ -31,12 +31,12 @@ struct CategoryView: View {
                             }
                             Spacer()
                             Circle()
-                                .fill(Color.blue)
-                                .frame(width: 40, height: 40)
+                                .fill(.white)
+                                .frame(width: 45, height: 45)
                                 .overlay(
                                     Text("\(category.cardRewards[0].reward)%")
-                                        .foregroundColor(.white)
-                                        .font(.subheadline)
+                                        .foregroundColor(pastelGreen)
+                                        .font(.headline)
                                 )
                         }
                         Spacer()

@@ -17,12 +17,11 @@ struct CategorySelectorView: View {
                 NavigationLink(destination: RewardsView(cards: $cards, category: $category)) {
                     CategoryView(cards: $cards, category: $category)
                 }
-                .foregroundColor(.white)
                 .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
                 .listRowBackground(
                     RoundedRectangle(cornerRadius: 7)
                         .background(.clear)
-                        .foregroundColor(.gray)
+                        .foregroundColor(pastelGreen)
                         .padding(
                             EdgeInsets(
                                 top: 5,

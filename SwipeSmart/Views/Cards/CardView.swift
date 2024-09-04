@@ -31,7 +31,6 @@ struct CardView: View {
             }
             Spacer()
             RoundedRectangle(cornerRadius: 7)
-                .fill(.white)
                 .frame(width: 30, height: 20)
                 .padding(.bottom, 5)
             HStack(spacing: 0) {
@@ -47,8 +46,7 @@ struct CardView: View {
 }
 
 struct CardView_Previews: PreviewProvider {
-    static var card = CreditCard.sampleCards[0]
     static var previews: some View {
-        CardView(card: card)
+        CardView(card: CreditCard.sampleCards[0])
     }
 }
