@@ -68,7 +68,7 @@ extension CreditCard {
                     categories[categoryIndex].cardRewards[rewardIndex].expirationDate = expirationDate
                     categories[categoryIndex].cardRewards[rewardIndex].expired = self.expired
                     
-                    categories[categoryIndex].cardRewards.sort(by: sorterbyExpiration)
+                    categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
                 }
             }
         }
@@ -79,7 +79,7 @@ extension CreditCard {
     }
 }
 
-func sorterbyExpiration(this: CreditCard.cardID_rewards, that: CreditCard.cardID_rewards) -> Bool {
+func sortbyExpirationAndReward(this: CreditCard.cardID_rewards, that: CreditCard.cardID_rewards) -> Bool {
     // If 'this' has expired and 'that' hasn't, move 'this' to the end
     if this.expired && !that.expired {
         return false

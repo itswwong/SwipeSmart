@@ -23,21 +23,29 @@ struct CategoryView: View {
                         Spacer()
                     }
                     else if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(cards[index].bankName)
-                                    .font(.headline)
-                                Text(cards[index].cardName).font(.subheadline)
+                        if category.cardRewards[0].expired {
+                            HStack {
+                                Text("No active rewards in this category.")
+                                Spacer()
                             }
-                            Spacer()
-                            Circle()
-                                .fill(.white)
-                                .frame(width: 45, height: 45)
-                                .overlay(
-                                    Text("\(category.cardRewards[0].reward)%")
-                                        .foregroundColor(pastelGreen)
+                        }
+                        else {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(cards[index].bankName)
                                         .font(.headline)
-                                )
+                                    Text(cards[index].cardName).font(.subheadline)
+                                }
+                                Spacer()
+                                Circle()
+                                    .fill(.white)
+                                    .frame(width: 45, height: 45)
+                                    .overlay(
+                                        Text("\(category.cardRewards[0].reward)%")
+                                            .foregroundColor(pastelGreen)
+                                            .font(.headline)
+                                    )
+                            }
                         }
                         Spacer()
                     }

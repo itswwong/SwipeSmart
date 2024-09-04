@@ -66,7 +66,6 @@ struct RewardRowView: View {
             
             DatePickerField(startDate: $startDate, expirationDate: $expirationDate, dateSet: $dateSet)
                 .padding(.top)
-                }
                 .onChange(of: startDate) {
                     category.updateDate(startDate: startDate, expirationDate: expirationDate, categories: &categories)
                 }
@@ -74,6 +73,7 @@ struct RewardRowView: View {
                     category.updateDate(startDate: startDate, expirationDate: expirationDate, categories: &categories)
                 }
         }
+    }
     
     private func updateRewardValue(for category: CreditCard.cardID_rewards, with newRewardValue: Int) {
         // Update the reward value in the card's categories
@@ -86,7 +86,7 @@ struct RewardRowView: View {
                 
                 categories[categoryIndex].cardRewards[rewardIndex].reward = newRewardValue
                 
-                categories[categoryIndex].cardRewards.sort(by: sorterforCategory)
+                categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
             }
         }
     }
@@ -113,7 +113,7 @@ struct RewardRowView: View {
                 categories[categoryIndex].cardRewards.append(newReward)
             }
             
-            categories[categoryIndex].cardRewards.sort(by: sorterforCategory)
+            categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
         }
     }
 }
