@@ -17,9 +17,9 @@ struct RewardsCardView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(card.bankName)
-                        .font(.headline)
+                        .font(.title2.weight(.bold))
                     Text(card.cardName)
-                        .font(.headline)
+                        .font(.title3)
                         .padding(.bottom, 10)
                     if expired {
                         Text("EXPIRED")
@@ -29,7 +29,7 @@ struct RewardsCardView: View {
                         if let date = expirationDate {
                             HStack {
                                 Text("Expires:")
-                                    .font(.subheadline)
+                                    .font(.headline)
                                 Text(date, format: Date.FormatStyle()
                                     .month(.twoDigits)
                                     .day(.twoDigits)

@@ -36,23 +36,21 @@ struct WalletView: View {
                 )
                 .listRowSeparator(.hidden)
             }
-            .navigationTitle("My Wallet")
-            .navigationBarTitleDisplayMode(.inline)
+//            .navigationTitle("My Wallet")
+//            .navigationBarModifier(backgroundColor: .systemBackground, foregroundColor: .systemBackground, tintColor: nil, withSeparator: false)
             .toolbar {
-                Button(action: {
-                    isPresentingNewCardView = true
-                }) {
-                    Image(systemName: "plus")
-                        .padding(
-                            EdgeInsets(
-                                top: 0,
-                                leading: 0,
-                                bottom: 0,
-                                trailing: 2
-                            )
-                        )
+                ToolbarItem (placement: .topBarLeading) {
+                    Text("Wallet")
+                        .font(.largeTitle .weight(.bold))
                 }
-                .accessibilityLabel("New Card")
+                ToolbarItem (placement: .topBarTrailing) {
+                    Button(action: {
+                        isPresentingNewCardView = true
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                    .accessibilityLabel("New Card")
+                }
             }
         }
         .sheet(isPresented: $isPresentingNewCardView) {

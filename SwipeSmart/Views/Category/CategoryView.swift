@@ -12,11 +12,10 @@ struct CategoryView: View {
     
     var body: some View {
         HStack {
-            Spacer()
-            VStack {
+            VStack(alignment: .leading) {
                 Spacer()
                 Text(category.name)
-                    .padding(.bottom)
+                    .font(.title2.weight(.heavy))
                 HStack {
                     if category.cardRewards.isEmpty {
                         Text("No rewards in this category.")
@@ -26,7 +25,7 @@ struct CategoryView: View {
                         if category.cardRewards[0].expired {
                             HStack {
                                 Text("No active rewards in this category.")
-                                Spacer()
+                                    .padding(.top, 3)
                             }
                         }
                         else {
@@ -52,10 +51,7 @@ struct CategoryView: View {
                 }
                 Spacer()
             }
-            Spacer()
         }
-        .padding()
-        .foregroundColor(.white)
     }
 }
 

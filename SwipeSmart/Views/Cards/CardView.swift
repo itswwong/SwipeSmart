@@ -25,7 +25,6 @@ struct CardView: View {
                     Text(card.cardName)
                         .font(titleFont)
                         .multilineTextAlignment(.trailing)
-
                     Spacer()
                 }
             }
@@ -38,7 +37,6 @@ struct CardView: View {
                 Text("1234")
                     .font(bodyFont)
             }
-                
         }
         .padding()
         .foregroundColor(.white)
