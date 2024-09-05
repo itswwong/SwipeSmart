@@ -18,7 +18,7 @@ struct RewardsView: View {
                             RewardsCardView(card: cards[index], reward: cardID_reward.reward, expirationDate: cardID_reward.expirationDate, expired: cardID_reward.expired)
                             .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
                             .listRowBackground(
-                                RoundedRectangle(cornerRadius: 7)
+                                RoundedRectangle(cornerRadius: 15)
                                     .background(.clear)
                                     .foregroundColor(cardID_reward.expired ? darkGray : pastelGreen)
                                     .padding(
@@ -34,8 +34,13 @@ struct RewardsView: View {
                     }
                 }
             }
-            .navigationTitle("Best Cards for \(category.name):")
-            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem (placement: .principal) {
+                    Text(category.name)
+                        .font(.largeTitle .weight(.bold))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
         }
     }
 }

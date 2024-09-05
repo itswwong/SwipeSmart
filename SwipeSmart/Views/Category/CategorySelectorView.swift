@@ -16,8 +16,9 @@ struct CategorySelectorView: View {
             List($categories.filter{ !$0.cardRewards.isEmpty }) { $category in
                 NavigationLink(destination: RewardsView(cards: $cards, category: $category)) {
                     CategoryView(cards: $cards, category: $category)
+                        .foregroundColor(.white)
                 }
-                .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
+                .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
                 .listRowBackground(
                     RoundedRectangle(cornerRadius: 20)
                         .background(.clear)
@@ -33,8 +34,12 @@ struct CategorySelectorView: View {
                 )
                 .listRowSeparator(.hidden)
             }
-            .navigationTitle("Which card should you use?")
-            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem (placement: .topBarLeading) {
+                    Text("Rewards")
+                        .font(.largeTitle .weight(.bold))
+                }
+            }
         }
     }
 }
