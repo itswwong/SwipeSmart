@@ -9,13 +9,17 @@ import Foundation
 struct CreditCard: Identifiable, Codable {
     let id: UUID
     var bankName: String
+    var cardType: String
     var cardName: String
+    var digits: String
     var categories: [cardID_rewards]
     
-    init(id: UUID = UUID(), bankName: String, cardName: String, categories: [cardID_rewards]) {
+    init(id: UUID = UUID(), bankName: String, cardType: String, cardName: String, digits: String, categories: [cardID_rewards]) {
         self.id = id
         self.bankName = bankName
+        self.cardType = cardType
         self.cardName = cardName
+        self.digits = digits
         self.categories = categories
     }
 }
@@ -75,9 +79,11 @@ extension CreditCard {
     }
     
     static var emptyCard: CreditCard {
-        CreditCard(bankName: "", cardName: "", categories: [])
+        CreditCard(bankName: "", cardType: "", cardName: "", digits: "", categories: [])
     }
 }
+
+let cardTypeList = ["Visa", "Mastercard", "Discover", "American Express", "Other"]
 
 func sortbyExpirationAndReward(this: CreditCard.cardID_rewards, that: CreditCard.cardID_rewards) -> Bool {
     // If 'this' has expired and 'that' hasn't, move 'this' to the end
@@ -97,16 +103,16 @@ extension CreditCard {
     // In credit card
     static let sampleCards: [CreditCard] =
     [
-        CreditCard(bankName: "American Express", cardName: "Blue", categories: []),
-        CreditCard(bankName: "Discover", cardName: "", categories: []),
-        CreditCard(bankName: "Bank of America", cardName: "Visa Signature", categories: [])
+        CreditCard(bankName: "American Express", cardType: "American Express", cardName: "Blue", digits: "1435", categories: []),
+        CreditCard(bankName: "Discover", cardType: "Discover", cardName: "", digits: "5743", categories: []),
+        CreditCard(bankName: "Bank of America", cardType: "Visa", cardName: "Visa Signature", digits: "2856", categories: [])
     ]
     
     static let testCards: [CreditCard] =
     [
-        CreditCard(id: CreditCard.sampleCards[0].id, bankName: "American Express", cardName: "Blue", categories: sampleCategoryRewards0),
-        CreditCard(id: CreditCard.sampleCards[1].id, bankName: "Discover", cardName: "", categories: sampleCategoryRewards1),
-        CreditCard(id: CreditCard.sampleCards[2].id, bankName: "Bank of America", cardName: "Visa Signature", categories: sampleCategoryRewards2)
+        CreditCard(id: CreditCard.sampleCards[0].id, bankName: "American Express", cardType: "American Express", cardName: "Blue", digits: "1435", categories: sampleCategoryRewards0),
+        CreditCard(id: CreditCard.sampleCards[1].id, bankName: "Discover", cardType: "Discover", cardName: "", digits: "5743", categories: sampleCategoryRewards1),
+        CreditCard(id: CreditCard.sampleCards[2].id, bankName: "Bank of America", cardType: "Visa", cardName: "Customized Cash Rewards", digits: "2856", categories: sampleCategoryRewards2)
     ]
     
     static let sampleCategoryRewards0: [cardID_rewards] =
