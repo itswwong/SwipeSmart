@@ -15,7 +15,8 @@ struct CategoryView: View {
             VStack(alignment: .leading) {
                 Spacer()
                 Text(category.name)
-                    .font(.title2.weight(.heavy))
+                    .font(.title2.weight(.bold))
+                    .padding(.bottom, 10)
                 HStack {
                     if category.cardRewards.isEmpty {
                         Text("No rewards in this category.")
@@ -25,7 +26,7 @@ struct CategoryView: View {
                         if category.cardRewards[0].expired {
                             HStack {
                                 Text("No active rewards in this category.")
-                                    .padding(.top, 3)
+                                    .font(.subheadline)
                             }
                         }
                         else {
@@ -33,7 +34,8 @@ struct CategoryView: View {
                                 VStack(alignment: .leading) {
                                     Text(cards[index].bankName)
                                         .font(.headline)
-                                    Text(cards[index].cardName).font(.subheadline)
+                                        .padding(.bottom, 1)
+                                    Text(cards[index].cardName.isEmpty ? cards[index].cardType : cards[index].cardName).font(.subheadline)
                                 }
                                 Spacer()
                                 Circle()

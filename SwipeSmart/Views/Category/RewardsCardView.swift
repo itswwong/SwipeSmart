@@ -18,9 +18,13 @@ struct RewardsCardView: View {
                 VStack(alignment: .leading) {
                     Text(card.bankName)
                         .font(.title2.weight(.bold))
-                    Text(card.cardName)
-                        .font(.title3)
+                        .padding(.bottom, 2)
+                    Text(card.cardName.isEmpty ? card.cardType : card.cardName)
+                        .font(.headline)
                         .padding(.bottom, 10)
+                    Text("**** **** *** \(card.digits)")
+                        .font(bodyFont)
+                        .padding(.bottom, 5)
                     if expired {
                         Text("EXPIRED")
                             .font(.subheadline)

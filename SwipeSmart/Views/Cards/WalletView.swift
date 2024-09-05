@@ -36,8 +36,6 @@ struct WalletView: View {
                 )
                 .listRowSeparator(.hidden)
             }
-//            .navigationTitle("My Wallet")
-//            .navigationBarModifier(backgroundColor: .systemBackground, foregroundColor: .systemBackground, tintColor: nil, withSeparator: false)
             .toolbar {
                 ToolbarItem (placement: .topBarLeading) {
                     Text("Wallet")

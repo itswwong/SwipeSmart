@@ -28,7 +28,7 @@ struct NewCreditCard: View {
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Add") {
-                            if newCard.bankName.isEmpty || newCard.cardName.isEmpty {
+                            if newCard.bankName.isEmpty || newCard.cardType.isEmpty {
                                 return
                             }
                             cards.append(newCard)

@@ -12,31 +12,28 @@ struct CardView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                VStack {
-                    Text("Credit Card")
-                        .font(titleFont)
-                    Spacer()
-                }
-                Spacer()
-                Spacer()
-                VStack(alignment: .trailing) {
+                VStack(alignment: .leading){
                     Text(card.bankName)
-                        .font(titleFont)
+                        .font(bodyFont)
+                        .padding(.bottom, 5)
                     Text(card.cardName)
                         .font(titleFont)
                         .multilineTextAlignment(.trailing)
                     Spacer()
                 }
+                Spacer()
+                VStack(alignment: .trailing) {
+                    Text((card.cardType == "Discover" || card.cardType == "American Express") ? "" : card.cardType)
+                        .font(bodyFont)
+                    Spacer()
+                }
+                .padding(.trailing, -25)
             }
-            Spacer()
             RoundedRectangle(cornerRadius: 7)
                 .frame(width: 30, height: 20)
                 .padding(.bottom, 5)
-            HStack(spacing: 0) {
-                Text("**** **** **** ")
-                Text("1234")
-                    .font(bodyFont)
-            }
+            Text("**** **** **** \(card.digits)")
+                .font(bodyFont)
         }
         .padding()
         .foregroundColor(.white)

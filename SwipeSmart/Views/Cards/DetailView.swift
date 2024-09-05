@@ -19,21 +19,36 @@ struct DetailView: View {
         List {
             Section(header: Text("Card Info")) {
                 HStack {
-                    Label("Bank Name", systemImage: "building.columns.fill")
+                    Text("Bank Name:")
+                        .bold()
                     Spacer()
                     Text(card.bankName)
                 }
                 HStack {
-                    Label("Card Name", systemImage: "creditcard.fill")
+                    Text("Card Type:")
+                        .bold()
+                    Spacer()
+                    Text(card.cardType)
+                }
+                HStack {
+                    Text("Card Name:")
+                        .bold()
                     Spacer()
                     Text(card.cardName)
+                }
+                HStack {
+                    Text("Last 4 Digits:")
+                        .bold()
+                    Spacer()
+                    Text(card.digits)
                 }
             }
             Section(header: Text("Rewards")) {
                 ForEach(card.categories) { category in
                     VStack {
                         HStack {
-                            Label(category.categoryName, systemImage: "person")
+                            Text("\(category.categoryName):")
+                                .bold()
                             Spacer()
                             Text("\(category.reward) %")
                         }
@@ -89,7 +104,7 @@ struct DetailView: View {
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
-                                if  card.bankName.isEmpty || card.cardName.isEmpty {
+                                if  card.bankName.isEmpty || card.cardType.isEmpty {
                                     return
                                 }
                                 isPresentingEditView = false
