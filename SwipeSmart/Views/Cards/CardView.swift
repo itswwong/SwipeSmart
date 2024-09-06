@@ -14,17 +14,16 @@ struct CardView: View {
             HStack {
                 VStack(alignment: .leading){
                     Text(card.bankName)
-                        .font(bodyFont)
+                        .font(.title3.weight(.bold))
                         .padding(.bottom, 5)
                     Text(card.cardName)
-                        .font(titleFont)
                         .multilineTextAlignment(.trailing)
                     Spacer()
                 }
                 Spacer()
                 VStack(alignment: .trailing) {
                     Text((card.cardType == "Discover" || card.cardType == "American Express") ? "" : card.cardType)
-                        .font(bodyFont)
+                        .font(.title3.weight(.bold))
                     Spacer()
                 }
                 .padding(.trailing, -25)
@@ -32,11 +31,11 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: 7)
                 .frame(width: 30, height: 20)
                 .padding(.bottom, 5)
+                .foregroundColor(.pastelgraylight)
             Text("**** **** **** \(card.digits)")
-                .font(bodyFont)
         }
         .padding()
-        .foregroundColor(.white)
+        .foregroundColor(.accentColor)
     }
 }
 

@@ -19,42 +19,44 @@ struct DetailView: View {
         List {
             Section(header: Text("Card Info")) {
                 HStack {
-                    Text("Bank Name:")
-                        .bold()
+                    Text("Bank Name")
                     Spacer()
                     Text(card.bankName)
                 }
                 HStack {
-                    Text("Card Type:")
-                        .bold()
+                    Text("Card Type")
                     Spacer()
                     Text(card.cardType)
                 }
                 HStack {
-                    Text("Card Name:")
-                        .bold()
+                    Text("Card Name")
                     Spacer()
                     Text(card.cardName)
                 }
                 HStack {
-                    Text("Last 4 Digits:")
-                        .bold()
+                    Text("Last 4 Digits")
                     Spacer()
                     Text(card.digits)
                 }
+                HStack {
+                    Text("Theme")
+                    Spacer()
+                    ColorView(color: card.color)
+                        .frame(width: 100)
+                }
+                .accessibilityElement(children: .combine)
             }
             Section(header: Text("Rewards")) {
                 ForEach(card.categories) { category in
                     VStack {
                         HStack {
-                            Text("\(category.categoryName):")
-                                .bold()
+                            Text("\(category.categoryName)")
                             Spacer()
                             Text("\(category.reward) %")
                         }
                         if let startDate = category.startDate {
                             HStack {
-                                Text("Start Date:")
+                                Text("Start Date")
                                 Spacer()
                                 Text(startDate, format: Date.FormatStyle()
                                     .month(.twoDigits)
@@ -65,7 +67,7 @@ struct DetailView: View {
                         }
                         if let expirationDate = category.expirationDate {
                             HStack {
-                                Text("Expiration Date:")
+                                Text("Expiration Date")
                                 Spacer()
                                 Text(expirationDate, format: Date.FormatStyle()
                                     .month(.twoDigits)
@@ -75,7 +77,7 @@ struct DetailView: View {
                             .padding(.top)
                         } else {
                             HStack {
-                                Text("Expiration Date:")
+                                Text("Expiration Date")
                                 Spacer()
                                 Text("None")
                             }

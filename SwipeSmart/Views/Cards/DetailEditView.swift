@@ -15,27 +15,59 @@ struct DetailEditView: View {
     var body: some View {
         Form {
             Section(header: Text("Card Info")) {
-                TextField("Bank Name *", text: $card.bankName)
-                Menu {
-                    Picker(selection: $card.cardType, label: Text("")) {
-                        ForEach(cardTypeList, id: \.self) { type in
-                            Text(type).tag(type)
-                        }
-                    }
+                LabeledContent {
+                    TextField("", text: $card.bankName)
+                        .multilineTextAlignment(.trailing)
                 } label: {
-                    HStack {
-                        Text(card.cardType.isEmpty ? "Select Card Type *" : card.cardType)
-                            .foregroundColor(card.cardType.isEmpty ? .gray : .primary)
-                        Spacer()
-                        Image(systemName: "chevron.down")
-                            .foregroundColor(.gray)
-                    }
+                    Text("Bank Name ")
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                TextField("Card Name", text: $card.cardName)
-                TextField("Last Four Digits *", text: $card.digits)
-                    .keyboardType(.numberPad)
-                    .onReceive(Just($card.digits)) { _ in limitText(4) }
+                LabeledContent {
+                    Menu {
+                        Picker(selection: $card.cardType, label: Text("")) {
+                            ForEach(cardTypeList, id: \.self) { type in
+                                Text(type).tag(type)
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Text(card.cardType.isEmpty ? "Select Card Type" : card.cardType)
+                                .foregroundColor(card.cardType.isEmpty ? .gray : .primary)
+                            Image(systemName: "chevron.down")
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.trailing, -12)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                } label: {
+                    Text("Card Type ")
+                }
+                
+                LabeledContent {
+                    TextField(text: $card.cardName, label: {
+                        Text("optional")
+                            .multilineTextAlignment(.trailing)
+                    })
+                        .multilineTextAlignment(.trailing)
+                } label: {
+                    Text("Card Name ")
+                }
+                
+                LabeledContent {
+                    TextField("", text: $card.digits)
+                        .keyboardType(.numberPad)
+                        .onReceive(Just($card.digits)) { _ in limitText(4) }
+                        .multilineTextAlignment(.trailing)
+                } label: {
+                    Text("Last 4 Digits ")
+                }
+                
+                LabeledContent {
+                    ColorPicker(selection: $card.color)
+                        .frame(width: 100)
+                        .padding(.trailing, -12)
+                } label: {
+                    Text("Background Color ")
+                }
             }
             
             Section(header: Text("Rewards")) {
@@ -51,7 +83,7 @@ struct DetailEditView: View {
                 }
             }) {
                 Text("Add New Reward")
-                    .foregroundColor(addNewReward ? .primary : pastelGreen)
+                    .foregroundColor(addNewReward ? .primary : .pastelgreen)
             }
             .disabled(addNewReward)
             
