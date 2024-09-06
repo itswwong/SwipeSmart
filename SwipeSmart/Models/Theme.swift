@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-enum Theme: String, CaseIterable, Identifiable, Codable {
+enum Theme: String, CaseIterable, Identifiable, Codable, ShapeStyle {
     case pastelreddark
     case pastelred
     case pastelorange
@@ -21,8 +21,8 @@ enum Theme: String, CaseIterable, Identifiable, Codable {
     var mainColor: Color {
         Color(rawValue)
     }
-    
     var id: String {
         rawValue
     }
 }
+

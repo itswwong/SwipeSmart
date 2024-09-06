@@ -16,7 +16,7 @@ struct WalletView: View {
     var body: some View {
         NavigationStack {
             List($cards) { $card in
-                NavigationLink(destination: DetailView(card: $card, categories: $categories)) {
+                NavigationLink(destination: DetailView(card: $card, cards: $cards, categories: $categories)) {
                     CardView(card: card)
                 }
                 .foregroundColor(.white)

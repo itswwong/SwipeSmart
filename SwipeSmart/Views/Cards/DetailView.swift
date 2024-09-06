@@ -9,11 +9,13 @@ import SwiftUI
 
 struct DetailView: View {
     @Binding var card: CreditCard
+    @Binding var cards: [CreditCard]
     @Binding var categories: [Category]
     
     @State private var editingCard = CreditCard.emptyCard
     @State private var editingCategories = [Category]()
     @State private var isPresentingEditView = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         List {
@@ -39,7 +41,7 @@ struct DetailView: View {
                     Text(card.digits)
                 }
                 HStack {
-                    Text("Theme")
+                    Text("Background Color")
                     Spacer()
                     ColorView(color: card.color)
                         .frame(width: 100)
@@ -97,7 +99,7 @@ struct DetailView: View {
         }
         .sheet(isPresented: $isPresentingEditView) {
             NavigationStack {
-                DetailEditView(card: $editingCard, categories: $editingCategories)
+                DetailEditView(card: $editingCard, cards: $cards, categories: $editingCategories, showDelete: true, onDeleteCard: { deleteCard() })
                     .toolbar {
                         ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
                             Button("Cancel") {
@@ -106,7 +108,7 @@ struct DetailView: View {
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
-                                if  card.bankName.isEmpty || card.cardType.isEmpty {
+                                if card.bankName.isEmpty || card.cardType.isEmpty {
                                     return
                                 }
                                 isPresentingEditView = false
@@ -118,12 +120,29 @@ struct DetailView: View {
             }
         }
     }
+    
+    private func deleteCard() {
+        // Remove the card from the list of cards
+        if let index = cards.firstIndex(where: { $0.id == card.id }) {
+            // Remove all rewards associated with this card from the categories
+            for categoryIndex in categories.indices {
+                if let rewardIndex = categories[categoryIndex].cardRewards.firstIndex(where: { $0.cardID == card.id }) {
+                    categories[categoryIndex].cardRewards.remove(at: rewardIndex)
+                }
+            }
+            
+            cards.remove(at: index)
+        }
+        
+        // Dismiss the view to return to WalletView
+        presentationMode.wrappedValue.dismiss()
+    }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            DetailView(card: .constant(CreditCard.testCards[0]), categories: .constant(Category.sampleCategories))
+            DetailView(card: .constant(CreditCard.testCards[0]), cards: .constant(CreditCard.testCards), categories: .constant(Category.sampleCategories))
         }
     }
 }
