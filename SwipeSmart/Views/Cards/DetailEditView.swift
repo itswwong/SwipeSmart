@@ -9,8 +9,15 @@ import Combine
 
 struct DetailEditView: View {
     @Binding var card: CreditCard
+    @Binding var cards: [CreditCard]
     @Binding var categories: [Category]
+    var showDelete: Bool
+    
     @State private var addNewReward = false
+    @State private var showConfirmation = false
+    
+    let onDeleteCard: () -> Void
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         Form {
@@ -70,11 +77,13 @@ struct DetailEditView: View {
                 }
             }
             
-            Section(header: Text("Rewards")) {
-                ForEach(card.categories.indices, id: \.self) { index in
-                    RewardRowView(category: $card.categories[index], categories: $categories)
+            if !card.categories.isEmpty {
+                Section(header: Text("Rewards")) {
+                    ForEach(card.categories.indices, id: \.self) { index in
+                        RewardRowView(category: $card.categories[index], categories: $categories)
+                    }
+                    .onDelete(perform: removeReward)
                 }
-                .onDelete(perform: removeReward)
             }
             
             Button(action: {
@@ -83,13 +92,33 @@ struct DetailEditView: View {
                 }
             }) {
                 Text("Add New Reward")
-                    .foregroundColor(addNewReward ? .primary : .pastelgreen)
+                    .foregroundColor(addNewReward ? .gray : .primary)
             }
             .disabled(addNewReward)
             
             if addNewReward {
                 NewRewardView(card: $card, categories: $categories)
                 .transition(.move(edge: .top))
+            }
+            
+            if showDelete {
+                Section {
+                    Button(action: {
+                        showConfirmation = true
+                    }) {
+                        Text("Delete Card")
+                            .foregroundColor(.red)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
+                        Button("Delete Card", role: .destructive, action: {
+                            presentationMode.wrappedValue.dismiss()  // Dismiss the view
+                            onDeleteCard()  // Trigger card deletion
+                        })
+                    } message: {
+                        Text("You cannot undo this action.")
+                    }
+                }
             }
         }
         .scrollDismissesKeyboard(.immediately)
@@ -114,6 +143,6 @@ struct DetailEditView: View {
 
 struct DetailEditView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailEditView(card: .constant(CreditCard.testCards[0]), categories: .constant(Category.sampleCategories))
+        DetailEditView(card: .constant(CreditCard.sampleCards[0]), cards: .constant(CreditCard.sampleCards), categories: .constant(Category.sampleCategories), showDelete: true, onDeleteCard: {})
     }
 }

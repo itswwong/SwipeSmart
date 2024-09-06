@@ -15,7 +15,7 @@ struct NewCreditCard: View {
     
     var body: some View {
         NavigationStack {
-            DetailEditView(card: $newCard, categories: $editingCategories)
+            DetailEditView(card: $newCard, cards: $cards, categories: $editingCategories, showDelete: false, onDeleteCard: {})
                 .navigationTitle("Add New Card")
                 .onAppear {
                     editingCategories = categories
