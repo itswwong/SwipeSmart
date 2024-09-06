@@ -12,14 +12,16 @@ struct CreditCard: Identifiable, Codable {
     var cardType: String
     var cardName: String
     var digits: String
+    var color: Theme
     var categories: [cardID_rewards]
     
-    init(id: UUID = UUID(), bankName: String, cardType: String, cardName: String, digits: String, categories: [cardID_rewards]) {
+    init(id: UUID = UUID(), bankName: String, cardType: String, cardName: String, digits: String, color: Theme, categories: [cardID_rewards]) {
         self.id = id
         self.bankName = bankName
         self.cardType = cardType
         self.cardName = cardName
         self.digits = digits
+        self.color = color
         self.categories = categories
     }
 }
@@ -79,7 +81,7 @@ extension CreditCard {
     }
     
     static var emptyCard: CreditCard {
-        CreditCard(bankName: "", cardType: "", cardName: "", digits: "", categories: [])
+        CreditCard(bankName: "", cardType: "", cardName: "", digits: "", color: .pastelgreen, categories: [])
     }
 }
 
@@ -103,16 +105,16 @@ extension CreditCard {
     // In credit card
     static let sampleCards: [CreditCard] =
     [
-        CreditCard(bankName: "American Express", cardType: "American Express", cardName: "Blue", digits: "1435", categories: []),
-        CreditCard(bankName: "Discover", cardType: "Discover", cardName: "", digits: "5743", categories: []),
-        CreditCard(bankName: "Bank of America", cardType: "Visa", cardName: "Visa Signature", digits: "2856", categories: [])
+        CreditCard(bankName: "American Express", cardType: "American Express", cardName: "Blue", digits: "1435", color: .pastelred, categories: []),
+        CreditCard(bankName: "Discover", cardType: "Discover", cardName: "", digits: "5743", color: .pastelyellow, categories: []),
+        CreditCard(bankName: "Bank of America", cardType: "Visa", cardName: "Visa Signature", digits: "2856", color: .pastelblue, categories: [])
     ]
     
     static let testCards: [CreditCard] =
     [
-        CreditCard(id: CreditCard.sampleCards[0].id, bankName: "American Express", cardType: "American Express", cardName: "Blue", digits: "1435", categories: sampleCategoryRewards0),
-        CreditCard(id: CreditCard.sampleCards[1].id, bankName: "Discover", cardType: "Discover", cardName: "", digits: "5743", categories: sampleCategoryRewards1),
-        CreditCard(id: CreditCard.sampleCards[2].id, bankName: "Bank of America", cardType: "Visa", cardName: "Customized Cash Rewards", digits: "2856", categories: sampleCategoryRewards2)
+        CreditCard(id: CreditCard.sampleCards[0].id, bankName: "American Express", cardType: "American Express", cardName: "Blue", digits: "1435", color: .pastelred, categories: sampleCategoryRewards0),
+        CreditCard(id: CreditCard.sampleCards[1].id, bankName: "Discover", cardType: "Discover", cardName: "", digits: "5743", color: .pastelyellow, categories: sampleCategoryRewards1),
+        CreditCard(id: CreditCard.sampleCards[2].id, bankName: "Bank of America", cardType: "Visa", cardName: "Customized Cash Rewards", digits: "2856", color: .pastelblue, categories: sampleCategoryRewards2)
     ]
     
     static let sampleCategoryRewards0: [cardID_rewards] =

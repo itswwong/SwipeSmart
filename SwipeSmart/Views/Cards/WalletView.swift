@@ -22,9 +22,9 @@ struct WalletView: View {
                 .foregroundColor(.white)
                 .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
                 .listRowBackground(
-                    RoundedRectangle(cornerRadius: 7)
+                    RoundedRectangle(cornerRadius: 15)
                         .background(.clear)
-                        .foregroundColor(pastelGreen)
+                        .foregroundColor(card.color.mainColor)
                         .padding(
                             EdgeInsets(
                                 top: 5,

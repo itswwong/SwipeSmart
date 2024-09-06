@@ -21,13 +21,11 @@ struct RewardsCardView: View {
                         .padding(.bottom, 2)
                     Text(card.cardName.isEmpty ? card.cardType : card.cardName)
                         .font(.headline)
-                        .padding(.bottom, 10)
-                    Text("**** **** *** \(card.digits)")
-                        .font(bodyFont)
-                        .padding(.bottom, 5)
+                        .padding(.bottom, 15)
+                    Text("**** **** **** \(card.digits)")
+                        .padding(.bottom, 2)
                     if expired {
-                        Text("EXPIRED")
-                            .font(.subheadline)
+                        Text("Expired")
                     }
                     else {
                         if let date = expirationDate {
@@ -42,24 +40,21 @@ struct RewardsCardView: View {
                         }
                         else {
                             Text("Does not expire.")
-                                .font(.subheadline)
                         }
                     }
                 }
-                .foregroundColor(.white)
                 Spacer()
                 Circle()
                     .fill(.white)
                     .frame(width: 45, height: 45)
                     .overlay(
                         Text("\(reward)%")
-                            .foregroundColor(expired ? darkGray : pastelGreen)
+                            .foregroundColor(expired ? .pastelgraydark :card.color.mainColor)
                             .font(.headline)
                     )
             }
         }
         .padding()
-        .background(RoundedRectangle(cornerRadius: 10).fill(expired ? darkGray : pastelGreen))
     }
 }
 
