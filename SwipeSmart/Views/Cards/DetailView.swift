@@ -43,7 +43,7 @@ struct DetailView: View {
                 HStack {
                     Text("Background Color")
                     Spacer()
-                    ColorView(color: card.color)
+                    ColorView(color: card.theme)
                         .frame(width: 100)
                 }
                 .accessibilityElement(children: .combine)

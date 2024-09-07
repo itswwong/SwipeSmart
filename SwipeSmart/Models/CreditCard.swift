@@ -12,7 +12,7 @@ struct CreditCard: Identifiable, Codable {
     var cardType: String
     var cardName: String
     var digits: String
-    var color: Theme
+    var theme: Theme
     var categories: [cardID_rewards]
     
     init(id: UUID = UUID(), bankName: String, cardType: String, cardName: String, digits: String, color: Theme, categories: [cardID_rewards]) {
@@ -21,7 +21,7 @@ struct CreditCard: Identifiable, Codable {
         self.cardType = cardType
         self.cardName = cardName
         self.digits = digits
-        self.color = color
+        self.theme = color
         self.categories = categories
     }
 }

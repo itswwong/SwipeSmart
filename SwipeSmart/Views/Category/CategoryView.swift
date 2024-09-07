@@ -16,21 +16,18 @@ struct CategoryView: View {
                 Spacer()
                 Text(category.name)
                     .font(.title2.weight(.bold))
-                    .padding(.bottom, 10)
                 HStack {
-                    if category.cardRewards.isEmpty {
-                        Text("No rewards in this category.")
-                        Spacer()
-                    }
-                    else if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
+                    if !category.cardRewards.isEmpty, let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
                         if category.cardRewards[0].expired {
                             Text("No active rewards in this category.")
                                 .font(.subheadline)
+                                .padding(.top, 10)
                         }
                         else if cards[index].bankName == cards[index].cardType {
                             VStack(alignment: .leading) {
                                 Text(cards[index].bankName)
                                     .font(.title3.weight(.bold))
+                                    .padding(.top, 10)
                                 if !cards[index].cardName.isEmpty {
                                     Text("\(cards[index].cardName) \(cards[index].digits)")
                                         .padding(.top, 1)
@@ -45,6 +42,7 @@ struct CategoryView: View {
                             VStack(alignment: .leading) {
                                 Text(cards[index].bankName)
                                     .font(.title3.weight(.bold))
+                                    .padding(.top, 10)
                                 Text("\(cards[index].cardType) \(cards[index].digits)")
                                     .padding(.top, 1)
                                 if !cards[index].cardName.isEmpty {
@@ -53,21 +51,21 @@ struct CategoryView: View {
                                 }
                             }
                         }
-                        Spacer()
                     }
                 }
                 Spacer()
             }
-            if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-                Spacer()
+            Spacer()
+            if !category.cardRewards.isEmpty, let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
                 Circle()
                     .fill(.white)
                     .frame(width: 45, height: 45)
                     .overlay(
                         Text("\(category.cardRewards[0].reward)%")
-                            .foregroundColor(category.cardRewards[0].expired ? .pastelgraydark : cards[index].color.mainColor)
+                            .foregroundColor(category.cardRewards[0].expired ? .pastelgraydark : cards[index].theme.mainColor)
                             .font(.headline)
                     )
+                    .padding()
             }
         }
     }
