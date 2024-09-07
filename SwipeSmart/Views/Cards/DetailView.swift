@@ -15,6 +15,7 @@ struct DetailView: View {
     @State private var editingCard = CreditCard.emptyCard
     @State private var editingCategories = [Category]()
     @State private var isPresentingEditView = false
+    @State private var duplicateError = false
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -99,7 +100,7 @@ struct DetailView: View {
         }
         .sheet(isPresented: $isPresentingEditView) {
             NavigationStack {
-                DetailEditView(card: $editingCard, cards: $cards, categories: $editingCategories, showDelete: true, onDeleteCard: { deleteCard() })
+                DetailEditView(card: $editingCard, cards: $cards, categories: $editingCategories, duplicateError: $duplicateError, showDelete: true, onDeleteCard: { deleteCard() })
                     .toolbar {
                         ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
                             Button("Cancel") {
@@ -108,13 +109,12 @@ struct DetailView: View {
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
-                                if card.bankName.isEmpty || card.cardType.isEmpty {
-                                    return
-                                }
                                 isPresentingEditView = false
-                                card = editingCard
+                                duplicateError = false
                                 categories = editingCategories
+                                card = editingCard
                             }
+                            .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || editingCard.digits.isEmpty || duplicateError)
                         }
                     }
             }

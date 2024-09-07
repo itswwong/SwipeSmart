@@ -22,7 +22,7 @@ struct CategorySelectorView: View {
                             .listRowBackground(
                                 RoundedRectangle(cornerRadius: 15)
                                     .background(.clear)
-                                    .foregroundColor(
+                                    .foregroundStyle(
                                         cards.firstIndex(where: { $0.id == category.cardRewards.first?.cardID }).map { index in
                                             category.cardRewards.first?.expired ?? false ? .pastelgraydark : cards[index].theme.mainColor
                                         } ?? .pastelgray
@@ -38,7 +38,7 @@ struct CategorySelectorView: View {
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 15)
                                 .background(.clear)
-                                .foregroundColor(
+                                .foregroundStyle(
                                     cards.firstIndex(where: { $0.id == category.cardRewards.first?.cardID }).map { index in
                                         category.cardRewards.first?.expired ?? false ? .pastelgraydark : cards[index].theme.mainColor
                                     } ?? .pastelgraydark

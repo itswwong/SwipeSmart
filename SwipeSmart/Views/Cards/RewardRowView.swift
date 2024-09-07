@@ -35,10 +35,10 @@ struct RewardRowView: View {
                 } label: {
                     HStack {
                         Text(newCategoryName.isEmpty ? "Select Category" : newCategoryName)
-                            .foregroundColor(newCategoryName.isEmpty ? .gray : .primary)
+                            .foregroundStyle(newCategoryName.isEmpty ? .gray : .primary)
                         Spacer()
                         Image(systemName: "chevron.down")
-                            .foregroundColor(.gray)
+                            .foregroundStyle(.gray)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)

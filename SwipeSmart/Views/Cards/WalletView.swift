@@ -19,12 +19,12 @@ struct WalletView: View {
                 NavigationLink(destination: DetailView(card: $card, cards: $cards, categories: $categories)) {
                     CardView(card: card)
                 }
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
                 .listRowBackground(
                     RoundedRectangle(cornerRadius: 15)
                         .background(.clear)
-                        .foregroundColor(card.theme.mainColor)
+                        .foregroundStyle(card.theme.mainColor)
                         .padding(
                             EdgeInsets(
                                 top: 5,

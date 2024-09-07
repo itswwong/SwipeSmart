@@ -32,10 +32,10 @@ struct NewRewardView: View {
                         } label: {
                             HStack {
                                 Text(selectedCategoryName.isEmpty ? "Select Category" : selectedCategoryName)
-                                    .foregroundColor(selectedCategoryName.isEmpty ? .gray : .primary)
+                                    .foregroundStyle(selectedCategoryName.isEmpty ? .gray : .primary)
                                 Spacer()
                                 Image(systemName: "chevron.down")
-                                    .foregroundColor(.gray)
+                                    .foregroundStyle(.gray)
                             }
                         }
                         

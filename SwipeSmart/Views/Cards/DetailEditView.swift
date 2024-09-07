@@ -11,11 +11,12 @@ struct DetailEditView: View {
     @Binding var card: CreditCard
     @Binding var cards: [CreditCard]
     @Binding var categories: [Category]
-    var showDelete: Bool
+    @Binding var duplicateError: Bool
     
     @State private var addNewReward = false
     @State private var showConfirmation = false
     
+    var showDelete: Bool
     let onDeleteCard: () -> Void
     @Environment(\.presentationMode) var presentationMode
 
@@ -25,8 +26,11 @@ struct DetailEditView: View {
                 LabeledContent {
                     TextField("", text: $card.bankName)
                         .multilineTextAlignment(.trailing)
+                        .onChange(of: card.bankName) {
+                            validateUniqueDigits()
+                        }
                 } label: {
-                    Text("Bank Name ")
+                    Text("Bank Name")
                 }
                 LabeledContent {
                     Menu {
@@ -38,15 +42,15 @@ struct DetailEditView: View {
                     } label: {
                         HStack {
                             Text(card.cardType.isEmpty ? "Select Card Type" : card.cardType)
-                                .foregroundColor(card.cardType.isEmpty ? .gray : .primary)
+                                .foregroundStyle(card.cardType.isEmpty ? .gray : .primary)
                             Image(systemName: "chevron.down")
-                                .foregroundColor(.gray)
+                                .foregroundStyle(.gray)
                         }
                         .padding(.trailing, -12)
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 } label: {
-                    Text("Card Type ")
+                    Text("Card Type")
                 }
                 
                 LabeledContent {
@@ -56,16 +60,20 @@ struct DetailEditView: View {
                     })
                         .multilineTextAlignment(.trailing)
                 } label: {
-                    Text("Card Name ")
+                    Text("Card Name")
                 }
                 
                 LabeledContent {
                     TextField("", text: $card.digits)
                         .keyboardType(.numberPad)
-                        .onReceive(Just($card.digits)) { _ in limitText(4) }
+                        .onReceive(Just($card.digits)) { _ in
+                            limitText(4)
+                            validateUniqueDigits()
+                        }
                         .multilineTextAlignment(.trailing)
+                        .foregroundStyle(duplicateError ? .red : .primary)
                 } label: {
-                    Text("Last 4 Digits ")
+                    Text("Last 4 Digits")
                 }
                 
                 LabeledContent {
@@ -73,7 +81,13 @@ struct DetailEditView: View {
                         .frame(width: 100)
                         .padding(.trailing, -12)
                 } label: {
-                    Text("Background Color ")
+                    Text("Background Color")
+                }
+                
+                if duplicateError {
+                    Text("Credit card already exists.")
+                        .foregroundStyle(.red)
+                        .font(.footnote)
                 }
             }
             
@@ -92,7 +106,7 @@ struct DetailEditView: View {
                 }
             }) {
                 Text("Add New Reward")
-                    .foregroundColor(addNewReward ? .gray : .primary)
+                    .foregroundStyle(addNewReward ? .gray : .primary)
             }
             .disabled(addNewReward)
             
@@ -107,7 +121,7 @@ struct DetailEditView: View {
                         showConfirmation = true
                     }) {
                         Text("Delete Card")
-                            .foregroundColor(.red)
+                            .foregroundStyle(.red)
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                     .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
@@ -122,6 +136,13 @@ struct DetailEditView: View {
             }
         }
         .scrollDismissesKeyboard(.immediately)
+    }
+
+    private func validateUniqueDigits() {
+        // Check for duplicate digits within the same bank
+        let hasDuplicate = cards.contains(where: { $0.bankName == card.bankName && $0.cardType == card.cardType && $0.digits == card.digits && $0.id != card.id })
+
+        duplicateError = hasDuplicate
     }
 
     private func removeReward(at indices: IndexSet) {
@@ -143,6 +164,6 @@ struct DetailEditView: View {
 
 struct DetailEditView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailEditView(card: .constant(CreditCard.sampleCards[0]), cards: .constant(CreditCard.sampleCards), categories: .constant(Category.sampleCategories), showDelete: true, onDeleteCard: {})
+        DetailEditView(card: .constant(CreditCard.sampleCards[0]), cards: .constant(CreditCard.sampleCards), categories: .constant(Category.sampleCategories), duplicateError: .constant(false), showDelete: true, onDeleteCard: {})
     }
 }
