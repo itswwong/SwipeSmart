@@ -49,7 +49,7 @@ struct RewardsCardView: View {
                     .frame(width: 45, height: 45)
                     .overlay(
                         Text("\(reward)%")
-                            .foregroundColor(expired ? .pastelgraydark : card.theme.mainColor)
+                            .foregroundStyle(expired ? .pastelgraydark : card.theme.mainColor)
                             .font(.headline)
                     )
             }

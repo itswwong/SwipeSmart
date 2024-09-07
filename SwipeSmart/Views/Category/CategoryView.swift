@@ -62,7 +62,7 @@ struct CategoryView: View {
                     .frame(width: 45, height: 45)
                     .overlay(
                         Text("\(category.cardRewards[0].reward)%")
-                            .foregroundColor(category.cardRewards[0].expired ? .pastelgraydark : cards[index].theme.mainColor)
+                            .foregroundStyle(category.cardRewards[0].expired ? .pastelgraydark : cards[index].theme.mainColor)
                             .font(.headline)
                     )
                     .padding()

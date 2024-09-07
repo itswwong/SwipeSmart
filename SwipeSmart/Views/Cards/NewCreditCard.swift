@@ -9,13 +9,15 @@ import SwiftUI
 struct NewCreditCard: View {
     @State private var newCard = CreditCard.emptyCard
     @State private var editingCategories = [Category]()
+    @State private var duplicateError = false
+    
     @Binding var cards: [CreditCard]
     @Binding var categories: [Category]
     @Binding var isPresentingNewCardView: Bool
     
     var body: some View {
         NavigationStack {
-            DetailEditView(card: $newCard, cards: $cards, categories: $editingCategories, showDelete: false, onDeleteCard: {})
+            DetailEditView(card: $newCard, cards: $cards, categories: $editingCategories, duplicateError: $duplicateError, showDelete: false, onDeleteCard: {})
                 .navigationTitle("Add New Card")
                 .onAppear {
                     editingCategories = categories
@@ -28,13 +30,12 @@ struct NewCreditCard: View {
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Add") {
-                            if newCard.bankName.isEmpty || newCard.cardType.isEmpty {
-                                return
-                            }
-                            cards.append(newCard)
-                            categories = editingCategories
                             isPresentingNewCardView = false
+                            duplicateError = false
+                            categories = editingCategories
+                            cards.append(newCard)
                         }
+                        .disabled(newCard.bankName.isEmpty || newCard.cardType.isEmpty || newCard.digits.isEmpty || duplicateError)
                     }
                 }
         }

@@ -31,11 +31,11 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: 7)
                 .frame(width: 30, height: 20)
                 .padding(.bottom, 5)
-                .foregroundColor(.pastelgraylight)
+                .foregroundStyle(.pastelgraylight)
             Text("**** **** **** \(card.digits)")
         }
         .padding()
-        .foregroundColor(.primary)
+        .foregroundStyle(.primary)
     }
 }
 
