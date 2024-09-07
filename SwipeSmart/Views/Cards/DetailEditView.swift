@@ -69,7 +69,7 @@ struct DetailEditView: View {
                 }
                 
                 LabeledContent {
-                    ColorPicker(selection: $card.color)
+                    ColorPicker(selection: $card.theme)
                         .frame(width: 100)
                         .padding(.trailing, -12)
                 } label: {
