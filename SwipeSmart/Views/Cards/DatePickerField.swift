@@ -34,6 +34,7 @@ struct DatePickerField: View {
                             }
                         }
                     ), displayedComponents: .date)
+                    .tint(.blue)
                 }
                 
                 // Input expiration date
@@ -48,6 +49,7 @@ struct DatePickerField: View {
                             expirationDate = newValue
                         }
                     ), in: (Calendar.current.date(byAdding: .day, value: 1, to: startDate ?? Date()) ?? Date())..., displayedComponents: .date)
+                    .tint(.blue)
                 }
             }
             .onAppear {

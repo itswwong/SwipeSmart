@@ -46,6 +46,7 @@ struct WalletView: View {
                         isPresentingNewCardView = true
                     }) {
                         Image(systemName: "plus")
+                            .tint(.primary)
                     }
                     .accessibilityLabel("New Card")
                 }
