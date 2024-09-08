@@ -15,7 +15,7 @@ struct MainView: View {
         TabView {
             CategorySelectorView(cards: $cards, categories: $categories)
                 .tabItem {
-                    Label("Rewards", systemImage: "dollarsign.square.fill")
+                    Label("Cash Back", systemImage: "dollarsign.square.fill")
                 }
                 .tag(1)
 
