@@ -94,7 +94,7 @@ struct DetailEditView: View {
             if !card.categories.isEmpty {
                 Section(header: Text("Rewards")) {
                     ForEach(card.categories.indices, id: \.self) { index in
-                        RewardRowView(category: $card.categories[index], categories: $categories)
+                        RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
                     }
                     .onDelete(perform: removeReward)
                 }

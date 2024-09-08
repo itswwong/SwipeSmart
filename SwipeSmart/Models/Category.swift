@@ -38,6 +38,5 @@ extension Category {
         Category(name: "Travel", cardRewards: []),
         Category(name: "Dining", cardRewards: CreditCard.sampleCardRewardsDining),
         Category(name: "Gas", cardRewards: CreditCard.sampleCardRewardsGas)
-        
     ]
 }
