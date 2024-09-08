@@ -7,14 +7,17 @@
 import SwiftUI
 
 struct RewardRowView: View {
+    @Binding var card: CreditCard
     @Binding var category: CreditCard.cardID_rewards
     @Binding var categories: [Category]
+    
     @State private var newCategoryName: String
     @State private var startDate: Date?
     @State private var expirationDate: Date?
     @State private var dateSet: Bool
     
-    init(category: Binding<CreditCard.cardID_rewards>, categories: Binding<[Category]>) {
+    init(card: Binding<CreditCard>,category: Binding<CreditCard.cardID_rewards>, categories: Binding<[Category]>) {
+        self._card = card
         self._category = category
         self._categories = categories
         self._newCategoryName = State(initialValue: category.wrappedValue.categoryName)
@@ -28,10 +31,13 @@ struct RewardRowView: View {
             HStack {
                 Menu {
                     Picker(selection: $newCategoryName, label: Text("")) {
-                        ForEach(categories) { category in
+                        ForEach(categories.filter { category in
+                            category.name == newCategoryName ||
+                            !card.categories.contains { $0.categoryName == category.name } }) { category in
                             Text(category.name).tag(category.name)
                         }
                     }
+                    .labelsHidden()
                 } label: {
                     HStack {
                         Text(newCategoryName.isEmpty ? "Select Category" : newCategoryName)
@@ -120,6 +126,6 @@ struct RewardRowView: View {
 
 struct RewardRowView_Previews: PreviewProvider {
     static var previews: some View {
-        RewardRowView(category: .constant(CreditCard.testCards[0].categories[0]), categories: .constant(Category.sampleCategories))
+        RewardRowView(card: .constant(CreditCard.testCards[0]),category: .constant(CreditCard.testCards[0].categories[0]), categories: .constant(Category.sampleCategories))
     }
 }

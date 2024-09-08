@@ -25,10 +25,12 @@ struct NewRewardView: View {
                     HStack {
                         Menu {
                             Picker(selection: $selectedCategoryName, label: Text("")) {
-                                ForEach(categories) { category in
+                                ForEach(categories.filter { category in
+                                    !card.categories.contains { $0.categoryName == category.name } }) { category in
                                     Text(category.name).tag(category.name)
                                 }
                             }
+                            .labelsHidden()
                         } label: {
                             HStack {
                                 Text(selectedCategoryName.isEmpty ? "Select Category" : selectedCategoryName)
@@ -41,7 +43,6 @@ struct NewRewardView: View {
                         
                         TextField("Add Reward", text: $newUserReward)
                             .keyboardType(.numberPad)
-                            .padding(.leading)
                             .padding(.leading)
                             .textFieldStyle(.roundedBorder)
                         Text("%")
