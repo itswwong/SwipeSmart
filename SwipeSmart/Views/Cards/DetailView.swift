@@ -49,7 +49,7 @@ struct DetailView: View {
                 }
                 .accessibilityElement(children: .combine)
             }
-            Section(header: Text("Rewards")) {
+            Section(header: Text("Cash Back Rewards")) {
                 ForEach(card.categories) { category in
                     VStack {
                         HStack {

@@ -57,15 +57,17 @@ struct CategoryView: View {
             }
             Spacer()
             if !category.cardRewards.isEmpty, let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-                Circle()
-                    .fill(.white)
-                    .frame(width: 45, height: 45)
-                    .overlay(
-                        Text("\(category.cardRewards[0].reward)%")
-                            .foregroundStyle(category.cardRewards[0].expired ? .pastelgraydark : cards[index].theme.mainColor)
-                            .font(.headline)
-                    )
-                    .padding()
+                if !category.cardRewards[0].expired {
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 45, height: 45)
+                        .overlay(
+                            Text("\(category.cardRewards[0].reward)%")
+                                .foregroundStyle(category.cardRewards[0].expired ? .pastelgraydark : cards[index].theme.mainColor)
+                                .font(.headline)
+                        )
+                        .padding()
+                }
             }
         }
     }

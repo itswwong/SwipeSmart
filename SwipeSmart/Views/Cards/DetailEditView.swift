@@ -92,7 +92,7 @@ struct DetailEditView: View {
             }
             
             if !card.categories.isEmpty {
-                Section(header: Text("Rewards")) {
+                Section(header: Text("Cash Back Rewards")) {
                     ForEach(card.categories.indices, id: \.self) { index in
                         RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
                     }
@@ -105,7 +105,7 @@ struct DetailEditView: View {
                     addNewReward = true
                 }
             }) {
-                Text("Add New Reward")
+                Text("Add New Cash Back Reward")
                     .foregroundStyle(addNewReward ? .gray : .primary)
             }
             .disabled(addNewReward)

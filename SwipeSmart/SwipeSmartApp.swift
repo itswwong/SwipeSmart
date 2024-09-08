@@ -1,7 +1,7 @@
 //
 //  SwipeSmart
 //
-//  An IOS app that manages credit card rewards and helps users select
+//  An IOS app that manages credit card cash back rewards and helps users select
 //  the best credit card to use for different kinds of purchases.
 //
 

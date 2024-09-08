@@ -13,6 +13,7 @@
 		0A1427CF2C8A530200D48E47 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427CE2C8A530200D48E47 /* Theme.swift */; };
 		0A1427D12C8A542D00D48E47 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427D02C8A542D00D48E47 /* ColorView.swift */; };
 		0A1427D32C8A65DB00D48E47 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427D22C8A65DA00D48E47 /* ColorPickerView.swift */; };
+		0A7DF8212C8D36330003F5F5 /* CategoryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF8202C8D36330003F5F5 /* CategoryEditView.swift */; };
 		0AEBE5782C7FFA0B0051DE14 /* SwipeSmartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5772C7FFA0B0051DE14 /* SwipeSmartApp.swift */; };
 		0AEBE57C2C7FFA0D0051DE14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE57B2C7FFA0D0051DE14 /* Assets.xcassets */; };
 		0AEBE57F2C7FFA0D0051DE14 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE57E2C7FFA0D0051DE14 /* Preview Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		0A1427CE2C8A530200D48E47 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		0A1427D02C8A542D00D48E47 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		0A1427D22C8A65DA00D48E47 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		0A7DF8202C8D36330003F5F5 /* CategoryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditView.swift; sourceTree = "<group>"; };
 		0AEBE5742C7FFA0B0051DE14 /* SwipeSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEBE5772C7FFA0B0051DE14 /* SwipeSmartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSmartApp.swift; sourceTree = "<group>"; };
 		0AEBE57B2C7FFA0D0051DE14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				0AEBE5952C7FFBD00051DE14 /* CategoryView.swift */,
 				0AEBE5972C7FFBD00051DE14 /* RewardsView.swift */,
 				0AEBE5962C7FFBD00051DE14 /* RewardsCardView.swift */,
+				0A7DF8202C8D36330003F5F5 /* CategoryEditView.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				0AEBE5AE2C7FFBD10051DE14 /* MainView.swift in Sources */,
 				0AEBE5BA2C7FFBD10051DE14 /* NewCreditCard.swift in Sources */,
 				0A1427CF2C8A530200D48E47 /* Theme.swift in Sources */,
+				0A7DF8212C8D36330003F5F5 /* CategoryEditView.swift in Sources */,
 				0AEBE5AD2C7FFBD10051DE14 /* RewardsView.swift in Sources */,
 				0A1427132C8516A300D48E47 /* DatePickerField.swift in Sources */,
 				0AEBE5912C7FFBBF0051DE14 /* CreditCard.swift in Sources */,
