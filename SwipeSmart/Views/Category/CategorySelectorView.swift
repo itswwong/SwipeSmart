@@ -54,11 +54,11 @@ struct CategorySelectorView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Text(isEditing ? "Categories" : "Cash Back")
+                    Text(isEditing ? "Categories" : "Best Cash Back")
                         .font(.largeTitle .weight(.bold))
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(isEditing ? "Done" : "Edit") {
+                    Button(isEditing ? "Done" : "Categories") {
                         isEditing.toggle()
                     }
                     .disabled(categoryExists || categoryEmpty)
