@@ -101,7 +101,6 @@ struct CategorySelectorView: View {
         }
     }
     
-    // Function to move categories
     private func moveCategory(from source: IndexSet, to destination: Int) {
         categories.move(fromOffsets: source, toOffset: destination)
     }
@@ -111,7 +110,6 @@ struct CategorySelectorView: View {
         let newCategory = Category(name: addCategoryName, cardRewards: [])
         categories.append(newCategory)
         
-        // Reset state after adding a new category
         addCategoryName = ""
         addCategoryEmpty = false
         addCategoryExists = false
