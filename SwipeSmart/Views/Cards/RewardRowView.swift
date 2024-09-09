@@ -100,27 +100,37 @@ struct RewardRowView: View {
     private func updateCategoryName(newCategoryName: String) {
         // Remove the reward from the old category
         if let oldCategoryIndex = categories.firstIndex(where: { $0.name == category.categoryName }) {
-            categories[oldCategoryIndex].cardRewards.removeAll { $0.id == category.id }
+            if let oldRewardIndex = categories[oldCategoryIndex].cardRewards.firstIndex(where: { $0.id == category.id }) {
+                categories[oldCategoryIndex].cardRewards.remove(at: oldRewardIndex)
+            }
         }
         
-        category.categoryName = newCategoryName
-        
         // Update the global categories list to reflect this change
-        if let categoryIndex = categories.firstIndex(where: { $0.name == newCategoryName }) {
-            if let rewardIndex = categories[categoryIndex].cardRewards.firstIndex(where: { $0.id == category.id }) {
-                categories[categoryIndex].cardRewards[rewardIndex].categoryName = newCategoryName
+        if let newCategoryIndex = categories.firstIndex(where: { $0.name == newCategoryName }) {
+            // If reward exists in the new category, update it, otherwise add it
+            if let rewardIndex = categories[newCategoryIndex].cardRewards.firstIndex(where: { $0.id == category.id }) {
+                categories[newCategoryIndex].cardRewards[rewardIndex].categoryName = newCategoryName
             } else {
+                // Create a new reward in the new category
                 let newReward = CreditCard.cardID_rewards(
                     id: category.id,
                     cardID: category.cardID,
                     categoryName: newCategoryName,
-                    reward: category.reward, expired: category.expired
+                    reward: category.reward,
+                    expired: category.expired
                 )
-                categories[categoryIndex].cardRewards.append(newReward)
+                categories[newCategoryIndex].cardRewards.append(newReward)
             }
-            
-            categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
+            categories[newCategoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
         }
+        
+        // Update the category in the card's local categories
+        if let cardCategoryIndex = card.categories.firstIndex(where: { $0.id == category.id }) {
+            card.categories[cardCategoryIndex].categoryName = newCategoryName
+        }
+        
+        // Update the binding category to reflect the new name
+        category.categoryName = newCategoryName
     }
 }
 

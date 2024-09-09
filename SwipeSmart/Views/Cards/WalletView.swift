@@ -19,7 +19,6 @@ struct WalletView: View {
                 NavigationLink(destination: DetailView(card: $card, cards: $cards, categories: $categories)) {
                     CardView(card: card)
                 }
-                .foregroundStyle(.white)
                 .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
                 .listRowBackground(
                     RoundedRectangle(cornerRadius: 15)
@@ -46,7 +45,6 @@ struct WalletView: View {
                         isPresentingNewCardView = true
                     }) {
                         Image(systemName: "plus")
-                            .tint(.primary)
                     }
                     .accessibilityLabel("New Card")
                 }

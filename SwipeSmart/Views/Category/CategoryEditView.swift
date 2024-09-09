@@ -25,52 +25,40 @@ struct CategoryEditView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Spacer()
-            TextField("Category Name", text: $newCategoryName)
-                .font(.title2.weight(.bold))
-                .onChange(of: newCategoryName) {
-                    categoryEmpty = newCategoryName.isEmpty
-                    categoryExists = categories.contains {
-                        $0.name.lowercased() == newCategoryName.lowercased() && $0.id != category.id
+        HStack {
+            VStack(alignment: .leading) {
+                Spacer()
+                TextField("Category Name", text: $newCategoryName)
+                    .font(.title2.weight(.bold))
+                    .onChange(of: newCategoryName) {
+                        categoryEmpty = newCategoryName.isEmpty
+                        categoryExists = categories.contains {
+                            $0.name.lowercased() == newCategoryName.lowercased() && $0.id != category.id
+                        }
+                        if !categoryEmpty && !categoryExists {
+                            updateCategoryName()
+                        }
                     }
-                    if !categoryEmpty && !categoryExists {
-                        updateCategoryName()
-                    }
+                
+                if newCategoryName.isEmpty {
+                    Text("Please enter a category name.")
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                } else if (categories.contains {
+                    $0.name.lowercased() == newCategoryName.lowercased() && $0.id != category.id
+                }) {
+                    Text("Category already exists.")
+                        .foregroundColor(.red)
+                        .font(.footnote)
                 }
-            
-            if newCategoryName.isEmpty {
-                Text("Please enter a category name.")
-                    .foregroundColor(.red)
-                    .font(.footnote)
-            } else if (categories.contains {
-                $0.name.lowercased() == newCategoryName.lowercased() && $0.id != category.id
-            }) {
-                Text("Category already exists.")
-                    .foregroundColor(.red)
-                    .font(.footnote)
+                Spacer()
             }
             Spacer()
+            Image(systemName: "line.3.horizontal")
+                .foregroundStyle(.gray)
         }
     }
     
-//    private func updateCategoryName() {
-//        guard !categoryExists && !categoryEmpty else {
-//            print("empty or exists")
-//            return
-//        }
-//        
-//        for cardIndex in cards.indices {
-//            print("hello")
-//            if let categoryIndex = cards[cardIndex].categories.firstIndex(where: { $0.categoryName == category.name }) {
-//                print("cards are being updated")
-//                cards[cardIndex].categories[categoryIndex].categoryName = newCategoryName
-//            }
-//        }
-//        
-//        self.category.name = newCategoryName
-//        print("category list updated")
-//    }
     private func updateCategoryName() {
         // Only update the name if the new name is different
         if newCategoryName != category.name {
