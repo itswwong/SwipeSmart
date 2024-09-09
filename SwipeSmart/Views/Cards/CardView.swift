@@ -35,7 +35,6 @@ struct CardView: View {
             Text("**** **** **** \(card.digits)")
         }
         .padding()
-        .foregroundStyle(.primary)
     }
 }
 
