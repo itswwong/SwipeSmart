@@ -46,7 +46,7 @@ struct RewardsCardView: View {
                 Spacer()
                 Circle()
                     .fill(.white)
-                    .frame(width: 45, height: 45)
+                    .frame(width: 50, height: 50)
                     .overlay(
                         Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
                             .foregroundStyle(expired ? .pastelgraydark : card.theme.mainColor)

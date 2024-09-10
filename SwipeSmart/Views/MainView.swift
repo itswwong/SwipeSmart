@@ -9,6 +9,7 @@ import SwiftUI
 struct MainView: View {
     @Binding var cards: [CreditCard]
     @Binding var categories: [Category]
+    
     let saveAction: ()->Void
     
     var body: some View {

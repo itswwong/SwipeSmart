@@ -48,19 +48,37 @@ struct CategorySelectorView: View {
                     Button(action: {
                         showingAddCategoryAlert = true
                     }) {
-                        Text("Add Category")
-                            .bold()
-                            .padding(20)
-                            .foregroundStyle(.black)
+                        HStack {
+                            Spacer()
+                            Image(systemName: "plus")
+                                .bold()
+                                .font(.title)
+                            Spacer()
+                        }
+                        .frame(height: 40)
                     }
-                    .listRowInsets(.init(top: 5, leading: 0, bottom: 5, trailing: 0))
+                    .buttonStyle(addButton())
+                    .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
-                    .listRowBackground(
-                        RoundedRectangle(cornerRadius: 15)
-                            .background(.clear)
-                            .foregroundStyle(.white)
-                            .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                    )
+                    .listRowInsets(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
+                    
+//                    Button(action: {
+//                        showingAddCategoryAlert = true
+//                    }) {
+//                        Text("Add Category")
+//                            .bold()
+//                            .padding(20)
+//                            .foregroundStyle(.black)
+//                            .frame(width: .infinity, alignment: .center)
+//                    }
+//                    .listRowInsets(.init(top: 5, leading: 0, bottom: 5, trailing: 0))
+//                    .listRowSeparator(.hidden)
+//                    .listRowBackground(
+//                        RoundedRectangle(cornerRadius: 15)
+//                            .background(.clear)
+//                            .foregroundStyle(.white)
+//                            .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+//                    )
                     
                 case .cashback:
                     ForEach($categories) { $category in
@@ -80,6 +98,7 @@ struct CategorySelectorView: View {
                     }
                 }
             }
+            .scrollContentBackground(.hidden)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Text(viewState == .categories ? "Categories" : "Best Cash Back")
@@ -159,6 +178,17 @@ struct CategorySelectorView: View {
         }
         
         return .pastelgray
+    }
+}
+
+struct addButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(.pastelgraydark)
+            .foregroundColor(.white)
+            .cornerRadius(15)
+            .opacity(configuration.isPressed ? 0.75 : 1)
     }
 }
 

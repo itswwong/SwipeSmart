@@ -9,8 +9,10 @@ import SwiftUI
 struct WalletView: View {
     @Binding var cards: [CreditCard]
     @Binding var categories: [Category]
+    
     @Environment(\.scenePhase) private var scenePhase
     @State private var isPresentingNewCardView = false
+    
     let saveAction: ()->Void
     
     var body: some View {
@@ -45,6 +47,7 @@ struct WalletView: View {
                         isPresentingNewCardView = true
                     }) {
                         Image(systemName: "plus")
+                            .bold()
                     }
                     .accessibilityLabel("New Card")
                 }
