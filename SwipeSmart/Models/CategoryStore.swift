@@ -3,7 +3,7 @@
 //
 //  Manages the loading, saving, and real-time updating of Category objects.
 //
-//  Categories: [Travel, Dining, Groceries, Gas, Entertainment, Shopping, Other]
+//  Categories: [Travel, Dining, Groceries, Gas, Entertainment, Shopping, Everything Else]
 
 import SwiftUI
 
@@ -16,7 +16,7 @@ class CategoryStore: ObservableObject {
         Category(name: "Gas", cardRewards: []),
         Category(name: "Entertainment", cardRewards: []),
         Category(name: "Shopping", cardRewards: []),
-        Category(name: "Other", cardRewards: [])
+        Category(name: "Everything Else", cardRewards: [])
     ]
     
     private static func fileURL() throws -> URL {
