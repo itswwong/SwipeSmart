@@ -62,24 +62,6 @@ struct CategorySelectorView: View {
                     .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
                     
-//                    Button(action: {
-//                        showingAddCategoryAlert = true
-//                    }) {
-//                        Text("Add Category")
-//                            .bold()
-//                            .padding(20)
-//                            .foregroundStyle(.black)
-//                            .frame(width: .infinity, alignment: .center)
-//                    }
-//                    .listRowInsets(.init(top: 5, leading: 0, bottom: 5, trailing: 0))
-//                    .listRowSeparator(.hidden)
-//                    .listRowBackground(
-//                        RoundedRectangle(cornerRadius: 15)
-//                            .background(.clear)
-//                            .foregroundStyle(.white)
-//                            .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-//                    )
-                    
                 case .cashback:
                     ForEach($categories) { $category in
                         if !category.cardRewards.isEmpty {

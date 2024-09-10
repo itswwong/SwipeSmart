@@ -55,15 +55,7 @@ struct RewardRowView: View {
                 }
                 
                 Spacer()
-                
-//                TextField("Rewards", text: Binding(
-//                    get: {
-//                        String(category.reward)
-//                    },
-//                    set: { newReward in
-//                        updateRewardValue(for: category, with: newReward)
-//                    }
-//                ))
+
                 TextField("Rewards", text: $newReward)
                     .keyboardType(.decimalPad)
                     .padding(.leading)
