@@ -12,64 +12,109 @@ struct CategoryView: View {
     
     var body: some View {
         HStack {
+            let topReward = category.cardRewards.first?.reward ?? 0
+            let topRewardCards = category.cardRewards.filter { $0.reward == topReward && $0.expired != true }
+            
             VStack(alignment: .leading) {
                 Spacer()
                 Text(category.name)
                     .font(.title2.weight(.bold))
-                HStack {
-                    if !category.cardRewards.isEmpty, let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-                        if category.cardRewards[0].expired {
-                            Text("No active rewards in this category.")
-                                .font(.subheadline)
-                                .padding(.top, 10)
-                        }
-                        else if cards[index].bankName == cards[index].cardType {
-                            VStack(alignment: .leading) {
-                                Text(cards[index].bankName)
-                                    .font(.title3.weight(.bold))
-                                    .padding(.top, 10)
-                                if !cards[index].cardName.isEmpty {
-                                    Text("\(cards[index].cardName) \(cards[index].digits)")
-                                        .padding(.top, 1)
-                                }
-                                else {
-                                    Text(cards[index].digits)
-                                        .padding(.top, 1)
+                
+                if topRewardCards.isEmpty || topReward == 0 {
+                    Text("No active rewards in this category.")
+                        .font(.subheadline)
+                        .padding(.top, 10)
+                }
+                else {
+                    ForEach(topRewardCards) { card in
+                        if let index = cards.firstIndex(where: { $0.id == card.cardID }) {
+                            if cards[index].bankName == cards[index].cardType {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(cards[index].bankName)
+                                            .font(.title3.weight(.bold))
+                                            .padding(.top, 10)
+                                        if !cards[index].cardName.isEmpty {
+                                            Text("\(cards[index].cardName) \(cards[index].digits)")
+                                                .padding(.top, 1)
+                                        }
+                                        else {
+                                            Text(cards[index].digits)
+                                                .padding(.top, 1)
+                                        }
+                                    }
+                                    Spacer()
+                                    Circle()
+                                        .fill(.white)
+                                        .frame(width: 45, height: 45)
+                                        .overlay(
+                                            Text("\(category.cardRewards[0].reward)%")
+                                                .foregroundStyle(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
+                                                .font(.headline)
+                                        )
+                                        .padding()
                                 }
                             }
-                        }
-                        else {
-                            VStack(alignment: .leading) {
-                                Text(cards[index].bankName)
-                                    .font(.title3.weight(.bold))
-                                    .padding(.top, 10)
-                                Text("\(cards[index].cardType) \(cards[index].digits)")
-                                    .padding(.top, 1)
-                                if !cards[index].cardName.isEmpty {
-                                    Text(cards[index].cardName)
-                                        .padding(.top, 1)
+                            else {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(cards[index].bankName)
+                                            .font(.title3.weight(.bold))
+                                            .padding(.top, 10)
+                                        Text("\(cards[index].cardType) \(cards[index].digits)")
+                                            .padding(.top, 1)
+                                        if !cards[index].cardName.isEmpty {
+                                            Text(cards[index].cardName)
+                                                .padding(.top, 1)
+                                        }
+                                    }
+                                    Spacer()
+                                    Circle()
+                                        .fill(.white)
+                                        .frame(width: 45, height: 45)
+                                        .overlay(
+                                            Text("\(category.cardRewards[0].reward)%")
+                                                .foregroundStyle(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
+                                                .font(.headline)
+                                        )
+                                        .padding()
                                 }
+                            }
+                            if card != topRewardCards.last {
+                                customDivider()
+                                    .padding(.top, 20)
+                                    .padding(.bottom, 10)
                             }
                         }
                     }
                 }
                 Spacer()
             }
-            Spacer()
-            if !category.cardRewards.isEmpty, let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-                if !category.cardRewards[0].expired {
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 45, height: 45)
-                        .overlay(
-                            Text("\(category.cardRewards[0].reward)%")
-                                .foregroundStyle(category.cardRewards[0].expired ? .pastelgraydark : cards[index].theme.mainColor)
-                                .font(.headline)
-                        )
-                        .padding()
-                }
+        }
+    }
+    
+    private func categoryRewardColor(card: CreditCard.cardID_rewards, topRewardsCards: [CreditCard.cardID_rewards]) -> Color {
+        if card == topRewardsCards.first {
+            if let index = cards.firstIndex(where: { $0.id == card.cardID }) {
+                return cards[index].theme.mainColor
             }
         }
+        else {
+            if let index = cards.firstIndex(where: { $0.id == topRewardsCards[0].cardID }) {
+                return cards[index].theme.mainColor
+            }
+        }
+        
+        return .pastelgraydark
+    }
+}
+
+struct customDivider: View {
+    var body: some View {
+        Rectangle()
+            .fill(.primary)
+            .frame(height: 1)
+            .edgesIgnoringSafeArea(.horizontal)
     }
 }
 
