@@ -11,7 +11,7 @@ struct NewRewardView: View {
     @Binding var categories: [Category]
     @State private var selectedCategoryName = ""
     @State private var newUserReward = ""
-    @State private var newReward: Int = 0
+    @State private var newReward: Double = 0
     @State private var startDate: Date? = nil
     @State private var expirationDate: Date? = nil
     @State private var ifExpired: Bool = false
@@ -42,7 +42,7 @@ struct NewRewardView: View {
                         }
                         
                         TextField("Add Reward", text: $newUserReward)
-                            .keyboardType(.numberPad)
+                            .keyboardType(.decimalPad)
                             .padding(.leading)
                             .textFieldStyle(.roundedBorder)
                         Text("%")
@@ -69,7 +69,7 @@ struct NewRewardView: View {
     
     private func addReward() {
         withAnimation {
-            newReward = Int(newUserReward) ?? 0
+            newReward = Double(newUserReward) ?? 0
             
             let newCategoryReward: CreditCard.cardID_rewards
 

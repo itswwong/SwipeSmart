@@ -8,7 +8,7 @@ import SwiftUI
 
 struct RewardsCardView: View {
     let card: CreditCard
-    let reward: Int
+    let reward: Double
     let expirationDate: Date?
     let expired: Bool
 
@@ -48,7 +48,7 @@ struct RewardsCardView: View {
                     .fill(.white)
                     .frame(width: 45, height: 45)
                     .overlay(
-                        Text("\(reward)%")
+                        Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
                             .foregroundStyle(expired ? .pastelgraydark : card.theme.mainColor)
                             .font(.headline)
                     )

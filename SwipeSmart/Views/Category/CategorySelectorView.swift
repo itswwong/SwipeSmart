@@ -23,6 +23,9 @@ struct CategorySelectorView: View {
     @State private var addCategoryName = ""
     @State private var showingAddCategoryAlert = false
     
+    @State private var showingDeleteConfirmation = false
+    @State private var categoryToDelete: IndexSet? = nil
+    
     var body: some View {
         NavigationStack {
             List {
@@ -40,6 +43,7 @@ struct CategorySelectorView: View {
                             .listRowSeparator(.hidden)
                     }
                     .onMove(perform: moveCategory)
+                    .onDelete(perform: confirmDeleteCategory)
                     
                     Button(action: {
                         showingAddCategoryAlert = true
@@ -88,6 +92,14 @@ struct CategorySelectorView: View {
                     .disabled(editCategoryExists || editCategoryEmpty)
                 }
             }
+            .alert("Are you sure you want to delete this category?", isPresented: $showingDeleteConfirmation, presenting: categoryToDelete) { category in
+                Button("Delete", role: .destructive) {
+                    deleteCategory()
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: { category in
+                Text("This will permanently remove all rewards associated with this category.")
+            }
             .sheet(isPresented: $showingAddCategoryAlert) {
                 AddCategorySheet(
                     isPresented: $showingAddCategoryAlert,
@@ -105,8 +117,29 @@ struct CategorySelectorView: View {
         categories.move(fromOffsets: source, toOffset: destination)
     }
     
+    private func confirmDeleteCategory(at offsets: IndexSet) {
+        categoryToDelete = offsets
+        showingDeleteConfirmation = true
+    }
+    
+    private func deleteCategory() {
+        guard let offsets = categoryToDelete else { return }
+        
+        for index in offsets {
+            let categoryToDelete = categories[index]
+            
+            for cardIndex in cards.indices {
+                cards[cardIndex].categories.removeAll { reward in
+                    reward.categoryName == categoryToDelete.name
+                }
+            }
+        }
+
+        categories.remove(atOffsets: offsets)
+        categoryToDelete = nil
+    }
+    
     private func addNewCategory() {
-        print("add new!")
         let newCategory = Category(name: addCategoryName, cardRewards: [])
         categories.append(newCategory)
         

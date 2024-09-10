@@ -31,12 +31,12 @@ extension CreditCard {
         let id: UUID
         let cardID: UUID
         var categoryName: String
-        var reward: Int
+        var reward: Double
         var startDate: Date?
         var expirationDate: Date?
         var expired: Bool
         
-        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Int, startDate: Date?, expirationDate: Date?, expired: Bool) {
+        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Double, startDate: Date?, expirationDate: Date?, expired: Bool) {
             self.id = id
             self.cardID = cardID
             self.categoryName = categoryName
@@ -46,7 +46,7 @@ extension CreditCard {
             self.expired = expired
         }
         
-        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Int, expired: Bool) {
+        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Double, expired: Bool) {
             self.id = id
             self.cardID = cardID
             self.categoryName = categoryName
@@ -119,7 +119,7 @@ extension CreditCard {
     
     static let sampleCategoryRewards0: [cardID_rewards] =
     [
-        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3, startDate: Date.now, expirationDate: Date.now, expired: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3.5, startDate: Date.now, expirationDate: Date.now, expired: false),
         cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", reward: 3,  startDate: Date.now, expirationDate: Date.now, expired: false),
         cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", reward: 1, startDate: Date.now, expirationDate: Date.now, expired: false),
     ]

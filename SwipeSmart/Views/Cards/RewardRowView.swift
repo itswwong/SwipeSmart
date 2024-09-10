@@ -15,8 +15,9 @@ struct RewardRowView: View {
     @State private var startDate: Date?
     @State private var expirationDate: Date?
     @State private var dateSet: Bool
+    @State private var newReward: String
     
-    init(card: Binding<CreditCard>,category: Binding<CreditCard.cardID_rewards>, categories: Binding<[Category]>) {
+    init(card: Binding<CreditCard>, category: Binding<CreditCard.cardID_rewards>, categories: Binding<[Category]>) {
         self._card = card
         self._category = category
         self._categories = categories
@@ -24,6 +25,7 @@ struct RewardRowView: View {
         self._startDate = State(initialValue: category.wrappedValue.startDate)
         self._expirationDate = State(initialValue: category.wrappedValue.expirationDate)
         self._dateSet = State(initialValue: category.wrappedValue.startDate != nil)
+        self._newReward = State(initialValue: String(category.wrappedValue.reward))
     }
     
     var body: some View {
@@ -54,19 +56,21 @@ struct RewardRowView: View {
                 
                 Spacer()
                 
-                TextField("Rewards", text: Binding(
-                    get: {
-                        String(category.reward)
-                    },
-                    set: { newValue in
-                        if let newRewardValue = Int(newValue) {
-                            updateRewardValue(for: category, with: newRewardValue)
-                        }
+//                TextField("Rewards", text: Binding(
+//                    get: {
+//                        String(category.reward)
+//                    },
+//                    set: { newReward in
+//                        updateRewardValue(for: category, with: newReward)
+//                    }
+//                ))
+                TextField("Rewards", text: $newReward)
+                    .keyboardType(.decimalPad)
+                    .padding(.leading)
+                    .textFieldStyle(.roundedBorder)
+                    .onChange(of: newReward) {
+                        updateRewardValue(for: category, with: newReward)
                     }
-                ))
-                .keyboardType(.numberPad)
-                .padding(.leading)
-                .textFieldStyle(.roundedBorder)
                 Text("%")
             }
             
@@ -81,37 +85,44 @@ struct RewardRowView: View {
         }
     }
     
-    private func updateRewardValue(for category: CreditCard.cardID_rewards, with newRewardValue: Int) {
-        // Update the reward value in the card's categories
-        self.category.reward = newRewardValue
-        
-        // Find the matching category and reward in the global categories list
-        if let categoryIndex = categories.firstIndex(where: { $0.name == category.categoryName }) {
+    private func updateRewardValue(for category: CreditCard.cardID_rewards, with newReward: String) {
+        if newReward.isEmpty {
+            self.category.reward = 0
             
-            if let rewardIndex = categories[categoryIndex].cardRewards.firstIndex(where: { $0.id == category.id }) {
+            if let categoryIndex = categories.firstIndex(where: { $0.name == category.categoryName }) {
                 
-                categories[categoryIndex].cardRewards[rewardIndex].reward = newRewardValue
+                if let rewardIndex = categories[categoryIndex].cardRewards.firstIndex(where: { $0.id == category.id }) {
+                    categories[categoryIndex].cardRewards[rewardIndex].reward = 0
+                    
+                    categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
+                }
+            }
+        }
+        if let newRewardValue = Double(newReward) {
+            self.category.reward = newRewardValue
+
+            if let categoryIndex = categories.firstIndex(where: { $0.name == category.categoryName }) {
                 
-                categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
+                if let rewardIndex = categories[categoryIndex].cardRewards.firstIndex(where: { $0.id == category.id }) {
+                    categories[categoryIndex].cardRewards[rewardIndex].reward = newRewardValue
+                    
+                    categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
+                }
             }
         }
     }
     
     private func updateCategoryName(newCategoryName: String) {
-        // Remove the reward from the old category
         if let oldCategoryIndex = categories.firstIndex(where: { $0.name == category.categoryName }) {
             if let oldRewardIndex = categories[oldCategoryIndex].cardRewards.firstIndex(where: { $0.id == category.id }) {
                 categories[oldCategoryIndex].cardRewards.remove(at: oldRewardIndex)
             }
         }
         
-        // Update the global categories list to reflect this change
         if let newCategoryIndex = categories.firstIndex(where: { $0.name == newCategoryName }) {
-            // If reward exists in the new category, update it, otherwise add it
             if let rewardIndex = categories[newCategoryIndex].cardRewards.firstIndex(where: { $0.id == category.id }) {
                 categories[newCategoryIndex].cardRewards[rewardIndex].categoryName = newCategoryName
             } else {
-                // Create a new reward in the new category
                 let newReward = CreditCard.cardID_rewards(
                     id: category.id,
                     cardID: category.cardID,
@@ -124,12 +135,10 @@ struct RewardRowView: View {
             categories[newCategoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
         }
         
-        // Update the category in the card's local categories
         if let cardCategoryIndex = card.categories.firstIndex(where: { $0.id == category.id }) {
             card.categories[cardCategoryIndex].categoryName = newCategoryName
         }
         
-        // Update the binding category to reflect the new name
         category.categoryName = newCategoryName
     }
 }
