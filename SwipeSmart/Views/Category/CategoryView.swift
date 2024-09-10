@@ -48,7 +48,7 @@ struct CategoryView: View {
                                         .fill(.white)
                                         .frame(width: 45, height: 45)
                                         .overlay(
-                                            Text("\(category.cardRewards[0].reward)%")
+                                            Text(category.cardRewards[0].reward == floor(category.cardRewards[0].reward) ? "\(Int(category.cardRewards[0].reward))%" : String(format: "%.1f%%", category.cardRewards[0].reward))
                                                 .foregroundStyle(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                                 .font(.headline)
                                         )
@@ -73,7 +73,7 @@ struct CategoryView: View {
                                         .fill(.white)
                                         .frame(width: 45, height: 45)
                                         .overlay(
-                                            Text("\(category.cardRewards[0].reward)%")
+                                            Text(category.cardRewards[0].reward == floor(category.cardRewards[0].reward) ? "\(Int(category.cardRewards[0].reward))%" : String(format: "%.1f%%", category.cardRewards[0].reward))
                                                 .foregroundStyle(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                                 .font(.headline)
                                         )

@@ -55,7 +55,7 @@ struct DetailView: View {
                         HStack {
                             Text("\(category.categoryName)")
                             Spacer()
-                            Text("\(category.reward) %")
+                            Text(category.reward == floor(category.reward) ? "\(Int(category.reward))%" : String(format: "%.1f%%", category.reward))
                         }
                         if let startDate = category.startDate {
                             HStack {
