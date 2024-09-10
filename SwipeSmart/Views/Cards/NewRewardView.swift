@@ -106,11 +106,6 @@ struct NewRewardView: View {
                     categories[categoryIndex].cardRewards.append(newCategoryReward)
                 }
                 categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
-            } else {
-                // New category
-                card.categories.append(newCategoryReward)
-                let newCategory = Category(name: selectedCategoryName, cardRewards: [newCategoryReward])
-                categories.append(newCategory)
             }
             
             // Reset fields
