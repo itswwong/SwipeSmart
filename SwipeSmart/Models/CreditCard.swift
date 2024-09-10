@@ -141,7 +141,7 @@ extension CreditCard {
     static let sampleCardRewardsGroceries: [cardID_rewards] =
     [
         cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3, startDate: Date.now, expirationDate: Date.now, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", reward: 2, expired: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", reward: 3, expired: false),
         cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Groceries", reward: 1, expired: false)
     ]
     
