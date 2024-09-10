@@ -44,6 +44,7 @@ struct CategorySelectorView: View {
                     }
                     .onMove(perform: moveCategory)
                     .onDelete(perform: confirmDeleteCategory)
+                    .toolbar(.hidden, for: .tabBar)
                     
                     Button(action: {
                         showingAddCategoryAlert = true
@@ -78,6 +79,7 @@ struct CategorySelectorView: View {
                             .listRowSeparator(.hidden)
                         }
                     }
+                    .toolbar(.visible, for: .tabBar)
                 }
             }
             .scrollContentBackground(.hidden)
