@@ -8,14 +8,20 @@ import SwiftUI
 
 enum Theme: String, CaseIterable, Identifiable, Codable, ShapeStyle {
     case pastelreddark
+    case pastelscarlet
     case pastelred
     case pastelorange
     case pastelyellow
+    case pastelgold
     case pastelgreenlight
     case pastelgreen
+    case pastelbabyblue
     case pastelblue
     case pastelbluedark
+    case pastelindigo
     case pastelpurple
+    case pastelpurpledark
+    case pasteltan
     case pastelbrown
     
     var mainColor: Color {
