@@ -62,6 +62,7 @@ struct NewRewardView: View {
                 }
                 .disabled(selectedCategoryName.isEmpty || newUserReward.isEmpty)
                 .buttonStyle(.borderless)
+                .tint(selectedCategoryName.isEmpty || newUserReward.isEmpty ? .gray : .blue)
                 Spacer()
             }
         }

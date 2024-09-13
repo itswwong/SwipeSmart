@@ -45,7 +45,7 @@ struct AddCategorySheet: View {
                         onAdd()
                         isPresented = false // Close the sheet
                     }
-                    .disabled(addCategoryEmpty || addCategoryExists)
+                    .disabled(addCategoryName.isEmpty || addCategoryExists)
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

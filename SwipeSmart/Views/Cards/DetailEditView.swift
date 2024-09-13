@@ -106,7 +106,7 @@ struct DetailEditView: View {
                 }
             }) {
                 Text("Add New Cash Back Reward")
-                    .foregroundStyle(addNewReward ? .gray : .primary)
+                    .foregroundStyle(addNewReward ? .gray : .blue)
             }
             .disabled(addNewReward)
             

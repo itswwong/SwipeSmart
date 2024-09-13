@@ -39,7 +39,7 @@ struct WalletView: View {
             }
             .toolbar {
                 ToolbarItem (placement: .topBarLeading) {
-                    Text("Wallet")
+                    Text("Credit Cards")
                         .font(.largeTitle .weight(.bold))
                 }
                 ToolbarItem (placement: .topBarTrailing) {

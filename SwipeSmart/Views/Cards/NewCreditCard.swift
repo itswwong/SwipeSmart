@@ -27,6 +27,7 @@ struct NewCreditCard: View {
                         Button("Cancel") {
                             isPresentingNewCardView = false
                         }
+                        .tint(.blue)
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Add") {
@@ -36,6 +37,7 @@ struct NewCreditCard: View {
                             cards.append(newCard)
                         }
                         .disabled(newCard.bankName.isEmpty || newCard.cardType.isEmpty || newCard.digits.isEmpty || duplicateError)
+                        .tint(newCard.bankName.isEmpty || newCard.cardType.isEmpty || newCard.digits.isEmpty || duplicateError ? .gray : .blue)
                     }
                 }
         }

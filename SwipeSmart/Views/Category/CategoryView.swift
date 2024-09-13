@@ -18,12 +18,12 @@ struct CategoryView: View {
             VStack(alignment: .leading) {
                 Spacer()
                 Text(category.name)
-                    .font(.title2.weight(.bold))
+                    .font(.title.weight(.bold))
                 
                 if topRewardCards.isEmpty || topReward == 0 {
                     Text("No active rewards in this category.")
                         .font(.subheadline)
-                        .padding(.top, 10)
+                        .padding(.top, 6)
                 }
                 else {
                     ForEach(topRewardCards) { card in
@@ -33,7 +33,7 @@ struct CategoryView: View {
                                     VStack(alignment: .leading) {
                                         Text(cards[index].bankName)
                                             .font(.title3.weight(.bold))
-                                            .padding(.top, 10)
+                                            .padding(.top, 6)
                                         if !cards[index].cardName.isEmpty {
                                             Text("\(cards[index].cardName) \(cards[index].digits)")
                                                 .padding(.top, 1)
@@ -60,7 +60,7 @@ struct CategoryView: View {
                                     VStack(alignment: .leading) {
                                         Text(cards[index].bankName)
                                             .font(.title3.weight(.bold))
-                                            .padding(.top, 10)
+                                            .padding(.top, 6)
                                         Text("\(cards[index].cardType) \(cards[index].digits)")
                                             .padding(.top, 1)
                                         if !cards[index].cardName.isEmpty {
