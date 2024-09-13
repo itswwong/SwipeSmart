@@ -1,5 +1,5 @@
 
-# **SwipeSmart**
+# **Swipe-Smart**
 An IOS app that manages credit card rewards and helps users select the best credit card to use for different kinds of purchases.
 
 ### Manage credit card rewards
