@@ -19,7 +19,7 @@ struct CategorySelectorView: View {
     @State private var editCategoryExists = false
     @State private var editCategoryEmpty = false
     @State private var addCategoryExists = false
-    @State private var addCategoryEmpty = true
+    @State private var addCategoryEmpty = false
     @State private var addCategoryName = ""
     @State private var showingAddCategoryAlert = false
     

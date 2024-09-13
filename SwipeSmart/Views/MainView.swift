@@ -22,7 +22,7 @@ struct MainView: View {
 
             WalletView(cards: $cards, categories: $categories, saveAction: saveAction)
                 .tabItem {
-                    Label("Wallet", systemImage: "wallet.pass.fill")
+                    Label("Credit Cards", systemImage: "wallet.pass.fill")
                 }
                 .tag(2)
         }

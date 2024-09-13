@@ -106,6 +106,7 @@ struct DetailView: View {
                             Button("Cancel") {
                                 isPresentingEditView = false
                             }
+                            .tint(.blue)
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
@@ -115,6 +116,7 @@ struct DetailView: View {
                                 card = editingCard
                             }
                             .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || editingCard.digits.isEmpty || duplicateError)
+                            .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || editingCard.digits.isEmpty || duplicateError ? .gray : .blue)
                         }
                     }
             }
