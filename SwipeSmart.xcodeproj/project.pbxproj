@@ -13,6 +13,7 @@
 		0A1427CF2C8A530200D48E47 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427CE2C8A530200D48E47 /* Theme.swift */; };
 		0A1427D12C8A542D00D48E47 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427D02C8A542D00D48E47 /* ColorView.swift */; };
 		0A1427D32C8A65DB00D48E47 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427D22C8A65DA00D48E47 /* ColorPickerView.swift */; };
+		0A58FF7F2C94EB6600A0295B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A58FF7E2C94EB6600A0295B /* Launch Screen.storyboard */; };
 		0A7DF8212C8D36330003F5F5 /* CategoryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF8202C8D36330003F5F5 /* CategoryEditView.swift */; };
 		0A7DF8232C8E7F130003F5F5 /* AddCategorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF8222C8E7F130003F5F5 /* AddCategorySheet.swift */; };
 		0AEBE5782C7FFA0B0051DE14 /* SwipeSmartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5772C7FFA0B0051DE14 /* SwipeSmartApp.swift */; };
@@ -43,6 +44,7 @@
 		0A1427CE2C8A530200D48E47 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		0A1427D02C8A542D00D48E47 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		0A1427D22C8A65DA00D48E47 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		0A58FF7E2C94EB6600A0295B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0A7DF8202C8D36330003F5F5 /* CategoryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditView.swift; sourceTree = "<group>"; };
 		0A7DF8222C8E7F130003F5F5 /* AddCategorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategorySheet.swift; sourceTree = "<group>"; };
 		0AEBE5742C7FFA0B0051DE14 /* SwipeSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 				0AEBE5852C7FFB740051DE14 /* Models */,
 				0AEBE57B2C7FFA0D0051DE14 /* Assets.xcassets */,
 				0AEBE57D2C7FFA0D0051DE14 /* Preview Content */,
+				0A58FF7E2C94EB6600A0295B /* Launch Screen.storyboard */,
 			);
 			path = SwipeSmart;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A58FF7F2C94EB6600A0295B /* Launch Screen.storyboard in Resources */,
 				0AEBE57F2C7FFA0D0051DE14 /* Preview Assets.xcassets in Resources */,
 				0AEBE57C2C7FFA0D0051DE14 /* Assets.xcassets in Resources */,
 			);
@@ -404,7 +408,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -436,7 +440,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
