@@ -19,4 +19,5 @@ User data is solely used to support the app's functionality, including managing 
 # **Contact Information**
 
 If you have any questions, suggestions, or feedback about Swipe-Smart, feel free to reach out at:
+
 Email: swipesmartapp@gmail.com
