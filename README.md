@@ -15,3 +15,8 @@ The Swipe-Smart iOS app does not collect, store, track, or transmit any personal
 All data within the app is manually entered by the user and stored locally on the user’s device. Swipe-Smart has no access to this data and does not share it with any third parties.
 
 User data is solely used to support the app's functionality, including managing and displaying credit card rewards, as well as organizing categories and preferences.
+
+# **Contact Information**
+
+If you have any questions, suggestions, or feedback about Swipe-Smart, feel free to reach out at:
+Email: swipesmartapp@gmail.com
