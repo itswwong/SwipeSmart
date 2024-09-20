@@ -36,8 +36,8 @@ struct NewCreditCard: View {
                             categories = editingCategories
                             cards.append(newCard)
                         }
-                        .disabled(newCard.bankName.isEmpty || newCard.cardType.isEmpty || newCard.digits.isEmpty || duplicateError)
-                        .tint(newCard.bankName.isEmpty || newCard.cardType.isEmpty || newCard.digits.isEmpty || duplicateError ? .gray : .blue)
+                        .disabled(newCard.bankName.isEmpty || newCard.cardType.isEmpty || duplicateError)
+                        .tint(newCard.bankName.isEmpty || newCard.cardType.isEmpty || duplicateError ? .gray : .blue)
                     }
                 }
         }

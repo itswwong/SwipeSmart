@@ -64,10 +64,13 @@ struct DetailEditView: View {
                 }
                 
                 LabeledContent {
-                    TextField("", text: $card.digits)
+                    TextField(text: $card.digits, label: {
+                        Text("optional")
+                            .multilineTextAlignment(.trailing)
+                    })
                         .keyboardType(.numberPad)
                         .onReceive(Just($card.digits)) { _ in
-                            limitText(4)
+                            limitText()
                             validateUniqueDigits()
                         }
                         .multilineTextAlignment(.trailing)
@@ -139,10 +142,15 @@ struct DetailEditView: View {
     }
 
     private func validateUniqueDigits() {
-        // Check for duplicate digits within the same bank
-        let hasDuplicate = cards.contains(where: { $0.bankName == card.bankName && $0.cardType == card.cardType && $0.digits == card.digits && $0.id != card.id })
-
-        duplicateError = hasDuplicate
+        if card.digits.isEmpty {
+            duplicateError = false
+        }
+        else {
+            // Check for duplicate digits within the same bank
+            let hasDuplicate = cards.contains(where: { $0.bankName == card.bankName && $0.cardType == card.cardType && $0.digits == card.digits && $0.id != card.id })
+            
+            duplicateError = hasDuplicate
+        }
     }
 
     private func removeReward(at indices: IndexSet) {
@@ -155,9 +163,9 @@ struct DetailEditView: View {
         card.categories.remove(atOffsets: indices)
     }
     
-    private func limitText(_ upper: Int) {
-        if card.digits.count > upper {
-            card.digits = String(card.digits.prefix(upper))
+    private func limitText() {
+        if card.digits.count > 4 {
+            card.digits = String(card.digits.prefix(4))
         }
     }
 }

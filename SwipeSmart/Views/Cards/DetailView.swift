@@ -115,8 +115,8 @@ struct DetailView: View {
                                 categories = editingCategories
                                 card = editingCard
                             }
-                            .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || editingCard.digits.isEmpty || duplicateError)
-                            .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || editingCard.digits.isEmpty || duplicateError ? .gray : .blue)
+                            .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
+                            .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .blue)
                         }
                     }
             }
