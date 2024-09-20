@@ -13,7 +13,7 @@ struct CategoryView: View {
     var body: some View {
         HStack {
             let topReward = category.cardRewards.first?.reward ?? 0
-            let topRewardCards = category.cardRewards.filter { $0.reward == topReward && $0.expired != true }
+            let topRewardCards = category.cardRewards.filter { $0.reward == topReward && $0.expired == false && $0.future == false }
             
             VStack(alignment: .leading) {
                 Spacer()

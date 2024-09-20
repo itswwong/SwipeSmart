@@ -30,10 +30,10 @@ struct AddCategorySheet: View {
 
                 if addCategoryEmpty {
                     Text("Please enter a category name.")
-                        .foregroundColor(.red)
+                        .foregroundStyle(.red)
                 } else if addCategoryExists {
                     Text("Category already exists.")
-                        .foregroundColor(.red)
+                        .foregroundStyle(.red)
                 }
                 
                 Spacer()

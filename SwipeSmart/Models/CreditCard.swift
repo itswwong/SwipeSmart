@@ -35,8 +35,9 @@ extension CreditCard {
         var startDate: Date?
         var expirationDate: Date?
         var expired: Bool
+        var future: Bool
         
-        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Double, startDate: Date?, expirationDate: Date?, expired: Bool) {
+        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Double, startDate: Date?, expirationDate: Date?, expired: Bool, future: Bool) {
             self.id = id
             self.cardID = cardID
             self.categoryName = categoryName
@@ -44,14 +45,16 @@ extension CreditCard {
             self.startDate = startDate
             self.expirationDate = expirationDate
             self.expired = expired
+            self.future = future
         }
         
-        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Double, expired: Bool) {
+        init(id: UUID = UUID(), cardID: UUID, categoryName: String, reward: Double, expired: Bool, future: Bool) {
             self.id = id
             self.cardID = cardID
             self.categoryName = categoryName
             self.reward = reward
             self.expired = expired
+            self.future = future
         }
         
         public mutating func updateDate(startDate: Date?, expirationDate: Date?, categories: inout [Category]) {
@@ -61,10 +64,17 @@ extension CreditCard {
             
             // Update the expired status
             let currentDate = Date()
+            
             if let date = expirationDate {
                 self.expired = date < currentDate
             } else {
                 self.expired = false
+            }
+            
+            if let date = startDate {
+                self.future = date > currentDate
+            } else {
+                self.future = false
             }
             
             // Update the corresponding values in the global categories list
@@ -73,6 +83,7 @@ extension CreditCard {
                     categories[categoryIndex].cardRewards[rewardIndex].startDate = startDate
                     categories[categoryIndex].cardRewards[rewardIndex].expirationDate = expirationDate
                     categories[categoryIndex].cardRewards[rewardIndex].expired = self.expired
+                    categories[categoryIndex].cardRewards[rewardIndex].future = self.future
                     
                     categories[categoryIndex].cardRewards.sort(by: sortbyExpirationAndReward)
                 }
@@ -88,16 +99,29 @@ extension CreditCard {
 let cardTypeList = ["Visa", "Mastercard", "Discover", "American Express", "Other"]
 
 func sortbyExpirationAndReward(this: CreditCard.cardID_rewards, that: CreditCard.cardID_rewards) -> Bool {
-    // If 'this' has expired and 'that' hasn't, move 'this' to the end
-    if this.expired && !that.expired {
-        return false
-    }
+    // Active -> future -> expired
     
-    // If 'that' has expired and 'this' hasn't, move 'that' to the end
-    if that.expired && !this.expired {
+    // If 'this' is active, 'that' is future or expired
+    if !this.expired && !this.future && (that.future || that.expired) {
         return true
     }
     
+    // If 'that' is active, 'this' is future or expired
+    if !that.expired && !that.future && (this.future || this.expired) {
+        return false
+    }
+    
+    // If 'this' is future, 'that' is expired
+    if this.future && that.expired {
+        return true
+    }
+    
+    // If 'that' is future, 'this' is expired
+    if that.future && this.expired {
+        return false
+    }
+    
+    // If both are in the same status group (active, future, or expired), sort by reward value
     return this.reward > that.reward
 }
 
@@ -119,42 +143,42 @@ extension CreditCard {
     
     static let sampleCategoryRewards0: [cardID_rewards] =
     [
-        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3.5, startDate: Date.now, expirationDate: Date.now, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", reward: 3,  startDate: Date.now, expirationDate: Date.now, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", reward: 1, startDate: Date.now, expirationDate: Date.now, expired: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3.5, startDate: Date.now, expirationDate: Date.now, expired: false, future: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", reward: 3,  startDate: Date.now, expirationDate: Date.now, expired: false, future: true),
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", reward: 1, startDate: Date.now, expirationDate: Date.now, expired: false, future: false),
     ]
     
     static let sampleCategoryRewards1: [cardID_rewards] =
     [
-        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", reward: 2, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Dining", reward: 1, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Gas", reward: 2, expired: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", reward: 2, expired: false, future: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Dining", reward: 1, expired: false, future: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Gas", reward: 2, expired: false, future: false),
     ]
     
     static let sampleCategoryRewards2: [cardID_rewards] =
     [
-        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Groceries", reward: 1, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Gas", reward: 3, expired: false)
+        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Groceries", reward: 1, expired: false, future: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Gas", reward: 3, expired: false, future: false)
     ]
     
     // In category
     static let sampleCardRewardsGroceries: [cardID_rewards] =
     [
-        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3, startDate: Date.now, expirationDate: Date.now, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", reward: 3, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Groceries", reward: 1, expired: false)
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Groceries", reward: 3, startDate: Date.now, expirationDate: Date.now, expired: false, future: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Groceries", reward: 3, expired: false, future: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Groceries", reward: 1, expired: false, future: false)
     ]
     
     static let sampleCardRewardsDining: [cardID_rewards] =
     [
-        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", reward: 3,  startDate: Date.now, expirationDate: Date.now, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Dining", reward: 1, expired: false)
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Dining", reward: 3,  startDate: Date.now, expirationDate: Date.now, expired: false, future: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Dining", reward: 1, expired: false, future: false)
     ]
     
     static let sampleCardRewardsGas: [cardID_rewards] =
     [
-        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", reward: 1,  startDate: Date.now, expirationDate: Date.now, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Gas", reward: 2, expired: false),
-        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Gas", reward: 3, expired: false)
+        cardID_rewards(cardID: CreditCard.sampleCards[0].id, categoryName: "Gas", reward: 1,  startDate: Date.now, expirationDate: Date.now, expired: false, future: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[1].id, categoryName: "Gas", reward: 2, expired: false, future: false),
+        cardID_rewards(cardID: CreditCard.sampleCards[2].id, categoryName: "Gas", reward: 3, expired: false, future: false)
     ]
 }

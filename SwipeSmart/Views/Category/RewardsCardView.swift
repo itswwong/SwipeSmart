@@ -9,8 +9,10 @@ import SwiftUI
 struct RewardsCardView: View {
     let card: CreditCard
     let reward: Double
+    let startDate: Date?
     let expirationDate: Date?
     let expired: Bool
+    let future: Bool
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,6 +28,21 @@ struct RewardsCardView: View {
                         .padding(.bottom, 2)
                     if expired {
                         Text("Expired")
+                    }
+                    else if future {
+                        if let date = startDate {
+                            HStack {
+                                Text("Starts:")
+                                    .font(.headline)
+                                Text(date, format: Date.FormatStyle()
+                                    .month(.twoDigits)
+                                    .day(.twoDigits)
+                                    .year(.defaultDigits))
+                            }
+                        }
+                        else {
+                            Text("Cannot find start date.")
+                        }
                     }
                     else {
                         if let date = expirationDate {
@@ -49,7 +66,7 @@ struct RewardsCardView: View {
                     .frame(width: 50, height: 50)
                     .overlay(
                         Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
-                            .foregroundStyle(expired ? .pastelgraydark : card.theme.mainColor)
+                            .foregroundStyle(expired || future ? .pastelgraydark : card.theme.mainColor)
                             .font(.headline)
                     )
             }
@@ -60,7 +77,7 @@ struct RewardsCardView: View {
 
 struct RewardsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RewardsCardView(card: CreditCard.sampleCards[0], reward: 15, expirationDate: Date(), expired: false)
+        RewardsCardView(card: CreditCard.sampleCards[0], reward: 15, startDate: Date(), expirationDate: Date(), expired: false, future: false)
             .previewLayout(.sizeThatFits)
     }
 }

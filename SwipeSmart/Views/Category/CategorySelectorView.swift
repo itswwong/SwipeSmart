@@ -158,7 +158,7 @@ struct CategorySelectorView: View {
         }
 
         if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-            return category.cardRewards[0].expired ? .pastelgraydark : cards[index].theme.mainColor
+            return category.cardRewards[0].expired || category.cardRewards[0].future ? .pastelgraydark : cards[index].theme.mainColor
         }
         
         return .pastelgray
@@ -170,7 +170,7 @@ struct addButton: ButtonStyle {
         configuration.label
             .padding()
             .background(.pastelgraydark)
-            .foregroundColor(.white)
+            .foregroundStyle(.white)
             .cornerRadius(15)
             .opacity(configuration.isPressed ? 0.75 : 1)
     }
