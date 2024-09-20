@@ -35,12 +35,27 @@ struct CategoryView: View {
                                             .font(.title3.weight(.bold))
                                             .padding(.top, 6)
                                         if !cards[index].cardName.isEmpty {
-                                            Text("\(cards[index].cardName) \(cards[index].digits)")
-                                                .padding(.top, 1)
+                                            HStack {
+                                                Text("\(cards[index].cardName) ")
+                                                
+                                                if cards[index].digits.isEmpty {
+                                                    Text("****")
+                                                }
+                                                else {
+                                                    Text(cards[index].digits)
+                                                }
+                                            }
+                                            .padding(.top, 1)
                                         }
                                         else {
-                                            Text(cards[index].digits)
-                                                .padding(.top, 1)
+                                            if cards[index].digits.isEmpty {
+                                                Text("****")
+                                                    .padding(.top, 1)
+                                            }
+                                            else {
+                                                Text(cards[index].digits)
+                                                    .padding(.top, 1)
+                                            }
                                         }
                                     }
                                     Spacer()
@@ -64,8 +79,27 @@ struct CategoryView: View {
                                         Text("\(cards[index].cardType) \(cards[index].digits)")
                                             .padding(.top, 1)
                                         if !cards[index].cardName.isEmpty {
-                                            Text(cards[index].cardName)
-                                                .padding(.top, 1)
+                                            HStack {
+                                                Text("\(cards[index].cardName) ")
+                                                
+                                                if cards[index].digits.isEmpty {
+                                                    Text("****")
+                                                }
+                                                else {
+                                                    Text(cards[index].digits)
+                                                }
+                                            }
+                                            .padding(.top, 1)
+                                        }
+                                        else {
+                                            if cards[index].digits.isEmpty {
+                                                Text("****")
+                                                    .padding(.top, 1)
+                                            }
+                                            else {
+                                                Text(cards[index].digits)
+                                                    .padding(.top, 1)
+                                            }
                                         }
                                     }
                                     Spacer()

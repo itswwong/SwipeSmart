@@ -32,7 +32,14 @@ struct CardView: View {
                 .frame(width: 30, height: 20)
                 .padding(.bottom, 5)
                 .foregroundStyle(.pastelgraylight)
-            Text("**** **** **** \(card.digits)")
+            HStack {
+                if card.digits.isEmpty {
+                    Text("**** **** **** ****")
+                }
+                else {
+                    Text("**** **** **** \(card.digits)")
+                }
+            }
         }
         .padding()
     }

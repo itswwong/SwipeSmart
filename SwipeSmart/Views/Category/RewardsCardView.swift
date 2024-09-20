@@ -24,8 +24,15 @@ struct RewardsCardView: View {
                     Text(card.cardName.isEmpty ? card.cardType : card.cardName)
                         .font(.headline)
                         .padding(.bottom, 15)
-                    Text("**** **** **** \(card.digits)")
-                        .padding(.bottom, 2)
+                    HStack {
+                        if card.digits.isEmpty {
+                            Text("**** **** **** ****")
+                        }
+                        else {
+                            Text("**** **** **** \(card.digits)")
+                        }
+                    }
+                    .padding(.bottom, 2)
                     if expired {
                         Text("Expired")
                     }
