@@ -15,12 +15,12 @@ struct RewardsView: View {
             List {
                 ForEach(category.cardRewards) { cardID_reward in
                     if let index = cards.firstIndex(where: { $0.id == cardID_reward.cardID }) {
-                            RewardsCardView(card: cards[index], reward: cardID_reward.reward, expirationDate: cardID_reward.expirationDate, expired: cardID_reward.expired)
+                        RewardsCardView(card: cards[index], reward: cardID_reward.reward, startDate: cardID_reward.startDate, expirationDate: cardID_reward.expirationDate, expired: cardID_reward.expired, future: cardID_reward.future)
                             .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
                             .listRowBackground(
                                 RoundedRectangle(cornerRadius: 15)
                                     .background(.clear)
-                                    .foregroundStyle(cardID_reward.expired ? .pastelgraydark : cards[index].theme.mainColor)
+                                    .foregroundStyle(cardID_reward.expired || cardID_reward.future ? .pastelgraydark : cards[index].theme.mainColor)
                                     .padding(
                                         EdgeInsets(
                                             top: 5,

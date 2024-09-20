@@ -120,7 +120,8 @@ struct RewardRowView: View {
                     cardID: category.cardID,
                     categoryName: newCategoryName,
                     reward: category.reward,
-                    expired: category.expired
+                    expired: category.expired,
+                    future: category.future
                 )
                 categories[newCategoryIndex].cardRewards.append(newReward)
             }

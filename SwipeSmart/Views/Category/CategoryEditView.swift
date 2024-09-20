@@ -42,13 +42,13 @@ struct CategoryEditView: View {
                 
                 if newCategoryName.isEmpty {
                     Text("Please enter a category name.")
-                        .foregroundColor(.red)
+                        .foregroundStyle(.red)
                         .font(.footnote)
                 } else if (categories.contains {
                     $0.name.lowercased() == newCategoryName.lowercased() && $0.id != category.id
                 }) {
                     Text("Category already exists.")
-                        .foregroundColor(.red)
+                        .foregroundStyle(.red)
                         .font(.footnote)
                 }
                 Spacer()
