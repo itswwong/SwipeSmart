@@ -32,12 +32,20 @@ struct SwipeSmartApp: App {
                     try await storeCategories.load()
                 } catch {
                     errorWrapper = ErrorWrapper(error: error,
-                                                guidance: "cardApp will load sample data and continue.")
+                                                guidance: "Swipe-Smart will load empty data and continue.")
                 }
             }
             .sheet(item: $errorWrapper) {
-                storeCards.cards = CreditCard.testCards
-                storeCategories.categories = Category.sampleCategories
+                storeCards.cards = []
+                storeCategories.categories = [
+                    Category(name: "Travel", cardRewards: []),
+                    Category(name: "Dining", cardRewards: []),
+                    Category(name: "Groceries", cardRewards: []),
+                    Category(name: "Gas", cardRewards: []),
+                    Category(name: "Entertainment", cardRewards: []),
+                    Category(name: "Shopping", cardRewards: []),
+                    Category(name: "Everything Else", cardRewards: [])
+                ]
             } content: { wrapper in
                 ErrorView(errorWrapper: wrapper)
             }
