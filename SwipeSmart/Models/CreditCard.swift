@@ -89,6 +89,22 @@ extension CreditCard {
                 }
             }
         }
+        
+        public mutating func updateFlags() {
+            let currentDate = Date()
+            
+            if let expiration = expirationDate {
+                self.expired = expiration < currentDate
+            } else {
+                self.expired = false
+            }
+
+            if let start = startDate {
+                self.future = start > currentDate
+            } else {
+                self.future = false
+            }
+        }
     }
     
     static var emptyCard: CreditCard {
