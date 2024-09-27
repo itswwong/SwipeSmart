@@ -4,12 +4,6 @@
 //  Defines CreditCard and Category view interface.
 //
 
-//
-//  MainView.swift
-//
-//  Defines CreditCard and Category view interface.
-//
-
 import SwiftUI
 
 struct MainView: View {
