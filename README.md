@@ -1,5 +1,5 @@
 
-# [**Swipe-Smart**](https://apps.apple.com/us/app/swipe-smart/id6680188654)
+# <a href="https://apps.apple.com/us/app/swipe-smart/id6680188654" target="_blank">**Swipe-Smart**</a>
 An IOS app that manages credit card cash back rewards and helps users select the best credit card to use for different kinds of purchases. Fully released on the Apple App Store.
 
 ### Manage credit card rewards
