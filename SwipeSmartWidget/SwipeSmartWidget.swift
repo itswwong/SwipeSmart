@@ -45,13 +45,20 @@ struct SwipeSmartWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+        ZStack {
+            ContainerRelativeShape().fill(.yellow.gradient)
+            VStack {
+                Text("Time:")
+                Text(entry.date, style: .time)
+                Text("Name:")
+                Text(entry.configuration.name)
+                Text("Favorite Club:")
+                Text(entry.configuration.club)
+                Text("Favorite Emoji:")
+                Text(entry.configuration.favoriteEmoji)
+            }
         }
+        
     }
 }
 

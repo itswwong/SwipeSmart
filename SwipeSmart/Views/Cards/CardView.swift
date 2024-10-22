@@ -31,7 +31,7 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: 7)
                 .frame(width: 30, height: 20)
                 .padding(.bottom, 5)
-                .foregroundStyle(.pastelgraylight)
+                .foregroundStyle(Color("pastelgraylight"))
             HStack {
                 if card.digits.isEmpty {
                     Text("**** **** **** ****")
