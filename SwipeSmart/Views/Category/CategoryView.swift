@@ -139,7 +139,7 @@ struct CategoryView: View {
             }
         }
         
-        return .pastelgraydark
+        return Color("pastelgraydark")
     }
 }
 

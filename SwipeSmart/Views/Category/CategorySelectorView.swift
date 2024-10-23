@@ -154,14 +154,14 @@ struct CategorySelectorView: View {
     
     private func foregroundColor(category: Category) -> Color {
         if category.cardRewards.isEmpty {
-            return .pastelgray
+            return Color("pastelgray")
         }
 
         if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-            return category.cardRewards[0].expired || category.cardRewards[0].future ? .pastelgraydark : cards[index].theme.mainColor
+            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydark") : cards[index].theme.mainColor
         }
         
-        return .pastelgray
+        return Color("pastelgray")
     }
 }
 
@@ -169,7 +169,7 @@ struct addButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(.pastelgraydark)
+            .background(Color("pastelgraydark"))
             .foregroundStyle(.white)
             .cornerRadius(15)
             .opacity(configuration.isPressed ? 0.75 : 1)
