@@ -1,0 +1,32 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidgetLiveActivity.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Hello %@"
+      },
+      {
+        "comment": "",
+        "key": "Leading"
+      },
+      {
+        "comment": "",
+        "key": "Trailing"
+      },
+      {
+        "comment": "",
+        "key": "Bottom %@"
+      },
+      {
+        "comment": "",
+        "key": "L"
+      },
+      {
+        "comment": "",
+        "key": "T %@"
+      }
+    ]
+  },
+  "version": 1
+}

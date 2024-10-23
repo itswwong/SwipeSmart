@@ -1,0 +1,32 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/AddCategorySheet.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Add New Category"
+      },
+      {
+        "comment": "",
+        "key": "Please enter a category name."
+      },
+      {
+        "comment": "",
+        "key": "Category already exists."
+      },
+      {
+        "comment": "",
+        "key": "Category Name"
+      },
+      {
+        "comment": "",
+        "key": "Add"
+      },
+      {
+        "comment": "",
+        "key": "Cancel"
+      }
+    ]
+  },
+  "version": 1
+}

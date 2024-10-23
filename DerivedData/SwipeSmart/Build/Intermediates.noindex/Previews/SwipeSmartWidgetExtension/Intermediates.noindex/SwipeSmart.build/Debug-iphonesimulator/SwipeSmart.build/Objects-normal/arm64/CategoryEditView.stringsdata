@@ -1,0 +1,20 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategoryEditView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Please enter a category name."
+      },
+      {
+        "comment": "",
+        "key": "Category already exists."
+      },
+      {
+        "comment": "",
+        "key": "Category Name"
+      }
+    ]
+  },
+  "version": 1
+}

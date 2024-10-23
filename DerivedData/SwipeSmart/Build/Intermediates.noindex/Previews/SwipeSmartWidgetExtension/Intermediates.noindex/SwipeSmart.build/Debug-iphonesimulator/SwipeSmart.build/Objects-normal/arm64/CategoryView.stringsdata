@@ -1,0 +1,24 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategoryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "No active rewards in this category."
+      },
+      {
+        "comment": "",
+        "key": "****"
+      },
+      {
+        "comment": "",
+        "key": "%@ "
+      },
+      {
+        "comment": "",
+        "key": "%@ %@"
+      }
+    ]
+  },
+  "version": 1
+}

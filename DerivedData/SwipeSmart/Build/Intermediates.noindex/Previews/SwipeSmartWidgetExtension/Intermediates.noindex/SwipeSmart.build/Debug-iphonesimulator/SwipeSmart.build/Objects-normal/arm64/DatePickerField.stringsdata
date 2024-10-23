@@ -1,0 +1,20 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/DatePickerField.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Expiration Date?"
+      },
+      {
+        "comment": "",
+        "key": "Start Date:"
+      },
+      {
+        "comment": "",
+        "key": "Expiration Date:"
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,21 @@
+{
+  "" : {
+    "dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphoneos/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetExtension-master.d",
+    "diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphoneos/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetExtension-master.dia",
+    "emit-module-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphoneos/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetExtension-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphoneos/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetExtension-master-emit-module.dia",
+    "swift-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphoneos/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetExtension-master.swiftdeps"
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphoneos/SwipeSmartWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidget.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidgetBundle.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidgetLiveActivity.swift" : {
+
+  }
+}

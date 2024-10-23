@@ -1,0 +1,64 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/DetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Card Info"
+      },
+      {
+        "comment": "",
+        "key": "Cash Back Rewards"
+      },
+      {
+        "comment": "",
+        "key": "Bank Name"
+      },
+      {
+        "comment": "",
+        "key": "Card Type"
+      },
+      {
+        "comment": "",
+        "key": "Card Name"
+      },
+      {
+        "comment": "",
+        "key": "Last 4 Digits"
+      },
+      {
+        "comment": "",
+        "key": "Background Color"
+      },
+      {
+        "comment": "",
+        "key": "%@"
+      },
+      {
+        "comment": "",
+        "key": "Start Date"
+      },
+      {
+        "comment": "",
+        "key": "Expiration Date"
+      },
+      {
+        "comment": "",
+        "key": "None"
+      },
+      {
+        "comment": "",
+        "key": "Edit"
+      },
+      {
+        "comment": "",
+        "key": "Cancel"
+      },
+      {
+        "comment": "",
+        "key": "Done"
+      }
+    ]
+  },
+  "version": 1
+}
