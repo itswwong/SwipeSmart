@@ -35,7 +35,38 @@
 		0AEBE5B92C7FFBD10051DE14 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A42C7FFBD10051DE14 /* DetailView.swift */; };
 		0AEBE5BA2C7FFBD10051DE14 /* NewCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A52C7FFBD10051DE14 /* NewCreditCard.swift */; };
 		0AEBE5BB2C7FFBD10051DE14 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A62C7FFBD10051DE14 /* WalletView.swift */; };
+		B1B9FF762CC737C600574488 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B9FF752CC737C600574488 /* WidgetKit.framework */; };
+		B1B9FF782CC737C600574488 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B9FF772CC737C600574488 /* SwiftUI.framework */; };
+		B1B9FF7B2CC737C600574488 /* SwipeSmartWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9FF7A2CC737C600574488 /* SwipeSmartWidgetBundle.swift */; };
+		B1B9FF7D2CC737C600574488 /* SwipeSmartWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9FF7C2CC737C600574488 /* SwipeSmartWidgetLiveActivity.swift */; };
+		B1B9FF7F2CC737C600574488 /* SwipeSmartWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9FF7E2CC737C600574488 /* SwipeSmartWidget.swift */; };
+		B1B9FF812CC737C700574488 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B9FF802CC737C700574488 /* Assets.xcassets */; };
+		B1B9FF852CC737C700574488 /* SwipeSmartWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B1B9FF732CC737C600574488 /* SwipeSmartWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1B9FF832CC737C700574488 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AEBE56C2C7FFA0B0051DE14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1B9FF722CC737C600574488;
+			remoteInfo = SwipeSmartWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B1B9FF862CC737C700574488 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B1B9FF852CC737C700574488 /* SwipeSmartWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0A1427122C8516A300D48E47 /* DatePickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerField.swift; sourceTree = "<group>"; };
@@ -67,6 +98,14 @@
 		0AEBE5A42C7FFBD10051DE14 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		0AEBE5A52C7FFBD10051DE14 /* NewCreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCreditCard.swift; sourceTree = "<group>"; };
 		0AEBE5A62C7FFBD10051DE14 /* WalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		B1B9FF732CC737C600574488 /* SwipeSmartWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SwipeSmartWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B9FF752CC737C600574488 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B1B9FF772CC737C600574488 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B1B9FF7A2CC737C600574488 /* SwipeSmartWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSmartWidgetBundle.swift; sourceTree = "<group>"; };
+		B1B9FF7C2CC737C600574488 /* SwipeSmartWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSmartWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		B1B9FF7E2CC737C600574488 /* SwipeSmartWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSmartWidget.swift; sourceTree = "<group>"; };
+		B1B9FF802CC737C700574488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1B9FF822CC737C700574488 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +116,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B1B9FF702CC737C600574488 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B9FF782CC737C600574488 /* SwiftUI.framework in Frameworks */,
+				B1B9FF762CC737C600574488 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -84,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				0AEBE5762C7FFA0B0051DE14 /* SwipeSmart */,
+				B1B9FF792CC737C600574488 /* SwipeSmartWidget */,
+				B1B9FF742CC737C600574488 /* Frameworks */,
 				0AEBE5752C7FFA0B0051DE14 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEBE5742C7FFA0B0051DE14 /* SwipeSmart.app */,
+				B1B9FF732CC737C600574488 /* SwipeSmartWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,6 +222,27 @@
 			path = Cards;
 			sourceTree = "<group>";
 		};
+		B1B9FF742CC737C600574488 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1B9FF752CC737C600574488 /* WidgetKit.framework */,
+				B1B9FF772CC737C600574488 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1B9FF792CC737C600574488 /* SwipeSmartWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B1B9FF7A2CC737C600574488 /* SwipeSmartWidgetBundle.swift */,
+				B1B9FF7C2CC737C600574488 /* SwipeSmartWidgetLiveActivity.swift */,
+				B1B9FF7E2CC737C600574488 /* SwipeSmartWidget.swift */,
+				B1B9FF802CC737C700574488 /* Assets.xcassets */,
+				B1B9FF822CC737C700574488 /* Info.plist */,
+			);
+			path = SwipeSmartWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,15 +253,34 @@
 				0AEBE5702C7FFA0B0051DE14 /* Sources */,
 				0AEBE5712C7FFA0B0051DE14 /* Frameworks */,
 				0AEBE5722C7FFA0B0051DE14 /* Resources */,
+				B1B9FF862CC737C700574488 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B1B9FF842CC737C700574488 /* PBXTargetDependency */,
 			);
 			name = SwipeSmart;
 			productName = SwipeSmart;
 			productReference = 0AEBE5742C7FFA0B0051DE14 /* SwipeSmart.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B1B9FF722CC737C600574488 /* SwipeSmartWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1B9FF892CC737C700574488 /* Build configuration list for PBXNativeTarget "SwipeSmartWidgetExtension" */;
+			buildPhases = (
+				B1B9FF6F2CC737C600574488 /* Sources */,
+				B1B9FF702CC737C600574488 /* Frameworks */,
+				B1B9FF712CC737C600574488 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwipeSmartWidgetExtension;
+			productName = SwipeSmartWidgetExtension;
+			productReference = B1B9FF732CC737C600574488 /* SwipeSmartWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -198,11 +289,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					0AEBE5732C7FFA0B0051DE14 = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					B1B9FF722CC737C600574488 = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
@@ -220,6 +314,7 @@
 			projectRoot = "";
 			targets = (
 				0AEBE5732C7FFA0B0051DE14 /* SwipeSmart */,
+				B1B9FF722CC737C600574488 /* SwipeSmartWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -232,6 +327,14 @@
 				0A58FF7F2C94EB6600A0295B /* Launch Screen.storyboard in Resources */,
 				0AEBE57F2C7FFA0D0051DE14 /* Preview Assets.xcassets in Resources */,
 				0AEBE57C2C7FFA0D0051DE14 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B9FF712CC737C600574488 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B9FF812CC737C700574488 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +373,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B1B9FF6F2CC737C600574488 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B9FF7B2CC737C600574488 /* SwipeSmartWidgetBundle.swift in Sources */,
+				B1B9FF7F2CC737C600574488 /* SwipeSmartWidget.swift in Sources */,
+				B1B9FF7D2CC737C600574488 /* SwipeSmartWidgetLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1B9FF842CC737C700574488 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1B9FF722CC737C600574488 /* SwipeSmartWidgetExtension */;
+			targetProxy = B1B9FF832CC737C700574488 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0AEBE5802C7FFA0D0051DE14 /* Debug */ = {
@@ -395,12 +516,13 @@
 		0AEBE5832C7FFA0D0051DE14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"SwipeSmart/Preview Content\"";
-				DEVELOPMENT_TEAM = 2HM77Y3S7U;
+				DEVELOPMENT_TEAM = S6KAJJ4CV9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwipeSmart/Info.plist;
@@ -411,6 +533,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -427,12 +550,13 @@
 		0AEBE5842C7FFA0D0051DE14 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"SwipeSmart/Preview Content\"";
-				DEVELOPMENT_TEAM = 2HM77Y3S7U;
+				DEVELOPMENT_TEAM = S6KAJJ4CV9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwipeSmart/Info.plist;
@@ -443,6 +567,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,6 +575,62 @@
 				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwong.SwipeSmart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B1B9FF872CC737C700574488 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S6KAJJ4CV9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwipeSmartWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SwipeSmartWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwong.SwipeSmart.SwipeSmartWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1B9FF882CC737C700574488 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S6KAJJ4CV9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwipeSmartWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SwipeSmartWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamwong.SwipeSmart.SwipeSmartWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -473,6 +654,15 @@
 			buildConfigurations = (
 				0AEBE5832C7FFA0D0051DE14 /* Debug */,
 				0AEBE5842C7FFA0D0051DE14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1B9FF892CC737C700574488 /* Build configuration list for PBXNativeTarget "SwipeSmartWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B9FF872CC737C700574488 /* Debug */,
+				B1B9FF882CC737C700574488 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

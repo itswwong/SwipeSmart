@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>6EB96420-E184-4513-88DE-F50C45BDA89C</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>6EB96420-E184-4513-88DE-F50C45BDA89C.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>4</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SwipeSmart project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SwipeSmartWidgetExtension</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build SwipeSmartWidgetExtension</string>
+			<key>timeStartedRecording</key>
+			<real>751266499.29431605</real>
+			<key>timeStoppedRecording</key>
+			<real>751266500.27796805</real>
+			<key>title</key>
+			<string>Build SwipeSmartWidgetExtension</string>
+			<key>uniqueIdentifier</key>
+			<string>6EB96420-E184-4513-88DE-F50C45BDA89C</string>
+		</dict>
+		<key>884D0AD8-31A9-4CA7-AC0A-29BF127A88A6</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>884D0AD8-31A9-4CA7-AC0A-29BF127A88A6.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>4</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SwipeSmart project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SwipeSmartWidgetExtension</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build SwipeSmartWidgetExtension</string>
+			<key>timeStartedRecording</key>
+			<real>751266447.42958295</real>
+			<key>timeStoppedRecording</key>
+			<real>751266448.64802003</real>
+			<key>title</key>
+			<string>Build SwipeSmartWidgetExtension</string>
+			<key>uniqueIdentifier</key>
+			<string>884D0AD8-31A9-4CA7-AC0A-29BF127A88A6</string>
+		</dict>
+		<key>D28978AF-2C9F-49F1-8B4B-F79A8BF1DAD5</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D28978AF-2C9F-49F1-8B4B-F79A8BF1DAD5.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SwipeSmart project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SwipeSmartWidgetExtension</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build for Previews SwipeSmartWidgetExtension</string>
+			<key>timeStartedRecording</key>
+			<real>751342367.05532396</real>
+			<key>timeStoppedRecording</key>
+			<real>751342388.87556398</real>
+			<key>title</key>
+			<string>Build for Previews SwipeSmartWidgetExtension</string>
+			<key>uniqueIdentifier</key>
+			<string>D28978AF-2C9F-49F1-8B4B-F79A8BF1DAD5</string>
+		</dict>
+		<key>FD177C31-FC0D-48E1-877F-6627A7C3B34E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>FD177C31-FC0D-48E1-877F-6627A7C3B34E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>4</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SwipeSmart project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SwipeSmartWidgetExtension</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build SwipeSmartWidgetExtension</string>
+			<key>timeStartedRecording</key>
+			<real>751342230.62907004</real>
+			<key>timeStoppedRecording</key>
+			<real>751342231.07849002</real>
+			<key>title</key>
+			<string>Build SwipeSmartWidgetExtension</string>
+			<key>uniqueIdentifier</key>
+			<string>FD177C31-FC0D-48E1-877F-6627A7C3B34E</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

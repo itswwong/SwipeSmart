@@ -1,0 +1,16 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/ErrorView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "An error has occurred!"
+      },
+      {
+        "comment": "",
+        "key": "Dismiss"
+      }
+    ]
+  },
+  "version": 1
+}
