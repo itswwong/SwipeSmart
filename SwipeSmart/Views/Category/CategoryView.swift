@@ -1,9 +1,3 @@
-//
-//  CategoryView.swift
-//
-//  Displays individual category within CategorySelectorView.
-//
-
 import SwiftUI
 
 struct CategoryView: View {
@@ -28,12 +22,15 @@ struct CategoryView: View {
                 else {
                     ForEach(topRewardCards) { card in
                         if let index = cards.firstIndex(where: { $0.id == card.cardID }) {
-                            if cards[index].bankName == cards[index].cardType {
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(cards[index].bankName)
-                                            .font(.title3.weight(.bold))
-                                            .padding(.top, 6)
+                            let cardDisplayName = cards[index].bankName == cards[index].cardType
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(cards[index].bankName)
+                                        .font(.title3.weight(.bold))
+                                        .padding(.top, 6)
+                                    
+                                    // Only display card name and last 4 digits when bank name and card type are the same
+                                    if cardDisplayName {
                                         if !cards[index].cardName.isEmpty {
                                             HStack {
                                                 Text("\(cards[index].cardName) ")
@@ -57,62 +54,21 @@ struct CategoryView: View {
                                                     .padding(.top, 1)
                                             }
                                         }
-                                    }
-                                    Spacer()
-                                    Circle()
-                                        .fill(.white)
-                                        .frame(width: 50, height: 50)
-                                        .overlay(
-                                            Text(category.cardRewards[0].reward == floor(category.cardRewards[0].reward) ? "\(Int(category.cardRewards[0].reward))%" : String(format: "%.1f%%", category.cardRewards[0].reward))
-                                                .foregroundStyle(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
-                                                .font(.headline)
-                                        )
-                                        .padding()
-                                }
-                            }
-                            else {
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(cards[index].bankName)
-                                            .font(.title3.weight(.bold))
-                                            .padding(.top, 6)
+                                    } else {
                                         Text("\(cards[index].cardType) \(cards[index].digits)")
                                             .padding(.top, 1)
-                                        if !cards[index].cardName.isEmpty {
-                                            HStack {
-                                                Text("\(cards[index].cardName) ")
-                                                
-                                                if cards[index].digits.isEmpty {
-                                                    Text("****")
-                                                }
-                                                else {
-                                                    Text(cards[index].digits)
-                                                }
-                                            }
-                                            .padding(.top, 1)
-                                        }
-                                        else {
-                                            if cards[index].digits.isEmpty {
-                                                Text("****")
-                                                    .padding(.top, 1)
-                                            }
-                                            else {
-                                                Text(cards[index].digits)
-                                                    .padding(.top, 1)
-                                            }
-                                        }
                                     }
-                                    Spacer()
-                                    Circle()
-                                        .fill(.white)
-                                        .frame(width: 50, height: 50)
-                                        .overlay(
-                                            Text(category.cardRewards[0].reward == floor(category.cardRewards[0].reward) ? "\(Int(category.cardRewards[0].reward))%" : String(format: "%.1f%%", category.cardRewards[0].reward))
-                                                .foregroundStyle(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
-                                                .font(.headline)
-                                        )
-                                        .padding()
                                 }
+                                Spacer()
+                                Circle()
+                                    .fill(.white)
+                                    .frame(width: 50, height: 50)
+                                    .overlay(
+                                        Text(category.cardRewards[0].reward == floor(category.cardRewards[0].reward) ? "\(Int(category.cardRewards[0].reward))%" : String(format: "%.1f%%", category.cardRewards[0].reward))
+                                            .foregroundStyle(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
+                                            .font(.headline)
+                                    )
+                                    .padding()
                             }
                             if card != topRewardCards.last {
                                 customDivider()
