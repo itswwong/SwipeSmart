@@ -73,7 +73,7 @@ struct ExtendedWidgetEntryView : View {
                     }
                     .padding(.trailing, -25)
                 }
-                RoundedRectangle(cornerRadius: 7)
+                RoundedRectangle(cornerRadius:7)
                     .frame(width: 30, height: 20)
                     .padding(.bottom, 5)
                     .foregroundStyle(Color("pastelgraylight"))
@@ -100,14 +100,14 @@ struct ExtendedWidget: Widget {
                 ExtendedWidgetEntryView(entry: entry, card: CreditCard.sampleCards[0])
                     .containerBackground(.fill.tertiary, for: .widget)
             } else {
-                ExtendedWidgetEntryView(entry: entry,card: CreditCard.sampleCards[0])
+                ExtendedWidgetEntryView(entry: entry,card:  CreditCard.sampleCards[0])
                     .padding()
                     .background()
             }
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
-        .supportedFamilies([.systemMedium])
+        //.supportedFamilies([.systemMedium])
     }
 }
 
