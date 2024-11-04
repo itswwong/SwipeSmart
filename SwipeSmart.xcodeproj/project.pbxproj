@@ -47,6 +47,7 @@
 		0A58FF7E2C94EB6600A0295B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0A7DF8202C8D36330003F5F5 /* CategoryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditView.swift; sourceTree = "<group>"; };
 		0A7DF8222C8E7F130003F5F5 /* AddCategorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategorySheet.swift; sourceTree = "<group>"; };
+		0AE750132CD970FE00FA2213 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0AEBE5742C7FFA0B0051DE14 /* SwipeSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEBE5772C7FFA0B0051DE14 /* SwipeSmartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSmartApp.swift; sourceTree = "<group>"; };
 		0AEBE57B2C7FFA0D0051DE14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 		0AEBE56B2C7FFA0B0051DE14 = {
 			isa = PBXGroup;
 			children = (
+				0AE750132CD970FE00FA2213 /* .gitignore */,
 				0AEBE5762C7FFA0B0051DE14 /* SwipeSmart */,
 				0AEBE5752C7FFA0B0051DE14 /* Products */,
 			);
