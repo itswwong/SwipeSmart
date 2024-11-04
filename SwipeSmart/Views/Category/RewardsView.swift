@@ -20,7 +20,7 @@ struct RewardsView: View {
                             .listRowBackground(
                                 RoundedRectangle(cornerRadius: 15)
                                     .background(.clear)
-                                    .foregroundStyle(cardID_reward.expired || cardID_reward.future ? .pastelgraydark : cards[index].theme.mainColor)
+                                    .foregroundStyle(cardID_reward.expired || cardID_reward.future ? Color("pastelgraydark") : cards[index].theme.mainColor)
                                     .padding(
                                         EdgeInsets(
                                             top: 5,

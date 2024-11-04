@@ -73,7 +73,7 @@ struct RewardsCardView: View {
                     .frame(width: 50, height: 50)
                     .overlay(
                         Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
-                            .foregroundStyle(expired || future ? .pastelgraydark : card.theme.mainColor)
+                            .foregroundStyle(expired || future ? Color("pastelgraydark") : card.theme.mainColor)
                             .font(.headline)
                     )
             }
