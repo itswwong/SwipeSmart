@@ -7,6 +7,7 @@
 import WidgetKit
 import SwiftUI
 import Foundation
+//this is how the card is displayed
 struct ExtendedWidgetEntryView : View {
     var entry: WidgetProvider.Entry
     let card: CreditCard
