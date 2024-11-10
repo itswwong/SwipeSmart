@@ -7,113 +7,55 @@
 
 import WidgetKit
 import SwiftUI
+import Foundation
+@main
+struct ExtendedWidget: WidgetBundle {
+    let defaults = UserDefaults.standard
+    @StateObject private var storeCards = CardStore()
+    @StateObject private var storeCategories = CategoryStore()
+    @State private var errorWrapper: ErrorWrapper?
+    @WidgetBundleBuilder
+    var body: some Widget {
+        //defaults.set("CurrCard", forKey: CreditCard.sampleCards[0])
+        WidgetInfo()
+        WidgetInfo2()
 
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
     }
-
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
-        completion(entry)
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
-    }
-
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
+    
 }
+struct WidgetInfo : Widget {
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let emoji: String
-}
-
-struct ExtendedWidgetEntryView : View {
-    var entry: Provider.Entry
-    let card: CreditCard
-
-    var body: some View {
-        VStack {
-            //Text("Time:")
-            //Text(entry.date, style: .time)
-
-            //Text("Emoji:")
-            //Text(entry.emoji)
-            
-            VStack(alignment: .leading) {
-                HStack {
-                    VStack(alignment: .leading){
-                        Text(card.bankName)
-                            .font(.title3.weight(.bold))
-                            .padding(.bottom, 5)
-                        Text(card.cardName)
-                            .multilineTextAlignment(.trailing)
-                        Spacer()
-                    }
-                    Spacer()
-                    VStack(alignment: .trailing) {
-                        Text((card.cardType == "Discover" || card.cardType == "American Express") ? "" : card.cardType)
-                            .font(.title3.weight(.bold))
-                        Spacer()
-                    }
-                    .padding(.trailing, -25)
-                }
-                RoundedRectangle(cornerRadius: 7)
-                    .frame(width: 30, height: 20)
-                    .padding(.bottom, 5)
-                    .foregroundStyle(Color("pastelgraylight"))
-                HStack {
-                    if card.digits.isEmpty {
-                        Text("**** **** **** ****")
-                    }
-                    else {
-                        Text("**** **** **** \(card.digits)")
-                    }
-                }
-            }
-            .padding()
-        }
-    }
-}
-
-struct ExtendedWidget: Widget {
     let kind: String = "ExtendedWidget"
+    var card: CreditCard = CreditCard.sampleCards[0]
 
+    
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                ExtendedWidgetEntryView(entry: entry, card: CreditCard.sampleCards[0])
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                ExtendedWidgetEntryView(entry: entry,card: CreditCard.sampleCards[0])
-                    .padding()
-                    .background()
-            }
+        StaticConfiguration(kind: kind, provider: WidgetProvider(isOne: true)) { entry in ExtendedWidgetEntryView(entry: entry, card: card).containerBackground(.fill.tertiary, for: .widget)
+
         }
-        .configurationDisplayName("My Widget")
+        .configurationDisplayName("Swipe Smart Widget")
         .description("This is an example widget.")
         .supportedFamilies([.systemMedium])
     }
 }
+struct WidgetInfo2 : Widget {
+    
+    let kind: String = "ExtendedWidget2"
+    var card: CreditCard = CreditCard.sampleCards[1]
 
-#Preview(as: .systemSmall) {
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: WidgetProvider(isOne:false)) { entry in ExtendedWidgetEntryView(entry: entry, card: card).containerBackground(.fill.tertiary, for: .widget)
+
+        }
+        .configurationDisplayName("Swipe Smart Widget 2")
+        .description("This is an example widget.")
+        .supportedFamilies([.systemMedium])
+    }
+}
+/*
+#Preview(as: .systemMedium) {
     ExtendedWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
-}
+    SimpleEntry(date: .now)
+}*/
