@@ -63,6 +63,7 @@ struct CategorySelectorView: View {
                     .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
                     
+                // Work on this case
                 case .cashback:
                     ForEach($categories) { $category in
                         if !category.cardRewards.isEmpty {
