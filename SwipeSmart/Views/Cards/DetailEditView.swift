@@ -22,6 +22,7 @@ struct DetailEditView: View {
     
     let customLightGray = Color(red: 0.95, green: 0.95, blue: 0.95)
     let customMidGray = Color(red: 0.8, green: 0.8, blue: 0.8)
+    let customDarkGray = Color(red: 0.4, green: 0.4, blue: 0.4)
 
     var body: some View {
         VStack {
@@ -114,6 +115,7 @@ struct DetailEditView: View {
                 .frame(width: 217, height: 55)
                 .padding(.trailing, -4)
             }
+            .padding(.bottom, 20)
             
             if duplicateError {
                 Text("Credit card already exists.")
@@ -131,14 +133,17 @@ struct DetailEditView: View {
                 .onDelete(perform: removeReward)
             }
         }
-        
         Button(action: {
             withAnimation {
                 addNewReward = true
             }
         }) {
-            Text("Add New Cash Back Reward")
-                .foregroundStyle(addNewReward ? .gray : .blue)
+            Text("ADD NEW CASHBACK REWARD")
+                .padding(.vertical, 15)
+                .padding(.horizontal, 55)
+                .overlay(RoundedRectangle(cornerRadius:5).stroke(customDarkGray, lineWidth: 1))
+                .foregroundColor(customDarkGray)
+                .fontWeight(.bold)
         }
         .disabled(addNewReward)
         
