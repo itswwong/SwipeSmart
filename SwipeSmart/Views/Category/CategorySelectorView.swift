@@ -45,7 +45,7 @@ struct CategorySelectorView: View {
                     .onMove(perform: moveCategory)
                     .onDelete(perform: confirmDeleteCategory)
                     .toolbar(.hidden, for: .tabBar)
-                    
+                    /*
                     Button(action: {
                         showingAddCategoryAlert = true
                     }) {
@@ -61,7 +61,7 @@ struct CategorySelectorView: View {
                     .buttonStyle(addButton())
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
+                    .listRowInsets(.init(top: 5, leading: 0, bottom: 0, trailing: 0))*/
                     
                 case .cashback:
                     ForEach($categories) { $category in
@@ -85,14 +85,26 @@ struct CategorySelectorView: View {
             .scrollContentBackground(.hidden)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Text(viewState == .categories ? "Categories" : "Best Cash Back")
-                        .font(.largeTitle .weight(.bold))
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(viewState == .categories ? "Done" : "Categories") {
+                    Button(viewState == .categories ? "" : "Categories",systemImage:viewState == .categories ? "arrowshape.backward.circle" : "menubar.dock.rectangle") {
+                        
                         viewState = viewState == .categories ? .cashback : .categories
                     }
                     .disabled(editCategoryExists || editCategoryEmpty)
+                }
+                //Spacer()
+                ToolbarItem(placement: .topBarLeading) {
+                    Text(viewState == .categories ? "Categories" : "Best Cash Back")
+                        .font(.largeTitle .weight(.bold))
+                }
+                //Spacer()
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("",systemImage:(viewState == .categories ? "plus.circle" : "arrow.up"
+                                       ),action: {
+                        showingAddCategoryAlert = true})
+                    .buttonStyle(addButton())
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
             }
             .alert("Are you sure you want to delete this category?", isPresented: $showingDeleteConfirmation, presenting: categoryToDelete) { category in
@@ -169,8 +181,8 @@ struct addButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color("pastelgraydark"))
-            .foregroundStyle(.white)
+            .background(Color("white"))
+            .foregroundStyle(.black)
             .cornerRadius(15)
             .opacity(configuration.isPressed ? 0.75 : 1)
     }
