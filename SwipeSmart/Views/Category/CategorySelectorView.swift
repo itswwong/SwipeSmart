@@ -86,7 +86,7 @@ struct CategorySelectorView: View {
             .scrollContentBackground(.hidden)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(viewState == .categories ? "" : "Categories",systemImage:viewState == .categories ? "arrowshape.backward.circle" : "menubar.dock.rectangle") {
+                    Button(viewState == .categories ? "" : "Categories",systemImage:viewState == .categories ? "arrow.backward" : "menubar.dock.rectangle") {
                         
                         viewState = viewState == .categories ? .cashback : .categories
                     }
