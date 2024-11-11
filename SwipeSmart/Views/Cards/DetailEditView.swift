@@ -19,127 +19,154 @@ struct DetailEditView: View {
     var showDelete: Bool
     let onDeleteCard: () -> Void
     @Environment(\.presentationMode) var presentationMode
+    
+    let customLightGray = Color(red: 0.95, green: 0.95, blue: 0.95)
+    let customMidGray = Color(red: 0.8, green: 0.8, blue: 0.8)
 
     var body: some View {
-        Form {
-            Section(header: Text("Card Info")) {
-                LabeledContent {
-                    TextField("", text: $card.bankName)
-                        .multilineTextAlignment(.trailing)
-                        .onChange(of: card.bankName) {
-                            validateUniqueDigits()
-                        }
-                } label: {
-                    Text("Bank Name")
-                }
-                LabeledContent {
-                    Menu {
-                        Picker(selection: $card.cardType, label: Text("")) {
-                            ForEach(cardTypeList, id: \.self) { type in
-                                Text(type).tag(type)
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            Text(card.cardType.isEmpty ? "Select Card Type" : card.cardType)
-                                .foregroundStyle(card.cardType.isEmpty ? .gray : .primary)
-                            Image(systemName: "chevron.down")
-                                .foregroundStyle(.gray)
-                        }
-                        .padding(.trailing, -12)
+        VStack {
+            HStack {
+                Text("BANK NAME")
+                    .foregroundColor(Color.gray)
+                Spacer()
+                TextField("", text: $card.bankName)
+                    .padding(10)
+                    .onChange(of: card.bankName) {
+                        validateUniqueDigits()
                     }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                } label: {
-                    Text("Card Type")
-                }
-                
-                LabeledContent {
-                    TextField(text: $card.cardName, label: {
-                        Text("optional")
-                            .multilineTextAlignment(.trailing)
-                    })
-                        .multilineTextAlignment(.trailing)
-                } label: {
-                    Text("Card Name")
-                }
-                
-                LabeledContent {
-                    TextField(text: $card.digits, label: {
-                        Text("optional")
-                            .multilineTextAlignment(.trailing)
-                    })
-                        .keyboardType(.numberPad)
-                        .onReceive(Just($card.digits)) { _ in
-                            limitText()
-                            validateUniqueDigits()
+                    .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
+                    .foregroundColor(customMidGray)
+                    .frame(width: 200)
+            }
+            .padding(.vertical, 10)
+            HStack {
+                Text("CARD TYPE")
+                    .foregroundColor(Color.gray)
+                Spacer()
+                Menu {
+                    Picker(selection: $card.cardType, label: Text("")) {
+                        ForEach(cardTypeList, id: \.self) { type in
+                            Text(type).tag(type)
                         }
-                        .multilineTextAlignment(.trailing)
-                        .foregroundStyle(duplicateError ? .red : .primary)
-                } label: {
-                    Text("Last 4 Digits")
+                    }
                 }
-                
-                LabeledContent {
+                label: {
+                    HStack {
+                        Text(card.cardType.isEmpty ? "Select Card Type" : card.cardType)
+                            .foregroundStyle(Color.gray)
+                            .padding(10)
+                        Image(systemName: "chevron.down")
+                            .foregroundStyle(Color.gray)
+                    }
+                    .frame(width: 200, height: 45)
+                    .overlay(RoundedRectangle(cornerRadius:5).stroke(customLightGray, lineWidth: 1))
+                    .background(customLightGray)
+                }
+            }
+            .padding(.vertical, 10)
+            HStack {
+                Text("CARD NAME")
+                    .foregroundColor(Color.gray)
+                Spacer()
+                TextField(text: $card.cardName, label: {
+                    Text("Optional")
+                })
+                .padding(10)
+                .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
+                .foregroundColor(customMidGray)
+                .frame(width: 200)
+            }
+            .padding(.vertical, 10)
+            HStack {
+                Text("LAST 4 DIGITS")
+                    .foregroundColor(Color.gray)
+                Spacer()
+                TextField(text: $card.digits, label: {
+                    Text("Optional")
+                })
+                .foregroundColor(customMidGray)
+
+                .keyboardType(.numberPad)
+                .onReceive(Just($card.digits)) { _ in
+                    limitText()
+                    validateUniqueDigits()
+                }
+                .foregroundStyle(duplicateError ? .red : .primary)
+                .padding(10)
+                .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
+                .frame(width: 200)
+            }
+            .padding(.vertical, 10)
+            HStack {
+                Text("BACKGROUND")
+                    .foregroundColor(Color.gray)
+                Spacer()
+                ZStack {
                     ColorPicker(selection: $card.theme)
-                        .frame(width: 100)
-                        .padding(.trailing, -12)
-                } label: {
-                    Text("Background Color")
+                    HStack {
+                        Text("Color")
+                            .foregroundStyle(Color.gray)
+                            .padding(10)
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(Color.gray)
+                    }
                 }
-                
-                if duplicateError {
-                    Text("Credit card already exists.")
+                .frame(width: 217, height: 55)
+                .padding(.trailing, -4)
+            }
+            
+            if duplicateError {
+                Text("Credit card already exists.")
+                    .foregroundStyle(.red)
+                    .font(.footnote)
+            }
+        }
+        .padding()
+     
+        if !card.categories.isEmpty {
+            Section(header: Text("Cash Back Rewards")) {
+                ForEach(card.categories.indices, id: \.self) { index in
+                    RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
+                }
+                .onDelete(perform: removeReward)
+            }
+        }
+        
+        Button(action: {
+            withAnimation {
+                addNewReward = true
+            }
+        }) {
+            Text("Add New Cash Back Reward")
+                .foregroundStyle(addNewReward ? .gray : .blue)
+        }
+        .disabled(addNewReward)
+        
+        if addNewReward {
+            NewRewardView(card: $card, categories: $categories)
+            .transition(.move(edge: .top))
+        }
+        
+        if showDelete {
+            Section {
+                Button(action: {
+                    showConfirmation = true
+                }) {
+                    Text("Delete Card")
                         .foregroundStyle(.red)
-                        .font(.footnote)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
-            }
-            
-            if !card.categories.isEmpty {
-                Section(header: Text("Cash Back Rewards")) {
-                    ForEach(card.categories.indices, id: \.self) { index in
-                        RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
-                    }
-                    .onDelete(perform: removeReward)
-                }
-            }
-            
-            Button(action: {
-                withAnimation {
-                    addNewReward = true
-                }
-            }) {
-                Text("Add New Cash Back Reward")
-                    .foregroundStyle(addNewReward ? .gray : .blue)
-            }
-            .disabled(addNewReward)
-            
-            if addNewReward {
-                NewRewardView(card: $card, categories: $categories)
-                .transition(.move(edge: .top))
-            }
-            
-            if showDelete {
-                Section {
-                    Button(action: {
-                        showConfirmation = true
-                    }) {
-                        Text("Delete Card")
-                            .foregroundStyle(.red)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                    .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
-                        Button("Delete Card", role: .destructive, action: {
-                            presentationMode.wrappedValue.dismiss()  // Dismiss the view
-                            onDeleteCard()  // Trigger card deletion
-                        })
-                    } message: {
-                        Text("You cannot undo this action.")
-                    }
+                .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
+                    Button("Delete Card", role: .destructive, action: {
+                        presentationMode.wrappedValue.dismiss()  // Dismiss the view
+                        onDeleteCard()  // Trigger card deletion
+                    })
+                } message: {
+                    Text("You cannot undo this action.")
                 }
             }
         }
-        .scrollDismissesKeyboard(.immediately)
-    }
+    }    
 
     private func validateUniqueDigits() {
         if card.digits.isEmpty {
