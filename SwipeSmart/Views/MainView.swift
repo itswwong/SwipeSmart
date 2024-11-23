@@ -13,7 +13,8 @@ struct MainView: View {
     let saveAction: () -> Void
     
     @StateObject private var dayChangeObserver: DayChangeObserver
-
+    @State private var selection:String="Rewards"
+    @State private var tabSelection:TabBarItem = .Rewards
     init(cards: Binding<[CreditCard]>, categories: Binding<[Category]>, saveAction: @escaping () -> Void) {
         self._cards = cards
         self._categories = categories
@@ -22,22 +23,11 @@ struct MainView: View {
     }
 
     var body: some View {
-        TabView {
-            CategorySelectorView(cards: $cards, categories: $categories)
-                .tabItem {
-                    Label("Cash Back Rewards", systemImage: "dollarsign.square.fill")
-                }
-                .tag(1)
-
-            WalletView(cards: $cards, categories: $categories, saveAction: saveAction)
-                .tabItem {
-                    Label("Credit Cards", systemImage: "wallet.pass.fill")
-                }
-                .tag(2)
+        CustomTabBarContainerView(selection:$tabSelection){
+            CategorySelectorView(cards: $cards, categories: $categories).tabBarItem(tab: .Rewards,selection:$tabSelection)
+            WalletView(cards: $cards, categories: $categories, saveAction: saveAction).tabBarItem(tab: .CreditCards,selection:$tabSelection)
         }
-        .onAppear {
-            dayChangeObserver.updateAllRewards()
-        }
+       //MainView()
     }
 }
 
@@ -72,7 +62,31 @@ class DayChangeObserver: ObservableObject {
 }
 
 struct MainView_Previews: PreviewProvider {
+    static let tabs:[TabBarItem] = [
+        .Rewards,
+        .CreditCards
+    ]
     static var previews: some View {
         MainView(cards: .constant(CreditCard.testCards), categories: .constant(Category.sampleCategories), saveAction: {})
+    }
+}
+extension MainView {
+    private var defaultTabView:some View{
+        TabView {
+            CategorySelectorView(cards: $cards, categories: $categories)
+                .tabItem {
+                    Label("Cash Back Rewards", systemImage: "dollarsign.square.fill")
+                }
+                .tag(1)
+
+            WalletView(cards: $cards, categories: $categories, saveAction: saveAction)
+                .tabItem {
+                    Label("Credit Cards", systemImage: "wallet.pass.fill")
+                }
+                .tag(2)
+        }
+        .onAppear {
+            dayChangeObserver.updateAllRewards()
+        }
     }
 }

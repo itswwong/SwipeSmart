@@ -45,23 +45,7 @@ struct CategorySelectorView: View {
                     .onMove(perform: moveCategory)
                     .onDelete(perform: confirmDeleteCategory)
                     .toolbar(.hidden, for: .tabBar)
-                    /*
-                    Button(action: {
-                        showingAddCategoryAlert = true
-                    }) {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "plus")
-                                .bold()
-                                .font(.title)
-                            Spacer()
-                        }
-                        .frame(height: 40)
-                    }
-                    .buttonStyle(addButton())
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 5, leading: 0, bottom: 0, trailing: 0))*/
+                   
                     
                 // Work on this case
                 case .cashback:
@@ -93,13 +77,13 @@ struct CategorySelectorView: View {
                     .disabled(editCategoryExists || editCategoryEmpty)
                 }
                 //Spacer()
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .navigation) {
                     Text(viewState == .categories ? "Categories" : "Best Cash Back")
                         .font(.largeTitle .weight(.bold))
                 }
                 //Spacer()
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("",systemImage:(viewState == .categories ? "plus.circle" : "arrow.up"
+                    Button("",systemImage:(viewState == .categories ? "plus.circle" : ""
                                        ),action: {
                         showingAddCategoryAlert = true})
                     .buttonStyle(addButton())
@@ -182,8 +166,8 @@ struct addButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color("white"))
-            .foregroundStyle(.black)
+            //.background(Color("white"))
+            //.foregroundStyle(.black)
             .cornerRadius(15)
             .opacity(configuration.isPressed ? 0.75 : 1)
     }

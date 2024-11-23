@@ -60,6 +60,10 @@
 		0D7351F52CC75F0A0088A39F /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A62C7FFBD10051DE14 /* WalletView.swift */; };
 		0D7351F62CC75F0A0088A39F /* NewCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A52C7FFBD10051DE14 /* NewCreditCard.swift */; };
 		0D7351F72CC75F0A0088A39F /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427D22C8A65DA00D48E47 /* ColorPickerView.swift */; };
+		0DB8F9062CEECF91009848C0 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8F9052CEECF91009848C0 /* CustomTabBarView.swift */; };
+		0DE154422CF08370004C622C /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE154412CF08370004C622C /* CustomTabBarContainerView.swift */; };
+		0DE154442CF08626004C622C /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE154432CF08626004C622C /* TabBarItemsPreferenceKey.swift */; };
+		0DFA30442CF1C50B00031EB1 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFA30432CF1C50B00031EB1 /* TabBarItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +123,10 @@
 		0D7351CC2CC757850088A39F /* ExtendedWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ExtendedWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9674EC2CC371DD00574556 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		0D9674EE2CC371DD00574556 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0DB8F9052CEECF91009848C0 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
+		0DE154412CF08370004C622C /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
+		0DE154432CF08626004C622C /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
+		0DFA30432CF1C50B00031EB1 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -215,6 +223,10 @@
 				0AEBE59B2C7FFBD10051DE14 /* ErrorView.swift */,
 				0AEBE5A72C7FFBD10051DE14 /* Cards */,
 				0AEBE5982C7FFBD00051DE14 /* Category */,
+				0DB8F9052CEECF91009848C0 /* CustomTabBarView.swift */,
+				0DFA30432CF1C50B00031EB1 /* TabBarItem.swift */,
+				0DE154412CF08370004C622C /* CustomTabBarContainerView.swift */,
+				0DE154432CF08626004C622C /* TabBarItemsPreferenceKey.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,11 +380,14 @@
 				0AEBE5BB2C7FFBD10051DE14 /* WalletView.swift in Sources */,
 				0A1427D12C8A542D00D48E47 /* ColorView.swift in Sources */,
 				0A1427152C85779600D48E47 /* NewRewardView.swift in Sources */,
+				0DE154422CF08370004C622C /* CustomTabBarContainerView.swift in Sources */,
 				0A7DF8232C8E7F130003F5F5 /* AddCategorySheet.swift in Sources */,
 				0AEBE5B92C7FFBD10051DE14 /* DetailView.swift in Sources */,
+				0DE154442CF08626004C622C /* TabBarItemsPreferenceKey.swift in Sources */,
 				0AEBE5AE2C7FFBD10051DE14 /* MainView.swift in Sources */,
 				0AEBE5BA2C7FFBD10051DE14 /* NewCreditCard.swift in Sources */,
 				0A1427CF2C8A530200D48E47 /* Theme.swift in Sources */,
+				0DB8F9062CEECF91009848C0 /* CustomTabBarView.swift in Sources */,
 				0A7DF8212C8D36330003F5F5 /* CategoryEditView.swift in Sources */,
 				0AEBE5AD2C7FFBD10051DE14 /* RewardsView.swift in Sources */,
 				0A1427132C8516A300D48E47 /* DatePickerField.swift in Sources */,
@@ -384,6 +399,7 @@
 				0AEBE5AB2C7FFBD10051DE14 /* CategoryView.swift in Sources */,
 				0AEBE5AC2C7FFBD10051DE14 /* RewardsCardView.swift in Sources */,
 				0AEBE5B02C7FFBD10051DE14 /* ErrorView.swift in Sources */,
+				0DFA30442CF1C50B00031EB1 /* TabBarItem.swift in Sources */,
 				0AEBE58F2C7FFBBF0051DE14 /* CategoryStore.swift in Sources */,
 				0AEBE5B82C7FFBD10051DE14 /* DetailEditView.swift in Sources */,
 				0AEBE58D2C7FFBBF0051DE14 /* ErrorWrapper.swift in Sources */,
