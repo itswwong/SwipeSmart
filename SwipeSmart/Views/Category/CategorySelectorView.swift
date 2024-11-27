@@ -103,6 +103,8 @@ struct CategorySelectorView: View {
             } message: { category in
                 Text("This will permanently remove all rewards associated with this category.")
             }
+            
+            // This sheet is toggled on and off for adding a new category
             .sheet(isPresented: $showingAddCategoryAlert) {
                 AddCategorySheet(
                     isPresented: $showingAddCategoryAlert,
