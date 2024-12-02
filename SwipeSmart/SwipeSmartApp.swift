@@ -12,7 +12,7 @@ struct SwipeSmartApp: App {
     @StateObject private var storeCards = CardStore()
     @StateObject private var storeCategories = CategoryStore()
     @State private var errorWrapper: ErrorWrapper?
-    
+
     var body: some Scene {
         WindowGroup {
             MainView(cards: $storeCards.cards, categories: $storeCategories.categories) {

@@ -56,6 +56,14 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B1B9FF862CC737C700574488 /* Embed Foundation Extensions */ = {
+		0DB8F9062CEECF91009848C0 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8F9052CEECF91009848C0 /* CustomTabBarView.swift */; };
+		0DE154422CF08370004C622C /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE154412CF08370004C622C /* CustomTabBarContainerView.swift */; };
+		0DE154442CF08626004C622C /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE154432CF08626004C622C /* TabBarItemsPreferenceKey.swift */; };
+		0DFA30442CF1C50B00031EB1 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFA30432CF1C50B00031EB1 /* TabBarItem.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0D9675052CC371E000574556 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -78,6 +86,7 @@
 		0A58FF7E2C94EB6600A0295B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0A7DF8202C8D36330003F5F5 /* CategoryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditView.swift; sourceTree = "<group>"; };
 		0A7DF8222C8E7F130003F5F5 /* AddCategorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategorySheet.swift; sourceTree = "<group>"; };
+		0AE750132CD970FE00FA2213 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0AEBE5742C7FFA0B0051DE14 /* SwipeSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEBE5772C7FFA0B0051DE14 /* SwipeSmartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSmartApp.swift; sourceTree = "<group>"; };
 		0AEBE57B2C7FFA0D0051DE14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +115,11 @@
 		B1B9FF7E2CC737C600574488 /* SwipeSmartWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSmartWidget.swift; sourceTree = "<group>"; };
 		B1B9FF802CC737C700574488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1B9FF822CC737C700574488 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D9674EE2CC371DD00574556 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0DB8F9052CEECF91009848C0 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
+		0DE154412CF08370004C622C /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
+		0DE154432CF08626004C622C /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
+		0DFA30432CF1C50B00031EB1 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -135,9 +149,11 @@
 		0AEBE56B2C7FFA0B0051DE14 = {
 			isa = PBXGroup;
 			children = (
+				0AE750132CD970FE00FA2213 /* .gitignore */,
 				0AEBE5762C7FFA0B0051DE14 /* SwipeSmart */,
 				B1B9FF792CC737C600574488 /* SwipeSmartWidget */,
 				B1B9FF742CC737C600574488 /* Frameworks */,
+				0D9674EB2CC371DD00574556 /* Frameworks */,
 				0AEBE5752C7FFA0B0051DE14 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -193,6 +209,10 @@
 				0AEBE59B2C7FFBD10051DE14 /* ErrorView.swift */,
 				0AEBE5A72C7FFBD10051DE14 /* Cards */,
 				0AEBE5982C7FFBD00051DE14 /* Category */,
+				0DB8F9052CEECF91009848C0 /* CustomTabBarView.swift */,
+				0DFA30432CF1C50B00031EB1 /* TabBarItem.swift */,
+				0DE154412CF08370004C622C /* CustomTabBarContainerView.swift */,
+				0DE154432CF08626004C622C /* TabBarItemsPreferenceKey.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,6 +252,10 @@
 			children = (
 				B1B9FF752CC737C600574488 /* WidgetKit.framework */,
 				B1B9FF772CC737C600574488 /* SwiftUI.framework */,
+		0D9674EB2CC371DD00574556 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D9674EE2CC371DD00574556 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -259,6 +283,7 @@
 				0AEBE5712C7FFA0B0051DE14 /* Frameworks */,
 				0AEBE5722C7FFA0B0051DE14 /* Resources */,
 				B1B9FF862CC737C700574488 /* Embed Foundation Extensions */,
+				0D9675052CC371E000574556 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -298,6 +323,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					0AEBE5732C7FFA0B0051DE14 = {
@@ -357,11 +383,14 @@
 				0AEBE5BB2C7FFBD10051DE14 /* WalletView.swift in Sources */,
 				0A1427D12C8A542D00D48E47 /* ColorView.swift in Sources */,
 				0A1427152C85779600D48E47 /* NewRewardView.swift in Sources */,
+				0DE154422CF08370004C622C /* CustomTabBarContainerView.swift in Sources */,
 				0A7DF8232C8E7F130003F5F5 /* AddCategorySheet.swift in Sources */,
 				0AEBE5B92C7FFBD10051DE14 /* DetailView.swift in Sources */,
+				0DE154442CF08626004C622C /* TabBarItemsPreferenceKey.swift in Sources */,
 				0AEBE5AE2C7FFBD10051DE14 /* MainView.swift in Sources */,
 				0AEBE5BA2C7FFBD10051DE14 /* NewCreditCard.swift in Sources */,
 				0A1427CF2C8A530200D48E47 /* Theme.swift in Sources */,
+				0DB8F9062CEECF91009848C0 /* CustomTabBarView.swift in Sources */,
 				0A7DF8212C8D36330003F5F5 /* CategoryEditView.swift in Sources */,
 				0AEBE5AD2C7FFBD10051DE14 /* RewardsView.swift in Sources */,
 				0A1427132C8516A300D48E47 /* DatePickerField.swift in Sources */,
@@ -373,6 +402,7 @@
 				0AEBE5AB2C7FFBD10051DE14 /* CategoryView.swift in Sources */,
 				0AEBE5AC2C7FFBD10051DE14 /* RewardsCardView.swift in Sources */,
 				0AEBE5B02C7FFBD10051DE14 /* ErrorView.swift in Sources */,
+				0DFA30442CF1C50B00031EB1 /* TabBarItem.swift in Sources */,
 				0AEBE58F2C7FFBBF0051DE14 /* CategoryStore.swift in Sources */,
 				0AEBE5B82C7FFBD10051DE14 /* DetailEditView.swift in Sources */,
 				0AEBE58D2C7FFBBF0051DE14 /* ErrorWrapper.swift in Sources */,
@@ -531,6 +561,8 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"SwipeSmart/Preview Content\"";
 				DEVELOPMENT_TEAM = S6KAJJ4CV9;
+				DEVELOPMENT_ASSET_PATHS = "SwipeSmart/Preview\\ Content";
+				DEVELOPMENT_TEAM = 2HM77Y3S7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwipeSmart/Info.plist;
@@ -542,6 +574,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -565,6 +598,8 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"SwipeSmart/Preview Content\"";
 				DEVELOPMENT_TEAM = S6KAJJ4CV9;
+				DEVELOPMENT_ASSET_PATHS = "SwipeSmart/Preview\\ Content";
+				DEVELOPMENT_TEAM = 2HM77Y3S7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwipeSmart/Info.plist;
@@ -576,6 +611,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

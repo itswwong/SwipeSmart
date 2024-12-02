@@ -30,71 +30,88 @@ struct CategorySelectorView: View {
         NavigationStack {
             List {
                 switch viewState {
-                case .categories:
-                    ForEach($categories) { $category in
-                        CategoryEditView(cards: $cards, category: $category, categories: $categories, categoryExists: $editCategoryExists, categoryEmpty: $editCategoryEmpty)
-                            .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
-                            .listRowBackground(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .background(.clear)
-                                    .foregroundStyle(foregroundColor(category: category))
-                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                            )
-                            .listRowSeparator(.hidden)
-                    }
-                    .onMove(perform: moveCategory)
-                    .onDelete(perform: confirmDeleteCategory)
-                    .toolbar(.hidden, for: .tabBar)
-                    
-                    Button(action: {
-                        showingAddCategoryAlert = true
-                    }) {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "plus")
-                                .bold()
-                                .font(.title)
-                            Spacer()
+                    case .categories:
+                        ForEach($categories) { $category in
+                            CategoryEditView(cards: $cards, category: $category, categories: $categories, categoryExists: $editCategoryExists, categoryEmpty: $editCategoryEmpty)
+                                .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
+                                .listRowBackground(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .background(.clear)
+                                        .foregroundStyle(foregroundColor(category: category))
+                                        .overlay(
+                                            // border
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(
+                                                    outlineColor(category: category)
+                                                )
+                                        )
+                                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                                )
+                                .listRowSeparator(.hidden)
                         }
-                        .frame(height: 40)
-                    }
-                    .buttonStyle(addButton())
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
+                        .onMove(perform: moveCategory)
+                        .onDelete(perform: confirmDeleteCategory)
+                        .toolbar(.hidden, for: .tabBar)
+                   
                     
-                case .cashback:
-                    ForEach($categories) { $category in
-                        if !category.cardRewards.isEmpty {
-                            NavigationLink(destination: RewardsView(cards: $cards, category: $category)) {
-                                CategoryView(cards: $cards, category: $category)
+                    // Work on this case
+                    case .cashback:
+                        ForEach($categories) { $category in
+                            if !category.cardRewards.isEmpty {
+                                NavigationLink(destination: RewardsView(cards: $cards, category: $category)) {
+                                    CategoryView(cards: $cards, category: $category)
+                                }
+                                .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
+                                .listRowBackground(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .background(.clear)
+                                        .foregroundStyle(foregroundColor(category: category))
+                                        .overlay(
+                                            // border
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(
+                                                    outlineColor(category: category), lineWidth: 2
+                                                )
+                                        )
+                                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                                )
+                                .listRowSeparator(.hidden)
+                                .foregroundColor(outlineColor(category: category))
                             }
-                            .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
-                            .listRowBackground(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .background(.clear)
-                                    .foregroundStyle(foregroundColor(category: category))
-                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                            )
-                            .listRowSeparator(.hidden)
                         }
-                    }
-                    .toolbar(.visible, for: .tabBar)
+                        .toolbar(.visible, for: .tabBar)
                 }
             }
+            .padding(.top, -30)
             .scrollContentBackground(.hidden)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Text(viewState == .categories ? "Categories" : "Best Cash Back")
-                        .font(.largeTitle .weight(.bold))
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(viewState == .categories ? "Done" : "Categories") {
+                    Button("", systemImage:viewState == .categories ? "arrow.backward" : "") {
                         viewState = viewState == .categories ? .cashback : .categories
                     }
                     .disabled(editCategoryExists || editCategoryEmpty)
                 }
+                //Spacer()
+                ToolbarItem(placement: .principal) {
+                    Text(viewState == .categories ? "Categories" : "Best Cash Back")
+                        .font(.title3 .weight(.semibold))
+                }
+                //Spacer()
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("",systemImage:(viewState == .categories ? "plus.circle" : "line.3.horizontal"),action: {
+                        if viewState == .categories {
+                            showingAddCategoryAlert = true
+                        } else {
+                            viewState = viewState == .categories ? .cashback : .categories
+                        }
+                    })
+                    .buttonStyle(addButton())
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                }
             }
+            .navigationBarTitleDisplayMode(.inline)
             .alert("Are you sure you want to delete this category?", isPresented: $showingDeleteConfirmation, presenting: categoryToDelete) { category in
                 Button("Delete", role: .destructive) {
                     deleteCategory()
@@ -154,14 +171,27 @@ struct CategorySelectorView: View {
     
     private func foregroundColor(category: Category) -> Color {
         if category.cardRewards.isEmpty {
-            return .pastelgray
+            return Color("pastelgray")
         }
 
         if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-            return category.cardRewards[0].expired || category.cardRewards[0].future ? .pastelgraydark : cards[index].theme.mainColor
+            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydark") : cards[index].theme.mainColor
         }
         
-        return .pastelgray
+        return Color("pastelgray")
+    }
+    
+    // accent color (for text and border)
+    private func outlineColor(category: Category) -> Color {
+        if category.cardRewards.isEmpty {
+            return Color("pastelgraydark")
+        }
+
+        if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
+            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydarkest") : cards[index].theme.accentColor
+        }
+        
+        return Color("pastelgraydark")
     }
 }
 
@@ -169,8 +199,6 @@ struct addButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(.pastelgraydark)
-            .foregroundStyle(.white)
             .cornerRadius(15)
             .opacity(configuration.isPressed ? 0.75 : 1)
     }

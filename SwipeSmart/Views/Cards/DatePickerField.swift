@@ -11,10 +11,18 @@ struct DatePickerField: View {
     @Binding var expirationDate: Date?
     @Binding var dateSet: Bool
     
+    private var adjustedExpirationDate: Date? {
+        /*
+         Adjusted expiration date for internal use, expires on October 24, 11:59 PM if displayed date is October 25.
+         */
+        guard let expirationDate = expirationDate else { return nil }
+        return Calendar.current.date(byAdding: DateComponents(day: -1, hour: 23, minute: 59, second: 59), to: expirationDate)
+    }
+    
     var body: some View {
         Toggle("Expiration Date?", isOn: $dateSet)
-            .onChange(of: dateSet) {
-                if !dateSet {
+            .onChange(of: dateSet) { newValue in
+                if !newValue {
                     startDate = nil
                     expirationDate = nil
                 }
@@ -42,10 +50,6 @@ struct DatePickerField: View {
                     DatePicker("Expiration Date:", selection: Binding(
                         get: { expirationDate ?? Date() },
                         set: { newValue in
-                            let date = Date()
-                            if newValue < date {
-                                
-                            }
                             expirationDate = newValue
                         }
                     ), in: (Calendar.current.date(byAdding: .day, value: 1, to: startDate ?? Date()) ?? Date())..., displayedComponents: .date)
@@ -61,6 +65,14 @@ struct DatePickerField: View {
                 }
             }
         }
+    }
+    
+    func isCardExpired() -> Bool {
+    /*
+     Checks if card is expired
+     */
+        guard let adjustedDate = adjustedExpirationDate else { return false }
+        return Date() > adjustedDate
     }
 }
 

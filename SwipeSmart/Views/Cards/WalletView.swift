@@ -33,30 +33,11 @@ struct WalletView: View {
                 }
                 .padding()
             }
-//            List($cards) { $card in
-//                NavigationLink(destination: DetailView(card: $card, cards: $cards, categories: $categories)) {
-//                    CardView(card: card)
-//                }
-//                .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
-//                .listRowBackground(
-//                    RoundedRectangle(cornerRadius: 15)
-//                        .background(.clear)
-//                        .foregroundStyle(card.theme.mainColor)
-//                        .padding(
-//                            EdgeInsets(
-//                                top: 5,
-//                                leading: 0,
-//                                bottom: 5,
-//                                trailing: 0
-//                            )
-//                        )
-//                )
-//                .listRowSeparator(.hidden)
-//            }
+            .padding(.top, -30)
             .toolbar {
-                ToolbarItem (placement: .topBarLeading) {
+                ToolbarItem (placement: .principal) {
                     Text("Credit Cards")
-                        .font(.largeTitle .weight(.bold))
+                        .font(.title3 .weight(.semibold))
                 }
                 ToolbarItem (placement: .topBarTrailing) {
                     Button(action: {
@@ -68,6 +49,7 @@ struct WalletView: View {
                     .accessibilityLabel("New Card")
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
         .sheet(isPresented: $isPresentingNewCardView) {
             NewCreditCard(cards: $cards, categories: $categories, isPresentingNewCardView: $isPresentingNewCardView)
