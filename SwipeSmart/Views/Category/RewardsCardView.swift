@@ -14,6 +14,7 @@ struct RewardsCardView: View {
     let expirationDate: Date?
     let expired: Bool
     let future: Bool
+    let strokeColor: Color
 
 
     var body: some View {
@@ -22,11 +23,11 @@ struct RewardsCardView: View {
                     Text(card.bankName)
                         .font(.custom("Inter-Regular_Thin", size: 15))
                         .padding(.bottom, 2)
-                        .foregroundStyle(.pastelgraylight)
+                        .foregroundStyle(strokeColor)
                     Spacer()
                     Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
                         .font(.custom("Inter-Regular_Thin", size: 15))
-                        .foregroundStyle(.pastelgraylight)
+                        .foregroundStyle(strokeColor)
                         //.frame(maxWidth: .infinity, alignment: .leading)
             }
             Spacer()
@@ -36,6 +37,7 @@ struct RewardsCardView: View {
                     Text(card.cardName)
                         .font(.custom("Inter-Regular_Light", size: 15))
                         .padding(.bottom, 15)
+                        .foregroundStyle(strokeColor)
                 }
             }
             Spacer()
@@ -82,13 +84,13 @@ struct RewardsCardView: View {
                                     .month(.twoDigits)
                                     .year(.twoDigits))
                                 .font(.custom("Inter-Regular_Light", size: 15))
-                                .foregroundStyle(.red)
+                                .foregroundStyle(strokeColor)
                             }
                         }
                         else {
                             Text("Does not expire.")
                                 .font(.custom("Inter-Regular_Light", size: 15))
-                                .foregroundStyle(.red)
+                                .foregroundStyle(strokeColor)
                         }
                     }
                 }
@@ -126,7 +128,7 @@ struct RewardsCardView: View {
 
 struct RewardsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RewardsCardView(card: CreditCard.sampleCards[0], reward: 15, startDate: Date(), expirationDate: Date(), expired: false, future: false)
+        RewardsCardView(card: CreditCard.sampleCards[0], reward: 15, startDate: Date(), expirationDate: Date(), expired: false, future: false, strokeColor: CreditCard.sampleCards[0].theme.accentColor)
             .previewLayout(.sizeThatFits)
     }
 }

@@ -17,7 +17,7 @@ struct RewardsView: View {
         let topReward = category.cardRewards.first?.reward ?? 0
         let topRewardCards = category.cardRewards.filter { $0.reward == topReward && $0.expired == false && $0.future == false }
         let displayedCards = category.cardRewards.filter { $0.reward != topReward && $0.expired == false && $0.future == false }
-        
+
         HStack {
             Text("Best Savings")
                 .font(.custom("Inter-Regular_SemiBold", size: 20))
@@ -35,19 +35,28 @@ struct RewardsView: View {
                             startDate: card.startDate,
                             expirationDate: card.expirationDate,
                             expired: card.expired,
-                            future: card.future)
+                            future: card.future,
+                            strokeColor: cards[index].theme.accentColor)
                         .background(
                             RoundedRectangle(cornerRadius: 15)
                                 .background(.clear)
                                 .foregroundStyle(card.expired || card.future ? .pastelgraydark : cards[index].theme.mainColor)
                                 .padding(
                                     EdgeInsets(
-                                        top: 5,
+                                        top: 0,
                                         leading: 0,
-                                        bottom: 5,
+                                        bottom: 0,
                                         trailing: 0
                                     )
                                 )
+                                .overlay(
+                                    // border
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(
+                                            cards[index].theme.accentColor
+                                        )
+                                )
+                                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                         )
                     }
                 }
@@ -62,19 +71,28 @@ struct RewardsView: View {
                             startDate: card.startDate,
                             expirationDate: card.expirationDate,
                             expired: card.expired,
-                            future: card.future)
+                            future: card.future,
+                            strokeColor: cards[index].theme.accentColor)
                         .background(
                             RoundedRectangle(cornerRadius: 15)
                                 .background(.clear)
                                 .foregroundStyle(card.expired || card.future ? .pastelgraydark : cards[index].theme.mainColor)
                                 .padding(
                                     EdgeInsets(
-                                        top: 5,
+                                        top: 0,
                                         leading: 0,
-                                        bottom: 5,
+                                        bottom: 0,
                                         trailing: 0
                                     )
                                 )
+                                .overlay(
+                                    // border
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(
+                                            cards[index].theme.accentColor
+                                        )
+                                )
+                                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                         )
                         .onTapGesture {
                             withAnimation {

@@ -1,7 +1,7 @@
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: CreditCard.sampleCards[0])
+        CardView(card: CreditCard.sampleCards[0], strokeColor: CreditCard.sampleCards[0].theme.accentColor)
     }
 }
 
@@ -15,30 +15,25 @@ import SwiftUI
 
 struct CardView: View {
     let card: CreditCard
+    let strokeColor: Color
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                VStack(alignment: .leading){
-                    Text(card.bankName)
-                        .font(.title3.weight(.bold))
-                        .padding(.bottom, 5)
-                    Text(card.cardName)
-                        .multilineTextAlignment(.trailing)
-                    Spacer()
-                }
+                Text(card.bankName)
+                    .font(.custom("Inter-Regular_Thin", size: 15))
+                    .padding(.bottom, 2)
+                    .foregroundStyle(strokeColor)
                 Spacer()
-                VStack(alignment: .trailing) {
-                    Text((card.cardType == "Discover" || card.cardType == "American Express") ? "" : card.cardType)
-                        .font(.title3.weight(.bold))
-                    Spacer()
-                }
-                .padding(.trailing, -25)
             }
-            RoundedRectangle(cornerRadius: 7)
-                .frame(width: 30, height: 20)
-                .padding(.bottom, 5)
-                .foregroundStyle(Color("pastelgraylight"))
+            HStack {
+                Spacer()
+                Text(card.cardName)
+                    .multilineTextAlignment(.trailing)
+                    .font(.custom("Inter-Regular_Thin", size: 15))
+                    .padding(.bottom, 2)
+                    .foregroundStyle(strokeColor)
+            }
             HStack {
                 if card.digits.isEmpty {
                     Text("**** **** **** ****")
@@ -74,6 +69,7 @@ struct CardView: View {
                 }
             }
         }
+        .frame(maxHeight: 200)
         .padding()
     }
 }
