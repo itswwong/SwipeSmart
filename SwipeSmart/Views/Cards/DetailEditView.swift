@@ -125,36 +125,36 @@ struct DetailEditView: View {
                     .font(.footnote)
             }
         } //end of vstack
-                                .toolbar {
-                                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-                                        Button("Cancel") {
-//                                            isPresentingEditView = false
-                                        }
-                                        .tint(.blue)
-                                    }
-                                    ToolbarItem(placement: .confirmationAction) {
-                                        Button("Done") {
-//                                            isPresentingEditView = false
-//                                            duplicateError = false
-//                                            categories = editingCategories
-//                                            card = editingCard
-                                        }
-//                                        .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
-//                                        .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .blue)
-                                    }
-            
-                        }
+//                                .toolbar {
+//                                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+//                                        Button("Cancel") {
+////                                            isPresentingEditView = false
+//                                        }
+//                                        .tint(.blue)
+//                                    }
+//                                    ToolbarItem(placement: .confirmationAction) {
+//                                        Button("Done") {
+////                                            isPresentingEditView = false
+////                                            duplicateError = false
+////                                            categories = editingCategories
+////                                            card = editingCard
+//                                        }
+////                                        .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
+////                                        .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .blue)
+//                                    }
+//            
+//                        }
         .padding()
     }
      
-//        if !card.categories.isEmpty {
-//            Section(header: Text("Cash Back Rewards")) {
-//                ForEach(card.categories.indices, id: \.self) { index in
-//                    RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
-//                }
-//                .onDelete(perform: removeReward)
-//            }
-//        }
+        if !card.categories.isEmpty {
+            Section(header: Text("Cash Back Rewards")) {
+                ForEach(card.categories.indices, id: \.self) { index in
+                    RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
+                }
+                .onDelete(perform: removeReward)
+            }
+        }
         
         Button(action: {
             withAnimation {

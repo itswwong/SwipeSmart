@@ -52,7 +52,6 @@ struct NewCreditCard: View {
                         Image(systemName: "xmark")
                     }
                 }
-                
             }
         }
         .padding(15)

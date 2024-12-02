@@ -196,14 +196,14 @@ struct DetailView: View {
         .padding(.horizontal, 30)
         .padding(.vertical, 15)
         .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-            Button(action: {
-                editingCard = card
-                editingCategories = categories
-            }) {
-                    Image(systemName: "arrow.left")
-                }
-            }
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button(action: {
+//                    editingCard = card
+//                    editingCategories = categories
+//                }) {
+//                        Image(systemName: "arrow.left")
+//                    }
+//                }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     isPresentingEditView = true
@@ -215,27 +215,28 @@ struct DetailView: View {
             }
         }
         .sheet(isPresented: $isPresentingEditView) {
-
                 DetailEditView(card: $editingCard, cards: $cards, categories: $editingCategories, duplicateError: $duplicateError, showDelete: true, onDeleteCard: { deleteCard() })
-//                    .toolbar {
-//                        ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-//                            Button("Cancel") {
-//                                isPresentingEditView = false
-//                            }
-//                            .tint(.blue)
-//                        }
-//                        ToolbarItem(placement: .confirmationAction) {
-//                            Button("Done") {
-//                                isPresentingEditView = false
-//                                duplicateError = false
-//                                categories = editingCategories
-//                                card = editingCard
-//                            }
-//                            .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
-//                            .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .blue)
-//                        }
-//                    
-//            }
+                    .toolbar {
+                        ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+                            Button(action: {
+                                isPresentingEditView = false
+                            }) {
+                                Image(systemName: "xmark")
+                            }
+                            .tint(.white)
+                        }
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") {
+                                isPresentingEditView = false
+                                duplicateError = false
+                                categories = editingCategories
+                                card = editingCard
+                            }
+                            .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
+                            .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .white)
+                        }
+                    
+            }
         }
     }
     
