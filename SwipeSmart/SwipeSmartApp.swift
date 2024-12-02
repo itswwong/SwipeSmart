@@ -9,8 +9,6 @@ import SwiftUI
 
 @main
 struct SwipeSmartApp: App {
-
-    
     @StateObject private var storeCards = CardStore()
     @StateObject private var storeCategories = CategoryStore()
     @State private var errorWrapper: ErrorWrapper?
