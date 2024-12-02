@@ -21,10 +21,12 @@ struct DetailEditView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let customLightGray = Color(red: 0.95, green: 0.95, blue: 0.95)
+    let customLightMidGray = Color(red: 0.9, green: 0.9, blue: 0.9)
     let customMidGray = Color(red: 0.8, green: 0.8, blue: 0.8)
     let customDarkGray = Color(red: 0.4, green: 0.4, blue: 0.4)
 
     var body: some View {
+        NavigationStack {
         VStack {
             HStack {
                 Text("BANK NAME")
@@ -86,7 +88,7 @@ struct DetailEditView: View {
                     Text("Optional")
                 })
                 .foregroundColor(customMidGray)
-
+                
                 .keyboardType(.numberPad)
                 .onReceive(Just($card.digits)) { _ in
                     limitText()
@@ -122,17 +124,38 @@ struct DetailEditView: View {
                     .foregroundStyle(.red)
                     .font(.footnote)
             }
-        }
+        } //end of vstack
+                                .toolbar {
+                                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+                                        Button("Cancel") {
+//                                            isPresentingEditView = false
+                                        }
+                                        .tint(.blue)
+                                    }
+                                    ToolbarItem(placement: .confirmationAction) {
+                                        Button("Done") {
+//                                            isPresentingEditView = false
+//                                            duplicateError = false
+//                                            categories = editingCategories
+//                                            card = editingCard
+                                        }
+//                                        .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
+//                                        .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .blue)
+                                    }
+            
+                        }
         .padding()
+    }
      
-        if !card.categories.isEmpty {
-            Section(header: Text("Cash Back Rewards")) {
-                ForEach(card.categories.indices, id: \.self) { index in
-                    RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
-                }
-                .onDelete(perform: removeReward)
-            }
-        }
+//        if !card.categories.isEmpty {
+//            Section(header: Text("Cash Back Rewards")) {
+//                ForEach(card.categories.indices, id: \.self) { index in
+//                    RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
+//                }
+//                .onDelete(perform: removeReward)
+//            }
+//        }
+        
         Button(action: {
             withAnimation {
                 addNewReward = true
@@ -157,9 +180,16 @@ struct DetailEditView: View {
                 Button(action: {
                     showConfirmation = true
                 }) {
-                    Text("Delete Card")
-                        .foregroundStyle(.red)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                    Text("DELETE CARD")
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 125)
+                        .fontWeight(.bold)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(customDarkGray, lineWidth: 1)
+                                .fill(customDarkGray)  // Set the background color here
+                        )
+                        .foregroundColor(.white)  // Set the text color (you can choose white or black)
                 }
                 .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
                     Button("Delete Card", role: .destructive, action: {
@@ -171,7 +201,7 @@ struct DetailEditView: View {
                 }
             }
         }
-    }    
+    }
 
     private func validateUniqueDigits() {
         if card.digits.isEmpty {

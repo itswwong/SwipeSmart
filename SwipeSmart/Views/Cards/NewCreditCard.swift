@@ -23,8 +23,6 @@ struct NewCreditCard: View {
     
     var body: some View {
         NavigationStack {
-            
-            
             VStack {
                 Text("Add a New Card")
                     .fontWeight(.bold)
