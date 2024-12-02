@@ -18,6 +18,6 @@ struct ColorView: View {
 
 struct ColorView_Previews: PreviewProvider {
     static var previews: some View {
-        ColorView(color: .pastelgreen)
+        ColorView(color: .green_new)
     }
 }

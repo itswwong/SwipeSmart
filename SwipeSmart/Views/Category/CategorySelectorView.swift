@@ -38,7 +38,14 @@ struct CategorySelectorView: View {
                                     RoundedRectangle(cornerRadius: 15)
                                         .background(.clear)
                                         .foregroundStyle(foregroundColor(category: category))
-                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                        .overlay(
+                                            // border
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(
+                                                    outlineColor(category: category)
+                                                )
+                                        )
+                                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                                 )
                                 .listRowSeparator(.hidden)
                         }
@@ -59,9 +66,17 @@ struct CategorySelectorView: View {
                                     RoundedRectangle(cornerRadius: 15)
                                         .background(.clear)
                                         .foregroundStyle(foregroundColor(category: category))
-                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                        .overlay(
+                                            // border
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(
+                                                    outlineColor(category: category), lineWidth: 2
+                                                )
+                                        )
+                                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                                 )
                                 .listRowSeparator(.hidden)
+                                .foregroundColor(outlineColor(category: category))
                             }
                         }
                         .toolbar(.visible, for: .tabBar)
@@ -165,14 +180,25 @@ struct CategorySelectorView: View {
         
         return Color("pastelgray")
     }
+    
+    // accent color (for text and border)
+    private func outlineColor(category: Category) -> Color {
+        if category.cardRewards.isEmpty {
+            return Color("pastelgraydark")
+        }
+
+        if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
+            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydarkest") : cards[index].theme.accentColor
+        }
+        
+        return Color("pastelgraydark")
+    }
 }
 
 struct addButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            //.background(Color("white"))
-            //.foregroundStyle(.black)
             .cornerRadius(15)
             .opacity(configuration.isPressed ? 0.75 : 1)
     }
