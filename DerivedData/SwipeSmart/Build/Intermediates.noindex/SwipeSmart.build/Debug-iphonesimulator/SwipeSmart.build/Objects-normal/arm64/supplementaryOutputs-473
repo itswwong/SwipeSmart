@@ -1,0 +1,24 @@
+"/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/ErrorView.swift":
+  dependencies: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/ErrorView.d"
+  swift-dependencies: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/ErrorView.swiftdeps"
+  object: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/ErrorView.o"
+  diagnostics: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/ErrorView.dia"
+  const-values: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/ErrorView.swiftconstvalues"
+"/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategoryView.swift":
+  const-values: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/CategoryView.swiftconstvalues"
+  swift-dependencies: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/CategoryView.swiftdeps"
+  dependencies: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/CategoryView.d"
+  diagnostics: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/CategoryView.dia"
+  object: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/CategoryView.o"
+"/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/RewardsCardView.swift":
+  diagnostics: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/RewardsCardView.dia"
+  swift-dependencies: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/RewardsCardView.swiftdeps"
+  object: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/RewardsCardView.o"
+  dependencies: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/RewardsCardView.d"
+  const-values: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/RewardsCardView.swiftconstvalues"
+"/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/TabBarItem.swift":
+  dependencies: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/TabBarItem.d"
+  object: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/TabBarItem.o"
+  const-values: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/TabBarItem.swiftconstvalues"
+  diagnostics: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/TabBarItem.dia"
+  swift-dependencies: "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/TabBarItem.swiftdeps"
