@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -108,6 +108,10 @@
 		B1B9FF822CC737C700574488 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B136A3F02CE31FB8008DC173 /* Fonts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fonts; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		0AEBE5712C7FFA0B0051DE14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -152,6 +156,7 @@
 			children = (
 				0AEBE5772C7FFA0B0051DE14 /* SwipeSmartApp.swift */,
 				0AEBE5862C7FFB7B0051DE14 /* Views */,
+				B136A3F02CE31FB8008DC173 /* Fonts */,
 				0AEBE5852C7FFB740051DE14 /* Models */,
 				0AEBE57B2C7FFA0D0051DE14 /* Assets.xcassets */,
 				0AEBE57D2C7FFA0D0051DE14 /* Preview Content */,
@@ -259,6 +264,9 @@
 			);
 			dependencies = (
 				B1B9FF842CC737C700574488 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B136A3F02CE31FB8008DC173 /* Fonts */,
 			);
 			name = SwipeSmart;
 			productName = SwipeSmart;
@@ -539,7 +547,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamwong.SwipeSmart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lindsayqin.SwipeSmart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -573,7 +581,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamwong.SwipeSmart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lindsayqin.SwipeSmart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -600,7 +608,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamwong.SwipeSmart.SwipeSmartWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lindsayqin.SwipeSmart.SwipeSmartWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -628,7 +636,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamwong.SwipeSmart.SwipeSmartWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lindsayqin.SwipeSmart.SwipeSmartWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -1,0 +1,16 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/WalletView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Credit Cards"
+      },
+      {
+        "comment": "",
+        "key": "New Card"
+      }
+    ]
+  },
+  "version": 1
+}

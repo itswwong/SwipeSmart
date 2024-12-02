@@ -87,7 +87,7 @@ extension UIKit.UIImage {
 @available(watchOS, unavailable)
 extension DeveloperToolsSupport.ColorResource {
 
-    private init?(thinnableName: String, bundle: Bundle) {
+    private init?(thinnableName: Swift.String, bundle: Foundation.Bundle) {
 #if canImport(AppKit) && os(macOS)
         if AppKit.NSColor(named: NSColor.Name(thinnableName), bundle: bundle) != nil {
             self.init(name: thinnableName, bundle: bundle)
@@ -159,7 +159,7 @@ extension SwiftUI.ShapeStyle where Self == SwiftUI.Color {
 @available(watchOS, unavailable)
 extension DeveloperToolsSupport.ImageResource {
 
-    private init?(thinnableName: String, bundle: Bundle) {
+    private init?(thinnableName: Swift.String, bundle: Foundation.Bundle) {
 #if canImport(AppKit) && os(macOS)
         if bundle.image(forResource: NSImage.Name(thinnableName)) != nil {
             self.init(name: thinnableName, bundle: bundle)

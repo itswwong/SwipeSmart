@@ -12,31 +12,47 @@ struct WalletView: View {
     
     @Environment(\.scenePhase) private var scenePhase
     @State private var isPresentingNewCardView = false
+    @State private var s = -50
+    @State private var isSelected = false
+
     
     let saveAction: ()->Void
     
     var body: some View {
         NavigationStack {
-            List($cards) { $card in
-                NavigationLink(destination: DetailView(card: $card, cards: $cards, categories: $categories)) {
-                    CardView(card: card)
+            VStack (spacing: CGFloat(s)) {
+                ForEach($cards) { $card in
+                    NavigationLink(destination: DetailView(card: $card, cards: $cards, categories: $categories)) {
+                        CardView(card: card)
+                            .padding(20)
+                    }
+                    .background(
+                       RoundedRectangle(cornerRadius: 15)
+                           .foregroundStyle(card.theme.mainColor)
+                   )
                 }
-                .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
-                .listRowBackground(
-                    RoundedRectangle(cornerRadius: 15)
-                        .background(.clear)
-                        .foregroundStyle(card.theme.mainColor)
-                        .padding(
-                            EdgeInsets(
-                                top: 5,
-                                leading: 0,
-                                bottom: 5,
-                                trailing: 0
-                            )
-                        )
-                )
-                .listRowSeparator(.hidden)
+                .padding()
             }
+//            List($cards) { $card in
+//                NavigationLink(destination: DetailView(card: $card, cards: $cards, categories: $categories)) {
+//                    CardView(card: card)
+//                }
+//                .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
+//                .listRowBackground(
+//                    RoundedRectangle(cornerRadius: 15)
+//                        .background(.clear)
+//                        .foregroundStyle(card.theme.mainColor)
+//                        .padding(
+//                            EdgeInsets(
+//                                top: 5,
+//                                leading: 0,
+//                                bottom: 5,
+//                                trailing: 0
+//                            )
+//                        )
+//                )
+//                .listRowSeparator(.hidden)
+//            }
             .toolbar {
                 ToolbarItem (placement: .topBarLeading) {
                     Text("Credit Cards")

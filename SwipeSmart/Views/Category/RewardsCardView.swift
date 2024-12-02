@@ -6,6 +6,7 @@
 
 import SwiftUI
 
+
 struct RewardsCardView: View {
     let card: CreditCard
     let reward: Double
@@ -14,71 +15,112 @@ struct RewardsCardView: View {
     let expired: Bool
     let future: Bool
 
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                VStack(alignment: .leading) {
                     Text(card.bankName)
-                        .font(.title2.weight(.bold))
+                        .font(.custom("Inter-Regular_Thin", size: 15))
                         .padding(.bottom, 2)
-                    Text(card.cardName.isEmpty ? card.cardType : card.cardName)
-                        .font(.headline)
+                        .foregroundStyle(.pastelgraylight)
+                    Spacer()
+                    Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
+                        .font(.custom("Inter-Regular_Thin", size: 15))
+                        .foregroundStyle(.pastelgraylight)
+                        //.frame(maxWidth: .infinity, alignment: .leading)
+            }
+            Spacer()
+            HStack {
+                Spacer()
+                if !card.cardName.isEmpty {
+                    Text(card.cardName)
+                        .font(.custom("Inter-Regular_Light", size: 15))
                         .padding(.bottom, 15)
-                    HStack {
-                        if card.digits.isEmpty {
-                            Text("**** **** **** ****")
-                        }
-                        else {
-                            Text("**** **** **** \(card.digits)")
-                        }
-                    }
-                    .padding(.bottom, 2)
+                }
+            }
+            Spacer()
+            HStack {
+                if card.digits.isEmpty {
+                    Text("**** **** **** ****")
+                        .font(.custom("Inter-Regular_Light", size: 15))
+                }
+                else {
+                    Text("**** **** **** \(card.digits)")
+                        .font(.custom("Inter-Regular_Light", size: 15))
+                }
+            }
+            HStack (alignment: .top){
+                VStack {
                     if expired {
-                        Text("Expired")
-                    }
-                    else if future {
+                        Text("EXPIRED")
+                            .font(.custom("Inter-Regular_Light", size: 15))
+                            .foregroundStyle(.red)
+                    } else if future {
                         if let date = startDate {
                             HStack {
                                 Text("Starts:")
-                                    .font(.headline)
+                                    .font(.custom("Inter-Regular_Light", size: 15))
+                                    .foregroundStyle(.red)
                                 Text(date, format: Date.FormatStyle()
                                     .month(.twoDigits)
                                     .day(.twoDigits)
                                     .year(.defaultDigits))
+                                .font(.custom("Inter-Regular_Light", size: 15))
+                                .foregroundStyle(.red)
+                                }
                             }
-                        }
                         else {
                             Text("Cannot find start date.")
+                                .font(.custom("Inter-Regular_Light", size: 15))
+                                .foregroundStyle(.red)
                         }
                     }
                     else {
                         if let date = expirationDate {
                             HStack {
-                                Text("Expires:")
-                                    .font(.headline)
                                 Text(date, format: Date.FormatStyle()
                                     .month(.twoDigits)
-                                    .day(.twoDigits)
-                                    .year(.defaultDigits))
+                                    .year(.twoDigits))
+                                .font(.custom("Inter-Regular_Light", size: 15))
+                                .foregroundStyle(.red)
                             }
                         }
                         else {
                             Text("Does not expire.")
+                                .font(.custom("Inter-Regular_Light", size: 15))
+                                .foregroundStyle(.red)
                         }
                     }
                 }
                 Spacer()
-                Circle()
-                    .fill(.white)
-                    .frame(width: 50, height: 50)
-                    .overlay(
-                        Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
-                            .foregroundStyle(expired || future ? .pastelgraydark : card.theme.mainColor)
-                            .font(.headline)
-                    )
+                VStack {
+                    if card.cardType == "Visa" {
+                        Image("visa")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 50)
+                    } else if card.cardType == "Mastercard" {
+                        Image("mastercard")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 50)
+                    } else if card.cardType == "Discover" {
+                        Image("discover")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 50)
+                    } else if card.cardType == "American Express" {
+                        Image("amex")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 50)
+
+                    }
+                }
             }
-        }
-        .padding()
+            }
+        .padding(30)
+        .frame(height: 240)
     }
 }
 

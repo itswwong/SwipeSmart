@@ -1,3 +1,0 @@
-Target dependency graph (2 targets)
-Target 'SwipeSmart' in project 'SwipeSmart' (no dependencies)
-Target 'SwipeSmart' in project 'SwipeSmart' (no dependencies)

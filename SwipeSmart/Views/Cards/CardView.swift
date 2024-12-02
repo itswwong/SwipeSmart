@@ -12,36 +12,61 @@ struct CardView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                VStack(alignment: .leading){
-                    Text(card.bankName)
-                        .font(.title3.weight(.bold))
-                        .padding(.bottom, 5)
-                    Text(card.cardName)
-                        .multilineTextAlignment(.trailing)
-                    Spacer()
-                }
+                Text(card.bankName)
+                    .font(.custom("Inter-Regular_Thin", size: 15))
+                    .padding(.bottom, 2)
+                    .foregroundStyle(.pastelgraylight)
                 Spacer()
-                VStack(alignment: .trailing) {
-                    Text((card.cardType == "Discover" || card.cardType == "American Express") ? "" : card.cardType)
-                        .font(.title3.weight(.bold))
-                    Spacer()
-                }
-                .padding(.trailing, -25)
             }
-            RoundedRectangle(cornerRadius: 7)
-                .frame(width: 30, height: 20)
-                .padding(.bottom, 5)
-                .foregroundStyle(.pastelgraylight)
+            Spacer()
+            HStack {
+                Spacer()
+                if !card.cardName.isEmpty {
+                    Text(card.cardName)
+                        .font(.custom("Inter-Regular_Light", size: 15))
+                        .padding(.bottom, 15)
+                }
+            }
+            Spacer()
             HStack {
                 if card.digits.isEmpty {
                     Text("**** **** **** ****")
+                        .font(.custom("Inter-Regular_Light", size: 15))
                 }
                 else {
                     Text("**** **** **** \(card.digits)")
+                        .font(.custom("Inter-Regular_Light", size: 15))
+                }
+            }
+            Spacer()
+            HStack {
+                Spacer()
+                if card.cardType == "Visa" {
+                    Image("visa")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
+                } else if card.cardType == "Mastercard" {
+                    Image("mastercard")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
+                } else if card.cardType == "Discover" {
+                    Image("discover")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
+                } else if card.cardType == "American Express" {
+                    Image("amex")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
+                    
                 }
             }
         }
-        .padding()
+        .padding(.leading, 20)
+        .frame(height: 170)
     }
 }
 
