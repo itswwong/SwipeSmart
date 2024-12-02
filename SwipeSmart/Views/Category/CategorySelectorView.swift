@@ -22,99 +22,94 @@ struct CategorySelectorView: View {
     @State private var addCategoryEmpty = false
     @State private var addCategoryName = ""
     @State private var showingAddCategoryAlert = false
-    
     @State private var showingDeleteConfirmation = false
     @State private var categoryToDelete: IndexSet? = nil
     
     var body: some View {
-        NavigationStack {
-            List {
-                switch viewState {
-                case .categories:
-                    ForEach($categories) { $category in
-                        CategoryEditView(cards: $cards, category: $category, categories: $categories, categoryExists: $editCategoryExists, categoryEmpty: $editCategoryEmpty)
-                            .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
-                            .listRowBackground(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .background(.clear)
-                                    .foregroundStyle(foregroundColor(category: category))
-                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                            )
-                            .listRowSeparator(.hidden)
-                    }
-                    .onMove(perform: moveCategory)
-                    .onDelete(perform: confirmDeleteCategory)
-                    .toolbar(.hidden, for: .tabBar)
-                    
-                    Button(action: {
-                        showingAddCategoryAlert = true
-                    }) {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "plus")
-                                .bold()
-                                .font(.title)
-                            Spacer()
+            NavigationStack {
+                List {
+                    switch viewState {
+                    case .categories:
+                        ForEach($categories) { $category in
+                            CategoryEditView(cards: $cards, category: $category, categories: $categories, categoryExists: $editCategoryExists, categoryEmpty: $editCategoryEmpty)
+                                .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
+                                .listRowBackground(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .background(.clear)
+                                        .foregroundStyle(foregroundColor(category: category))
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                )
+                                .listRowSeparator(.hidden)
                         }
-                        .frame(height: 40)
-                    }
-                    .buttonStyle(addButton())
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 5, leading: 0, bottom: 0, trailing: 0))
-                    
-                case .cashback:
-                    ForEach($categories) { $category in
-                        if !category.cardRewards.isEmpty {
-                            NavigationLink(destination: RewardsView(cards: $cards, category: $category)) {
-                                CategoryView(cards: $cards, category: $category)
+                        .onMove(perform: moveCategory)
+                        .onDelete(perform: confirmDeleteCategory)
+                    case .cashback:
+                        ForEach($categories) { $category in
+                            if !category.cardRewards.isEmpty {
+                                NavigationLink(destination: RewardsView(cards: $cards, category: $category)) {
+                                    CategoryView(cards: $cards, category: $category)
+                                }
+                                .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
+                                .listRowBackground(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .background(.clear)
+                                        .foregroundStyle(foregroundColor(category: category))
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                )
+                                .listRowSeparator(.hidden)
                             }
-                            .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
-                            .listRowBackground(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .background(.clear)
-                                    .foregroundStyle(foregroundColor(category: category))
-                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                            )
-                            .listRowSeparator(.hidden)
                         }
                     }
-                    .toolbar(.visible, for: .tabBar)
                 }
-            }
-            .scrollContentBackground(.hidden)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Text(viewState == .categories ? "Categories" : "Best Cash Back")
-                        .font(.largeTitle .weight(.bold))
+                .sheet(isPresented: $showingAddCategoryAlert) {
+                    AddCategorySheet(
+                        isPresented: $showingAddCategoryAlert,
+                        addCategoryName: $addCategoryName,
+                        addCategoryExists: $addCategoryExists,
+                        addCategoryEmpty: $addCategoryEmpty,
+                        categories: $categories,
+                        onAdd: { name, background in
+                            let newCategory = Category(name: name, cardRewards: [], backgroundColor: background)
+                            categories.append(newCategory)
+                        }
+                    )
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(viewState == .categories ? "Done" : "Categories") {
-                        viewState = viewState == .categories ? .cashback : .categories
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(action: {
+                            viewState = viewState == .categories ? .cashback : .categories
+                        }) {
+                            Image(systemName: viewState == .categories ? "arrow.backward" : "menubar.dock.rectangle")
+                                .foregroundColor(.blue) // Customize color
+                        }
                     }
-                    .disabled(editCategoryExists || editCategoryEmpty)
+                    
+                    ToolbarItem(placement: .principal) {
+                        Text(viewState == .categories ? "Categories" : "Best Cash Back")
+                            .font(.largeTitle.bold())
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        if viewState == .categories {
+                            Button(action: {
+                                showingAddCategoryAlert = true
+                            }) {
+                                Image(systemName: "plus.circle")
+                                    .foregroundColor(.blue) // Customize color
+                            }
+                        }
+                    }
                 }
             }
-            .alert("Are you sure you want to delete this category?", isPresented: $showingDeleteConfirmation, presenting: categoryToDelete) { category in
-                Button("Delete", role: .destructive) {
-                    deleteCategory()
-                }
-                Button("Cancel", role: .cancel) {}
-            } message: { category in
-                Text("This will permanently remove all rewards associated with this category.")
-            }
-            
-            // This sheet is toggled on and off for adding a new category
-            .sheet(isPresented: $showingAddCategoryAlert) {
-                AddCategorySheet(
-                    isPresented: $showingAddCategoryAlert,
-                    addCategoryName: $addCategoryName,
-                    addCategoryExists: $addCategoryExists,
-                    addCategoryEmpty: $addCategoryEmpty,
-                    categories: $categories,
-                    onAdd: addNewCategory
-                )
-            }
+        }
+    
+    private func foregroundColor(category: Category) -> Color {
+        switch category.backgroundColor {
+        case "Red": return .red
+        case "Blue": return .blue
+        case "Green": return .green
+        case "Teal": return .teal
+        default: return .gray
         }
     }
     
@@ -154,25 +149,25 @@ struct CategorySelectorView: View {
     }
     
     
-    private func foregroundColor(category: Category) -> Color {
-        if category.cardRewards.isEmpty {
-            return .pastelgray
-        }
-
-        if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-            return category.cardRewards[0].expired || category.cardRewards[0].future ? .pastelgraydark : cards[index].theme.mainColor
-        }
-        
-        return .pastelgray
-    }
+//    private func foregroundColor(category: Category) -> Color {
+//        if category.cardRewards.isEmpty {
+//            return Color("pastelgray")
+//        }
+//
+//        if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
+//            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydark") : cards[index].theme.mainColor
+//        }
+//        
+//        return Color("pastelgray")
+//    }
 }
 
 struct addButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(.pastelgraydark)
-            .foregroundStyle(.white)
+            //.background(Color("white"))
+            //.foregroundStyle(.black)
             .cornerRadius(15)
             .opacity(configuration.isPressed ? 0.75 : 1)
     }

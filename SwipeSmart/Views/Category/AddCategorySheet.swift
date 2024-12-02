@@ -1,3 +1,8 @@
+//
+//  AddCategorySheet.swift
+//
+//
+//
 import SwiftUI
 
 struct AddCategorySheet: View {
@@ -7,11 +12,11 @@ struct AddCategorySheet: View {
     @Binding var addCategoryEmpty: Bool
     @Binding var categories: [Category]
     
-    @State private var selectedBackground: String = "Teal"
+    @State private var selectedBackground: String = "Teal" // Default background color
     @State private var showIconPicker = false // For selecting icons (you can implement this separately)
     
     let backgroundOptions = ["Red", "Blue", "Green", "Teal"]
-    var onAdd: () -> Void
+    var onAdd: (String, String) -> Void // Update to include background color
 
     var body: some View {
         VStack {
@@ -33,7 +38,7 @@ struct AddCategorySheet: View {
                 .font(.headline)
                 .padding(.bottom, 16)
             
-            // Input fields in HStack
+            // Input fields
             VStack(spacing: 16) {
                 HStack {
                     Text("Name")
@@ -41,14 +46,14 @@ struct AddCategorySheet: View {
                         .foregroundColor(.gray)
                         .frame(width: 100, alignment: .leading)
                     
-                    Spacer() // Added spacer to push input fields to the right
+                    Spacer()
                     
                     VStack {
                         TextField("Ex: Groceries", text: $addCategoryName)
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(8)
-                            .onChange(of: addCategoryName) {
+                            .onChange(of: addCategoryName) { _ in
                                 addCategoryEmpty = addCategoryName.isEmpty
                                 addCategoryExists = categories.contains {
                                     $0.name.lowercased() == addCategoryName.lowercased()
@@ -65,7 +70,6 @@ struct AddCategorySheet: View {
                                 .foregroundColor(.red)
                         }
                     }
-                    
                 }
                 
                 HStack {
@@ -74,7 +78,7 @@ struct AddCategorySheet: View {
                         .foregroundColor(.gray)
                         .frame(width: 100, alignment: .leading)
                     
-                    Spacer() // Spacer to separate the label and dropdown
+                    Spacer()
                     
                     Picker("Background", selection: $selectedBackground) {
                         ForEach(backgroundOptions, id: \.self) { option in
@@ -82,33 +86,11 @@ struct AddCategorySheet: View {
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
-                    .padding(5)
-                    .frame(maxWidth: .infinity) // Ensure it fills the remaining space
-                    .background(Color.gray.opacity(0.2)) // Match background style
-                    .cornerRadius(8) // Match corner radius
-                }
-
-                
-                HStack {
-                    Text("Icon")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .frame(width: 100, alignment: .leading)
-                    
-                    Spacer() // Added spacer
-                    
-                    Button(action: {
-                        showIconPicker.toggle()
-                    }) {
-                        HStack {
-                            Text("Select Icon")
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                        }
-                        .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(8)
-                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
                 }
             }
             .padding(.horizontal)
@@ -117,7 +99,7 @@ struct AddCategorySheet: View {
             
             // Add Category button
             Button(action: {
-                onAdd()
+                onAdd(addCategoryName, selectedBackground) // Pass name and background color
                 isPresented = false
             }) {
                 Text("Add Category")

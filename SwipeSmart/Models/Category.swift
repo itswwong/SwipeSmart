@@ -12,16 +12,19 @@ struct Category: Identifiable, Codable {
     let id: UUID
     var name: String
     var cardRewards = [CreditCard.cardID_rewards]()
-    
-    init(id: UUID = UUID(), name: String) {
+    var backgroundColor: String = "Teal" // Default color is Teal
+
+    init(id: UUID = UUID(), name: String, backgroundColor: String = "Teal") {
         self.id = id
         self.name = name
+        self.backgroundColor = backgroundColor
     }
     
-    init(id: UUID = UUID(), name: String, cardRewards: [CreditCard.cardID_rewards]) {
+    init(id: UUID = UUID(), name: String, cardRewards: [CreditCard.cardID_rewards], backgroundColor: String = "Teal") {
         self.id = id
         self.name = name
         self.cardRewards = cardRewards
+        self.backgroundColor = backgroundColor
     }
 }
     
