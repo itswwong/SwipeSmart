@@ -29,7 +29,7 @@ struct CategoryEditView: View {
             VStack(alignment: .leading) {
                 Spacer()
                 TextField("Category Name", text: $newCategoryName)
-                    .font(.title2.weight(.bold))
+                    .font(.headline)
                     .onChange(of: newCategoryName) {
                         categoryEmpty = newCategoryName.isEmpty
                         categoryExists = categories.contains {
