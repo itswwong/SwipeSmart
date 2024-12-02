@@ -37,10 +37,11 @@ struct WalletView: View {
                 )
                 .listRowSeparator(.hidden)
             }
+            .padding(.top, -30)
             .toolbar {
-                ToolbarItem (placement: .topBarLeading) {
+                ToolbarItem (placement: .principal) {
                     Text("Credit Cards")
-                        .font(.largeTitle .weight(.bold))
+                        .font(.title3 .weight(.semibold))
                 }
                 ToolbarItem (placement: .topBarTrailing) {
                     Button(action: {
@@ -52,6 +53,7 @@ struct WalletView: View {
                     .accessibilityLabel("New Card")
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
         .sheet(isPresented: $isPresentingNewCardView) {
             NewCreditCard(cards: $cards, categories: $categories, isPresentingNewCardView: $isPresentingNewCardView)
