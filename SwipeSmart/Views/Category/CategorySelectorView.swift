@@ -21,6 +21,7 @@ struct CategorySelectorView: View {
     @State private var addCategoryExists = false
     @State private var addCategoryEmpty = false
     @State private var addCategoryName = ""
+    @State private var addCategoryColor = "black_accent"
     @State private var showingAddCategoryAlert = false
     @State private var showingDeleteConfirmation = false
     @State private var categoryToDelete: IndexSet? = nil
@@ -65,6 +66,7 @@ struct CategorySelectorView: View {
                     AddCategorySheet(
                         isPresented: $showingAddCategoryAlert,
                         addCategoryName: $addCategoryName,
+                        addCategoryColor: $addCategoryColor,
                         addCategoryExists: $addCategoryExists,
                         addCategoryEmpty: $addCategoryEmpty,
                         categories: $categories,
@@ -104,13 +106,11 @@ struct CategorySelectorView: View {
         }
     
     private func foregroundColor(category: Category) -> Color {
-        switch category.backgroundColor {
-        case "Red": return .red
-        case "Blue": return .blue
-        case "Green": return .green
-        case "Teal": return .teal
-        default: return .gray
+        if let uiColor = UIColor(named: category.backgroundColor) {
+            return Color(uiColor)
         }
+        return Color("black_new") // Fallback to "black_new" if the color is not found SET DEFAULT COLOR HERE
+        //////////////////////////////////////////////////
     }
     
     private func moveCategory(from source: IndexSet, to destination: Int) {
@@ -140,10 +140,11 @@ struct CategorySelectorView: View {
     }
     
     private func addNewCategory() {
-        let newCategory = Category(name: addCategoryName, cardRewards: [])
+        let newCategory = Category(name: addCategoryName, cardRewards: [], backgroundColor: addCategoryColor)
         categories.append(newCategory)
-        
+
         addCategoryName = ""
+        addCategoryColor = "black_accent" // Reset to default color
         addCategoryEmpty = false
         addCategoryExists = false
     }

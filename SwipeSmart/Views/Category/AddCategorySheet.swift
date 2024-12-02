@@ -8,14 +8,16 @@ import SwiftUI
 struct AddCategorySheet: View {
     @Binding var isPresented: Bool
     @Binding var addCategoryName: String
+    @Binding var addCategoryColor: String
     @Binding var addCategoryExists: Bool
     @Binding var addCategoryEmpty: Bool
     @Binding var categories: [Category]
     
-    @State private var selectedBackground: String = "Teal" // Default background color
+    //@State private var addCategoryColor: String = "black_accent" // Default color
+    //@State private var selectedBackground: String = "Teal" // Default background color
     @State private var showIconPicker = false // For selecting icons (you can implement this separately)
     
-    let backgroundOptions = ["Red", "Blue", "Green", "Teal"]
+    //let backgroundOptions = ["Red", "Blue", "Green", "Teal"]
     var onAdd: (String, String) -> Void // Update to include background color
 
     var body: some View {
@@ -80,9 +82,15 @@ struct AddCategorySheet: View {
                     
                     Spacer()
                     
-                    Picker("Background", selection: $selectedBackground) {
-                        ForEach(backgroundOptions, id: \.self) { option in
-                            Text(option)
+                    Picker("Background", selection: $addCategoryColor) {
+                        ForEach(categoryColors, id: \.self) { colorName in
+                            HStack {
+                                Circle()
+                                    .fill(Color(colorName))
+                                    .frame(width: 20, height: 20)
+                                Text(colorName.capitalized.replacingOccurrences(of: "_", with: " "))
+                            }
+                            .tag(colorName)
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
@@ -99,7 +107,7 @@ struct AddCategorySheet: View {
             
             // Add Category button
             Button(action: {
-                onAdd(addCategoryName, selectedBackground) // Pass name and background color
+                onAdd(addCategoryName, addCategoryColor) // Pass name and background color
                 isPresented = false
             }) {
                 Text("Add Category")
@@ -125,5 +133,9 @@ struct AddCategorySheet: View {
         addCategoryName = ""
         addCategoryExists = false
         addCategoryEmpty = true
+    }
+    
+    private func foregroundColor(category: Category) -> Color {
+        Color(category.backgroundColor) // Dynamically fetches the color from Assets.xcassets
     }
 }
