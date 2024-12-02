@@ -24,7 +24,7 @@ struct ColorPicker: View {
 
 struct ColorPicker_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPicker(selection: .constant(.pastelblue))
+        ColorPicker(selection: .constant(.blue_new))
     }
 }
 

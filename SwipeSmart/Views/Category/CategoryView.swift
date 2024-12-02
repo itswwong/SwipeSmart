@@ -1,12 +1,12 @@
 import SwiftUI
 
-extension UIColor {
-    var isLight: Bool {
-        var white: CGFloat = 0
-        self.getWhite(&white, alpha: nil)
-        return white >= 0.7 // Adjust this threshold as needed
-    }
-}
+//extension UIColor {
+//    var isLight: Bool {
+//        var white: CGFloat = 0
+//        self.getWhite(&white, alpha: nil)
+//        return white >= 0.7 // Adjust this threshold as needed
+//    }
+//}
 
 struct CategoryView: View {
     @Binding var cards: [CreditCard]
@@ -19,10 +19,11 @@ struct CategoryView: View {
             
             VStack(alignment: .leading) {
                 Spacer()
-//                Text(category.name)
-//                    .font(.system(size: 18, weight: .bold))
                 
                 if topRewardCards.isEmpty || topReward == 0 {
+                    Text(category.name)
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(outlineColor(category: category))
                     Text("No active rewards in this category.")
                         .font(.subheadline)
                         .padding(.top, 6)
@@ -31,13 +32,13 @@ struct CategoryView: View {
                     ForEach(topRewardCards) { card in
                         Text(category.name)
                             .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? .black : .white) // If foreground color is light, then display black text, and same for other way around
+                            .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                         if let index = cards.firstIndex(where: { $0.id == card.cardID }) {
                             let cardDisplayName = cards[index].bankName == cards[index].cardType
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(cards[index].bankName)
-                                        .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? Color(white: 0.2) : Color(white: 0.8)) // If foreground color is light, then display black text, and same for other way around
+                                        .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                         .font(.system(size: 18))
                                         .padding(.top, 25)
                                         .padding(.bottom, 25)
@@ -48,17 +49,17 @@ struct CategoryView: View {
                                         if !cards[index].cardName.isEmpty {
                                             HStack {
                                                 Text("\(cards[index].cardName) ")
-                                                    .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? .black : .white) // If foreground color is light, then display black text, and same for other way around
+                                                    .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                                     .font(.system(size: 18))
                                                     
                                                 
                                                 if cards[index].digits.isEmpty {
                                                     Text("****")
-                                                        .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? .black : .white) // If foreground color is light, then display black text, and same for other way around
+                                                        .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                                 }
                                                 else {
                                                     Text(cards[index].digits)
-                                                        .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? .black : .white) // If foreground color is light, then display black text, and same for other way around
+                                                        .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                                         .font(.system(size: 18))
                                                 }
                                             }
@@ -68,33 +69,33 @@ struct CategoryView: View {
                                             if cards[index].digits.isEmpty {
                                                 Text("****")
                                                     .padding(.top, 1)
-                                                    .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? .black : .white) // If foreground color is light, then display black text, and same for other way around
+                                                    .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                             }
                                             else {
                                                 Text("\(cards[index].cardName) \(cards[index].digits)")
                                                     .font(.system(size: 18))
-                                                    .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? .black : .white) // If foreground color is light, then display black text, and same for other way around
+                                                    .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                                 Text(cards[index].digits)
                                                     .padding(.top, 1)
-                                                    .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? .black : .white) // If foreground color is light, then display black text, and same for other way around
+                                                    .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                             }
                                         }
                                     } else {
                                         Text("\(cards[index].cardType) \(cards[index].digits)")
                                             .padding(.top, 1)
-                                            .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? .black : .white) // If foreground color is light, then display black text, and same for other way around
+                                            .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                     }
                                 }
                                 Spacer()
                                 Text(category.cardRewards[0].reward == floor(category.cardRewards[0].reward) ? "\(Int(category.cardRewards[0].reward))%" : String(format: "%.1f%%", category.cardRewards[0].reward))
-                                    //.foregroundStyle(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
-                                    .foregroundColor(UIColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards)).isLight ? .black : .white) // If foreground color is light, then display black text, and same for other way around
+                                    .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                     .font(.headline)
-                                    .offset(y: -75) // Moves the text up by 75 points
+                                    .offset(y: -75)
                                     .padding()
                             }
                             if card != topRewardCards.last {
                                 customDivider()
+                                    .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                     .padding(.top, 20)
                                     .padding(.bottom, 10)
                             }
@@ -109,13 +110,25 @@ struct CategoryView: View {
     private func categoryRewardColor(card: CreditCard.cardID_rewards, topRewardsCards: [CreditCard.cardID_rewards]) -> Color {
         if card == topRewardsCards.first {
             if let index = cards.firstIndex(where: { $0.id == card.cardID }) {
-                return cards[index].theme.mainColor
+                return cards[index].theme.accentColor
             }
         }
         else {
             if let index = cards.firstIndex(where: { $0.id == topRewardsCards[0].cardID }) {
-                return cards[index].theme.mainColor
+                return cards[index].theme.accentColor
             }
+        }
+        
+        return Color("pastelgraydarkest")
+    }
+    
+    private func outlineColor(category: Category) -> Color {
+        if category.cardRewards.isEmpty {
+            return Color("pastelgraydark")
+        }
+
+        if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
+            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydarkest") : cards[index].theme.accentColor
         }
         
         return Color("pastelgraydark")
