@@ -19,6 +19,7 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
+        
         VStack {
             Text("Card Info")
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -195,14 +196,14 @@ struct DetailView: View {
         .padding(.horizontal, 30)
         .padding(.vertical, 15)
         .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-            Button(action: {
-                editingCard = card
-                editingCategories = categories
-            }) {
-                    Image(systemName: "arrow.left")
-                }
-            }
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button(action: {
+//                    editingCard = card
+//                    editingCategories = categories
+//                }) {
+//                        Image(systemName: "arrow.left")
+//                    }
+//                }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     isPresentingEditView = true
@@ -214,14 +215,15 @@ struct DetailView: View {
             }
         }
         .sheet(isPresented: $isPresentingEditView) {
-            NavigationStack {
                 DetailEditView(card: $editingCard, cards: $cards, categories: $editingCategories, duplicateError: $duplicateError, showDelete: true, onDeleteCard: { deleteCard() })
                     .toolbar {
                         ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-                            Button("Cancel") {
+                            Button(action: {
                                 isPresentingEditView = false
+                            }) {
+                                Image(systemName: "xmark")
                             }
-                            .tint(.blue)
+                            .tint(.white)
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
@@ -231,9 +233,9 @@ struct DetailView: View {
                                 card = editingCard
                             }
                             .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
-                            .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .blue)
+                            .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .white)
                         }
-                    }
+                    
             }
         }
     }
