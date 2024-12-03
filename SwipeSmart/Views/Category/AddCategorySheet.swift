@@ -55,6 +55,9 @@ struct AddCategorySheet: View {
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(8)
+                            .onDisappear {
+                                resetForm()
+                            }
                             .onChange(of: addCategoryName) { _ in
                                 addCategoryEmpty = addCategoryName.isEmpty
                                 addCategoryExists = categories.contains {
