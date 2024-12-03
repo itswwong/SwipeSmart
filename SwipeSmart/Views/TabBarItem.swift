@@ -12,7 +12,7 @@ enum TabBarItem:Hashable {
     case Rewards, CreditCards
     var iconName:String {
         switch self {
-        case.Rewards: return "dollarsign.square"
+        case.Rewards: return "dollarsign"
         case.CreditCards: return "creditcard"
         }
     }
@@ -24,10 +24,9 @@ enum TabBarItem:Hashable {
     }
     var color:Color {
         switch self {
-        case.Rewards: return Color.gray
-        case.CreditCards: return Color.gray
+        case.Rewards: return Color("tabbar")
+        case.CreditCards: return Color("tabbar")
         }
     }
     
 }
-

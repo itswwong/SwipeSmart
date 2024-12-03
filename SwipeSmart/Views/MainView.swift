@@ -75,7 +75,7 @@ extension MainView {
         TabView {
             CategorySelectorView(cards: $cards, categories: $categories)
                 .tabItem {
-                    Label("Cash Back Rewards", systemImage: "dollarsign.square.fill")
+                    Label("Cash Back Rewards", systemImage: "dollarsign")
                 }
                 .tag(1)
 

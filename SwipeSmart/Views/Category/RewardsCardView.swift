@@ -20,58 +20,61 @@ struct RewardsCardView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                    Text(card.bankName)
-                        .font(.custom("Inter-Regular_Thin", size: 15))
-                        .padding(.bottom, 2)
-                        .foregroundStyle(expired || future ? .pastelgraydarkest : strokeColor)
-                    Spacer()
-                    Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
-                        .font(.custom("Inter-Regular_Thin", size: 15))
-                        .foregroundStyle(expired ? .pastelgraydarkest : strokeColor)
-                        //.frame(maxWidth: .infinity, alignment: .leading)
+                Text(card.bankName)
+//                        .font(.custom("Inter-Regular_Thin", size: 15))
+                    .textCase(.uppercase)
+                    .foregroundStyle(expired || future ? .pastelgraydarkest : strokeColor)
+                Spacer()
+                Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
+//                        .font(.custom("Inter-Regular_Thin", size: 15))
+                    .foregroundStyle(expired ? .pastelgraydarkest : strokeColor)
+                    //.frame(maxWidth: .infinity, alignment: .leading)
             }
-            Spacer()
+            .padding(.bottom, 30)
+            
             HStack {
                 Spacer()
                 if !card.cardName.isEmpty {
                     Text(card.cardName)
-                        .font(.custom("Inter-Regular_Light", size: 15))
-                        .padding(.bottom, 15)
+//                        .font(.custom("Inter-Regular_Light", size: 15))
+                        .fontWeight(.medium)
                         .foregroundStyle(expired || future ? .pastelgraydarkest : strokeColor)
                 }
             }
-            Spacer()
+            .padding(.bottom, 30)
+            
             HStack {
                 if card.digits.isEmpty {
                     Text("**** **** **** ****")
-                        .font(.custom("Inter-Regular_Light", size: 15))
+//                        .font(.custom("Inter-Regular_Light", size: 15))
                 }
                 else {
                     Text("**** **** **** \(card.digits)")
-                        .font(.custom("Inter-Regular_Light", size: 15))
+//                        .font(.custom("Inter-Regular_Light", size: 15))
                 }
             }
-            HStack (alignment: .top){
+            
+            HStack (alignment: .top) {
                 VStack {
                     if expired {
                         Text("EXPIRED")
-                            .font(.custom("Inter-Regular_Light", size: 15))
+//                            .font(.custom("Inter-Regular_Light", size: 15))
                             .foregroundStyle(.red)
                     } else if future {
                         if let date = startDate {
                             HStack {
                                 Text("Activates:")
-                                    .font(.custom("Inter-Regular_Light", size: 15))
+//                                    .font(.custom("Inter-Regular_Light", size: 15))
                                 Text(date, format: Date.FormatStyle()
                                     .month(.twoDigits)
                                     .day(.twoDigits)
                                     .year(.defaultDigits))
-                                .font(.custom("Inter-Regular_Light", size: 15))
+//                                .font(.custom("Inter-Regular_Light", size: 15))
                                 }
                             }
                         else {
                             Text("Cannot find start date.")
-                                .font(.custom("Inter-Regular_Light", size: 15))
+//                                .font(.custom("Inter-Regular_Light", size: 15))
                                 .foregroundStyle(.red)
                         }
                     }
@@ -81,13 +84,13 @@ struct RewardsCardView: View {
                                 Text(date, format: Date.FormatStyle()
                                     .month(.twoDigits)
                                     .year(.twoDigits))
-                                .font(.custom("Inter-Regular_Light", size: 15))
+//                                .font(.custom("Inter-Regular_Light", size: 15))
                                 .foregroundStyle(strokeColor)
                             }
                         }
                         else {
                             Text("Does not expire.")
-                                .font(.custom("Inter-Regular_Light", size: 15))
+//                                .font(.custom("Inter-Regular_Light", size: 15))
                                 .foregroundStyle(strokeColor)
                         }
                     }
@@ -118,7 +121,7 @@ struct RewardsCardView: View {
                     }
                 }
             }
-            }
+        }
         .padding(30)
         .frame(height: 240)
     }

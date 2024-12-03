@@ -22,6 +22,7 @@ struct CustomTabBarContainerView<Content:View>:View {
                 content
             }
             CustomTabBarView(tabs:tabs,selection: $selection,localSelection:selection)
+                .padding(20)
         }
         .onPreferenceChange(TabBarItemsPreferenceKey.self,perform:{value in self.tabs = value;})
     }

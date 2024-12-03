@@ -21,21 +21,25 @@ struct CardView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text(card.bankName)
-                    .font(.custom("Inter-Regular_Thin", size: 15))
-                    .padding(.bottom, 2)
+//                    .font(.custom("Inter-Regular_Thin", size: 15))
+                    .textCase(.uppercase)
                     .foregroundStyle(strokeColor)
                 Spacer()
             }
-            Spacer()
+            .padding(.bottom, 30)
+//            Spacer()
+            
             HStack {
                 Spacer()
                 Text(card.cardName)
                     .multilineTextAlignment(.trailing)
-                    .font(.custom("Inter-Regular_Thin", size: 15))
-                    .padding(.bottom, 2)
+//                    .font(.custom("Inter-Regular_Thin", size: 15))
+                    .fontWeight(.medium)
                     .foregroundStyle(strokeColor)
             }
-            Spacer()
+            .padding(.bottom, 30)
+//            Spacer()
+            
             HStack {
                 if card.digits.isEmpty {
                     Text("**** **** **** ****")
@@ -44,8 +48,8 @@ struct CardView: View {
                     Text("**** **** **** \(card.digits)")
                 }
             }
-            Spacer()
-            HStack {
+            
+            HStack (alignment: .top) {
                 Spacer()
                 if card.cardType == "Visa" {
                     Image("visa")
@@ -70,8 +74,9 @@ struct CardView: View {
                     
                 }
             }
+            .padding(.top, -20)
         }
-        .frame(height: 160)
-        .padding()
+        .frame(height: 200)
+        .padding(30)
     }
 }

@@ -33,6 +33,7 @@ struct CategorySelectorView: View {
                     case .categories:
                         ForEach($categories) { $category in
                             CategoryEditView(cards: $cards, category: $category, categories: $categories, categoryExists: $editCategoryExists, categoryEmpty: $editCategoryEmpty)
+                                .foregroundStyle(outlineColor(category: category))
                                 .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
                                 .listRowBackground(
                                     RoundedRectangle(cornerRadius: 15)
@@ -42,7 +43,7 @@ struct CategorySelectorView: View {
                                             // border
                                             RoundedRectangle(cornerRadius: 15)
                                                 .stroke(
-                                                    outlineColor(category: category)
+                                                    outlineColor(category: category), lineWidth: 2
                                                 )
                                         )
                                         .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
@@ -184,14 +185,14 @@ struct CategorySelectorView: View {
     // accent color (for text and border)
     private func outlineColor(category: Category) -> Color {
         if category.cardRewards.isEmpty {
-            return Color("pastelgraydark")
+            return Color("pastelgraydarkest")
         }
 
         if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
             return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydarkest") : cards[index].theme.accentColor
         }
         
-        return Color("pastelgraydark")
+        return Color("pastelgraydarkest")
     }
 }
 
