@@ -10,36 +10,111 @@ struct RewardsView: View {
     @Binding var cards: [CreditCard]
     @Binding var category: Category
     
+    @State private var isSelected = false
+    @State private var s = -50
+        
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(category.cardRewards) { cardID_reward in
-                    if let index = cards.firstIndex(where: { $0.id == cardID_reward.cardID }) {
-                        RewardsCardView(card: cards[index], reward: cardID_reward.reward, startDate: cardID_reward.startDate, expirationDate: cardID_reward.expirationDate, expired: cardID_reward.expired, future: cardID_reward.future)
-                            .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
-                            .listRowBackground(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .background(.clear)
-                                    .foregroundStyle(cardID_reward.expired || cardID_reward.future ? Color("pastelgraydark") : cards[index].theme.mainColor)
-                                    .padding(
-                                        EdgeInsets(
-                                            top: 5,
-                                            leading: 0,
-                                            bottom: 5,
-                                            trailing: 0
-                                        )
+        let topReward = category.cardRewards.first?.reward ?? 0
+        let topRewardCards = category.cardRewards.filter { $0.reward == topReward && $0.expired == false && $0.future == false }
+        let displayedCards = category.cardRewards.filter { $0.reward != topReward && $0.expired == false && $0.future == false }
+
+        HStack {
+            Text("Best Savings")
+                .font(.custom("Inter-Regular_SemiBold", size: 20))
+                .padding(.leading, 20)
+                .padding([.top, .bottom], 20)
+            Spacer()
+        }
+        ScrollView {
+            VStack (spacing:20) {
+                ForEach(topRewardCards) { card in
+                    if let index = cards.firstIndex(where: { $0.id == card.cardID }) {
+                        RewardsCardView(
+                            card: cards[index],
+                            reward: card.reward,
+                            startDate: card.startDate,
+                            expirationDate: card.expirationDate,
+                            expired: card.expired,
+                            future: card.future,
+                            strokeColor: cards[index].theme.accentColor)
+                        .background(
+                            RoundedRectangle(cornerRadius: 15)
+                                .background(.clear)
+                                .foregroundStyle(card.expired || card.future ? .pastelgraydark : cards[index].theme.mainColor)
+                                .padding(
+                                    EdgeInsets(
+                                        top: 0,
+                                        leading: 0,
+                                        bottom: 0,
+                                        trailing: 0
                                     )
-                            )
-                            .listRowSeparator(.hidden)
+                                )
+                                .overlay(
+                                    // border
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(
+                                            cards[index].theme.accentColor
+                                        )
+                                )
+                                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                        )
                     }
                 }
             }
-            .toolbar {
-                ToolbarItem (placement: .principal) {
-                    Text(category.name)
-                        .font(.largeTitle .weight(.bold))
-                        .fixedSize(horizontal: false, vertical: true)
+            .padding(.bottom, 10)
+            VStack (spacing: CGFloat(s)) {
+                ForEach(displayedCards) { card in
+                    if let index = cards.firstIndex(where: { $0.id == card.cardID }) {
+                        RewardsCardView(
+                            card: cards[index],
+                            reward: card.reward,
+                            startDate: card.startDate,
+                            expirationDate: card.expirationDate,
+                            expired: card.expired,
+                            future: card.future,
+                            strokeColor: cards[index].theme.accentColor)
+                        .background(
+                            RoundedRectangle(cornerRadius: 15)
+                                .background(.clear)
+                                .foregroundStyle(card.expired || card.future ? .pastelgraydark : cards[index].theme.mainColor)
+                                .padding(
+                                    EdgeInsets(
+                                        top: 0,
+                                        leading: 0,
+                                        bottom: 0,
+                                        trailing: 0
+                                    )
+                                )
+                                .overlay(
+                                    // border
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(
+                                            cards[index].theme.accentColor
+                                        )
+                                )
+                                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                        )
+                        .onTapGesture {
+                            withAnimation {
+                                isSelected.toggle()
+                                if isSelected {
+                                    s = 20
+                                } else {
+                                    s = -50
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+        }
+        .padding()
+        .toolbar {
+            ToolbarItem (placement: .principal) {
+                Text(category.name)
+//                    .font(.custom("Inter-Regular_SemiBold", size: 20))
+                    .font(.title3 .weight(.semibold))
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
     }
