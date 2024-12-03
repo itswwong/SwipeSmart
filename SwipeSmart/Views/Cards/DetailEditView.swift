@@ -124,28 +124,27 @@ struct DetailEditView: View {
                     .foregroundStyle(.red)
                     .font(.footnote)
             }
-        } //end of vstack
-//                                .toolbar {
-//                                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-//                                        Button("Cancel") {
-////                                            isPresentingEditView = false
-//                                        }
-//                                        .tint(.blue)
-//                                    }
-//                                    ToolbarItem(placement: .confirmationAction) {
-//                                        Button("Done") {
-////                                            isPresentingEditView = false
-////                                            duplicateError = false
-////                                            categories = editingCategories
-////                                            card = editingCard
-//                                        }
-////                                        .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
-////                                        .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .blue)
-//                                    }
-//            
-//                        }
-        .padding()
-    }
+        }.padding() //end of vstack
+
+    }                                /*.toolbar {
+                                            ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+                                                Button("Cancel") {
+                                                  isPresentingEditView = false
+                                                }
+                                               .tint(.blue)
+                                           }
+                                           ToolbarItem(placement: .confirmationAction) {
+                                               Button("Done") {
+                                                  isPresentingEditView = false
+                                            duplicateError = false
+                                                  categories = editingCategories
+                                                   card = editingCard
+                                                }
+                                              .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
+                                              .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .blue)
+                                            }
+        
+                                }.padding()*/
      
         if !card.categories.isEmpty {
             Section(header: Text("Cash Back Rewards")) {
@@ -173,6 +172,7 @@ struct DetailEditView: View {
         if addNewReward {
             NewRewardView(card: $card, categories: $categories)
             .transition(.move(edge: .top))
+            .padding(15)
         }
         
         if showDelete {

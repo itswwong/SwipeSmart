@@ -106,10 +106,13 @@ struct DetailView: View {
                         Text("\(category.categoryName)")
                             .fontWeight(.bold)
                             .font(.system(size: 16))
+                            .padding()
                         Spacer()
                         Text(category.reward == floor(category.reward) ? "\(Int(category.reward))%" : String(format: "%.1f%%", category.reward))
                             .fontWeight(.bold)
                             .font(.system(size: 16))
+                            .padding()
+                        
                     }
                     if let startDate = category.startDate {
                         HStack {
@@ -161,7 +164,7 @@ struct DetailView: View {
             }
             
             Spacer()
-            
+            /*
             HStack(spacing: 0) {
                 Button(action: {}) {
                     HStack {
@@ -191,7 +194,7 @@ struct DetailView: View {
                     .cornerRadius(10)
                 }
             }
-            .frame(height: 50)
+            .frame(height: 50)*/
         }
         .padding(.horizontal, 30)
         .padding(.vertical, 15)
