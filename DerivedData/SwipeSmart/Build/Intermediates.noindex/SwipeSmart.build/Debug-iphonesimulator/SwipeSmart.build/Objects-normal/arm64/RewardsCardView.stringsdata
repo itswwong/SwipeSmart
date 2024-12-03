@@ -7,7 +7,7 @@
         "key": "**** **** **** ****",
         "location": {
           "startingColumn": 26,
-          "startingLine": 44
+          "startingLine": 46
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "**** **** **** %@",
         "location": {
           "startingColumn": 26,
-          "startingLine": 48
+          "startingLine": 50
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "EXPIRED",
         "location": {
           "startingColumn": 30,
-          "startingLine": 55
+          "startingLine": 57
         }
       },
       {
@@ -44,10 +44,10 @@
       },
       {
         "comment": "",
-        "key": "Starts:",
+        "key": "Activates:",
         "location": {
           "startingColumn": 38,
-          "startingLine": 61
+          "startingLine": 63
         }
       }
     ]

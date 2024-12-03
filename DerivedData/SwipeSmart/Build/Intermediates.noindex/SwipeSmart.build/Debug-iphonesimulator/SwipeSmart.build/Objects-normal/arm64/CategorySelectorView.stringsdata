@@ -7,7 +7,15 @@
         "key": "Are you sure you want to delete this category?",
         "location": {
           "startingColumn": 20,
-          "startingLine": 98
+          "startingLine": 115
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 89
         }
       },
       {
@@ -15,7 +23,7 @@
         "key": "Categories",
         "location": {
           "startingColumn": 53,
-          "startingLine": 88
+          "startingLine": 96
         }
       },
       {
@@ -23,23 +31,15 @@
         "key": "Best Cash Back",
         "location": {
           "startingColumn": 68,
-          "startingLine": 88
+          "startingLine": 96
         }
       },
       {
         "comment": "",
-        "key": "Done",
+        "key": "",
         "location": {
-          "startingColumn": 55,
-          "startingLine": 92
-        }
-      },
-      {
-        "comment": "",
-        "key": "Categories",
-        "location": {
-          "startingColumn": 64,
-          "startingLine": 92
+          "startingColumn": 28,
+          "startingLine": 101
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "Delete",
         "location": {
           "startingColumn": 24,
-          "startingLine": 99
+          "startingLine": 116
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "Cancel",
         "location": {
           "startingColumn": 24,
-          "startingLine": 102
+          "startingLine": 119
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "This will permanently remove all rewards associated with this category.",
         "location": {
           "startingColumn": 22,
-          "startingLine": 104
+          "startingLine": 121
         }
       }
     ]

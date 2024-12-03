@@ -26,6 +26,7 @@ struct CardView: View {
                     .foregroundStyle(strokeColor)
                 Spacer()
             }
+            Spacer()
             HStack {
                 Spacer()
                 Text(card.cardName)
@@ -34,6 +35,7 @@ struct CardView: View {
                     .padding(.bottom, 2)
                     .foregroundStyle(strokeColor)
             }
+            Spacer()
             HStack {
                 if card.digits.isEmpty {
                     Text("**** **** **** ****")
@@ -69,7 +71,7 @@ struct CardView: View {
                 }
             }
         }
-        .frame(maxHeight: 200)
+        .frame(height: 160)
         .padding()
     }
 }

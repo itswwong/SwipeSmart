@@ -2,10 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>Combine</string>
 	<string>SwiftUI</string>
-	<string>ActivityKit</string>
-	<string>WidgetKit</string>
+	<string>Combine</string>
 	<string>Foundation</string>
 </array>
 </plist>

@@ -7,7 +7,7 @@
         "key": "No active rewards in this category.",
         "location": {
           "startingColumn": 26,
-          "startingLine": 24
+          "startingLine": 27
         }
       },
       {
@@ -15,23 +15,15 @@
         "key": "****",
         "location": {
           "startingColumn": 54,
-          "startingLine": 52
+          "startingLine": 70
         }
       },
       {
         "comment": "",
-        "key": "%@ ",
+        "key": "%@ %@",
         "location": {
           "startingColumn": 54,
-          "startingLine": 39
-        }
-      },
-      {
-        "comment": "",
-        "key": "****",
-        "location": {
-          "startingColumn": 58,
-          "startingLine": 42
+          "startingLine": 75
         }
       },
       {
@@ -39,15 +31,7 @@
         "key": "%@ %@",
         "location": {
           "startingColumn": 46,
-          "startingLine": 79
-        }
-      },
-      {
-        "comment": "",
-        "key": "****",
-        "location": {
-          "startingColumn": 54,
-          "startingLine": 96
+          "startingLine": 84
         }
       },
       {
@@ -55,7 +39,7 @@
         "key": "%@ ",
         "location": {
           "startingColumn": 54,
-          "startingLine": 83
+          "startingLine": 51
         }
       },
       {
@@ -63,7 +47,7 @@
         "key": "****",
         "location": {
           "startingColumn": 58,
-          "startingLine": 86
+          "startingLine": 57
         }
       }
     ]

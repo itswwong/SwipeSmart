@@ -29,6 +29,7 @@ struct WalletView: View {
                         }
                         .background(
                             RoundedRectangle(cornerRadius: 15)
+                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 .foregroundStyle(card.theme.mainColor)
                                 .overlay(
                                     // border
@@ -78,6 +79,18 @@ struct WalletView: View {
             }
         }
     }
+    
+//    private func outlineColor(category: Category) -> Color {
+//        if category.cardRewards.isEmpty {
+//            return Color("pastelgraydark")
+//        }
+//
+//        if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
+//            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydarkest") : cards[index].theme.accentColor
+//        }
+//        
+//        return Color("pastelgraydark")
+//    }
 }
 
 struct WalletView_Previews: PreviewProvider {

@@ -16,7 +16,7 @@ struct RewardsView: View {
     var body: some View {
         let topReward = category.cardRewards.first?.reward ?? 0
         let topRewardCards = category.cardRewards.filter { $0.reward == topReward && $0.expired == false && $0.future == false }
-        let displayedCards = category.cardRewards.filter { $0.reward != topReward && $0.expired == false && $0.future == false }
+        let displayedCards = category.cardRewards.filter { $0.reward != topReward || $0.expired == true || $0.future == true }
 
         HStack {
             Text("Best Savings")
@@ -53,7 +53,7 @@ struct RewardsView: View {
                                     // border
                                     RoundedRectangle(cornerRadius: 15)
                                         .stroke(
-                                            cards[index].theme.accentColor
+                                            card.expired || card.future ? .pastelgraydarkest : cards[index].theme.accentColor
                                         )
                                 )
                                 .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
@@ -89,7 +89,7 @@ struct RewardsView: View {
                                     // border
                                     RoundedRectangle(cornerRadius: 15)
                                         .stroke(
-                                            cards[index].theme.accentColor
+                                            card.expired || card.future ? .pastelgraydarkest : cards[index].theme.accentColor
                                         )
                                 )
                                 .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))

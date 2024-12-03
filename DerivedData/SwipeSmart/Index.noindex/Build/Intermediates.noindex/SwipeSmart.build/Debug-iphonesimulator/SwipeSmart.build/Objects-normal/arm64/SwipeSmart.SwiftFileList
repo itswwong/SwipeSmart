@@ -2,11 +2,14 @@
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/WalletView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/ColorView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/NewRewardView.swift
+/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/CustomTabBarContainerView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/AddCategorySheet.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/DetailView.swift
+/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/TabBarItemsPreferenceKey.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/MainView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/NewCreditCard.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Models/Theme.swift
+/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/CustomTabBarView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategoryEditView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/RewardsView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/DatePickerField.swift
@@ -18,6 +21,7 @@
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategoryView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/RewardsCardView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/ErrorView.swift
+/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/TabBarItem.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Models/CategoryStore.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/DetailEditView.swift
 /Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Models/ErrorWrapper.swift

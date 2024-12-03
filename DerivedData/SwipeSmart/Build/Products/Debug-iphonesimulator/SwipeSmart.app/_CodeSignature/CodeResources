@@ -14,19 +14,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		Qr1nRboe/9tMnLGV/fIeT+0wV0M=
+		xZoyWPZ/p3VWDtoS0WGk/hl9id8=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		7SfCN5Qd3CNaLMawi857uPPFqlQ=
-		</data>
-		<key>Inter-Italic-VariableFont_opsz,wght.ttf</key>
-		<data>
-		gcyhnNAdvP6jgm4CzBSR/3QjwrE=
-		</data>
-		<key>Inter-VariableFont_opsz,wght.ttf</key>
-		<data>
-		7lwuIv/t3vxDPJqkx2d5u3OlxoI=
+		vMu+0LuxsE/qvSwO3CAP+BOFQYQ=
 		</data>
 		<key>Launch Screen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -44,33 +36,13 @@
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
 		</data>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/Info.plist</key>
-		<data>
-		Twj2Q8tl/80Qlrs1NQK0ZRMcBm0=
-		</data>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/SwipeSmartWidgetExtension</key>
-		<data>
-		lTvtdqtfx7qa9VCBbZMqC/K49hU=
-		</data>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/SwipeSmartWidgetExtension.debug.dylib</key>
-		<data>
-		+7bXLpMfUSVLsYNLPCc7p1U1QTE=
-		</data>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/_CodeSignature/CodeResources</key>
-		<data>
-		n3VtOoxWp5KB5CiBHK1nO19WhLA=
-		</data>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/__preview.dylib</key>
-		<data>
-		WxjxiHT6LDS/boFsgoT5j1AG4M0=
-		</data>
 		<key>SwipeSmart.debug.dylib</key>
 		<data>
-		l3vPXdCJ0UhSMS/pWEoSDd/sudE=
+		IlvtDutXuPMjxGj8v1fSgNITWP4=
 		</data>
 		<key>__preview.dylib</key>
 		<data>
-		XexmSyKhI9Gq8vAv2G/AvpO5Nmk=
+		jjHwj1sgPUsVVDU2RRnnXsTIudc=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -93,21 +65,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			paEUfqHe7StIzdJgQytraXLVaebyyXjMg1/ofKgdYic=
-			</data>
-		</dict>
-		<key>Inter-Italic-VariableFont_opsz,wght.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			YTb3M3L+3De4D9Go7D4hc0Bz/xc3bzZycY8YZ3lnLno=
-			</data>
-		</dict>
-		<key>Inter-VariableFont_opsz,wght.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			C+I5nqkl8fg/+XR2R2HamGDsUHQu0ppdTB/9DFx6w6g=
+			WdR4tB4st0ua5okxhomG0q3p61xWg+e88mg8m8qsfP0=
 			</data>
 		</dict>
 		<key>Launch Screen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -131,53 +89,18 @@
 			VPNjf2cf66XxnoLsT0p/tEi7PPwPsYDwiapXH8jwU+I=
 			</data>
 		</dict>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			r2LkjoAY6SnrLvo3POMi9d3uRftASM3kAI3H6zuQme4=
-			</data>
-		</dict>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/SwipeSmartWidgetExtension</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			O3JHmxOeCwI9zOC3C54gLaANabdRCcJ5IEk/BqhJGXw=
-			</data>
-		</dict>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/SwipeSmartWidgetExtension.debug.dylib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			P8FMHa/jqNdHsEbSpf+RAfcoh0n8EbyPEZnx5NN1Gvw=
-			</data>
-		</dict>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Tyg+J7GEV9XBGTQIZ1L7lwYs90rV0ztd12b5NSl9jRY=
-			</data>
-		</dict>
-		<key>PlugIns/SwipeSmartWidgetExtension.appex/__preview.dylib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			gfOF/JjhvtgyaKVtJ2gCLP/e/V6NIY9VAikgGBACvL4=
-			</data>
-		</dict>
 		<key>SwipeSmart.debug.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QYGSkiXnoL6U8EwasDgZzHK20yHXzIBHg9W9A5sbVbw=
+			vNKUuVDdX6xIVJ8EdYwYiOY1yUjK6fE3+fj5D3lgR4I=
 			</data>
 		</dict>
 		<key>__preview.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yuacsmqDv4q6yoEvTVwdC4rY9VsmA7lQ06MpZy3aHrU=
+			4fdaDtcH2zLjn7z8TQCTQ5wMd/CJIsXceJz2Jg8uagc=
 			</data>
 		</dict>
 	</dict>

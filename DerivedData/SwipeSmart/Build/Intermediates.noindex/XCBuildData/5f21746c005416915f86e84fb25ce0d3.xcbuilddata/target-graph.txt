@@ -1,4 +1,0 @@
-Target dependency graph (2 targets)
-Target 'SwipeSmart' in project 'SwipeSmart'
-➜ Explicit dependency on target 'SwipeSmartWidgetExtension' in project 'SwipeSmart'
-Target 'SwipeSmartWidgetExtension' in project 'SwipeSmart' (no dependencies)

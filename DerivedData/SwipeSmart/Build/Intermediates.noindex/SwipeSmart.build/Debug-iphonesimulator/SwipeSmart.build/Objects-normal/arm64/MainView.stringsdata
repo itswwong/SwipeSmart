@@ -7,7 +7,7 @@
         "key": "Cash Back Rewards",
         "location": {
           "startingColumn": 27,
-          "startingLine": 28
+          "startingLine": 78
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Credit Cards",
         "location": {
           "startingColumn": 27,
-          "startingLine": 34
+          "startingLine": 84
         }
       }
     ]

@@ -6,16 +6,16 @@
         "comment": "",
         "key": "Credit Cards",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 58
+          "startingColumn": 30,
+          "startingLine": 59
         }
       },
       {
         "comment": "",
         "key": "New Card",
         "location": {
-          "startingColumn": 41,
-          "startingLine": 68
+          "startingColumn": 45,
+          "startingLine": 69
         }
       }
     ]

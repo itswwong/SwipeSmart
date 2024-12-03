@@ -23,11 +23,11 @@ struct RewardsCardView: View {
                     Text(card.bankName)
                         .font(.custom("Inter-Regular_Thin", size: 15))
                         .padding(.bottom, 2)
-                        .foregroundStyle(strokeColor)
+                        .foregroundStyle(expired || future ? .pastelgraydarkest : strokeColor)
                     Spacer()
                     Text(reward == floor(reward) ? "\(Int(reward))%" : String(format: "%.1f%%", reward))
                         .font(.custom("Inter-Regular_Thin", size: 15))
-                        .foregroundStyle(strokeColor)
+                        .foregroundStyle(expired ? .pastelgraydarkest : strokeColor)
                         //.frame(maxWidth: .infinity, alignment: .leading)
             }
             Spacer()
@@ -37,7 +37,7 @@ struct RewardsCardView: View {
                     Text(card.cardName)
                         .font(.custom("Inter-Regular_Light", size: 15))
                         .padding(.bottom, 15)
-                        .foregroundStyle(strokeColor)
+                        .foregroundStyle(expired || future ? .pastelgraydarkest : strokeColor)
                 }
             }
             Spacer()
@@ -60,15 +60,13 @@ struct RewardsCardView: View {
                     } else if future {
                         if let date = startDate {
                             HStack {
-                                Text("Starts:")
+                                Text("Activates:")
                                     .font(.custom("Inter-Regular_Light", size: 15))
-                                    .foregroundStyle(.red)
                                 Text(date, format: Date.FormatStyle()
                                     .month(.twoDigits)
                                     .day(.twoDigits)
                                     .year(.defaultDigits))
                                 .font(.custom("Inter-Regular_Light", size: 15))
-                                .foregroundStyle(.red)
                                 }
                             }
                         else {
