@@ -44,7 +44,7 @@ struct RewardsView: View {
                             .background(
                                 RoundedRectangle(cornerRadius: 15)
                                     .background(.clear)
-                                    .foregroundStyle(card.expired || card.future ? .pastelgraydark : cards[index].theme.mainColor)
+                                    .foregroundStyle(card.expired || card.future ? .pastelgray : cards[index].theme.mainColor)
                                     .padding(
                                         EdgeInsets(
                                             top: 0,
@@ -81,7 +81,7 @@ struct RewardsView: View {
                             .background(
                                 RoundedRectangle(cornerRadius: 15)
                                     .background(.clear)
-                                    .foregroundStyle(card.expired || card.future ? .pastelgraydark : cards[index].theme.mainColor)
+                                    .foregroundStyle(card.expired || card.future ? .pastelgray : cards[index].theme.mainColor)
                                     .padding(
                                         EdgeInsets(
                                             top: 0,

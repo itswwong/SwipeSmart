@@ -53,25 +53,32 @@ struct CardView: View {
                 Spacer()
                 if card.cardType == "Visa" {
                     Image("visa")
+                        .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 50)
+                        .tint(Color("AccentColor"))
                 } else if card.cardType == "Mastercard" {
                     Image("mastercard")
+                        .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 50)
+                        .tint(Color("AccentColor"))
                 } else if card.cardType == "Discover" {
                     Image("discover")
+                        .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 50)
+                        .tint(Color("AccentColor"))
                 } else if card.cardType == "American Express" {
                     Image("amex")
+                        .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 50)
-                    
+                        .tint(Color("AccentColor"))
                 }
             }
             .padding(.top, -20)

@@ -57,7 +57,7 @@ struct RewardsCardView: View {
             HStack (alignment: .top) {
                 VStack {
                     if expired {
-                        Text("EXPIRED")
+                        Text("Expired")
 //                            .font(.custom("Inter-Regular_Light", size: 15))
                             .foregroundStyle(.red)
                     } else if future {
@@ -99,25 +99,32 @@ struct RewardsCardView: View {
                 VStack {
                     if card.cardType == "Visa" {
                         Image("visa")
+                            .renderingMode(.template)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 50)
+                            .tint(Color("AccentColor"))
                     } else if card.cardType == "Mastercard" {
                         Image("mastercard")
+                            .renderingMode(.template)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 50)
+                            .tint(Color("AccentColor"))
                     } else if card.cardType == "Discover" {
                         Image("discover")
+                            .renderingMode(.template)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 50)
+                            .tint(Color("AccentColor"))
                     } else if card.cardType == "American Express" {
                         Image("amex")
+                            .renderingMode(.template)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 50)
-
+                            .tint(Color("AccentColor"))
                     }
                 }
             }

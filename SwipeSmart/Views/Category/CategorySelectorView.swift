@@ -172,14 +172,14 @@ struct CategorySelectorView: View {
     
     private func foregroundColor(category: Category) -> Color {
         if category.cardRewards.isEmpty {
-            return Color("pastelgray")
+            return Color("pastelgraydark")
         }
 
         if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydark") : cards[index].theme.mainColor
+            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgray") : cards[index].theme.mainColor
         }
         
-        return Color("pastelgray")
+        return Color("pastelgraydark")
     }
     
     // accent color (for text and border)
