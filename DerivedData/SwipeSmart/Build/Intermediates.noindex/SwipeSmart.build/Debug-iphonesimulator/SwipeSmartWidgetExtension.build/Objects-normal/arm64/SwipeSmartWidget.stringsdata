@@ -1,0 +1,40 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidget.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Time:",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Emoji:",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "My Widget",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "This is an example widget.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 71
+        }
+      }
+    ]
+  },
+  "version": 1
+}

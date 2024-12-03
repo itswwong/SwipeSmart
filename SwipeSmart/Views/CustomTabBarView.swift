@@ -57,23 +57,22 @@ extension CustomTabBarView {
         .padding(3)
     }
     private func switchToTab(tab:TabBarItem) {
-        withAnimation(.easeInOut) {
-            selection = tab
-        }
+        selection = tab
     }
 }
 extension CustomTabBarView {
-    private func tabView2(tab: TabBarItem) -> some View{
+    private func tabView2(tab: TabBarItem) -> some View {
         HStack {
             Image(systemName:tab.iconName)
             Text(tab.title).font(.footnote)
         }
-        .foregroundColor(localSelection==tab ? tab.color:Color.gray)
+        .foregroundColor(localSelection==tab ? Color.white : Color("tabbar"))
         .padding(.vertical,10)
         .frame(maxWidth:.infinity)
         .background(ZStack {
             if localSelection == tab{
-                RoundedRectangle(cornerRadius: 10).fill(tab.color.opacity(0.45)).matchedGeometryEffect(id: "background_rectangle", in: namespace)
+                RoundedRectangle(cornerRadius: 10).fill(tab.color).matchedGeometryEffect(id: "background_rectangle", in: namespace)
+                    .frame(height:45)
             }
         })
     }
@@ -86,8 +85,6 @@ extension CustomTabBarView {
                     }
             }
         }
-        .padding(3)
-        .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.3),radius: 10,x:0,y:5)
     }
 }

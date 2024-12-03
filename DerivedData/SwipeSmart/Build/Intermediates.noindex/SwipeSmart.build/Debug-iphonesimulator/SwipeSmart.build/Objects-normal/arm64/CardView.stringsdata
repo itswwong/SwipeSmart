@@ -1,0 +1,24 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/CardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "**** **** **** ****",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "**** **** **** %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 44
+        }
+      }
+    ]
+  },
+  "version": 1
+}

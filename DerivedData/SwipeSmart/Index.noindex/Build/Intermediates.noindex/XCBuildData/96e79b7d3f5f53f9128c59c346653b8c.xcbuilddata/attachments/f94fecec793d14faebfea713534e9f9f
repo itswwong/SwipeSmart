@@ -1,0 +1,87 @@
+{
+  "" : {
+    "dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/SwipeSmart-master.d",
+    "diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/SwipeSmart-master.dia",
+    "emit-module-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/SwipeSmart-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/SwipeSmart-master-emit-module.dia",
+    "swift-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/Objects-normal/arm64/SwipeSmart-master.swiftdeps"
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmart.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Models/CardStore.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Models/Category.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Models/CategoryStore.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Models/CreditCard.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Models/ErrorWrapper.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Models/Theme.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/SwipeSmartApp.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/CardView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/ColorPickerView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/ColorView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/DatePickerField.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/DetailEditView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/DetailView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/NewCreditCard.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/NewRewardView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/RewardRowView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/WalletView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/AddCategorySheet.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategoryEditView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategorySelectorView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategoryView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/RewardsCardView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/RewardsView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/ErrorView.swift" : {
+
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/MainView.swift" : {
+
+  }
+}

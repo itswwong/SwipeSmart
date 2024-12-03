@@ -1,0 +1,36 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategorySelectorView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Are you sure you want to delete this category?"
+      },
+      {
+        "comment": "",
+        "key": "Categories"
+      },
+      {
+        "comment": "",
+        "key": "Best Cash Back"
+      },
+      {
+        "comment": "",
+        "key": "Done"
+      },
+      {
+        "comment": "",
+        "key": "Delete"
+      },
+      {
+        "comment": "",
+        "key": "Cancel"
+      },
+      {
+        "comment": "",
+        "key": "This will permanently remove all rewards associated with this category."
+      }
+    ]
+  },
+  "version": 1
+}

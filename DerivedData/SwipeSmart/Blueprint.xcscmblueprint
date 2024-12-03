@@ -1,0 +1,23 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "42D782AF37E7056252AF25709A5A2F5CB05B14FA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "42D782AF37E7056252AF25709A5A2F5CB05B14FA" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3D90E53C-7051-41A3-8B6F-9C2C01FBE904",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "42D782AF37E7056252AF25709A5A2F5CB05B14FA" : "SwipeSmart\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SwipeSmart",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwipeSmart.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/itswwong\/SwipeSmart.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "42D782AF37E7056252AF25709A5A2F5CB05B14FA"
+    }
+  ]
+}

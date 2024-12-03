@@ -1,0 +1,10 @@
+version: "Apple Swift version 6.0.2 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)"
+options: "dbb7bb14e3dec3f4da2cfff59108febf6998f659343956accbdd11e962c7dbbd"
+build_start_time: [1731314028, 289672000]
+build_end_time: [1731314031, 832790000]
+inputs:
+  ? "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Index.noindex/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphoneos/SwipeSmartWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.swift"
+  : [1731314028, 222214621]
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidget.swift": [1729560646, 782894561]
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidgetBundle.swift": [1729560646, 779219110]
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidgetLiveActivity.swift": [1729560646, 781386297]

@@ -1,0 +1,16 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/MainView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Cash Back Rewards"
+      },
+      {
+        "comment": "",
+        "key": "Credit Cards"
+      }
+    ]
+  },
+  "version": 1
+}
