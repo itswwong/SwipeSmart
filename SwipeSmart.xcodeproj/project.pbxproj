@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,46 +35,11 @@
 		0AEBE5B92C7FFBD10051DE14 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A42C7FFBD10051DE14 /* DetailView.swift */; };
 		0AEBE5BA2C7FFBD10051DE14 /* NewCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A52C7FFBD10051DE14 /* NewCreditCard.swift */; };
 		0AEBE5BB2C7FFBD10051DE14 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A62C7FFBD10051DE14 /* WalletView.swift */; };
-		0D7351CD2CC757850088A39F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9674EC2CC371DD00574556 /* WidgetKit.framework */; };
-		0D7351CE2CC757850088A39F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9674EE2CC371DD00574556 /* SwiftUI.framework */; };
-		0D7351DD2CC757880088A39F /* ExtendedWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0D7351CC2CC757850088A39F /* ExtendedWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0D7351E22CC75EFB0088A39F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427CE2C8A530200D48E47 /* Theme.swift */; };
-		0D7351E32CC75EFB0088A39F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE58A2C7FFBBF0051DE14 /* Category.swift */; };
-		0D7351E42CC75EFB0088A39F /* CategoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5892C7FFBBF0051DE14 /* CategoryStore.swift */; };
-		0D7351E52CC75EFB0088A39F /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5872C7FFBBF0051DE14 /* ErrorWrapper.swift */; };
-		0D7351E62CC75EFB0088A39F /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5882C7FFBBF0051DE14 /* CardStore.swift */; };
-		0D7351E72CC75EFB0088A39F /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE58B2C7FFBBF0051DE14 /* CreditCard.swift */; };
-		0D7351E82CC75F020088A39F /* CategoryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF8202C8D36330003F5F5 /* CategoryEditView.swift */; };
-		0D7351E92CC75F020088A39F /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5952C7FFBD00051DE14 /* CategoryView.swift */; };
-		0D7351EA2CC75F020088A39F /* RewardsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5962C7FFBD00051DE14 /* RewardsCardView.swift */; };
-		0D7351EB2CC75F020088A39F /* RewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5972C7FFBD00051DE14 /* RewardsView.swift */; };
-		0D7351EC2CC75F020088A39F /* CategorySelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5942C7FFBD00051DE14 /* CategorySelectorView.swift */; };
-		0D7351ED2CC75F020088A39F /* AddCategorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7DF8222C8E7F130003F5F5 /* AddCategorySheet.swift */; };
-		0D7351EE2CC75F0A0088A39F /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427D02C8A542D00D48E47 /* ColorView.swift */; };
-		0D7351EF2CC75F0A0088A39F /* NewRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427142C85779500D48E47 /* NewRewardView.swift */; };
-		0D7351F02CC75F0A0088A39F /* RewardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427162C8634C700D48E47 /* RewardRowView.swift */; };
-		0D7351F12CC75F0A0088A39F /* DetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A32C7FFBD10051DE14 /* DetailEditView.swift */; };
-		0D7351F22CC75F0A0088A39F /* DatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427122C8516A300D48E47 /* DatePickerField.swift */; };
-		0D7351F32CC75F0A0088A39F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A22C7FFBD10051DE14 /* CardView.swift */; };
-		0D7351F42CC75F0A0088A39F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A42C7FFBD10051DE14 /* DetailView.swift */; };
-		0D7351F52CC75F0A0088A39F /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A62C7FFBD10051DE14 /* WalletView.swift */; };
-		0D7351F62CC75F0A0088A39F /* NewCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5A52C7FFBD10051DE14 /* NewCreditCard.swift */; };
-		0D7351F72CC75F0A0088A39F /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1427D22C8A65DA00D48E47 /* ColorPickerView.swift */; };
 		0DB8F9062CEECF91009848C0 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8F9052CEECF91009848C0 /* CustomTabBarView.swift */; };
 		0DE154422CF08370004C622C /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE154412CF08370004C622C /* CustomTabBarContainerView.swift */; };
 		0DE154442CF08626004C622C /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE154432CF08626004C622C /* TabBarItemsPreferenceKey.swift */; };
 		0DFA30442CF1C50B00031EB1 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFA30432CF1C50B00031EB1 /* TabBarItem.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		0D7351DB2CC757880088A39F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0AEBE56C2C7FFA0B0051DE14 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0D7351CB2CC757850088A39F;
-			remoteInfo = ExtendedWidgetExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0D9675052CC371E000574556 /* Embed Foundation Extensions */ = {
@@ -83,7 +48,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				0D7351DD2CC757880088A39F /* ExtendedWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,8 +84,6 @@
 		0AEBE5A42C7FFBD10051DE14 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		0AEBE5A52C7FFBD10051DE14 /* NewCreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCreditCard.swift; sourceTree = "<group>"; };
 		0AEBE5A62C7FFBD10051DE14 /* WalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
-		0D7351CC2CC757850088A39F /* ExtendedWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ExtendedWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D9674EC2CC371DD00574556 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		0D9674EE2CC371DD00574556 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		0DB8F9052CEECF91009848C0 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		0DE154412CF08370004C622C /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
@@ -129,34 +91,11 @@
 		0DFA30432CF1C50B00031EB1 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		0D7351DE2CC757880088A39F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 0D7351CB2CC757850088A39F /* ExtendedWidgetExtension */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		0D7351CF2CC757850088A39F /* ExtendedWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0D7351DE2CC757880088A39F /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ExtendedWidget; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		0AEBE5712C7FFA0B0051DE14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D7351C92CC757850088A39F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0D7351CE2CC757850088A39F /* SwiftUI.framework in Frameworks */,
-				0D7351CD2CC757850088A39F /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				0AEBE5762C7FFA0B0051DE14 /* SwipeSmart */,
-				0D7351CF2CC757850088A39F /* ExtendedWidget */,
 				0D9674EB2CC371DD00574556 /* Frameworks */,
 				0AEBE5752C7FFA0B0051DE14 /* Products */,
 			);
@@ -177,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				0AEBE5742C7FFA0B0051DE14 /* SwipeSmart.app */,
-				0D7351CC2CC757850088A39F /* ExtendedWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,7 +201,6 @@
 		0D9674EB2CC371DD00574556 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0D9674EC2CC371DD00574556 /* WidgetKit.framework */,
 				0D9674EE2CC371DD00574556 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
@@ -285,34 +221,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				0D7351DC2CC757880088A39F /* PBXTargetDependency */,
 			);
 			name = SwipeSmart;
 			productName = SwipeSmart;
 			productReference = 0AEBE5742C7FFA0B0051DE14 /* SwipeSmart.app */;
 			productType = "com.apple.product-type.application";
-		};
-		0D7351CB2CC757850088A39F /* ExtendedWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0D7351DF2CC757880088A39F /* Build configuration list for PBXNativeTarget "ExtendedWidgetExtension" */;
-			buildPhases = (
-				0D7351C82CC757850088A39F /* Sources */,
-				0D7351C92CC757850088A39F /* Frameworks */,
-				0D7351CA2CC757850088A39F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				0D7351CF2CC757850088A39F /* ExtendedWidget */,
-			);
-			name = ExtendedWidgetExtension;
-			packageProductDependencies = (
-			);
-			productName = ExtendedWidgetExtension;
-			productReference = 0D7351CC2CC757850088A39F /* ExtendedWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -326,9 +239,6 @@
 				TargetAttributes = {
 					0AEBE5732C7FFA0B0051DE14 = {
 						CreatedOnToolsVersion = 15.4;
-					};
-					0D7351CB2CC757850088A39F = {
-						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
@@ -346,7 +256,6 @@
 			projectRoot = "";
 			targets = (
 				0AEBE5732C7FFA0B0051DE14 /* SwipeSmart */,
-				0D7351CB2CC757850088A39F /* ExtendedWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -359,13 +268,6 @@
 				0A58FF7F2C94EB6600A0295B /* Launch Screen.storyboard in Resources */,
 				0AEBE57F2C7FFA0D0051DE14 /* Preview Assets.xcassets in Resources */,
 				0AEBE57C2C7FFA0D0051DE14 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0D7351CA2CC757850088A39F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,44 +310,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0D7351C82CC757850088A39F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0D7351E22CC75EFB0088A39F /* Theme.swift in Sources */,
-				0D7351E32CC75EFB0088A39F /* Category.swift in Sources */,
-				0D7351E42CC75EFB0088A39F /* CategoryStore.swift in Sources */,
-				0D7351E52CC75EFB0088A39F /* ErrorWrapper.swift in Sources */,
-				0D7351E62CC75EFB0088A39F /* CardStore.swift in Sources */,
-				0D7351E72CC75EFB0088A39F /* CreditCard.swift in Sources */,
-				0D7351EE2CC75F0A0088A39F /* ColorView.swift in Sources */,
-				0D7351EF2CC75F0A0088A39F /* NewRewardView.swift in Sources */,
-				0D7351F02CC75F0A0088A39F /* RewardRowView.swift in Sources */,
-				0D7351F12CC75F0A0088A39F /* DetailEditView.swift in Sources */,
-				0D7351F22CC75F0A0088A39F /* DatePickerField.swift in Sources */,
-				0D7351F32CC75F0A0088A39F /* CardView.swift in Sources */,
-				0D7351F42CC75F0A0088A39F /* DetailView.swift in Sources */,
-				0D7351F52CC75F0A0088A39F /* WalletView.swift in Sources */,
-				0D7351F62CC75F0A0088A39F /* NewCreditCard.swift in Sources */,
-				0D7351F72CC75F0A0088A39F /* ColorPickerView.swift in Sources */,
-				0D7351E82CC75F020088A39F /* CategoryEditView.swift in Sources */,
-				0D7351E92CC75F020088A39F /* CategoryView.swift in Sources */,
-				0D7351EA2CC75F020088A39F /* RewardsCardView.swift in Sources */,
-				0D7351EB2CC75F020088A39F /* RewardsView.swift in Sources */,
-				0D7351EC2CC75F020088A39F /* CategorySelectorView.swift in Sources */,
-				0D7351ED2CC75F020088A39F /* AddCategorySheet.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0D7351DC2CC757880088A39F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0D7351CB2CC757850088A39F /* ExtendedWidgetExtension */;
-			targetProxy = 0D7351DB2CC757880088A39F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0AEBE5802C7FFA0D0051DE14 /* Debug */ = {
@@ -575,7 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "SwipeSmart/Preview\\ Content";
-				DEVELOPMENT_TEAM = XCQ622X9HM;
+				DEVELOPMENT_TEAM = 2HM77Y3S7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwipeSmart/Info.plist;
@@ -608,7 +473,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "SwipeSmart/Preview\\ Content";
-				DEVELOPMENT_TEAM = XCQ622X9HM;
+				DEVELOPMENT_TEAM = 2HM77Y3S7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwipeSmart/Info.plist;
@@ -633,62 +498,6 @@
 			};
 			name = Release;
 		};
-		0D7351E02CC757880088A39F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = XCQ622X9HM;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ExtendedWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ExtendedWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamwong.SwipeSmart.ExtendedWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		0D7351E12CC757880088A39F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = XCQ622X9HM;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ExtendedWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ExtendedWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.williamwong.SwipeSmart.ExtendedWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -706,15 +515,6 @@
 			buildConfigurations = (
 				0AEBE5832C7FFA0D0051DE14 /* Debug */,
 				0AEBE5842C7FFA0D0051DE14 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0D7351DF2CC757880088A39F /* Build configuration list for PBXNativeTarget "ExtendedWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0D7351E02CC757880088A39F /* Debug */,
-				0D7351E12CC757880088A39F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

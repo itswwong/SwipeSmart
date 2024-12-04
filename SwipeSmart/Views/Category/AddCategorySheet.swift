@@ -8,17 +8,11 @@ import SwiftUI
 struct AddCategorySheet: View {
     @Binding var isPresented: Bool
     @Binding var addCategoryName: String
-    @Binding var addCategoryColor: String
     @Binding var addCategoryExists: Bool
     @Binding var addCategoryEmpty: Bool
     @Binding var categories: [Category]
     
-    //@State private var addCategoryColor: String = "black_accent" // Default color
-    //@State private var selectedBackground: String = "Teal" // Default background color
-    @State private var showIconPicker = false // For selecting icons (you can implement this separately)
-    
-    //let backgroundOptions = ["Red", "Blue", "Green", "Teal"]
-    var onAdd: (String, String) -> Void // Update to include background color
+    var onAdd: (String) -> Void // Update to include background color
 
     var body: some View {
         VStack {
@@ -31,20 +25,24 @@ struct AddCategorySheet: View {
                     Image(systemName: "xmark")
                         .foregroundColor(.black)
                 }
+                .buttonStyle(.plain)
                 Spacer()
             }
             .padding()
             
+            Spacer()
+            
             // Title
             Text("Add a New Category")
-                .font(.headline)
-                .padding(.bottom, 16)
+                .fontWeight(.bold)
+                .font(.system(size: 24))
+            
+            Spacer()
             
             // Input fields
-            VStack(spacing: 16) {
+            VStack() {
                 HStack {
-                    Text("Name")
-                        .font(.caption)
+                    Text("NAME")
                         .foregroundColor(.gray)
                         .frame(width: 100, alignment: .leading)
                     
@@ -52,12 +50,15 @@ struct AddCategorySheet: View {
                     
                     VStack {
                         TextField("Ex: Groceries", text: $addCategoryName)
-                            .padding()
-                            .background(Color.gray.opacity(0.2))
+                            .padding(10)
+                            .background(Color.clear)
                             .cornerRadius(8)
                             .onDisappear {
                                 resetForm()
                             }
+                            .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
+                            .foregroundColor(Color("AccentColor"))
+                            .frame(width: 200)
                             .onChange(of: addCategoryName) { _ in
                                 addCategoryEmpty = addCategoryName.isEmpty
                                 addCategoryExists = categories.contains {
@@ -76,51 +77,24 @@ struct AddCategorySheet: View {
                         }
                     }
                 }
-                
-                HStack {
-                    Text("Background")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .frame(width: 100, alignment: .leading)
-                    
-                    Spacer()
-                    
-                    Picker("Background", selection: $addCategoryColor) {
-                        ForEach(categoryColors, id: \.self) { colorName in
-                            HStack {
-                                Circle()
-                                    .fill(Color(colorName))
-                                    .frame(width: 20, height: 20)
-                                Text(colorName.capitalized.replacingOccurrences(of: "_", with: " "))
-                            }
-                            .tag(colorName)
-                        }
-                    }
-                    .pickerStyle(MenuPickerStyle())
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 44)
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(8)
-                }
             }
             .padding(.horizontal)
-            
             Spacer()
-            
             // Add Category button
             Button(action: {
-                onAdd(addCategoryName, addCategoryColor) // Pass name and background color
+                onAdd(addCategoryName) // Pass name
                 isPresented = false
             }) {
-                Text("Add Category")
+                Text("ADD CATEGORY")
                     .frame(maxWidth: .infinity)
+                    .fontWeight(.bold)
                     .padding()
                     .background(Color.black)
                     .foregroundColor(.white)
-                    .cornerRadius(8)
+                    .cornerRadius(5)
             }
             .padding(.horizontal)
+            .buttonStyle(.plain)
             .disabled(addCategoryName.isEmpty || addCategoryExists)
             
             Spacer()
@@ -129,16 +103,26 @@ struct AddCategorySheet: View {
         .background(Color.white)
         .cornerRadius(16)
         .shadow(radius: 10)
-        .presentationDetents([.fraction(0.6)]) // Sheet height set to half the screen
     }
     
     private func resetForm() {
         addCategoryName = ""
         addCategoryExists = false
-        addCategoryEmpty = true
+        addCategoryEmpty = false
     }
-    
-    private func foregroundColor(category: Category) -> Color {
-        Color(category.backgroundColor) // Dynamically fetches the color from Assets.xcassets
+}
+
+struct AddCategorySheet_Previews: PreviewProvider {
+    static var previews: some View {
+        AddCategorySheet(
+            isPresented: .constant(true),
+            addCategoryName: .constant("Example"),
+            addCategoryExists: .constant(false),
+            addCategoryEmpty: .constant(false),
+            categories: .constant(Category.sampleCategories),
+            onAdd: { name in
+                let newCategory = Category(name: name, cardRewards: [])
+            }
+        )
     }
 }
