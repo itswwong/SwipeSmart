@@ -25,6 +25,7 @@ struct DetailView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fontWeight(.bold)
                 .font(.system(size: 24))
+                .padding(.top, 50)
             Divider()
                 .frame(height: 1)
                 .background(Color.gray)
@@ -105,15 +106,14 @@ struct DetailView: View {
                     HStack {
                         Text("\(category.categoryName)")
                             .fontWeight(.bold)
-                            .font(.system(size: 16))
-                            .padding()
+                            .font(.system(size: 18))
                         Spacer()
                         Text(category.reward == floor(category.reward) ? "\(Int(category.reward))%" : String(format: "%.1f%%", category.reward))
                             .fontWeight(.bold)
-                            .font(.system(size: 16))
-                            .padding()
+                            .font(.system(size: 18))
                         
                     }
+                    .padding(.bottom, 5)
                     if let startDate = category.startDate {
                         HStack {
                             Text("START")
@@ -160,53 +160,24 @@ struct DetailView: View {
                         .padding(.top, 5)
                     }
                 }
-                .padding([.top, .bottom])
+                .padding(.bottom, 30)
             }
             
             Spacer()
-            /*
-            HStack(spacing: 0) {
-                Button(action: {}) {
-                    HStack {
-                        Image(systemName: "dollarsign.circle")
-                            .foregroundColor(.black)
-                        Text("REWARDS")
-                            .foregroundColor(.black)
-                            .font(.system(size: 14))
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(.systemGray5))
-                    .cornerRadius(10)
-                }
-                
-                Button(action: {}) {
-                    HStack {
-                        Image(systemName: "creditcard")
-                            .foregroundColor(.white)
-                        Text("CARDS")
-                            .foregroundColor(.white)
-                            .font(.system(size: 14))
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(.darkGray))
-                    .cornerRadius(10)
-                }
-            }
-            .frame(height: 50)*/
         }
         .padding(.horizontal, 30)
         .padding(.vertical, 15)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button(action: {
-//                    editingCard = card
-//                    editingCategories = categories
-//                }) {
-//                        Image(systemName: "arrow.left")
-//                    }
-//                }
+            ToolbarItem(placement: .cancellationAction) {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "arrow.backward")
+                        .bold()
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     isPresentingEditView = true
@@ -214,6 +185,7 @@ struct DetailView: View {
                     editingCategories = categories
                 }) {
                     Image(systemName: "square.and.pencil")
+                        .bold()
                 }
             }
         }
@@ -225,7 +197,7 @@ struct DetailView: View {
                             .fontWeight(.bold)
                             .font(.system(size: 24))
                         DetailEditView(card: $editingCard, cards: $cards, categories: $editingCategories, duplicateError: $duplicateError, showDelete: true, onDeleteCard: { deleteCard() })
-                            .padding(.horizontal, 20)
+                            .padding(.horizontal, 10)
                     }
                 }
                 .toolbar {

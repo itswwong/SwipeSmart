@@ -46,11 +46,12 @@ struct NewCreditCard: View {
                             .fontWeight(.bold)
                             .background(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(customDarkGray, lineWidth: 1)
-                                    .fill(customDarkGray)  // Set the background color here
+                                    .stroke(Color("tabbar"), lineWidth: 1)
+                                    .fill(Color("tabbar"))  // Set the background color here
                             )
                             .foregroundColor(.white)
                     }
+                    .buttonStyle(.plain)
                     .disabled(newCard.bankName.isEmpty || newCard.cardType.isEmpty || duplicateError)
                 }
             }
@@ -60,6 +61,7 @@ struct NewCreditCard: View {
                         isPresentingNewCardView = false
                     }) {
                         Image(systemName: "xmark")
+                            .bold()
                     }
                 }
             }

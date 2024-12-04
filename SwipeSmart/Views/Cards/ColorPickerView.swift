@@ -17,8 +17,10 @@ struct ColorPicker: View {
                     .tag(color)
             }
         }
+        .scrollContentBackground(.hidden)
         .pickerStyle(.navigationLink)
         .labelsHidden()
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
