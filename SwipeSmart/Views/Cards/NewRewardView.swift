@@ -60,12 +60,22 @@ struct NewRewardView: View {
                 Spacer()
                 Button(action: addReward) {
                     Text("Done")
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 125)
+                        .fontWeight(.bold)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color("tabbar"), lineWidth: 1)
+                                .fill(Color("tabbar"))  // Set the background color here
+                        )
+                        .foregroundColor(.white)
                 }
                 .disabled(selectedCategoryName.isEmpty || newUserReward.isEmpty)
-                .buttonStyle(.borderless)
-                .tint(selectedCategoryName.isEmpty || newUserReward.isEmpty ? .gray : .blue)
+                .buttonStyle(.plain)
+                .tint(selectedCategoryName.isEmpty || newUserReward.isEmpty ? .gray : Color("tabbar"))
                 Spacer()
             }
+            .padding(.bottom, 30)
         }
     }
     

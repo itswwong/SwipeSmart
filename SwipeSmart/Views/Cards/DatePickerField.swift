@@ -20,7 +20,10 @@ struct DatePickerField: View {
     }
     
     var body: some View {
-        Toggle("Expiration Date?", isOn: $dateSet)
+        Toggle(isOn: $dateSet) {
+            Text("EXPIRATION DATE")
+                .foregroundColor(Color.gray)
+        }
             .onChange(of: dateSet) { newValue in
                 if !newValue {
                     startDate = nil
@@ -32,7 +35,7 @@ struct DatePickerField: View {
             VStack {
                 // Input start date
                 HStack {
-                    DatePicker("Start Date:", selection: Binding(
+                    DatePicker(selection: Binding(
                         get: { startDate ?? Date() },
                         set: { newValue in
                             startDate = newValue
@@ -41,18 +44,24 @@ struct DatePickerField: View {
                                 expirationDate = Calendar.current.date(byAdding: .day, value: 1, to: newValue)
                             }
                         }
-                    ), displayedComponents: .date)
+                    ), displayedComponents: .date) {
+                        Text("START")
+                            .foregroundColor(Color.gray)
+                    }
                     .tint(.blue)
                 }
                 
                 // Input expiration date
                 HStack {
-                    DatePicker("Expiration Date:", selection: Binding(
+                    DatePicker(selection: Binding(
                         get: { expirationDate ?? Date() },
                         set: { newValue in
                             expirationDate = newValue
                         }
-                    ), in: (Calendar.current.date(byAdding: .day, value: 1, to: startDate ?? Date()) ?? Date())..., displayedComponents: .date)
+                    ), in: (Calendar.current.date(byAdding: .day, value: 1, to: startDate ?? Date()) ?? Date())..., displayedComponents: .date)  {
+                        Text("EXPIRY")
+                            .foregroundColor(Color.gray)
+                    }
                     .tint(.blue)
                 }
             }
