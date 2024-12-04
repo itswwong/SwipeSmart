@@ -72,12 +72,16 @@ struct CategoryView: View {
                                                     .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
                                             }
                                             else {
-                                                Text("\(cards[index].cardName) \(cards[index].digits)")
-                                                    .font(.system(size: 18))
-                                                    .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
-                                                Text(cards[index].digits)
-                                                    .padding(.top, 1)
-                                                    .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
+                                                if !cards[index].cardName.isEmpty {
+                                                    Text("\(cards[index].cardName) \(cards[index].digits)")
+                                                        .font(.system(size: 18))
+                                                        .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
+                                                }
+                                                else {
+                                                    Text(cards[index].digits)
+                                                        .padding(.top, 1)
+                                                        .foregroundColor(categoryRewardColor(card: card, topRewardsCards: topRewardCards))
+                                                }
                                             }
                                         }
                                     } else {

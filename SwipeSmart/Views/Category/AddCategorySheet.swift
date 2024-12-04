@@ -36,6 +36,7 @@ struct AddCategorySheet: View {
             Text("Add a New Category")
                 .fontWeight(.bold)
                 .font(.system(size: 24))
+                .foregroundStyle(.black)
             
             Spacer()
             
@@ -49,7 +50,11 @@ struct AddCategorySheet: View {
                     Spacer()
                     
                     VStack {
-                        TextField("Ex: Groceries", text: $addCategoryName)
+                        TextField(text: $addCategoryName) {
+                            Text("Ex: Groceries")
+                                .foregroundColor(.gray)
+                        }
+                            .foregroundStyle(.black)
                             .padding(10)
                             .background(Color.clear)
                             .cornerRadius(8)
@@ -57,7 +62,6 @@ struct AddCategorySheet: View {
                                 resetForm()
                             }
                             .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
-                            .foregroundColor(Color("AccentColor"))
                             .frame(width: 200)
                             .onChange(of: addCategoryName) { _ in
                                 addCategoryEmpty = addCategoryName.isEmpty
