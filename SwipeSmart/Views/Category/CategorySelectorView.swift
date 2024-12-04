@@ -43,7 +43,7 @@ struct CategorySelectorView: View {
                                 .listRowSeparator(.hidden)
                         }
                         .onMove(perform: moveCategory)
-                        .onDelete(perform: confirmDeleteCategory)
+                        .onDelete(perform: deleteCategory)
                     case .cashback:
                         ForEach($categories) { $category in
                             if !category.cardRewards.isEmpty {
@@ -122,21 +122,19 @@ struct CategorySelectorView: View {
         showingDeleteConfirmation = true
     }
     
-    private func deleteCategory() {
-        guard let offsets = categoryToDelete else { return }
-        
-        for index in offsets {
+    private func deleteCategory(at offsets: IndexSet) {
+        // Remove the selected category
+        offsets.forEach { index in
             let categoryToDelete = categories[index]
             
+            // Remove category from associated cards
             for cardIndex in cards.indices {
-                cards[cardIndex].categories.removeAll { reward in
-                    reward.categoryName == categoryToDelete.name
-                }
+                cards[cardIndex].categories.removeAll { $0.categoryName == categoryToDelete.name }
             }
+            
+            // Remove category from the list
+            categories.remove(at: index)
         }
-
-        categories.remove(atOffsets: offsets)
-        categoryToDelete = nil
     }
     
     private func addNewCategory() {
