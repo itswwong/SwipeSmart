@@ -19,73 +19,106 @@ struct DetailEditView: View {
     var showDelete: Bool
     let onDeleteCard: () -> Void
     @Environment(\.presentationMode) var presentationMode
+    
+    let customLightGray = Color(red: 0.95, green: 0.95, blue: 0.95)
+    let customLightMidGray = Color(red: 0.9, green: 0.9, blue: 0.9)
+    let customMidGray = Color(red: 0.8, green: 0.8, blue: 0.8)
+    let customDarkGray = Color(red: 0.4, green: 0.4, blue: 0.4)
 
     var body: some View {
-        Form {
-            Section(header: Text("Card Info")) {
-                LabeledContent {
+        ScrollView {
+            VStack {
+                HStack {
+                    Text("BANK NAME")
+                        .foregroundColor(Color.gray)
+                    Spacer()
                     TextField("", text: $card.bankName)
-                        .multilineTextAlignment(.trailing)
+                        .padding(10)
                         .onChange(of: card.bankName) {
                             validateUniqueDigits()
                         }
-                } label: {
-                    Text("Bank Name")
+                        .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
+                        .foregroundColor(customMidGray)
+                        .frame(width: 200)
                 }
-                LabeledContent {
+                .padding(.vertical, 10)
+                HStack {
+                    Text("CARD TYPE")
+                        .foregroundColor(Color.gray)
+                    Spacer()
                     Menu {
                         Picker(selection: $card.cardType, label: Text("")) {
                             ForEach(cardTypeList, id: \.self) { type in
                                 Text(type).tag(type)
                             }
                         }
-                    } label: {
+                    }
+                    label: {
                         HStack {
                             Text(card.cardType.isEmpty ? "Select Card Type" : card.cardType)
-                                .foregroundStyle(card.cardType.isEmpty ? .gray : .primary)
+                                .foregroundStyle(Color.gray)
+                                .padding(10)
                             Image(systemName: "chevron.down")
-                                .foregroundStyle(.gray)
+                                .foregroundStyle(Color.gray)
                         }
-                        .padding(.trailing, -12)
+                        .frame(width: 200, height: 45)
+                        .overlay(RoundedRectangle(cornerRadius:5).stroke(customLightGray, lineWidth: 1)
+                            .frame(width: 200, height: 45))
+                        .background(customLightGray)
                     }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                } label: {
-                    Text("Card Type")
                 }
-                
-                LabeledContent {
+                .padding(.vertical, 10)
+                HStack {
+                    Text("CARD NAME")
+                        .foregroundColor(Color.gray)
+                    Spacer()
                     TextField(text: $card.cardName, label: {
-                        Text("optional")
-                            .multilineTextAlignment(.trailing)
+                        Text("Optional")
                     })
-                        .multilineTextAlignment(.trailing)
-                } label: {
-                    Text("Card Name")
+                    .padding(10)
+                    .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
+                    .foregroundColor(customMidGray)
+                    .frame(width: 200)
                 }
-                
-                LabeledContent {
+                .padding(.vertical, 10)
+                HStack {
+                    Text("LAST 4 DIGITS")
+                        .foregroundColor(Color.gray)
+                    Spacer()
                     TextField(text: $card.digits, label: {
-                        Text("optional")
-                            .multilineTextAlignment(.trailing)
+                        Text("Optional")
                     })
-                        .keyboardType(.numberPad)
-                        .onReceive(Just($card.digits)) { _ in
-                            limitText()
-                            validateUniqueDigits()
+                    .foregroundColor(customMidGray)
+                    
+                    .keyboardType(.numberPad)
+                    .onReceive(Just($card.digits)) { _ in
+                        limitText()
+                        validateUniqueDigits()
+                    }
+                    .foregroundStyle(duplicateError ? .red : .primary)
+                    .padding(10)
+                    .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
+                    .frame(width: 200)
+                }
+                .padding(.vertical, 10)
+                HStack {
+                    Text("BACKGROUND")
+                        .foregroundColor(Color.gray)
+                    Spacer()
+                    ZStack {
+                        ColorPicker(selection: $card.theme)
+                        HStack {
+                            Text("Color")
+                                .foregroundStyle(Color.gray)
+                                .padding(10)
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(Color.gray)
                         }
-                        .multilineTextAlignment(.trailing)
-                        .foregroundStyle(duplicateError ? .red : .primary)
-                } label: {
-                    Text("Last 4 Digits")
+                    }
+                    .frame(width: 217, height: 55)
+                    .padding(.trailing, -4)
                 }
-                
-                LabeledContent {
-                    ColorPicker(selection: $card.theme)
-                        .frame(width: 100)
-                        .padding(.trailing, -12)
-                } label: {
-                    Text("Background Color")
-                }
+                .padding(.bottom, 20)
                 
                 if duplicateError {
                     Text("Credit card already exists.")
@@ -93,6 +126,7 @@ struct DetailEditView: View {
                         .font(.footnote)
                 }
             }
+            .padding()
             
             if !card.categories.isEmpty {
                 Section(header: Text("Cash Back Rewards")) {
@@ -108,14 +142,20 @@ struct DetailEditView: View {
                     addNewReward = true
                 }
             }) {
-                Text("Add New Cash Back Reward")
-                    .foregroundStyle(addNewReward ? .gray : .blue)
+                Text("ADD NEW CASHBACK REWARD")
+                    .padding(.vertical, 15)
+                    .padding(.horizontal, 55)
+                    .overlay(RoundedRectangle(cornerRadius:5).stroke(customDarkGray, lineWidth: 1))
+                    .foregroundColor(customDarkGray)
+                    .fontWeight(.bold)
             }
             .disabled(addNewReward)
+            .padding(.vertical, 15)
             
             if addNewReward {
                 NewRewardView(card: $card, categories: $categories)
-                .transition(.move(edge: .top))
+                    .transition(.move(edge: .top))
+                    .padding(15)
             }
             
             if showDelete {
@@ -123,9 +163,16 @@ struct DetailEditView: View {
                     Button(action: {
                         showConfirmation = true
                     }) {
-                        Text("Delete Card")
-                            .foregroundStyle(.red)
-                            .frame(maxWidth: .infinity, alignment: .center)
+                        Text("DELETE CARD")
+                            .padding(.vertical, 15)
+                            .padding(.horizontal, 125)
+                            .fontWeight(.bold)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(customDarkGray, lineWidth: 1)
+                                    .fill(customDarkGray)  // Set the background color here
+                            )
+                            .foregroundColor(.white)  // Set the text color (you can choose white or black)
                     }
                     .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
                         Button("Delete Card", role: .destructive, action: {
@@ -136,9 +183,9 @@ struct DetailEditView: View {
                         Text("You cannot undo this action.")
                     }
                 }
+                .padding(.bottom, 15)
             }
         }
-        .scrollDismissesKeyboard(.immediately)
     }
 
     private func validateUniqueDigits() {
@@ -175,3 +222,4 @@ struct DetailEditView_Previews: PreviewProvider {
         DetailEditView(card: .constant(CreditCard.sampleCards[0]), cards: .constant(CreditCard.sampleCards), categories: .constant(Category.sampleCategories), duplicateError: .constant(false), showDelete: true, onDeleteCard: {})
     }
 }
+
