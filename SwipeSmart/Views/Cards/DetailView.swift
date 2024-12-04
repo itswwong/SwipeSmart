@@ -218,28 +218,38 @@ struct DetailView: View {
             }
         }
         .sheet(isPresented: $isPresentingEditView) {
-                DetailEditView(card: $editingCard, cards: $cards, categories: $editingCategories, duplicateError: $duplicateError, showDelete: true, onDeleteCard: { deleteCard() })
-                    .toolbar {
-                        ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-                            Button(action: {
-                                isPresentingEditView = false
-                            }) {
-                                Image(systemName: "xmark")
-                            }
-                            .tint(.white)
+            NavigationStack {
+                ScrollView {
+                    VStack {
+                        Text("Edit Card")
+                            .fontWeight(.bold)
+                            .font(.system(size: 24))
+                        DetailEditView(card: $editingCard, cards: $cards, categories: $editingCategories, duplicateError: $duplicateError, showDelete: true, onDeleteCard: { deleteCard() })
+                            .padding(.horizontal, 20)
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: ToolbarItemPlacement.cancellationAction) {
+                        Button(action: {
+                            isPresentingEditView = false
+                        }) {
+                            Image(systemName: "xmark")
+                                .tint(Color("AccentColor"))
                         }
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button("Done") {
-                                isPresentingEditView = false
-                                duplicateError = false
-                                categories = editingCategories
-                                card = editingCard
-                            }
-                            .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
-                            .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .white)
+                    }
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Done") {
+                            isPresentingEditView = false
+                            duplicateError = false
+                            categories = editingCategories
+                            card = editingCard
                         }
-                    
+                        .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
+                        .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : Color("AccentColor"))
+                    }
+                }
             }
+            .padding(15)
         }
     }
     

@@ -23,26 +23,36 @@ struct NewCreditCard: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Text("Add a New Card")
-                    .fontWeight(.bold)
-                    .font(.system(size: 24))
-                    .padding(20)
-                DetailEditView(card: $newCard, cards: $cards, categories: $editingCategories, duplicateError: $duplicateError, showDelete: false, onDeleteCard: {})
-                    .padding(.vertical, 5)
-                Button("ADD CARD") {
-                    isPresentingNewCardView = false
-                    duplicateError = false
-                    categories = editingCategories
-                    cards.append(newCard)
+            ScrollView {
+                VStack {
+                    Text("Add a New Card")
+                        .fontWeight(.bold)
+                        .font(.system(size: 24))
+                        .padding(20)
+                    DetailEditView(card: $newCard, cards: $cards, categories: $editingCategories, duplicateError: $duplicateError, showDelete: false, onDeleteCard: {})
+                        .onAppear {
+                            editingCategories = categories
+                        }
+                        .padding(.vertical, 5)
+                    Button(action: {
+                        isPresentingNewCardView = false
+                        duplicateError = false
+                        categories = editingCategories
+                        cards.append(newCard)
+                    }) {
+                        Text("ADD CARD")
+                            .padding(.vertical, 15)
+                            .padding(.horizontal, 140)
+                            .fontWeight(.bold)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(customDarkGray, lineWidth: 1)
+                                    .fill(customDarkGray)  // Set the background color here
+                            )
+                            .foregroundColor(.white)
+                    }
+                    .disabled(newCard.bankName.isEmpty || newCard.cardType.isEmpty || duplicateError)
                 }
-                .padding(.vertical, 15)
-                .padding(.horizontal, 139)
-                .overlay(RoundedRectangle(cornerRadius:5).stroke(customLightMidGray, lineWidth: 1))
-                .foregroundColor(Color.white)
-                .background(customLightMidGray)
-                .fontWeight(.bold)
-                .disabled(newCard.bankName.isEmpty || newCard.cardType.isEmpty || duplicateError)
             }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

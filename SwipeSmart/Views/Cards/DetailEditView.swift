@@ -26,7 +26,7 @@ struct DetailEditView: View {
     let customDarkGray = Color(red: 0.4, green: 0.4, blue: 0.4)
 
     var body: some View {
-        NavigationStack {
+        ScrollView {
             VStack {
                 HStack {
                     Text("BANK NAME")
@@ -62,7 +62,8 @@ struct DetailEditView: View {
                                 .foregroundStyle(Color.gray)
                         }
                         .frame(width: 200, height: 45)
-                        .overlay(RoundedRectangle(cornerRadius:5).stroke(customLightGray, lineWidth: 1))
+                        .overlay(RoundedRectangle(cornerRadius:5).stroke(customLightGray, lineWidth: 1)
+                            .frame(width: 200, height: 45))
                         .background(customLightGray)
                     }
                 }
@@ -126,105 +127,63 @@ struct DetailEditView: View {
                 }
             }
             .padding()
-            .toolbar {
-                // Add Cancel button
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        presentationMode.wrappedValue.dismiss()
-//                        isPresentingEditView = false
+            
+            if !card.categories.isEmpty {
+                Section(header: Text("Cash Back Rewards")) {
+                    ForEach(card.categories.indices, id: \.self) { index in
+                        RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
                     }
-                    .tint(.blue)
+                    .onDelete(perform: removeReward)
                 }
-                
-                // Add Done button
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        presentationMode.wrappedValue.dismiss()
-//                        isPresentingEditView = false
-                        duplicateError = false
-                        categories = categories
-                        card = card
-                        // Perform additional save or validation logic here
+            }
+            
+            Button(action: {
+                withAnimation {
+                    addNewReward = true
+                }
+            }) {
+                Text("ADD NEW CASHBACK REWARD")
+                    .padding(.vertical, 15)
+                    .padding(.horizontal, 55)
+                    .overlay(RoundedRectangle(cornerRadius:5).stroke(customDarkGray, lineWidth: 1))
+                    .foregroundColor(customDarkGray)
+                    .fontWeight(.bold)
+            }
+            .disabled(addNewReward)
+            .padding(.vertical, 15)
+            
+            if addNewReward {
+                NewRewardView(card: $card, categories: $categories)
+                    .transition(.move(edge: .top))
+                    .padding(15)
+            }
+            
+            if showDelete {
+                Section {
+                    Button(action: {
+                        showConfirmation = true
+                    }) {
+                        Text("DELETE CARD")
+                            .padding(.vertical, 15)
+                            .padding(.horizontal, 125)
+                            .fontWeight(.bold)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(customDarkGray, lineWidth: 1)
+                                    .fill(customDarkGray)  // Set the background color here
+                            )
+                            .foregroundColor(.white)  // Set the text color (you can choose white or black)
                     }
-                    .disabled(card.bankName.isEmpty || card.cardType.isEmpty || duplicateError)
-                    .tint(card.bankName.isEmpty || card.cardType.isEmpty || duplicateError ? .gray : .blue)
+                    .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
+                        Button("Delete Card", role: .destructive, action: {
+                            presentationMode.wrappedValue.dismiss()  // Dismiss the view
+                            onDeleteCard()  // Trigger card deletion
+                        })
+                    } message: {
+                        Text("You cannot undo this action.")
+                    }
                 }
-            }
-        }
-    
-        /*.toolbar {
-                                            ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-                                                Button("Cancel") {
-                                                  isPresentingEditView = false
-                                                }
-                                               .tint(.blue)
-                                           }
-                                           ToolbarItem(placement: .confirmationAction) {
-                                               Button("Done") {
-                                                  isPresentingEditView = false
-                                            duplicateError = false
-                                                  categories = editingCategories
-                                                   card = editingCard
-                                                }
-                                              .disabled(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError)
-                                              .tint(editingCard.bankName.isEmpty || editingCard.cardType.isEmpty || duplicateError ? .gray : .blue)
-                                            }
-        
-                                }.padding()*/
-     
-        if !card.categories.isEmpty {
-            Section(header: Text("Cash Back Rewards")) {
-                ForEach(card.categories.indices, id: \.self) { index in
-                    RewardRowView(card: $card, category: $card.categories[index], categories: $categories)
-                }
-                .onDelete(perform: removeReward)
-            }
-        }
-        
-        Button(action: {
-            withAnimation {
-                addNewReward = true
-            }
-        }) {
-            Text("ADD NEW CASHBACK REWARD")
-                .padding(.vertical, 15)
-                .padding(.horizontal, 55)
-                .overlay(RoundedRectangle(cornerRadius:5).stroke(customDarkGray, lineWidth: 1))
-                .foregroundColor(customDarkGray)
-                .fontWeight(.bold)
-        }
-        .disabled(addNewReward)
-        
-        if addNewReward {
-            NewRewardView(card: $card, categories: $categories)
-            .transition(.move(edge: .top))
-            .padding(15)
-        }
-        
-        if showDelete {
-            Section {
-                Button(action: {
-                    showConfirmation = true
-                }) {
-                    Text("DELETE CARD")
-                        .padding(.vertical, 15)
-                        .padding(.horizontal, 125)
-                        .fontWeight(.bold)
-                        .background(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(customDarkGray, lineWidth: 1)
-                                .fill(customDarkGray)  // Set the background color here
-                        )
-                        .foregroundColor(.white)  // Set the text color (you can choose white or black)
-                }
-                .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
-                    Button("Delete Card", role: .destructive, action: {
-                        presentationMode.wrappedValue.dismiss()  // Dismiss the view
-                        onDeleteCard()  // Trigger card deletion
-                    })
-                } message: {
-                    Text("You cannot undo this action.")
-                }
+                .padding(.bottom, 15)
             }
         }
     }
