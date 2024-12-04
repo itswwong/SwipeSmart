@@ -3,7 +3,6 @@
 //
 //
 //
-
 import SwiftUI
 
 struct AddCategorySheet: View {
@@ -13,54 +12,117 @@ struct AddCategorySheet: View {
     @Binding var addCategoryEmpty: Bool
     @Binding var categories: [Category]
     
-    var onAdd: () -> Void
+    var onAdd: (String) -> Void // Update to include background color
 
     var body: some View {
-        NavigationView {
-            VStack {
-                TextField("Category Name", text: $addCategoryName)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .onChange(of: addCategoryName) {
-                        addCategoryEmpty = addCategoryName.isEmpty
-                        addCategoryExists = categories.contains {
-                            $0.name.lowercased() == addCategoryName.lowercased()
-                        }
-                    }
-
-                if addCategoryEmpty {
-                    Text("Please enter a category name.")
-                        .foregroundStyle(.red)
-                } else if addCategoryExists {
-                    Text("Category already exists.")
-                        .foregroundStyle(.red)
+        VStack {
+            // Close button
+            HStack {
+                Button(action: {
+                    isPresented = false
+                    resetForm()
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.black)
                 }
-                
+                .buttonStyle(.plain)
                 Spacer()
             }
-            .navigationTitle("Add New Category")
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Add") {
-                        onAdd()
-                        isPresented = false // Close the sheet
-                    }
-                    .disabled(addCategoryName.isEmpty || addCategoryExists)
-                }
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        isPresented = false
-                        resetForm()
+            .padding()
+            
+            Spacer()
+            
+            // Title
+            Text("Add a New Category")
+                .fontWeight(.bold)
+                .font(.system(size: 24))
+            
+            Spacer()
+            
+            // Input fields
+            VStack() {
+                HStack {
+                    Text("NAME")
+                        .foregroundColor(.gray)
+                        .frame(width: 100, alignment: .leading)
+                    
+                    Spacer()
+                    
+                    VStack {
+                        TextField("Ex: Groceries", text: $addCategoryName)
+                            .padding(10)
+                            .background(Color.clear)
+                            .cornerRadius(8)
+                            .onDisappear {
+                                resetForm()
+                            }
+                            .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
+                            .foregroundColor(Color("AccentColor"))
+                            .frame(width: 200)
+                            .onChange(of: addCategoryName) { _ in
+                                addCategoryEmpty = addCategoryName.isEmpty
+                                addCategoryExists = categories.contains {
+                                    $0.name.lowercased() == addCategoryName.lowercased()
+                                }
+                            }
+                        
+                        if addCategoryEmpty {
+                            Text("Please enter a category name.")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                        } else if addCategoryExists {
+                            Text("Category already exists.")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                        }
                     }
                 }
             }
+            .padding(.horizontal)
+            Spacer()
+            // Add Category button
+            Button(action: {
+                onAdd(addCategoryName) // Pass name
+                isPresented = false
+            }) {
+                Text("ADD CATEGORY")
+                    .frame(maxWidth: .infinity)
+                    .fontWeight(.bold)
+                    .padding()
+                    .background(Color.black)
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+            }
+            .padding(.horizontal)
+            .buttonStyle(.plain)
+            .disabled(addCategoryName.isEmpty || addCategoryExists)
+            
+            Spacer()
         }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(16)
+        .shadow(radius: 10)
     }
     
     private func resetForm() {
         addCategoryName = ""
         addCategoryExists = false
-        addCategoryEmpty = true
+        addCategoryEmpty = false
     }
 }
 
+struct AddCategorySheet_Previews: PreviewProvider {
+    static var previews: some View {
+        AddCategorySheet(
+            isPresented: .constant(true),
+            addCategoryName: .constant("Example"),
+            addCategoryExists: .constant(false),
+            addCategoryEmpty: .constant(false),
+            categories: .constant(Category.sampleCategories),
+            onAdd: { name in
+                let newCategory = Category(name: name, cardRewards: [])
+            }
+        )
+    }
+}
