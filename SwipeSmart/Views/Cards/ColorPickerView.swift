@@ -17,14 +17,16 @@ struct ColorPicker: View {
                     .tag(color)
             }
         }
+        .scrollContentBackground(.hidden)
         .pickerStyle(.navigationLink)
         .labelsHidden()
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
 struct ColorPicker_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPicker(selection: .constant(.pastelblue))
+        ColorPicker(selection: .constant(.blue_new))
     }
 }
 

@@ -1,0 +1,36 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/RewardsCardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Expired"
+      },
+      {
+        "comment": "",
+        "key": "Cannot find start date."
+      },
+      {
+        "comment": "",
+        "key": "Does not expire."
+      },
+      {
+        "comment": "",
+        "key": "**** **** **** ****"
+      },
+      {
+        "comment": "",
+        "key": "**** **** **** %@"
+      },
+      {
+        "comment": "",
+        "key": "Starts:"
+      },
+      {
+        "comment": "",
+        "key": "Expires:"
+      }
+    ]
+  },
+  "version": 1
+}

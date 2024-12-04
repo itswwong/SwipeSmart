@@ -4,6 +4,11 @@
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SwipeSmart/SwipeSmart/Fonts/Inter-Italic-VariableFont_opsz,wght.ttf</string>
+		<string>SwipeSmart/SwipeSmart/Fonts/Inter-VariableFont_opsz,wght.ttf</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>

@@ -12,35 +12,48 @@ struct WalletView: View {
     
     @Environment(\.scenePhase) private var scenePhase
     @State private var isPresentingNewCardView = false
+    @State private var s = -50
+    @State private var isSelected = false
+
     
     let saveAction: ()->Void
     
+    struct CardButtonStyle: ButtonStyle {
+        let card: CreditCard
+        
+        func makeBody(configuration: Configuration) -> some View {
+            CardView(card: card, strokeColor: card.theme.accentColor)
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(card.theme.mainColor)
+                        .overlay(
+                            // border
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(
+                                    card.theme.accentColor, lineWidth: 2
+                                )
+                        )
+                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                )
+        }
+    }
+    
     var body: some View {
         NavigationStack {
-            List($cards) { $card in
-                NavigationLink(destination: DetailView(card: $card, cards: $cards, categories: $categories)) {
-                    CardView(card: card)
+            ScrollView {
+                VStack (spacing: CGFloat(s)) {
+                    ForEach($cards) { $card in
+                        NavigationLink(destination: DetailView(card: $card, cards: $cards, categories: $categories)) {
+                        }
+                        .buttonStyle(CardButtonStyle(card: card))
+                        .padding([.leading, .trailing], 20)
+                    }
                 }
-                .listRowInsets(.init(top: 30, leading: 10, bottom: 30, trailing: 15))
-                .listRowBackground(
-                    RoundedRectangle(cornerRadius: 15)
-                        .background(.clear)
-                        .foregroundStyle(card.theme.mainColor)
-                        .padding(
-                            EdgeInsets(
-                                top: 5,
-                                leading: 0,
-                                bottom: 5,
-                                trailing: 0
-                            )
-                        )
-                )
-                .listRowSeparator(.hidden)
             }
             .toolbar {
-                ToolbarItem (placement: .topBarLeading) {
+                ToolbarItem (placement: .principal) {
                     Text("Credit Cards")
-                        .font(.largeTitle .weight(.bold))
+                        .font(.title3 .weight(.semibold))
                 }
                 ToolbarItem (placement: .topBarTrailing) {
                     Button(action: {
@@ -52,12 +65,13 @@ struct WalletView: View {
                     .accessibilityLabel("New Card")
                 }
             }
-        }
-        .sheet(isPresented: $isPresentingNewCardView) {
-            NewCreditCard(cards: $cards, categories: $categories, isPresentingNewCardView: $isPresentingNewCardView)
-        }
-        .onChange(of: scenePhase) {
-            if scenePhase == .inactive { saveAction() }
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $isPresentingNewCardView) {
+                NewCreditCard(cards: $cards, categories: $categories, isPresentingNewCardView: $isPresentingNewCardView)
+            }
+            .onChange(of: scenePhase) {
+                if scenePhase == .inactive { saveAction() }
+            }
         }
     }
 }

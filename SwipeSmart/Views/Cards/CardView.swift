@@ -1,3 +1,10 @@
+
+struct CardView_Previews: PreviewProvider {
+    static var previews: some View {
+        CardView(card: CreditCard.sampleCards[0], strokeColor: CreditCard.sampleCards[0].theme.accentColor)
+    }
+}
+
 //
 //  CardView.swift
 //
@@ -8,30 +15,31 @@ import SwiftUI
 
 struct CardView: View {
     let card: CreditCard
+    let strokeColor: Color
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                VStack(alignment: .leading){
-                    Text(card.bankName)
-                        .font(.title3.weight(.bold))
-                        .padding(.bottom, 5)
-                    Text(card.cardName)
-                        .multilineTextAlignment(.trailing)
-                    Spacer()
-                }
+                Text(card.bankName)
+//                    .font(.custom("Inter-Regular_Thin", size: 15))
+                    .textCase(.uppercase)
+                    .foregroundStyle(strokeColor)
                 Spacer()
-                VStack(alignment: .trailing) {
-                    Text((card.cardType == "Discover" || card.cardType == "American Express") ? "" : card.cardType)
-                        .font(.title3.weight(.bold))
-                    Spacer()
-                }
-                .padding(.trailing, -25)
             }
-            RoundedRectangle(cornerRadius: 7)
-                .frame(width: 30, height: 20)
-                .padding(.bottom, 5)
-                .foregroundStyle(Color("pastelgraylight"))
+            .padding(.bottom, 30)
+//            Spacer()
+            
+            HStack {
+                Spacer()
+                Text(card.cardName)
+                    .multilineTextAlignment(.trailing)
+//                    .font(.custom("Inter-Regular_Thin", size: 15))
+                    .fontWeight(.medium)
+                    .foregroundStyle(strokeColor)
+            }
+            .padding(.bottom, 30)
+//            Spacer()
+            
             HStack {
                 if card.digits.isEmpty {
                     Text("**** **** **** ****")
@@ -40,13 +48,42 @@ struct CardView: View {
                     Text("**** **** **** \(card.digits)")
                 }
             }
+            
+            HStack (alignment: .top) {
+                Spacer()
+                if card.cardType == "Visa" {
+                    Image("visa")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
+                        .tint(Color("AccentColor"))
+                } else if card.cardType == "Mastercard" {
+                    Image("mastercard")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
+                        .tint(Color("AccentColor"))
+                } else if card.cardType == "Discover" {
+                    Image("discover")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
+                        .tint(Color("AccentColor"))
+                } else if card.cardType == "American Express" {
+                    Image("amex")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
+                        .tint(Color("AccentColor"))
+                }
+            }
+            .padding(.top, -20)
         }
-        .padding()
-    }
-}
-
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardView(card: CreditCard.sampleCards[0])
+        .frame(height: 200)
+        .padding(30)
     }
 }

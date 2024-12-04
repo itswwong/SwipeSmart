@@ -27,7 +27,6 @@ struct MainView: View {
             CategorySelectorView(cards: $cards, categories: $categories).tabBarItem(tab: .Rewards,selection:$tabSelection)
             WalletView(cards: $cards, categories: $categories, saveAction: saveAction).tabBarItem(tab: .CreditCards,selection:$tabSelection)
         }
-       //MainView()
     }
 }
 
@@ -70,12 +69,13 @@ struct MainView_Previews: PreviewProvider {
         MainView(cards: .constant(CreditCard.testCards), categories: .constant(Category.sampleCategories), saveAction: {})
     }
 }
+
 extension MainView {
     private var defaultTabView:some View{
         TabView {
             CategorySelectorView(cards: $cards, categories: $categories)
                 .tabItem {
-                    Label("Cash Back Rewards", systemImage: "dollarsign.square.fill")
+                    Label("Cash Back Rewards", systemImage: "dollarsign")
                 }
                 .tag(1)
 

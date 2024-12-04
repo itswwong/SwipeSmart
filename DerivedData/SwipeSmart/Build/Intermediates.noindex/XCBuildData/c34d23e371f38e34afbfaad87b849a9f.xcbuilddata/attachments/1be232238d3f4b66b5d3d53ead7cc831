@@ -1,0 +1,48 @@
+{
+  "" : {
+    "diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetExtension-master.dia",
+    "emit-module-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetExtension-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetExtension-master-emit-module.dia",
+    "swift-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetExtension-master.swiftdeps"
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidget.swift" : {
+    "const-values" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidget.swiftconstvalues",
+    "dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidget.d",
+    "diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidget.dia",
+    "index-unit-output-path" : "/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidget.o",
+    "llvm-bc" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidget.bc",
+    "object" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidget.o",
+    "swift-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidget.swiftdeps",
+    "swiftmodule" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidget~partial.swiftmodule"
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidgetBundle.swift" : {
+    "const-values" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetBundle.swiftconstvalues",
+    "dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetBundle.d",
+    "diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetBundle.dia",
+    "index-unit-output-path" : "/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetBundle.o",
+    "llvm-bc" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetBundle.bc",
+    "object" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetBundle.o",
+    "swift-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetBundle.swiftdeps",
+    "swiftmodule" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetBundle~partial.swiftmodule"
+  },
+  "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmartWidget/SwipeSmartWidgetLiveActivity.swift" : {
+    "const-values" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetLiveActivity.swiftconstvalues",
+    "dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetLiveActivity.d",
+    "diagnostics" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetLiveActivity.dia",
+    "index-unit-output-path" : "/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetLiveActivity.o",
+    "llvm-bc" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetLiveActivity.bc",
+    "object" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetLiveActivity.o",
+    "swift-dependencies" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetLiveActivity.swiftdeps",
+    "swiftmodule" : "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/DerivedData/SwipeSmart/Build/Intermediates.noindex/SwipeSmart.build/Debug-iphonesimulator/SwipeSmartWidgetExtension.build/Objects-normal/arm64/SwipeSmartWidgetLiveActivity~partial.swiftmodule"
+  }
+}

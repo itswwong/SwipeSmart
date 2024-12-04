@@ -1,0 +1,64 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Cards/DetailEditView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Card Info"
+      },
+      {
+        "comment": "",
+        "key": "Cash Back Rewards"
+      },
+      {
+        "comment": "",
+        "key": "Credit card already exists."
+      },
+      {
+        "comment": "",
+        "key": ""
+      },
+      {
+        "comment": "",
+        "key": "Bank Name"
+      },
+      {
+        "comment": "",
+        "key": "Card Type"
+      },
+      {
+        "comment": "",
+        "key": "optional"
+      },
+      {
+        "comment": "",
+        "key": "Card Name"
+      },
+      {
+        "comment": "",
+        "key": "Last 4 Digits"
+      },
+      {
+        "comment": "",
+        "key": "Background Color"
+      },
+      {
+        "comment": "",
+        "key": "Add New Cash Back Reward"
+      },
+      {
+        "comment": "",
+        "key": "Are you sure?"
+      },
+      {
+        "comment": "",
+        "key": "Delete Card"
+      },
+      {
+        "comment": "",
+        "key": "You cannot undo this action."
+      }
+    ]
+  },
+  "version": 1
+}

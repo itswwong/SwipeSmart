@@ -2,7 +2,7 @@
 //  SwipeSmartWidgetLiveActivity.swift
 //  SwipeSmartWidget
 //
-//  Created by Tyler Xiao on 10/18/24.
+//  Created by Lindsay Qin on 10/21/24.
 //
 
 import ActivityKit

@@ -22,27 +22,40 @@ struct CategorySelectorView: View {
     @State private var addCategoryEmpty = false
     @State private var addCategoryName = ""
     @State private var showingAddCategoryAlert = false
+    
     @State private var showingDeleteConfirmation = false
     @State private var categoryToDelete: IndexSet? = nil
     
     var body: some View {
-            NavigationStack {
-                List {
-                    switch viewState {
+        NavigationStack {
+            List {
+                switch viewState {
                     case .categories:
                         ForEach($categories) { $category in
                             CategoryEditView(cards: $cards, category: $category, categories: $categories, categoryExists: $editCategoryExists, categoryEmpty: $editCategoryEmpty)
+                                .foregroundStyle(outlineColor(category: category))
                                 .listRowInsets(.init(top: 30, leading: 20, bottom: 30, trailing: 25))
                                 .listRowBackground(
                                     RoundedRectangle(cornerRadius: 15)
                                         .background(.clear)
                                         .foregroundStyle(foregroundColor(category: category))
-                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                        .overlay(
+                                            // border
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(
+                                                    outlineColor(category: category), lineWidth: 2
+                                                )
+                                        )
+                                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                                 )
                                 .listRowSeparator(.hidden)
                         }
                         .onMove(perform: moveCategory)
-                        .onDelete(perform: deleteCategory)
+                        .onDelete(perform: confirmDeleteCategory)
+                        .toolbar(.hidden, for: .tabBar)
+                   
+                    
+                    // Work on this case
                     case .cashback:
                         ForEach($categories) { $category in
                             if !category.cardRewards.isEmpty {
@@ -54,64 +67,72 @@ struct CategorySelectorView: View {
                                     RoundedRectangle(cornerRadius: 15)
                                         .background(.clear)
                                         .foregroundStyle(foregroundColor(category: category))
-                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                        .overlay(
+                                            // border
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(
+                                                    outlineColor(category: category), lineWidth: 2
+                                                )
+                                        )
+                                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                                 )
                                 .listRowSeparator(.hidden)
+                                .foregroundColor(outlineColor(category: category))
                             }
                         }
-                    }
-                }
-                .sheet(isPresented: $showingAddCategoryAlert) {
-                    AddCategorySheet(
-                        isPresented: $showingAddCategoryAlert,
-                        addCategoryName: $addCategoryName,
-                        addCategoryExists: $addCategoryExists,
-                        addCategoryEmpty: $addCategoryEmpty,
-                        categories: $categories,
-                        onAdd: { name in
-                            let newCategory = Category(name: name, cardRewards: [])
-                            categories.append(newCategory)
-                        }
-                    )
-                    .presentationDetents([.medium])
-                }
-                
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button(action: {
-                            viewState = viewState == .categories ? .cashback : .categories
-                        }) {
-                            Image(systemName: viewState == .categories ? "arrow.backward" : "menubar.dock.rectangle")
-                                .foregroundColor(.blue) // Customize color
-                        }
-                    }
-                    
-                    ToolbarItem(placement: .principal) {
-                        Text(viewState == .categories ? "Categories" : "Best Cash Back")
-                            .font(.largeTitle.bold())
-                    }
-                    
-                    ToolbarItem(placement: .topBarTrailing) {
-                        if viewState == .categories {
-                            Button(action: {
-                                showingAddCategoryAlert = true
-                            }) {
-                                Image(systemName: "plus.circle")
-                                    .foregroundColor(.blue) // Customize color
-                            }
-                        }
-                    }
+                        .toolbar(.visible, for: .tabBar)
                 }
             }
+            .padding(.top, -30)
+            .scrollContentBackground(.hidden)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("", systemImage:viewState == .categories ? "arrow.backward" : "") {
+                        viewState = viewState == .categories ? .cashback : .categories
+                    }
+                    .disabled(editCategoryExists || editCategoryEmpty)
+                }
+                //Spacer()
+                ToolbarItem(placement: .principal) {
+                    Text(viewState == .categories ? "Categories" : "Best Cash Back")
+                        .font(.title3 .weight(.semibold))
+                }
+                //Spacer()
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("",systemImage:(viewState == .categories ? "plus.circle" : "line.3.horizontal"),action: {
+                        if viewState == .categories {
+                            showingAddCategoryAlert = true
+                        } else {
+                            viewState = viewState == .categories ? .cashback : .categories
+                        }
+                    })
+                    .buttonStyle(addButton())
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .alert("Are you sure you want to delete this category?", isPresented: $showingDeleteConfirmation, presenting: categoryToDelete) { category in
+                Button("Delete", role: .destructive) {
+                    deleteCategory()
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: { category in
+                Text("This will permanently remove all rewards associated with this category.")
+            }
+            .sheet(isPresented: $showingAddCategoryAlert) {
+                AddCategorySheet(
+                    isPresented: $showingAddCategoryAlert,
+                    addCategoryName: $addCategoryName,
+                    addCategoryExists: $addCategoryExists,
+                    addCategoryEmpty: $addCategoryEmpty,
+                    categories: $categories,
+                    onAdd: addNewCategory
+                )
+            }
         }
-    
-//    private func foregroundColor(category: Category) -> Color {
-//        if let uiColor = UIColor(named: category.backgroundColor) {
-//            return Color(uiColor)
-//        }
-//        return Color("black_new") // Fallback to "black_new" if the color is not found SET DEFAULT COLOR HERE
-//        //////////////////////////////////////////////////
-//    }
+    }
     
     private func moveCategory(from source: IndexSet, to destination: Int) {
         categories.move(fromOffsets: source, toOffset: destination)
@@ -122,40 +143,56 @@ struct CategorySelectorView: View {
         showingDeleteConfirmation = true
     }
     
-    private func deleteCategory(at offsets: IndexSet) {
-        // Remove the selected category
-        offsets.forEach { index in
+    private func deleteCategory() {
+        guard let offsets = categoryToDelete else { return }
+        
+        for index in offsets {
             let categoryToDelete = categories[index]
             
-            // Remove category from associated cards
             for cardIndex in cards.indices {
-                cards[cardIndex].categories.removeAll { $0.categoryName == categoryToDelete.name }
+                cards[cardIndex].categories.removeAll { reward in
+                    reward.categoryName == categoryToDelete.name
+                }
             }
-            
-            // Remove category from the list
-            categories.remove(at: index)
         }
+
+        categories.remove(atOffsets: offsets)
+        categoryToDelete = nil
     }
     
     private func addNewCategory() {
         let newCategory = Category(name: addCategoryName, cardRewards: [])
         categories.append(newCategory)
-
+        
         addCategoryName = ""
         addCategoryEmpty = false
         addCategoryExists = false
     }
     
+    
     private func foregroundColor(category: Category) -> Color {
         if category.cardRewards.isEmpty {
-            return Color("pastelgray")
+            return Color("pastelgraydark")
         }
 
         if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
-            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydark") : cards[index].theme.mainColor
+            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgray") : cards[index].theme.mainColor
         }
         
-        return Color("pastelgray")
+        return Color("pastelgraydark")
+    }
+    
+    // accent color (for text and border)
+    private func outlineColor(category: Category) -> Color {
+        if category.cardRewards.isEmpty {
+            return Color("pastelgraydarkest")
+        }
+
+        if let index = cards.firstIndex(where: { $0.id == category.cardRewards[0].cardID }) {
+            return category.cardRewards[0].expired || category.cardRewards[0].future ? Color("pastelgraydarkest") : cards[index].theme.accentColor
+        }
+        
+        return Color("pastelgraydarkest")
     }
 }
 

@@ -1,0 +1,56 @@
+{
+  "source": "/Users/lindsayqin/Desktop/Workspace/swipe-smart/SwipeSmart/SwipeSmart/Views/Category/CategoryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "No active rewards in this category.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "****",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ %@",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ %@",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ ",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "****",
+        "location": {
+          "startingColumn": 58,
+          "startingLine": 57
+        }
+      }
+    ]
+  },
+  "version": 1
+}
