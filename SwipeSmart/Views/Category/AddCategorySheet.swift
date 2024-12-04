@@ -12,7 +12,7 @@ struct AddCategorySheet: View {
     @Binding var addCategoryEmpty: Bool
     @Binding var categories: [Category]
     
-    var onAdd: (String) -> Void // Update to include background color
+    var onAdd: () -> Void // Update to include background color
 
     var body: some View {
         VStack {
@@ -82,14 +82,14 @@ struct AddCategorySheet: View {
             Spacer()
             // Add Category button
             Button(action: {
-                onAdd(addCategoryName) // Pass name
+                onAdd() // Pass name
                 isPresented = false
             }) {
                 Text("ADD CATEGORY")
                     .frame(maxWidth: .infinity)
                     .fontWeight(.bold)
                     .padding()
-                    .background(Color.black)
+                    .background(Color("tabbar"))
                     .foregroundColor(.white)
                     .cornerRadius(5)
             }
@@ -120,9 +120,7 @@ struct AddCategorySheet_Previews: PreviewProvider {
             addCategoryExists: .constant(false),
             addCategoryEmpty: .constant(false),
             categories: .constant(Category.sampleCategories),
-            onAdd: { name in
-                let newCategory = Category(name: name, cardRewards: [])
-            }
+            onAdd: {}
         )
     }
 }

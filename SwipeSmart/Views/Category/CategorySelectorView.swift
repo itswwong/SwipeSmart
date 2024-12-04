@@ -130,6 +130,7 @@ struct CategorySelectorView: View {
                     categories: $categories,
                     onAdd: addNewCategory
                 )
+                .presentationDetents([.medium])
             }
         }
     }
