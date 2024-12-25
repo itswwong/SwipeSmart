@@ -2,7 +2,6 @@
 //  CustomTabBarView.swift
 //  SwipeSmart
 //
-//  Created by Tyler Xiao on 11/20/24.
 //
 
 import Foundation
@@ -13,11 +12,11 @@ struct CustomTabBarView: View {
     @Namespace private var namespace
     @State var localSelection: TabBarItem
     var body:some View{
-        tabBarVersion2.onChange(of: selection, perform: {value in
+        tabBarVersion2.onChange(of: selection) {
             withAnimation(.easeInOut ) {
-                localSelection = value
-            }})
-        
+                localSelection = selection
+            }
+        }
     }
 }
 struct CustomTabBarView_Previews:PreviewProvider {

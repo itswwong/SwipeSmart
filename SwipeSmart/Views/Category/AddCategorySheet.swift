@@ -63,7 +63,7 @@ struct AddCategorySheet: View {
                             }
                             .overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1))
                             .frame(width: 200)
-                            .onChange(of: addCategoryName) { _ in
+                            .onChange(of: addCategoryName) {
                                 addCategoryEmpty = addCategoryName.isEmpty
                                 addCategoryExists = categories.contains {
                                     $0.name.lowercased() == addCategoryName.lowercased()

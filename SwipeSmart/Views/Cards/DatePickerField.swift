@@ -24,8 +24,8 @@ struct DatePickerField: View {
             Text("EXPIRATION DATE")
                 .foregroundColor(Color.gray)
         }
-            .onChange(of: dateSet) { newValue in
-                if !newValue {
+            .onChange(of: dateSet) {
+                if !dateSet {
                     startDate = nil
                     expirationDate = nil
                 }
