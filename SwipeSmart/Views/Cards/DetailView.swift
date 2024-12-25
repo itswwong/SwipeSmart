@@ -80,12 +80,8 @@ struct DetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 16))
                 Spacer()
-                ZStack {
-                    ColorView(color: card.theme)
-                    Text("Color")
-                        .font(.system(size: 16))
-                }
-                .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
+                ColorView(color: card.theme)
+                    .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
             }
             .padding(.vertical, 10)
             
