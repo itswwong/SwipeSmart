@@ -21,22 +21,6 @@ enum Theme: String, CaseIterable, Identifiable, Codable, ShapeStyle {
     case black_new
     case blueblack_new
     case copper_new
-    case pastelreddark
-    case pastelscarlet
-    case pastelred
-    case pastelorange
-    case pastelyellow
-    case pastelgold
-    case pastelgreenlight
-    case pastelgreen
-    case pastelbabyblue
-    case pastelblue
-    case pastelbluedark
-    case pastelindigo
-    case pastelpurple
-    case pastelpurpledark
-    case pasteltan
-    case pastelbrown
     
     var accentColor: Color {
         switch self {
@@ -68,10 +52,6 @@ enum Theme: String, CaseIterable, Identifiable, Codable, ShapeStyle {
             return Color("blueblack_accent")
         case .copper_new:
             return Color("copper_accent")
-        case .pastelreddark:
-            return Color("pastelreddark")
-        default:
-            return Color.defaultAdaptiveColor
         }
     }
     

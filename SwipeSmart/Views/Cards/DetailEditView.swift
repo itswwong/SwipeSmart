@@ -110,11 +110,13 @@ struct DetailEditView: View {
                         ZStack {
                             ColorPicker(selection: $card.theme)
                             HStack {
-                                Text("Color")
-                                    .foregroundStyle(Color.gray)
-                                    .padding(10)
+                                Spacer()
+//                                Text("Color")
+//                                    .foregroundStyle(Color.gray)
+//                                    .padding(10)
                                 Image(systemName: "chevron.right")
                                     .foregroundStyle(Color.gray)
+                                    .padding(10)
                             }
                         }
                         .frame(width: 217, height: 55)
