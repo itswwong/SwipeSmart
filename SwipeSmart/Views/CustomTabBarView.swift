@@ -65,7 +65,7 @@ extension CustomTabBarView {
             Image(systemName:tab.iconName)
             Text(tab.title).font(.footnote)
         }
-        .foregroundColor(localSelection==tab ? Color.white : Color("tabbar"))
+        .foregroundColor(localSelection==tab ? Color.white : Color("tabbar_text"))
         .padding(.vertical,10)
         .frame(maxWidth:.infinity)
         .background(ZStack {

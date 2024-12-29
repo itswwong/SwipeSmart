@@ -12,7 +12,8 @@ struct ColorView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(color.mainColor)
-            .padding(4)
+            .frame(width: .infinity, height: 30)
+            .padding([.top, .bottom], 4)
     }
 }
 

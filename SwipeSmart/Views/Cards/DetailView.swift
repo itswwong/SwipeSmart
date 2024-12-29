@@ -19,150 +19,150 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        
-        VStack {
-            Text("Card Info")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fontWeight(.bold)
-                .font(.system(size: 24))
-                .padding(.top, 50)
-            Divider()
-                .frame(height: 1)
-                .background(Color.gray)
-                .padding(.bottom)
-            HStack {
-                Text("BANK NAME")
-                    .foregroundColor(Color.gray)
+        ScrollView {
+            VStack {
+                Text("Card Info")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16))
+                    .fontWeight(.bold)
+                    .font(.system(size: 24))
+                    .padding(.top, 30)
+                Divider()
+                    .frame(height: 1)
+                    .background(Color.gray)
+                    .padding(.bottom)
+                HStack {
+                    Text("BANK NAME")
+                        .foregroundColor(Color.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 16))
+                    Spacer()
+                    Text(card.bankName)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 16))
+                }
+                .padding(.vertical, 10)
+                HStack {
+                    Text("CARD TYPE")
+                        .foregroundColor(Color.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 16))
+                    Spacer()
+                    Text(card.cardType)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 16))
+                }
+                .padding(.vertical, 10)
+                HStack {
+                    Text("CARD NAME")
+                        .foregroundColor(Color.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 16))
+                    Spacer()
+                    Text(card.cardName)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 16))
+                }
+                .padding(.vertical, 10)
+                HStack {
+                    Text("LAST 4 DIGITS")
+                        .foregroundColor(Color.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 16))
+                    Spacer()
+                    Text(card.digits)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 16))
+                }
+                .padding(.vertical, 10)
+                HStack {
+                    Text("BACKGROUND")
+                        .foregroundColor(Color.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 16))
+                    Spacer()
+                    ColorView(color: card.theme)
+                        .frame(alignment: .leading)
+                }
+                .padding(.vertical, 10)
+                
                 Spacer()
-                Text(card.bankName)
+                
+                Text("Cash Back Rewards")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16))
-            }
-            .padding(.vertical, 10)
-            HStack {
-                Text("CARD TYPE")
-                    .foregroundColor(Color.gray)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16))
-                Spacer()
-                Text(card.cardType)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16))
-            }
-            .padding(.vertical, 10)
-            HStack {
-                Text("CARD NAME")
-                    .foregroundColor(Color.gray)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16))
-                Spacer()
-                Text(card.cardName)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16))
-            }
-            .padding(.vertical, 10)
-            HStack {
-                Text("LAST 4 DIGITS")
-                    .foregroundColor(Color.gray)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16))
-                Spacer()
-                Text(card.digits)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16))
-            }
-            .padding(.vertical, 10)
-            HStack {
-                Text("BACKGROUND")
-                    .foregroundColor(Color.gray)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16))
-                Spacer()
-                ColorView(color: card.theme)
-                    .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
-            }
-            .padding(.vertical, 10)
-            
-            Spacer()
-            
-            Text("Cash Back Rewards")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fontWeight(.bold)
-                .font(.system(size: 24))
-                .padding(.top)
-            Divider()
-                .frame(height: 1)
-                .background(Color.gray)
-                .padding(.bottom)
-            
-            ForEach(card.categories) { category in
-                VStack {
-                    HStack {
-                        Text("\(category.categoryName)")
-                            .fontWeight(.bold)
-                            .font(.system(size: 18))
-                        Spacer()
-                        Text(category.reward == floor(category.reward) ? "\(Int(category.reward))%" : String(format: "%.1f%%", category.reward))
-                            .fontWeight(.bold)
-                            .font(.system(size: 18))
-                        
-                    }
-                    .padding(.bottom, 5)
-                    if let startDate = category.startDate {
+                    .fontWeight(.bold)
+                    .font(.system(size: 24))
+                    .padding(.top)
+                Divider()
+                    .frame(height: 1)
+                    .background(Color.gray)
+                    .padding(.bottom)
+                
+                ForEach(card.categories) { category in
+                    VStack {
                         HStack {
-                            Text("START")
-                                .foregroundColor(Color.gray)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .font(.system(size: 16))
+                            Text("\(category.categoryName)")
+                                .fontWeight(.bold)
+                                .font(.system(size: 18))
                             Spacer()
-                            Text(startDate, format: Date.FormatStyle()
-                                .month(.abbreviated)
-                                .year(.defaultDigits))
-                            .foregroundColor(Color.gray)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                            .font(.system(size: 16))
+                            Text(category.reward == floor(category.reward) ? "\(Int(category.reward))%" : String(format: "%.1f%%", category.reward))
+                                .fontWeight(.bold)
+                                .font(.system(size: 18))
+                            
                         }
-                        .padding(.top, 5)
-                    }
-                    if let expirationDate = category.expirationDate {
-                        HStack {
-                            Text("EXPIRY")
-                                .foregroundColor(Color.gray)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .font(.system(size: 16))
-                            Spacer()
-                            Text(expirationDate, format: Date.FormatStyle()
-                                .month(.abbreviated)
-                                .year(.defaultDigits))
-                            .foregroundColor(Color.gray)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                            .font(.system(size: 16))
-                        }
-                        .padding(.top, 5)
-                    } else {
-                        HStack {
-                            Text("EXPIRY")
-                                .foregroundColor(Color.gray)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .font(.system(size: 16))
-                            Spacer()
-                            Text("None")
+                        .padding(.bottom, 5)
+                        if let startDate = category.startDate {
+                            HStack {
+                                Text("START")
+                                    .foregroundColor(Color.gray)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.system(size: 16))
+                                Spacer()
+                                Text(startDate, format: Date.FormatStyle()
+                                    .month(.abbreviated)
+                                    .year(.defaultDigits))
                                 .foregroundColor(Color.gray)
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                                 .font(.system(size: 16))
+                            }
+                            .padding(.top, 5)
                         }
-                        .padding(.top, 5)
+                        if let expirationDate = category.expirationDate {
+                            HStack {
+                                Text("EXPIRY")
+                                    .foregroundColor(Color.gray)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.system(size: 16))
+                                Spacer()
+                                Text(expirationDate, format: Date.FormatStyle()
+                                    .month(.abbreviated)
+                                    .year(.defaultDigits))
+                                .foregroundColor(Color.gray)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .font(.system(size: 16))
+                            }
+                            .padding(.top, 5)
+                        } else {
+                            HStack {
+                                Text("EXPIRY")
+                                    .foregroundColor(Color.gray)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.system(size: 16))
+                                Spacer()
+                                Text("None")
+                                    .foregroundColor(Color.gray)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                    .font(.system(size: 16))
+                            }
+                            .padding(.top, 5)
+                        }
                     }
+                    .padding(.bottom, 30)
                 }
-                .padding(.bottom, 30)
+                
+                Spacer()
             }
-            
-            Spacer()
+            .padding(.horizontal, 30)
         }
-        .padding(.horizontal, 30)
-        .padding(.vertical, 15)
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
